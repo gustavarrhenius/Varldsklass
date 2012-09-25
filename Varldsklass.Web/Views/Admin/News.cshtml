@@ -1,6 +1,16 @@
-﻿@{
-    ViewBag.Title = "News";
+﻿@model Varldsklass.Web.Models.News
+@{
+    ViewBag.Title = "Nyheter";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h3>News_Start</h3>
+<h2>Nyheter</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.ValidationSummary()
+    <p>Rubrik: @Html.TextBoxFor(x => x.Headline)</p>
+    <p>Ingress: @Html.TextBoxFor(x => x.Ingress)</p>
+    <p>Text:@Html.TextBoxFor(x => x.Text)</p>
+    <input type="submit" value="Spara" />
+}

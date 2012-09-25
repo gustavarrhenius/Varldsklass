@@ -9,7 +9,7 @@
     <ProjectGuid>{C138CCF4-5353-4C64-A324-0196C9A90033}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lektion13.Tests</RootNamespace>
+    <RootNamespace>Varldsklass.Tests</RootNamespace>
     <AssemblyName>Lektion13.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
