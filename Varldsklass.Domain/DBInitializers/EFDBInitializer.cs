@@ -12,33 +12,23 @@ namespace Varldsklass.Domain.DBInitializers
     {
         protected override void Seed(EFDbContext context)
         {
-            // Seed Category data
-            var catWatersport = new Category { ID = 1, Name = "Watersport" };
-            var catSoccer = new Category { ID = 2, Name = "Soccer" };
-            var catChess = new Category { ID = 3, Name = "Chess" };
-            var categories = new List<Category>
-            {
-                catWatersport,
-                catSoccer,
-                catChess,
-            };
-            categories.ForEach(c => context.Categories.Add(c));
-            context.SaveChanges();
+            var Standard = new Category { ID = 1, Name = "Standard" };
+            var Update = new Category { ID = 2, Name = "Update" };
+            var News = new Category { ID = 3, Name = "News" };
 
-            // Seed Product data
-            var products = new List<Product>
-            {
-                new Product { ID = 1, Name = @"Kayak", Description = @"A boat for one person", Price = 275M, Category = catWatersport },
-                new Product { ID = 2, Name = @"Lifejacket", Description = @"Protective and fashionable", Price = 48.95M, Category = catWatersport},
-                new Product { ID = 3, Name = @"Soccer ball", Description = @"FIFA-approved size and weight", Price = 19.5M, Category = catSoccer },
-                new Product { ID = 4, Name = @"Corner flags", Description = @"Give your playing field that professional touch", Price = 34.95M, Category = catSoccer },
-                new Product { ID = 5, Name = @"Stadium", Description = @"Flat-packed 35,000 seat stadium", Price = 79500M, Category = catSoccer },
-                new Product { ID = 6, Name = @"Thinking cap", Description = @"Improve your brain efficiency by 75%", Price = 16.0M, Category = catChess },
-                new Product { ID = 7, Name = @"Unsteady chair", Description = @"Secretly give your opponent a disadvantage", Price = 29.95M, Category = catChess },
-                new Product { ID = 8, Name = @"Human Chess Board", Description = @"A fun game for the whole family", Price = 75.00M, Category = catChess},
-                new Product { ID = 9, Name = @"Bling-bling King", Description = @"Gold-plated, diamond-studded King", Price = 275M, Category = catChess },
+            var products = new List<Post>
+        {
+            new Post { ID = 1, Title = @"Kayak", Body = @"A boat for one person", Created = new DateTime(2012, 9, 18), Category = Standard },
+            new Post { ID = 2, Title = @"Lifejacket", Body = @"Protective and fashionable", Created = new DateTime(2012, 9, 19), Category = Standard },
+            new Post { ID = 3, Title = @"Soccer ball", Body = @"FIFA-approved size and weight", Created = new DateTime(2012, 9, 18), Category = Update },
+            new Post { ID = 4, Title = @"Corner flags", Body = @"Give your playing field that professional touch", Created = new DateTime(2012, 9, 20), Category = Update },
+            new Post { ID = 5, Title = @"Stadium", Body = @"Flat-packed 35,000 seat stadium", Created = new DateTime(2012, 9, 21), Category = Update },
+            new Post { ID = 6, Title = @"Thinking cap", Body = @"Improve your brain efficiency by 75%", Created = new DateTime(2012, 9, 19), Category = News },
+            new Post { ID = 7, Title = @"Unsteady chair", Body = @"Secretly give your opponent a disadvantage", Created = new DateTime(2012, 9, 21), Category = News },
+            new Post { ID = 8, Title = @"Human Chess Board", Body = @"A fun game for the whole family", Created = new DateTime(2012, 9, 23), Category = News },
+            new Post { ID = 9, Title = @"Bling-bling King", Body = @"Gold-plated, diamond-studded King", Created = new DateTime(2012, 9, 25), Category = Standard },
 
-            };
+        };
             products.ForEach(s => context.Products.Add(s));
             context.SaveChanges();
         }

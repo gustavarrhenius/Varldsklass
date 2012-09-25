@@ -8,27 +8,27 @@ using Varldsklass.Domain.Repositories.Abstract;
 
 namespace Varldsklass.Domain.Repositories
 {
-    public interface IProductRepository : IRepository<Product>
+    public interface IPostRepository : IRepository<Post>
     {
-        IQueryable<Product> FindProductsByCategoryID(int id);
+        IQueryable<Post> FindProductsByCategoryID(int id);
     }
 
-    public class ProductRepository : Repository<Product>, IProductRepository
+    public class PostRepository : Repository<Post>, IPostRepository
     {
-        public ProductRepository() : base() {}
+        public PostRepository() : base() {}
 
-        public IQueryable<Product> FindProductsByCategoryID(int id)
+        public IQueryable<Post> FindProductsByCategoryID(int id)
         {
             return _dbSet.Where(p => p.Category.ID == id).Include(p => p.Category);
         }
 
         // Filter Methods for ProductRepository
 
-        public static Func<Product, bool> FilterProductsWithEmptyDescription
+        public static Func<Post, bool> FilterProductsWithEmptyDescription
         {
             get
             {
-                return p => string.IsNullOrEmpty(p.Description);
+                return p => string.IsNullOrEmpty(p.Body);
             }
         }
     }

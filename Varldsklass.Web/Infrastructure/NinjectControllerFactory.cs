@@ -28,7 +28,7 @@ namespace Varldsklass.Web.Infrastructure
 
         private void AddBindings()
         {
-            ninjectKernel.Bind<IProductRepository>().To<ProductRepository>();
+            ninjectKernel.Bind<IPostRepository>().To<PostRepository>();
             ninjectKernel.Bind(typeof(IRepository<>)).To(typeof(Repository<>));
         }
     }

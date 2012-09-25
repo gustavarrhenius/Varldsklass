@@ -10,6 +10,6 @@ namespace Varldsklass.Domain.Entities
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public IEnumerable<Product> Products { get; set; }
+        public IEnumerable<Post> Products { get; set; }
     }
 }

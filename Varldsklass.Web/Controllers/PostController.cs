@@ -8,10 +8,10 @@ using Varldsklass.Domain.Entities;
 
 namespace Varldsklass.Web.Controllers
 {
-    public class ProductController : Controller
+    public class PostController : Controller
     {
-        private IProductRepository _productRepo;
-        public ProductController(IProductRepository productRepo)
+        private IPostRepository _productRepo;
+        public PostController(IPostRepository productRepo)
         {
             _productRepo = productRepo;
         }

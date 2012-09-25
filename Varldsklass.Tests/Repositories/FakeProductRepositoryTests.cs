@@ -27,21 +27,21 @@ namespace Varldsklass.Tests
         public void FakeProductProductRepository_FindAll_ReturnsListOfProduct()
         {
             // Arrange
-            IRepository<Product> repo = new FakeRepository<Product>(ObjectMother.Test1Product);
+            IRepository<Post> repo = new FakeRepository<Post>(ObjectMother.Test1Product);
 
             // Act
             var products = repo.FindAll();
 
             // Assert
             Assert.AreEqual(1, products.Count());
-            Assert.AreEqual(products.FirstOrDefault().GetType(), typeof(Product));
+            Assert.AreEqual(products.FirstOrDefault().GetType(), typeof(Post));
         }
 
         [TestMethod]
         public void FakeProductProductRepository_FindAll_ReturnsListOfProductWithCorrectLength()
         {
             // Arrange
-            IRepository<Product> repo = new FakeRepository<Product>(ObjectMother.Test1Product);
+            IRepository<Post> repo = new FakeRepository<Post>(ObjectMother.Test1Product);
 
             // Act
             var products = repo.FindAll();
@@ -54,7 +54,7 @@ namespace Varldsklass.Tests
         public void FakeProductProductRepository_FindByID_ReturnsProductIfPresent()
         {
             // Arrange
-            IRepository<Product> repo = new FakeRepository<Product>(ObjectMother.Test1Product);
+            IRepository<Post> repo = new FakeRepository<Post>(ObjectMother.Test1Product);
 
             // Act
             var product = repo.FindByID(ObjectMother.Test1Product.ID);
@@ -67,7 +67,7 @@ namespace Varldsklass.Tests
         public void FakeProductProductRepository_FindByID_DoesNotReturnProductIfNotPresent()
         {
             // Arrange
-            IRepository<Product> repo = new FakeRepository<Product>(ObjectMother.Test1Product);
+            IRepository<Post> repo = new FakeRepository<Post>(ObjectMother.Test1Product);
 
             // Act
             var product = repo.FindByID(2);
@@ -81,25 +81,25 @@ namespace Varldsklass.Tests
         {
             // Arrange
             string newName = "Test2";
-            IRepository<Product> repo = new FakeRepository<Product>(ObjectMother.Test1Product);
+            IRepository<Post> repo = new FakeRepository<Post>(ObjectMother.Test1Product);
             var product = repo.FindByID(ObjectMother.Test1Product.ID);
-            product.Name = newName;
+            product.Body = newName;
             repo.Save(product);
 
             // Act
             product = repo.FindByID(ObjectMother.Test1Product.ID);
 
             // Assert
-            Assert.AreEqual<string>(newName, product.Name);
+            Assert.AreEqual<string>(newName, product.Body);
         }
 
         [TestMethod]
         public void FakeProductProductRepository_Save_AddsProductIfNotPresent()
         {
             // Arrange
-            IRepository<Product> repo = new FakeRepository<Product>(ObjectMother.Test1Product);
+            IRepository<Post> repo = new FakeRepository<Post>(ObjectMother.Test1Product);
             int newID = 2;
-            var product = new Product { ID = newID, Name = "Test2" };
+            var product = new Post { ID = newID, Body = "Test2" };
 
             // Act
             repo.Save(product);
@@ -113,9 +113,9 @@ namespace Varldsklass.Tests
         public void FakeProductProductRepository_Delete_RemovesNoProductIfNotPresent()
         {
             // Arrange
-            IRepository<Product> repo = new FakeRepository<Product>(ObjectMother.Test1Product);
+            IRepository<Post> repo = new FakeRepository<Post>(ObjectMother.Test1Product);
             int newID = 2;
-            var product = new Product { ID = newID, Name = "Test2" };
+            var product = new Post { ID = newID, Body = "Test2" };
 
             // Act
             repo.Delete(product);
@@ -129,7 +129,7 @@ namespace Varldsklass.Tests
         {
             // Arrange
             var product = ObjectMother.Test2Product;
-            IRepository<Product> repo = new FakeRepository<Product>(ObjectMother.Test1Product,
+            IRepository<Post> repo = new FakeRepository<Post>(ObjectMother.Test1Product,
                                                                     product);
 
             // Act

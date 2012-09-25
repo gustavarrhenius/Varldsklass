@@ -32,51 +32,51 @@ namespace Varldsklass.Tests.Helpers
             }
         }
 
-        public static Product Test1Product
+        public static Post Test1Product
         {
             get
             {
-                return new Product { ID = 1, Name = "Product1", Description = "Desc1", Price = 1.0M, Category = Test1Category, CategoryID = Test1Category.ID };
+                return new Post { ID = 1, Title = "Product1", Body = "Desc1", Created = new DateTime(2012, 9, 18), Category = Test1Category, CategoryID = Test1Category.ID };
             }
         }
 
-        public static Product Test2Product
+        public static Post Test2Product
         {
             get
             {
-                return new Product { ID = 2, Name = "Product2", Description = "Desc2", Price = 20.0M, Category = Test2Category, CategoryID = Test2Category.ID };
+                return new Post { ID = 2, Title = "Product2", Body = "Desc2", Created = new DateTime(2012, 9, 19), Category = Test2Category, CategoryID = Test2Category.ID };
             }
         }
 
-        public static Product Test3Product
+        public static Post Test3Product
         {
             get
             {
-                return new Product { ID = 3, Name = "Product3", Description = "Desc3", Price = 300.0M, Category = Test1Category, CategoryID = Test1Category.ID };
+                return new Post { ID = 3, Title = "Product3", Body = "Desc3", Created = new DateTime(2012, 9, 20), Category = Test1Category, CategoryID = Test1Category.ID };
             }
         }
 
-        public static Product Test4Product
+        public static Post Test4Product
         {
             get
             {
-                return new Product { ID = 4, Name = "Product4", Description = "Desc4", Price = 4000.0M, Category = Test2Category, CategoryID = Test2Category.ID };
+                return new Post { ID = 4, Title = "Product4", Body = "Desc4", Created = new DateTime(2012, 9, 21), Category = Test2Category, CategoryID = Test2Category.ID };
             }
         }
 
-        public static Product Test5Product
+        public static Post Test5Product
         {
             get
             {
-                return new Product { ID = 5, Name = "Product5", Description = "Desc5", Price = 50000.0M, Category = Test1Category, CategoryID = Test1Category.ID };
+                return new Post { ID = 5, Title = "Product5", Body = "Desc5", Created = new DateTime(2012, 9, 2), Category = Test1Category, CategoryID = Test1Category.ID };
             }
         }
 
-        public static List<Product> ProductList_5Products_Test1AndTest2Categories
+        public static List<Post> ProductList_5Products_Test1AndTest2Categories
         {
             get
             {
-                return new List<Product> {
+                return new List<Post> {
                     Test1Product,
                     Test2Product,
                     Test3Product,
