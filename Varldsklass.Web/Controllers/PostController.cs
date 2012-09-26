@@ -12,6 +12,7 @@ namespace Varldsklass.Web.Controllers
     public class PostController : Controller
     {
         private IPostRepository _postRepo;
+
         public PostController(IPostRepository postRepo)
         {
             _postRepo = postRepo;
@@ -35,6 +36,15 @@ namespace Varldsklass.Web.Controllers
             PostIndexViewModel filteredPosts = new PostIndexViewModel
             {
                 Posts = _postRepo.FindPostsByCategoryName("Kurs").ToList()
+            };
+            return View(filteredPosts);
+        }
+
+        public ActionResult News()
+        {
+            PostIndexViewModel filteredPosts = new PostIndexViewModel
+            {
+                Posts = _postRepo.FindPostsByCategoryName("News").ToList()
             };
             return View(filteredPosts);
         }
