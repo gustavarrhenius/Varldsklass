@@ -12,7 +12,6 @@ namespace Varldsklass.Domain.Entities
         public string Title { get; set; }
         public string Body { get; set; }
         public DateTime Created { get; set; }
-        public int CategoryID { get; set; }
         public Category Category { get; set; }
     }
 }

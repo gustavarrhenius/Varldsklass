@@ -13,7 +13,12 @@ namespace Varldsklass.Domain.Repositories
             context = posts.ToList();
         }
 
-        public IQueryable<Post> FindProductsByCategoryID(int id)
+        public IQueryable<Post> FindPostsByCategoryID(int id)
+        {
+            return new List<Post>().AsQueryable();
+        }
+
+        public IQueryable<Post> FindPostsByCategoryName(string name)
         {
             return new List<Post>().AsQueryable();
         }

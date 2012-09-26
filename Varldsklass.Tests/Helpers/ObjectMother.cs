@@ -36,7 +36,7 @@ namespace Varldsklass.Tests.Helpers
         {
             get
             {
-                return new Post { ID = 1, Title = "Product1", Body = "Desc1", Created = new DateTime(2012, 9, 18), Category = Test1Category, CategoryID = Test1Category.ID };
+                return new Post { ID = 1, Title = "Product1", Body = "Desc1", Created = new DateTime(2012, 9, 18), Category = Test1Category };
             }
         }
 
@@ -44,7 +44,7 @@ namespace Varldsklass.Tests.Helpers
         {
             get
             {
-                return new Post { ID = 2, Title = "Product2", Body = "Desc2", Created = new DateTime(2012, 9, 19), Category = Test2Category, CategoryID = Test2Category.ID };
+                return new Post { ID = 2, Title = "Product2", Body = "Desc2", Created = new DateTime(2012, 9, 19), Category = Test2Category};
             }
         }
 
@@ -52,7 +52,7 @@ namespace Varldsklass.Tests.Helpers
         {
             get
             {
-                return new Post { ID = 3, Title = "Product3", Body = "Desc3", Created = new DateTime(2012, 9, 20), Category = Test1Category, CategoryID = Test1Category.ID };
+                return new Post { ID = 3, Title = "Product3", Body = "Desc3", Created = new DateTime(2012, 9, 20), Category = Test1Category};
             }
         }
 
@@ -60,7 +60,7 @@ namespace Varldsklass.Tests.Helpers
         {
             get
             {
-                return new Post { ID = 4, Title = "Product4", Body = "Desc4", Created = new DateTime(2012, 9, 21), Category = Test2Category, CategoryID = Test2Category.ID };
+                return new Post { ID = 4, Title = "Product4", Body = "Desc4", Created = new DateTime(2012, 9, 21), Category = Test2Category };
             }
         }
 
@@ -68,7 +68,7 @@ namespace Varldsklass.Tests.Helpers
         {
             get
             {
-                return new Post { ID = 5, Title = "Product5", Body = "Desc5", Created = new DateTime(2012, 9, 2), Category = Test1Category, CategoryID = Test1Category.ID };
+                return new Post { ID = 5, Title = "Product5", Body = "Desc5", Created = new DateTime(2012, 9, 2), Category = Test1Category };
             }
         }
 

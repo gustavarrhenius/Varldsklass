@@ -30,5 +30,14 @@ namespace Varldsklass.Web.Controllers
             return View(posts);
         }
 
+        public ActionResult ListKurser()
+        {
+            PostIndexViewModel filteredPosts = new PostIndexViewModel
+            {
+                Posts = _postRepo.FindPostsByCategoryName("Kurs").ToList()
+            };
+            return View(filteredPosts);
+        }
+
     }
 }

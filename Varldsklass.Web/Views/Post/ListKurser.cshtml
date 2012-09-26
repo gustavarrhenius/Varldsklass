@@ -1,16 +1,17 @@
 ﻿@model Varldsklass.Web.ViewModels.PostIndexViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ListKurser";
 }
 
-<h2>Index</h2>
+<h2>Kurslista</h2>
 
 @foreach (var p in Model.Posts)
 {
     <div class="articleHeader">
-        <h2>@p.Title</h2>
+        <h3>@p.Title</h3>
         <div class="article">
+            <p><small>@p.Category.Name</small></p>
             @p.Body
         </div>
     </div>
