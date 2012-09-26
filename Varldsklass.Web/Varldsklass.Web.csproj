@@ -12,6 +12,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Varldsklass.Web</RootNamespace>
     <AssemblyName>Lektion13.Web</AssemblyName>
+    <AssemblyName>Varldsklass.Web</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>false</UseIISExpress>
@@ -79,6 +80,7 @@
     <Compile Include="ViewModels\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\PostIndexViewModel.cs" />
+    <Compile Include="ViewModels\AdminModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\foundation\humans.txt" />
@@ -198,9 +200,6 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Admin\Courses.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Admin\News.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +213,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Post\Index.cshtml" />
+    <Content Include="Views\Admin\Courses.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
