@@ -6,11 +6,11 @@
 
 <h2>Nyheter</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("SaveNews")) 
 {
     @Html.ValidationSummary()
     <p>Rubrik: @Html.TextBoxFor(x => x.Headline)</p>
-    <p>Ingress: @Html.TextBoxFor(x => x.Ingress)</p>
-    <p>Text:@Html.TextBoxFor(x => x.Text)</p>
+    <p>Ingress: @Html.TextBoxFor(x => x.Ingress, new { @class = "form_news_ingress" })</p>
+    <p>Text:@Html.TextBoxFor(x => x.Text, new { @class = "form_news_text" })</p>
     <input type="submit" value="Spara" />
 }

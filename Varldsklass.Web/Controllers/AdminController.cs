@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Varldsklass.Web.Models;
+using Varldsklass.Domain.Entities;
 
 namespace Varldsklass.Web.Controllers
 {
@@ -29,10 +30,15 @@ namespace Varldsklass.Web.Controllers
         [HttpPost]
         public ActionResult News(News news)
         {
+            news = new News();
+
+            string headline = news.Headline;
+            string body = "<h3>" + news.Ingress + "</h3>\n<p>" + news.Text + "</p>";
+
             if (ModelState.IsValid)
             {
-                // TODO: Email guestResponse to the part organizer
-                return View("OK", news);
+                // redirect to NewsSave.cshtml
+                return View("NewsSaved", news);
             }
             else
             {
@@ -40,6 +46,9 @@ namespace Varldsklass.Web.Controllers
                 return View();
             }
         }
+
+        
+
         public ActionResult NewsLetter()
         {
             return View();

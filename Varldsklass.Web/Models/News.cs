@@ -11,10 +11,11 @@ namespace Varldsklass.Web.Models
         [Required(ErrorMessage = "Fyll i rubrik")]
         public string Headline { get; set; }
 
-        [Required(ErrorMessage = "Fyll i ingress")]
         [DataType(DataType.MultilineText)]
+        [Required(ErrorMessage = "Fyll i ingress")]
         public string Ingress { get; set; }
 
+        [DataType(DataType.MultilineText)]
         [Required(ErrorMessage = "Fyll i text")]
         public string Text { get; set; }
     }
