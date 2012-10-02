@@ -9,7 +9,7 @@ namespace Varldsklass.Domain.Contexts
 {
     public class EFDbContext : DbContext
     {
-        public DbSet<Post> Products { get; set; }
+        public DbSet<Post> Posts { get; set; }
         public DbSet<Category> Categories { get; set; }
     }
 }

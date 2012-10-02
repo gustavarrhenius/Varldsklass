@@ -1,0 +1,15 @@
+﻿@model Varldsklass.Domain.Entities.Post
+
+@{
+    ViewBag.Title = "Admin: Lägg till kurs";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Lägg till kurs</h2>
+
+@using (Html.BeginForm("SavePost", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.EditorForModel()
+    <input type="submit" value="Save" class="success button" />
+    @Html.ActionLink("Cancel and return to List", "Index")
+}

@@ -17,7 +17,7 @@ namespace Varldsklass.Domain.DBInitializers
             var News = new Category { ID = 3, Name = "News" };
             var Kurs = new Category { ID = 4, Name = "Kurs" };
 
-            var products = new List<Post>
+            var posts = new List<Post>
         {
             new Post { ID = 1, Title = @"Kayak", Body = @"A boat for one person", Created = new DateTime(2012, 9, 18), Category = Standard },
             new Post { ID = 2, Title = @"Lifejacket", Body = @"Protective and fashionable", Created = new DateTime(2012, 9, 19), Category = Standard },
@@ -30,7 +30,7 @@ namespace Varldsklass.Domain.DBInitializers
             new Post { ID = 9, Title = @"Bling-bling King", Body = @"Gold-plated, diamond-studded King", Created = new DateTime(2012, 9, 25), Category = Standard },
 
         };
-            products.ForEach(s => context.Products.Add(s));
+            posts.ForEach(s => context.Posts.Add(s));
             context.SaveChanges();
         }
     }

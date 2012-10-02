@@ -5,11 +5,24 @@ using System.Web;
 using System.Web.Mvc;
 using Varldsklass.Web.Models;
 using Varldsklass.Domain.Entities;
+using Varldsklass.Domain.Repositories;
+using Varldsklass.Domain.Repositories.Abstract;
+
 
 namespace Varldsklass.Web.Controllers
 {
+
     public class AdminController : Controller
     {
+
+        private PostRepository _postRepo;
+        private IRepository<Category> _categoryRepo;
+
+        public AdminController(PostRepository repo, IRepository<Category> category)
+        {
+            _postRepo = repo;
+            _categoryRepo = category;
+        }
         //
         // GET: /Admin/
 
@@ -21,6 +34,32 @@ namespace Varldsklass.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult AddCourse()
+        {
+            Post post = new Post();
+            post.Category = _categoryRepo.FindByID(4);
+            return View("AddCourse", post);
+        }
+
+        [HttpPost]
+        public ActionResult SavePost(Post post)
+        {
+            if (ModelState.IsValid)
+            {
+                _postRepo.SavePost(post);
+                // add a message to the viewbag
+                TempData["message"] = string.Format("{0} has been saved", post.Title);
+                // return the user to the list
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                // there is something wrong with the data values
+                return View(post);
+            }
+        }
+
         [HttpGet]
         public ActionResult News()
         {

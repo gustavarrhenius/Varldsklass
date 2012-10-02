@@ -28,6 +28,16 @@ namespace Varldsklass.Domain.Repositories
             return _dbSet.Where(p => p.Category.Name == name).Include(p => p.Category);
         }
 
+        public virtual void SavePost(Post post)
+        {
+            var existing = _dbSet.Where(e => e.ID == post.ID).FirstOrDefault();
+            if (null != existing)
+                _context.Entry(post).State = System.Data.EntityState.Modified;
+            else
+                _dbSet.Add(post);
+            _context.SaveChanges();
+        }
+
         // Filter Methods for ProductRepository
 
         public static Func<Post, bool> FilterProductsWithEmptyDescription

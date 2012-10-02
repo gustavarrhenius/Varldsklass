@@ -22,5 +22,6 @@ namespace Varldsklass.Domain.Repositories
         {
             return new List<Post>().AsQueryable();
         }
+
     }
 }
