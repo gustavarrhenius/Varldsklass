@@ -13,6 +13,18 @@
     <![endif]-->
 </head>
 <body>
+
+    <div id="fb-root"></div>
+        <script type="text/javascript">
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/sv_SE/all.js#xfbml=1&appId=335253209846827";
+                fjs.parentNode.insertBefore(js, fjs);
+            } (document, 'script', 'facebook-jssdk'));
+        </script>
+
     <div class="page">
         <header>
             <div class="row">
@@ -33,9 +45,14 @@
                 </nav>
             </div>
         </header>
-        <section id="main" class="row">
-            @RenderBody()
-        </section>
+        <content class="row">
+            <section id="main">
+                @RenderBody()
+            </section>
+            <sidebar>
+                <div class="fb-like-box" data-href="http://www.facebook.com/varldsklass?fref=ts" data-width="292" data-show-faces="true" data-border-color="#fff" data-stream="false" data-header="false"></div>
+            </sidebar>
+        </content>
         <footer class="row">
         </footer>
     </div>
