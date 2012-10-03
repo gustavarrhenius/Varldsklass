@@ -9,6 +9,7 @@ using Varldsklass.Domain.Repositories;
 using Varldsklass.Domain.Repositories.Abstract;
 
 
+
 namespace Varldsklass.Web.Controllers
 {
 
@@ -44,6 +45,7 @@ namespace Varldsklass.Web.Controllers
 
         public ActionResult CourseList() 
         {
+            List<Post> posts = _postRepo.FindPostsByCategoryID(4).ToList();
             return View();    
         }
 
