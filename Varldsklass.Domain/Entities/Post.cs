@@ -16,8 +16,12 @@ namespace Varldsklass.Domain.Entities
         public int ID { get; set; }
         public string Title { get; set; }
         public string Body { get; set; }
-        [HiddenInput(DisplayValue = false)]
-        public DateTime Created { get; set; }
+        public DateTime Created;
         public Category Category  { get; set; }
+
+        public Post()
+        {
+            Created = DateTime.Now;
+        }
     }
 }

@@ -47,6 +47,7 @@ namespace Varldsklass.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                post.Category = _categoryRepo.FindByID(post.Category.ID);
                 _postRepo.SavePost(post);
                 // add a message to the viewbag
                 TempData["message"] = string.Format("{0} has been saved", post.Title);

@@ -10,6 +10,7 @@
 @using (Html.BeginForm("SavePost", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.EditorForModel()
+    @Html.HiddenFor(p => p.Category.ID)<br />
     <input type="submit" value="Save" class="success button" />
     @Html.ActionLink("Cancel and return to List", "Index")
 }
