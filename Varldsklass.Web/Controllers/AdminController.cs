@@ -42,6 +42,11 @@ namespace Varldsklass.Web.Controllers
             return View("AddCourse", post);
         }
 
+        public ActionResult CourseList() 
+        {
+            return View();    
+        }
+
         [HttpPost]
         public ActionResult SavePost(Post post)
         {
