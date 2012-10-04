@@ -6,11 +6,19 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using Varldsklass.Web.ViewModels;
+using Varldsklass.Domain.Repositories;
+using Varldsklass.Web.Infrastructure;
 
 namespace Varldsklass.Web.Controllers
 {
     public class AccountController : Controller
     {
+
+        private IAccountRepository _accountRepository;
+        public AccountController(IAccountRepository accountRepository)
+        {
+            _accountRepository = accountRepository;
+        }
 
         //
         // GET: /Account/LogOn
@@ -26,11 +34,14 @@ namespace Varldsklass.Web.Controllers
         [HttpPost]
         public ActionResult LogOn(LogOnViewModel model, string returnUrl)
         {
+            var membership = new CustomMembership();
+            membership.AccountRepository = _accountRepository;
+
             if (ModelState.IsValid)
             {
-                if (Membership.ValidateUser(model.UserName, model.Password))
+                if (membership.ValidateUser(model.Email, model.Password))
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                    FormsAuthentication.SetAuthCookie(model.Email, model.RememberMe);
                     if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
                         && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
                     {
@@ -75,15 +86,18 @@ namespace Varldsklass.Web.Controllers
         [HttpPost]
         public ActionResult Register(RegisterViewModel model)
         {
+            var membership = new CustomMembership();
+            membership.AccountRepository = _accountRepository;
+
             if (ModelState.IsValid)
             {
                 // Attempt to register the user
                 MembershipCreateStatus createStatus;
-                Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
+                membership.CreateUser(model.Email, model.Password, out createStatus);
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
+                    FormsAuthentication.SetAuthCookie(model.Email, false /* createPersistentCookie */);
                     return RedirectToAction("Index", "Home");
                 }
                 else

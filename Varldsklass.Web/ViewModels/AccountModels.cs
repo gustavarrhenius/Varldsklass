@@ -30,8 +30,9 @@ namespace Varldsklass.Web.ViewModels
     public class LogOnViewModel
     {
         [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email address")]
+        public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -45,8 +46,12 @@ namespace Varldsklass.Web.ViewModels
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
+        [Display(Name = "First name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last name")]
+        public string LastName { get; set; }
 
         [Required]
         [DataType(DataType.EmailAddress)]
