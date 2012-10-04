@@ -1,4 +1,4 @@
-﻿@model Varldsklass.Domain.Entities.Post
+﻿@model IEnumerable<Varldsklass.Domain.Entities.Post>
        
 
 @{
@@ -7,6 +7,14 @@
 }
 
 <h2>Lista Kurser</h2>
+    <h6>(det finns för närvarande: @Model.Count() kurser)</h6>
+
+<ul>
+    @foreach (var kurs in Model)
+    { 
+        <li>@kurs.Title</li>
+    }
+</ul>
 
     
     

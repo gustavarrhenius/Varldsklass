@@ -46,7 +46,7 @@ namespace Varldsklass.Web.Controllers
         public ActionResult CourseList() 
         {
             List<Post> posts = _postRepo.FindPostsByCategoryID(4).ToList();
-            return View();    
+            return View(posts);    
         }
 
         [HttpPost]

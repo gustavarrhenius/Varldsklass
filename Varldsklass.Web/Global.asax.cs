@@ -29,8 +29,8 @@ namespace Varldsklass.Web
                 "{controller}/{action}/{id}", // URL with parameters
                 new 
                 { 
-                    controller = "Admin", 
-                    action = "CourseList", 
+                    controller = "Home", 
+                    action = "Index", 
                     id = UrlParameter.Optional } // Parameter defaults
             );
 
