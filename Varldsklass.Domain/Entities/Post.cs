@@ -22,6 +22,6 @@ namespace Varldsklass.Domain.Entities
         public Post()
         {
             Created = DateTime.Now;
-        }
+        }           
     }
 }

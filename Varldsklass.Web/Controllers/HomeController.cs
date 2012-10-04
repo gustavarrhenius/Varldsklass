@@ -5,6 +5,12 @@ using System.Web;
 using System.Web.Mvc;
 using Varldsklass.Domain.Repositories;
 using Varldsklass.Domain.Entities;
+using System.Configuration;
+using DotNetOpenAuth.OAuth2;
+using DotNetOpenAuth.ApplicationBlock;
+using DotNetOpenAuth.ApplicationBlock.Facebook;
+using System.Net;
+using System.IO;
 
 namespace Varldsklass.Web.Controllers
 {
@@ -45,9 +51,28 @@ namespace Varldsklass.Web.Controllers
 
             var productsWithEmptyName = productRepo.FindAll(PostRepository
                                                             .FilterProductsWithEmptyDescription);
-
-
             return View();
         }
+
+        public ActionResult FacebookFeed()
+            {
+            var facebookAccessToken = ConfigurationManager.AppSettings["facebookAccessToken"];
+            FacebookGraph.FacebookPageFeed graph = new FacebookGraph.FacebookPageFeed();
+            if (null != facebookAccessToken)
+                {
+                var request = WebRequest.Create(
+                    string.Format(@"https://graph.facebook.com/varldsklass?fields=feed&access_token={0}",
+                    Uri.EscapeDataString(facebookAccessToken)));
+                using (var response = request.GetResponse())
+                    {
+                    using (var responseStream = response.GetResponseStream())
+                        {
+                        graph = DotNetOpenAuth.ApplicationBlock.Facebook.FacebookGraph.FacebookPageFeed.Deserialize(responseStream);
+                        
+                        }
+                    }
+                }
+            return View(graph.PageFeed.Posts);
+            }
     }
 }
