@@ -1,0 +1,26 @@
+﻿@using Varldsklass.Domain.Entities
+@model List<Location>
+@{
+    ViewBag.Title = "Contact";
+}
+
+<h2>Kontakta oss</h2>
+
+    <div id="map_canvas" class="six columns" style="height: 300px" ></div>
+    <section class="six columns">
+        @foreach (var location in Model)
+        {
+            <input type="hidden" id="address" value="@location.Address, @location.Zip @location.City" />
+            
+            <h4>@location.City</h4>
+            <ul>
+                <li>@location.Address</li>
+                <li>@location.Zip @location.City</li>
+            </ul>
+        }
+            <ul>
+                <li>Telefon: 0320 - 109 39</li>
+                <li>Bokning & offert: 073 - 551 50 96</li>
+                <li>E-post: <a href="mailto:info@varldsklass.com">info@varldsklass.com</a></li>
+            </ul>
+    </section>

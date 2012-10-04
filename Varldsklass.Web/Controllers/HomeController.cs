@@ -5,12 +5,17 @@ using System.Web;
 using System.Web.Mvc;
 using Varldsklass.Domain.Repositories;
 using Varldsklass.Domain.Entities;
+<<<<<<< HEAD
 using System.Configuration;
 using DotNetOpenAuth.OAuth2;
 using DotNetOpenAuth.ApplicationBlock;
 using DotNetOpenAuth.ApplicationBlock.Facebook;
 using System.Net;
 using System.IO;
+=======
+using Varldsklass.Web.ViewModels;
+using Varldsklass.Domain.Contexts;
+>>>>>>> Kontakta oss
 
 namespace Varldsklass.Web.Controllers
 {
@@ -54,6 +59,7 @@ namespace Varldsklass.Web.Controllers
             return View();
         }
 
+<<<<<<< HEAD
         public ActionResult FacebookFeed()
             {
             var facebookAccessToken = ConfigurationManager.AppSettings["facebookAccessToken"];
@@ -74,5 +80,22 @@ namespace Varldsklass.Web.Controllers
                 }
             return View(graph.PageFeed.Posts);
             }
+=======
+        public ActionResult Contact()
+        {
+            return View();
+        }
+        
+        [HttpGet]
+        public ActionResult Contact(int id)
+        {
+            var listOfLocations = new Repository<Location>().FindAll().ToList();
+
+            var location = listOfLocations.Where(l=>l.ID == id).ToList();
+
+            return View(location);
+        }
+        
+>>>>>>> Kontakta oss
     }
 }
