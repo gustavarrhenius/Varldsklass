@@ -18,7 +18,6 @@ namespace Varldsklass.Domain.Entities
         public string Body { get; set; }
         public DateTime Created;
         public Category Category  { get; set; }
-
         public Post()
         {
             Created = DateTime.Now;

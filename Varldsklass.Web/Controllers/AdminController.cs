@@ -40,6 +40,7 @@ namespace Varldsklass.Web.Controllers
         {
             Post post = new Post();
             post.Category = _categoryRepo.FindByID(4);
+
             return View("AddCourse", post);
         }
 
