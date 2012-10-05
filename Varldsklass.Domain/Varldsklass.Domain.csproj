@@ -57,7 +57,6 @@
     <Compile Include="DBInitializers\EFDBInitializer.cs" />
     <Compile Include="Entities\Abstract\IEntity.cs" />
     <Compile Include="Entities\Category.cs" />
-    <Compile Include="Entities\Location.cs" />
     <Compile Include="Entities\Post.cs" />
     <Compile Include="Facebook\FacebookClient.cs" />
     <Compile Include="Facebook\FacebookGraph.cs" />

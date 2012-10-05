@@ -11,6 +11,5 @@ namespace Varldsklass.Domain.Contexts
     {
         public DbSet<Post> Posts { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Location> Locations { get; set; }
     }
 }
