@@ -5,14 +5,17 @@
     <title>@ViewBag.Title</title>
     <link href="@Url.Content("~/Content/foundation/stylesheets/app.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/foundation/stylesheets/foundation.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/css.css")" rel="stylesheet" type="text/css" />
     <script src="@Url.Content("~/Content/foundation/javascripts/modernizr.foundation.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Content/foundation/javascripts/jquery.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDeOgrDRUV308x9qGtpIbPBYN6YPUL3Mhg&sensor=true"></script>
+    <script src="@Url.Content("~/Content/js/js.js")" type="text/javascript"></script>
     <!-- IE Fix for HTML5 Tags -->
     <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
-<body>
+<body onload="initialize()">
 
     <div id="fb-root"></div>
         <script type="text/javascript">
@@ -36,23 +39,33 @@
                 </div>
             </div>
             <div class="row">
-                <nav class="six columns">
+                <nav class="eight columns offset-by-four">
                     <ul id="menu" class="nav-bar">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Posts", "Index", "Post")</li>
+                        <li>@Html.ActionLink("Hem", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Om oss", "About", "Home")</li>
+                        <li>@Html.ActionLink("Utbildningar/Föreläsningar", "Index", "Post")</li>
+                        <li class="has-flyout">
+                            <a href="#">Kontakta oss</a>
+                            <a href="#" class="flyout-toggle"><span> </span></a>
+                            <ul class="flyout">
+                                <li>@Html.ActionLink("Borås", "Contact", "Home", new { id = 1 }, null)</li>
+                                <li>@Html.ActionLink("Göteborg", "Contact", "Home", new { id = 2 }, null)</li>
+                                <li>@Html.ActionLink("Kinna", "Contact", "Home", new { id = 3 }, null)</li>
+                                <li>@Html.ActionLink("Kungsbacka", "Contact", "Home", new { id = 4 }, null)</li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </div>
         </header>
-        <div class="row">
-            <section id="main">
+        <section class="row" id="content">
+            <section id="main" class="eight columns">
                 @RenderBody()
             </section>
-            <aside class="main-sidebar column four">
-                <div class="fb-like-box" data-href="http://www.facebook.com/varldsklass?fref=ts" data-width="292" data-show-faces="true" data-border-color="#fff" data-stream="false" data-header="false"></div>
+            <aside class="four columns">
+                <div class="fb-like-box" data-href="http://www.facebook.com/varldsklass?fref=ts" data-show-faces="true" data-border-color="#fff" data-stream="false" data-header="false"></div>
             </aside>
-        </div>
+        </section>
         <footer class="row">
         </footer>
     </div>

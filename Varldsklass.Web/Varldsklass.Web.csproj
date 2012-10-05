@@ -102,6 +102,7 @@
     <Compile Include="ViewModels\AdminModels.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\css.css" />
     <Content Include="Content\foundation\humans.txt" />
     <Content Include="Content\foundation\images\foundation\orbit\bullets.jpg" />
     <Content Include="Content\foundation\images\foundation\orbit\left-arrow-small.png" />
@@ -133,6 +134,7 @@
     <Content Include="Content\foundation\stylesheets\app.css" />
     <Content Include="Content\foundation\stylesheets\foundation.css" />
     <Content Include="Content\foundation\stylesheets\foundation.min.css" />
+    <Content Include="Content\js\js.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -251,6 +253,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\FacebookFeed.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Contact.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

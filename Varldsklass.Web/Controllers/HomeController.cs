@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Varldsklass.Domain.Repositories;
 using Varldsklass.Domain.Entities;
+using Varldsklass.Domain.Contexts;
 using System.Configuration;
 using DotNetOpenAuth.OAuth2;
 using DotNetOpenAuth.ApplicationBlock;
@@ -73,6 +74,21 @@ namespace Varldsklass.Web.Controllers
                     }
                 }
             return View(graph.PageFeed.Posts);
-            }
+        }
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Contact(int id)
+        {
+            var listOfLocations = new Repository<Location>().FindAll().ToList();
+
+            var location = listOfLocations.Where(l => l.ID == id).ToList();
+
+            return View(location);
+        }
     }
 }
