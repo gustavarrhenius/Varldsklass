@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Varldsklass.Domain.Entities.Post>
+﻿@model Varldsklass.Domain.Entities.Post
 
 @{
     ViewBag.Title = "CourseInfo";
@@ -6,10 +6,8 @@
 }
 
 <h2>KursInfo</h2>
-
-
-        @foreach (var info in Model) 
-    { 
-            <p>@info.Body</p>    
-    }
+        
+     
+  <p>@Model.Body</p>    
+    
     

@@ -49,10 +49,11 @@ namespace Varldsklass.Web.Controllers
             List<Post> posts = _postRepo.FindPostsByCategoryID(4).ToList();
             return View(posts);    
         }
-
-        public ActionResult CourseInfo()
+        
+        public ActionResult CourseInfo(int id)
         {
-           List<Post> info = _postRepo.FindPostsByCategoryID(4).ToList();
+           id = 4;
+           Post info = _postRepo.FindByID(4);
            return View(info);
         }
 
