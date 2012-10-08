@@ -50,6 +50,12 @@ namespace Varldsklass.Web.Controllers
             return View(posts);    
         }
 
+        public ActionResult CourseInfo()
+        {
+           List<Post> info = _postRepo.FindPostsByCategoryID(4).ToList();
+           return View(info);
+        }
+
         [HttpPost]
         public ActionResult SavePost(Post post)
         {

@@ -12,7 +12,7 @@
 <ul>
     @foreach (var kurs in Model)
     { 
-        <li>@kurs.Title</li>
+        <li>@Html.ActionLink(kurs.Title, "CourseInfo", new{kurs = kurs.Title})</li>
     }
 </ul>
 

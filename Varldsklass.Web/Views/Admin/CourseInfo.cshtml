@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Varldsklass.Domain.Entities.Post>
+
+@{
+    ViewBag.Title = "CourseInfo";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>KursInfo</h2>
+
+
+        @foreach (var info in Model) 
+    { 
+            <p>@info.Body</p>    
+    }
+    
