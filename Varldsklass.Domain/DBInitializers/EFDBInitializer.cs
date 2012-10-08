@@ -5,10 +5,11 @@ using System.Web;
 using System.Data.Entity;
 using Varldsklass.Domain.Contexts;
 using Varldsklass.Domain.Entities;
+using System.Security.Cryptography;
 
 namespace Varldsklass.Domain.DBInitializers
 {
-    public class EFDBInitializer : DropCreateDatabaseIfModelChanges<EFDbContext>
+    public class EFDBInitializer : DropCreateDatabaseAlways<EFDbContext> //IfModelChanges<EFDbContext>
     {
         protected override void Seed(EFDbContext context)
         {
@@ -35,8 +36,9 @@ namespace Varldsklass.Domain.DBInitializers
 
             var accounts = new List<Account>
             {
-                new Account { ID = 1, Email = "admin@varldsklass.com", FirstName = "Admin", LastName = "von Världsklass", Password = "password", Role = 1, CreatedDate = DateTime.Now },
-                new Account { ID = 2, Email = "bokare@varldsklass.com", FirstName = "Bokare", LastName = "von Världsklass", Password = "password", Role = 2, CreatedDate = DateTime.Now }
+                // All passwords are "password" without the quotes.
+                new Account { ID = 1, Email = "admin@varldsklass.com", FirstName = "Admin", LastName = "von Världsklass", Password = "dNZcqnm6dgynDMJpZcZlfw==", Role = 1, CreatedDate = DateTime.Now },
+                new Account { ID = 2, Email = "bokare@varldsklass.com", FirstName = "Bokare", LastName = "von Världsklass", Password = "dNZcqnm6dgynDMJpZcZlfw==", Role = 2, CreatedDate = DateTime.Now }
             };
 
             accounts.ForEach(a => context.Accounts.Add(a));

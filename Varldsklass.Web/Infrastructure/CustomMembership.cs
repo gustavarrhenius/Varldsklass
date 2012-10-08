@@ -6,6 +6,8 @@ using System.Web.Security;
 using Ninject;
 using Varldsklass.Domain.Entities;
 using Varldsklass.Domain.Repositories;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Varldsklass.Web.Infrastructure
 {
@@ -19,20 +21,27 @@ namespace Varldsklass.Web.Infrastructure
 
         }
 
-        public void CreateUser(string email, string password, out MembershipCreateStatus createStatus)
+        private static string HashPassword(string unhashedPassword)
+        {
+            byte[] salt = Encoding.Unicode.GetBytes("O'boy! This salt sure is trendy!");
+            var crypt = new Rfc2898DeriveBytes( unhashedPassword, salt );
+            string hashedPassword = Convert.ToBase64String(crypt.GetBytes(16));
+            return hashedPassword;
+        }
+
+        public void CreateUser(string firstName, string lastName, string email, string password, out MembershipCreateStatus createStatus)
         {
             Account account = new Account();
             account.Email = email;
-            account.Password = password;
+            account.Password = HashPassword(password);
             account.CreatedDate = DateTime.Now;
-            account.FirstName = "Mr.";
-            account.LastName = "Unknown";
-            account.Role = 1;
+            account.FirstName = firstName;
+            account.LastName = lastName;
+            account.Role = 2;
             AccountRepository.Save(account);
 
             createStatus = MembershipCreateStatus.Success;
         }
-
 
         public override string ApplicationName
         {
@@ -178,7 +187,8 @@ namespace Varldsklass.Web.Infrastructure
 
         public override bool ValidateUser(string email, string password)
         {
-            return AccountRepository.IsValid(email, password);
+            string hashedPassword = HashPassword(password);
+            return AccountRepository.IsValid(email, hashedPassword);
         }
     }
 }
