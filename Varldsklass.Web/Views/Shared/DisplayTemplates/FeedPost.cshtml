@@ -1,7 +1,14 @@
 ﻿@model DotNetOpenAuth.ApplicationBlock.Facebook.FacebookGraph.FeedPost
 
- @Model.Message
-
-    @if(!string.IsNullOrEmpty(@Model.PictureURL)){
-        <img alt="" src="@Model.PictureURL" />
+    @if (Model.From.ID == "293248490693532" && (!string.IsNullOrEmpty(Model.PictureURL)) || (!string.IsNullOrEmpty(Model.Message)))
+        {
+        <div class="facebook-feed-item">
+            <span class="create-date">@Model.CreatedTime.AsDateTime()</span>
+            @Model.Message
+            
+            @if (!string.IsNullOrEmpty(Model.PictureURL))
+                {
+                <img alt="" src="@Model.PictureURL" />
+                }
+        </div>  
         }

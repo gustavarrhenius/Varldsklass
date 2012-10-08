@@ -18,6 +18,7 @@
 
 #Ignore private folder
 /Private/
+/Varldsklass.Web/Web.config
 
 #NuGet
 packages/

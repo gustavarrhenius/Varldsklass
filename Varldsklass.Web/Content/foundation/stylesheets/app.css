@@ -26,4 +26,11 @@
    Page Name 2
 ----------------------------------------- */
 
+/* -----------------------------------------
+   Facebook feed
+----------------------------------------- */
+
+.facebook-feed .facebook-feed-item{margin-bottom:15px;}
+.facebook-feed .facebook-feed-item img {text-align:right;}
+.facebook-feed .facebook-feed-item .create-date{display:block;font-weight:bold;}
 
