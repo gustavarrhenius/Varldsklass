@@ -36,7 +36,7 @@ namespace Varldsklass.Web
 
             routes.MapRoute(
                 null,
-                "{controller}/{action}/{id}", //emty urls
+                "{controller}/{action}/{id}", //empty urls
                 new
                 {
                     controller = "Admin",

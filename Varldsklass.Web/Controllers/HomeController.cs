@@ -12,6 +12,7 @@ using DotNetOpenAuth.ApplicationBlock;
 using DotNetOpenAuth.ApplicationBlock.Facebook;
 using System.Net;
 using System.IO;
+using Varldsklass.Web.ViewModels;
 
 namespace Varldsklass.Web.Controllers
 {
@@ -104,6 +105,16 @@ namespace Varldsklass.Web.Controllers
             var location = listOfLocations.Where(l => l.ID == id).ToList();
 
             return View(location);
+        }
+
+        public ActionResult Menu()
+        {
+            MenuViewModel listOfLocations = new MenuViewModel()
+            {
+                Locations = new Repository<Location>().FindAll().OrderBy(l => l.City).ToList()
+            };
+            
+            return PartialView(listOfLocations);
         }
     }
 }

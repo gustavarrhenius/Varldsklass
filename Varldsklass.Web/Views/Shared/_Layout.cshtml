@@ -39,23 +39,7 @@
                 </div>
             </div>
             <div class="row">
-                <nav class="eight columns offset-by-four">
-                    <ul id="menu" class="nav-bar">
-                        <li>@Html.ActionLink("Hem", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Om oss", "About", "Home")</li>
-                        <li>@Html.ActionLink("Utbildningar/Föreläsningar", "Index", "Post")</li>
-                        <li class="has-flyout">
-                            <a href="#">Kontakta oss</a>
-                            <a href="#" class="flyout-toggle"><span> </span></a>
-                            <ul class="flyout">
-                                <li>@Html.ActionLink("Borås", "Contact", "Home", new { id = 1 }, null)</li>
-                                <li>@Html.ActionLink("Göteborg", "Contact", "Home", new { id = 2 }, null)</li>
-                                <li>@Html.ActionLink("Kinna", "Contact", "Home", new { id = 3 }, null)</li>
-                                <li>@Html.ActionLink("Kungsbacka", "Contact", "Home", new { id = 4 }, null)</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
+                @{Html.RenderAction("Menu");}
             </div>
         </header>
         <section class="row" id="content">
