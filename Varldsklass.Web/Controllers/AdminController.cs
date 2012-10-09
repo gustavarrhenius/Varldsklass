@@ -123,7 +123,7 @@ namespace Varldsklass.Web.Controllers
 
         public ActionResult CreateLocation()
         {
-            return View();
+            return View(new Location());
         }
 
         [HttpPost]

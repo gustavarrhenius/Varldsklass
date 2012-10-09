@@ -11,7 +11,7 @@ namespace Varldsklass.Domain.Entities
 {
     public class Location : IEntity
     {
-        [HiddenInput(DisplayValue = false), DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [HiddenInput(DisplayValue = false)]
         public int ID { get; set; }
         public string City { get; set; }
         public string Address { get; set; }
