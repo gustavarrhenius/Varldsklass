@@ -1,0 +1,40 @@
+﻿@using Varldsklass.Domain.Entities
+@model List<Location>
+@{
+    ViewBag.Title = "ListLocations";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Kontaktinformation</h2>
+@Html.ActionLink("Skapa ny", "CreateLocation", "Admin")
+
+<table>
+    <tr>
+        
+        <th> Adress </th>
+        <th> Postnummer</th>
+        <th> Stad </th>
+        <th> Redigera </th>
+        <th> Ta bort </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Zip</td>
+            <td>@item.City</td>
+            <td>@using (Html.BeginForm("EditLocation", "Admin"))
+                {
+                    @Html.Hidden("LocationID", item.ID)
+                    <input type="submit" value="Redigera" />
+                }
+            </td>
+            <td>@using (Html.BeginForm("DeleteLocation", "Admin"))
+                {
+                    @Html.Hidden("LocationID", item.ID)
+                    <input type="submit" value="Ta bort" />
+                }
+            </td>
+        </tr>
+    }
+</table>

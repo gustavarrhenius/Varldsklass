@@ -113,5 +113,37 @@ namespace Varldsklass.Web.Controllers
         {
             return View();
         }
+
+        public ViewResult ListLocations()
+        {
+            var listOfLocations = new Repository<Location>().FindAll().ToList();
+
+            return View(listOfLocations);
+        }
+
+        public ActionResult CreateLocation()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateLocation(Location location)
+        {
+            if (ModelState.IsValid)
+            {
+                (new Repository<Location>()).Save(location);
+
+                return RedirectToAction("ListLocations");
+            }
+
+            return View(location);
+        }
+
+        public ViewResult EditLocation()
+        {
+            
+            return View();
+
+        }
     }
 }

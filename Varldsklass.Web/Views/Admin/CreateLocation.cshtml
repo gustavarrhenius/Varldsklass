@@ -1,0 +1,14 @@
+﻿@model Varldsklass.Domain.Entities.Location
+@{
+    ViewBag.Title = "CreateLocation";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>CreateLocation</h2>
+
+@using (Html.BeginForm("CreateLocation", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.EditorForModel()
+    <input type="submit" value="Spara" />
+    @Html.ActionLink("Tillbaka till listan", "ListLocations")
+}
