@@ -1,7 +1,6 @@
 ﻿@model DotNetOpenAuth.ApplicationBlock.Facebook.FacebookGraph.FeedPost
 
-    @if (Model.From.ID == "293248490693532" && (!string.IsNullOrEmpty(Model.PictureURL)) || (!string.IsNullOrEmpty(Model.Message)))
-        {
+    @if (Model.From.ID == "293248490693532" && (!string.IsNullOrEmpty(Model.PictureURL)) || (!string.IsNullOrEmpty(Model.Message))){
         <div class="facebook-feed-item">
             <span class="create-date">@Model.CreatedTime.AsDateTime()</span>
             @Model.Message

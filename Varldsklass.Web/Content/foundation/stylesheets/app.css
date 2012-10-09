@@ -12,7 +12,7 @@
 /* -----------------------------------------
    Shared Styles
 ----------------------------------------- */
-
+span.icons{}
 
 
 /* -----------------------------------------
@@ -30,7 +30,8 @@
    Facebook feed
 ----------------------------------------- */
 
-.facebook-feed .facebook-feed-item{margin-bottom:15px;}
-.facebook-feed .facebook-feed-item img {text-align:right;}
-.facebook-feed .facebook-feed-item .create-date{display:block;font-weight:bold;}
+.facebook-feed .facebook-feed-item{margin-bottom:10px; border-bottom:1px solid #CBCBCB; padding-bottom: 10px}
+.facebook-feed .facebook-feed-item:last-child{border:none}
+.facebook-feed .facebook-feed-item img {}
+.facebook-feed .facebook-feed-item .create-date{color:#555;display:block;font-weight:bold; margin-bottom:4px;}
 

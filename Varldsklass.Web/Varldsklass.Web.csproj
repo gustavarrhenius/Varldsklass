@@ -253,9 +253,6 @@
     <Content Include="Views\Shared\DisplayTemplates\FeedPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\FacebookFeed.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Home\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
