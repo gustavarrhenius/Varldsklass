@@ -8,6 +8,9 @@ using Varldsklass.Domain.Entities;
 using Varldsklass.Domain.Repositories;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web.Configuration;
+using System.Configuration;
+using System.Web.Mvc;
 
 namespace Varldsklass.Web.Infrastructure
 {
@@ -16,28 +19,24 @@ namespace Varldsklass.Web.Infrastructure
         [Inject]
         public IAccountRepository AccountRepository { get; set; }
 
+        private ProviderSettings providerSettings;
+
         public CustomMembership()
         {
-
-        }
-
-        private static string HashPassword(string unhashedPassword)
-        {
-            byte[] salt = Encoding.Unicode.GetBytes("O'boy! This salt sure is trendy!");
-            var crypt = new Rfc2898DeriveBytes( unhashedPassword, salt );
-            string hashedPassword = Convert.ToBase64String(crypt.GetBytes(16));
-            return hashedPassword;
+            MembershipSection membershipSection = (MembershipSection)WebConfigurationManager.GetSection("system.web/membership");
+            providerSettings = membershipSection.Providers[membershipSection.DefaultProvider];
         }
 
         public void CreateUser(string firstName, string lastName, string email, string password, out MembershipCreateStatus createStatus)
         {
             Account account = new Account();
             account.Email = email;
-            account.Password = HashPassword(password);
+            account.Salt = BCrypt.Net.BCrypt.GenerateSalt();
+            account.Password = BCrypt.Net.BCrypt.HashPassword(password, account.Salt);
             account.CreatedDate = DateTime.Now;
             account.FirstName = firstName;
             account.LastName = lastName;
-            account.Role = 2;
+            account.Administrator = false;
             AccountRepository.Save(account);
 
             createStatus = MembershipCreateStatus.Success;
@@ -157,7 +156,10 @@ namespace Varldsklass.Web.Infrastructure
 
         public override int MinRequiredPasswordLength
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                return int.Parse( providerSettings.Parameters["minRequiredPasswordLength"] );
+            }
         }
 
         public override int MaxInvalidPasswordAttempts
@@ -187,8 +189,12 @@ namespace Varldsklass.Web.Infrastructure
 
         public override bool ValidateUser(string email, string password)
         {
-            string hashedPassword = HashPassword(password);
-            return AccountRepository.IsValid(email, hashedPassword);
+            return AccountRepository.IsValid(email, password);
+        }
+
+        public bool IsAdmin(string email)
+        {
+            return (AccountRepository.FindAll(u => u.Email == email && u.Administrator == true).Count() > 0);
         }
     }
 }

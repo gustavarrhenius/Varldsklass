@@ -13,7 +13,8 @@ namespace Varldsklass.Domain.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Password { get; set; }
+        public string Salt { get; set; }
         public DateTime CreatedDate { get; set; }
-        public int Role { get; set; }
+        public bool Administrator { get; set; }
     }
 }

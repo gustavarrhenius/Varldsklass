@@ -22,6 +22,20 @@ namespace Varldsklass.Tests.Controllers
             
         }
 
+        [TestInitialize]
+        public void PreTestInitialize()
+        {
+            /*
+            IAccountRepository accountRepository = new AccountRepository();
+            accountRepository.Save(new Account { ID = 1, Email = "admin@varldsklass.com", FirstName = "Admin", LastName = "von Världsklass", Password = "dNZcqnm6dgynDMJpZcZlfw==", Role = 1, CreatedDate = DateTime.Now });
+            accountRepository.Save(new Account { ID = 2, Email = "bokare@varldsklass.com", FirstName = "Bokare", LastName = "von Världsklass", Password = "dNZcqnm6dgynDMJpZcZlfw==", Role = 2, CreatedDate = DateTime.Now });
+            */
+            var accounts = new Account[] {
+                new Account { ID = 1, Email = "admin@varldsklass.com", FirstName = "Admin", LastName = "von Världsklass", Password = "dNZcqnm6dgynDMJpZcZlfw==", Administrator = true, CreatedDate = DateTime.Now },
+                new Account { ID = 2, Email = "bokare@varldsklass.com", FirstName = "Bokare", LastName = "von Världsklass", Password = "dNZcqnm6dgynDMJpZcZlfw==", Administrator = false, CreatedDate = DateTime.Now }
+            };
+        }
+
         [TestMethod]
         public void LogOn()
         {
@@ -39,8 +53,8 @@ namespace Varldsklass.Tests.Controllers
             }));*/
 
             IAccountRepository accountRepository = new AccountRepository();
-            accountRepository.Save(new Account { ID = 1, Email = "admin@varldsklass.com", FirstName = "Admin", LastName = "von Världsklass", Password = "dNZcqnm6dgynDMJpZcZlfw==", Role = 1, CreatedDate = DateTime.Now });
-            //accountRepository.Save(new Account { ID = 2, Email = "bokare@varldsklass.com", FirstName = "Bokare", LastName = "von Världsklass", Password = "dNZcqnm6dgynDMJpZcZlfw==", Role = 2, CreatedDate = DateTime.Now });
+            accountRepository.Save(new Account { ID = 1, Email = "admin@varldsklass.com", FirstName = "Admin", LastName = "von Världsklass", Password = "dNZcqnm6dgynDMJpZcZlfw==", Salt = "oh yeah", Administrator = true, CreatedDate = DateTime.Now });
+            accountRepository.Save(new Account { ID = 2, Email = "bokare@varldsklass.com", FirstName = "Bokare", LastName = "von Världsklass", Password = "dNZcqnm6dgynDMJpZcZlfw==", Salt = "good salt", Administrator = false, CreatedDate = DateTime.Now });
             
             // Arrange - viewmodel
             LogOnViewModel model = new LogOnViewModel

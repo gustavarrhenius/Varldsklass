@@ -18,8 +18,10 @@ namespace Varldsklass.Domain.Repositories
 
         public bool IsValid(string email, string password)
         {
-            IQueryable<Account> matchingUsers = FindAll(u => u.Email == email && u.Password == password);
-            return (matchingUsers.Count() > 0);
+            Account account = FindAll(u => u.Email == email).FirstOrDefault();
+            if (account == null) return false;
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, account.Salt);
+            return (FindAll(u => u.Email == email && u.Password == hashedPassword).Count() > 0);
         }
     }
 }

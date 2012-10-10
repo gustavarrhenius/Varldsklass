@@ -15,9 +15,18 @@ namespace Varldsklass.Web.Controllers
     {
 
         private IAccountRepository _accountRepository;
+        private CustomMembership membership;
         public AccountController(IAccountRepository accountRepository)
         {
             _accountRepository = accountRepository;
+
+            membership = new CustomMembership();
+            membership.AccountRepository = _accountRepository;
+        }
+
+        private bool IsAdmin(string email)
+        {
+            return (_accountRepository.FindAll(u => u.Email == email && u.Administrator).Count() > 0);
         }
 
         //
@@ -34,9 +43,7 @@ namespace Varldsklass.Web.Controllers
         [HttpPost]
         public ActionResult LogOn(LogOnViewModel model, string returnUrl)
         {
-            var membership = new CustomMembership();
-            membership.AccountRepository = _accountRepository;
-
+            
             if (ModelState.IsValid)
             {
                 if (membership.ValidateUser(model.Email, model.Password))
@@ -49,7 +56,11 @@ namespace Varldsklass.Web.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        if(IsAdmin(model.Email))
+                            return RedirectToAction("Index", "Admin");
+                        else
+                            return RedirectToAction("Index", "Home");
+                        
                     }
                 }
                 else
@@ -86,9 +97,7 @@ namespace Varldsklass.Web.Controllers
         [HttpPost]
         public ActionResult Register(RegisterViewModel model)
         {
-            var membership = new CustomMembership();
-            membership.AccountRepository = _accountRepository;
-
+            
             if (ModelState.IsValid)
             {
                 // Attempt to register the user

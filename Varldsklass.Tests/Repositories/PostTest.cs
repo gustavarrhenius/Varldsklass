@@ -22,7 +22,7 @@ namespace Varldsklass.Tests.Repositories
             Mock<PostRepository> mock = new Mock<PostRepository>();
             // Arrange - create the controller
 
-            AdminController target = new AdminController(mock.Object, null);
+            AdminController target = new AdminController(mock.Object, null, null);
             // Arrange - create a product
             Post post = new Post { Title = "Test" };
             // Act - try to save the product
