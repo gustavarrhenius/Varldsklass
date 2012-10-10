@@ -1,0 +1,20 @@
+﻿@model Varldsklass.Web.ViewModels.EditLocationsViewModel
+@{
+    ViewBag.Title = "EditLocation";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Redigera kontaktinformation</h2>
+
+@using (Html.BeginForm("EditLocation", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    foreach (var item in Model.Locations)
+    {
+        
+        @Html.TextBox("Adress", item.Address)
+        @Html.TextBox("Postnummer", item.Zip)
+        @Html.TextBox("Stad", item.City)
+        <input type="submit" value="Spara" />
+        @Html.ActionLink("Tillbaka till listan", "ListLocations")
+    }
+}

@@ -47,11 +47,12 @@ namespace Varldsklass.Domain.Repositories
                 _dbSet.Add(entity);
             _context.SaveChanges();
         }
-
+        
         public virtual void Delete(T entity)
         {
             _context.Entry(entity).State = System.Data.EntityState.Deleted;
             _context.SaveChanges();
+            
         }
 
         /// <summary>

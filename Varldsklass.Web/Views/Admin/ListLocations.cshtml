@@ -6,7 +6,10 @@
 }
 
 <h2>Kontaktinformation</h2>
-@Html.ActionLink("Skapa ny", "CreateLocation", "Admin")
+@using (Html.BeginForm("ToCreateLocation", "Admin"))
+                {
+                    <input type="submit" value="Skapa ny" />
+                }
 
 <table>
     <tr>
@@ -23,15 +26,14 @@
             <td>@item.ID</td>
             <td>@item.Zip</td>
             <td>@item.City</td>
-            <td>@using (Html.BeginForm("EditLocation", "Admin"))
+            <td>@using (Html.BeginForm("ToEditLocation", "Admin", new { Id = item.ID }))
                 {
-                    @Html.Hidden("LocationID", item.ID)
+                    
                     <input type="submit" value="Redigera" />
                 }
             </td>
-            <td>@using (Html.BeginForm("DeleteLocation", "Admin"))
+            <td>@using (Html.BeginForm("DeleteLocation", "Admin", new { Id = item.ID }))
                 {
-                    @Html.Hidden("LocationID", item.ID)
                     <input type="submit" value="Ta bort" />
                 }
             </td>

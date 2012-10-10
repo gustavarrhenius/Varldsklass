@@ -7,6 +7,7 @@ using Varldsklass.Web.Models;
 using Varldsklass.Domain.Entities;
 using Varldsklass.Domain.Repositories;
 using Varldsklass.Domain.Repositories.Abstract;
+using Varldsklass.Web.ViewModels;
 
 
 
@@ -47,11 +48,16 @@ namespace Varldsklass.Web.Controllers
             return View();
         }
 
-        public ViewResult ListLocations()
+        public ActionResult ListLocations()
         {
             var listOfLocations = new Repository<Location>().FindAll().ToList();
 
             return View(listOfLocations);
+        }
+
+        public ActionResult ToCreateLocation()
+        {
+            return RedirectToAction("CreateLocation");
         }
 
         public ActionResult CreateLocation()
@@ -72,10 +78,20 @@ namespace Varldsklass.Web.Controllers
             return View(location);
         }
 
-        public ViewResult EditLocation()
+        public ActionResult ToEditLocation(int? id)
+        {
+            return RedirectToAction("EditLocation", new { Id = id });
+        }
+
+        public ActionResult EditLocation(int? id)
         {
             
-            return View();
+            EditLocationsViewModel location = new EditLocationsViewModel()
+            {
+                Locations = new Repository<Location>().FindAll().Where(l => l.ID == id).ToList()
+            };
+
+            return View(location);
 
         }
     }
