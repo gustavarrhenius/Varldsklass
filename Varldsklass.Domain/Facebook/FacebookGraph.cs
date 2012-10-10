@@ -105,8 +105,6 @@ namespace DotNetOpenAuth.ApplicationBlock.Facebook
             [DataMember(Name = "picture")]
             public string PictureURL { get; set; }
 
-            [DataMember(Name = "video")]
-            public string VideoURL { get; set; }
             }
 
         [DataContract]

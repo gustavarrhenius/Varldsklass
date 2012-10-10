@@ -31,11 +31,11 @@ namespace Varldsklass.Web.Controllers
             return View(posts);
         }
 
-        public ActionResult ListKurser()
+        public ActionResult ListCourses()
         {
             PostIndexViewModel filteredPosts = new PostIndexViewModel
             {
-                Posts = _postRepo.FindPostsByCategoryName("Kurs").ToList()
+                Posts = _postRepo.FindPostsByCategoryName("Course").ToList()
             };
             return View(filteredPosts);
         }

@@ -238,7 +238,7 @@
     <Content Include="Views\Admin\Courses.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Post\ListKurser.cshtml" />
+    <Content Include="Views\Post\ListCourses.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Post\News.cshtml" />
