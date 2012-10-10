@@ -1,0 +1,13 @@
+﻿@model Varldsklass.Domain.Entities.Post
+@using Varldsklass.Domain.Entities
+@{
+    ViewBag.Title = "Course";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Course</h2>
+
+@Html.DisplayFor(p => p.Title)
+@Model.Events.Count
+@Model.ID.ToString()
+<p>@Html.ActionLink("Lägg till Kurstillfälle", "AddEvent", new { id = Model.ID }, new { @class = "button" })</p>

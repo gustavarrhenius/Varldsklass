@@ -6,8 +6,6 @@ using Varldsklass.Domain.Entities.Abstract;
 using System.ComponentModel.DataAnnotations;
 using System.Collections;
 using System.Web.Mvc;
-
-
 namespace Varldsklass.Domain.Entities
 {
     public class Post : IEntity
@@ -17,7 +15,17 @@ namespace Varldsklass.Domain.Entities
         public string Title { get; set; }
         public string Body { get; set; }
         public DateTime Created;
-        public Category Category  { get; set; }
+
+        public virtual ICollection<Category> Category { get; set; }
+        public virtual ICollection<Event> Events { get; set; }
+        public int postType { get; set; }
+
+        public enum PostType 
+        {
+            Course = 0,
+            Page = 1
+        }
+
         public Post()
         {
             Created = DateTime.Now;

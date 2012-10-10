@@ -1,0 +1,18 @@
+﻿@model Varldsklass.Domain.Entities.Category
+
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Lägg till Kategori</h2>
+
+@using (Html.BeginForm("SaveCategory", "Course", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(p => p.ID, "ID")
+    @Html.LabelFor(p => p.Name, "Titel")
+    @Html.TextBoxFor(p => p.Name)
+   
+    <input type="submit" value="Save" class="success button" />
+    @Html.ActionLink("Cancel and return to List", "Index")
+}

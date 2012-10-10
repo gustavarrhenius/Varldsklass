@@ -1,0 +1,35 @@
+﻿@model Varldsklass.Domain.Entities.Event
+@{
+    ViewBag.Title = "Admin: Lägg till Kurstillfälle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<h2>Lägg till Kurstillfälle</h2>
+@using (Html.BeginForm("SaveEvent", "Course", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(p => p.Post.ID)
+    @Html.LabelFor(p => p.Title, "Titel")
+    @Html.TextBoxFor(p => p.Title)
+
+    @Html.LabelFor(p => p.Teatcher, "Lärare")
+    @Html.TextBoxFor(p => p.Teatcher)
+
+    @Html.LabelFor(p => p.StartDate, "Start Datum")
+    @Html.TextBoxFor(p => p.StartDate, new { @class = "datepicker" })
+
+    @Html.LabelFor(p => p.EndDate, "Slut Datum")
+    @Html.TextBoxFor(p => p.EndDate, new { @class = "datepicker" })
+
+
+    <script type="text/javascript">
+        $(function () {
+            $(".datepicker").datepicker({
+            changeMonth: true
+            });
+        });
+    </script>
+    <input type="submit" value="Save" class="success button" />
+    @Html.ActionLink("Cancel and return to List", "Index")
+}
+

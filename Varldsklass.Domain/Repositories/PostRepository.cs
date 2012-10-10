@@ -10,15 +10,15 @@ namespace Varldsklass.Domain.Repositories
 {
     public interface IPostRepository : IRepository<Post>
     {
-        IQueryable<Post> FindPostsByCategoryID(int id);
-        IQueryable<Post> FindPostsByCategoryName(string name);
+        /*IQueryable<Post> FindPostsByCategoryID(int id);
+        IQueryable<Post> FindPostsByCategoryName(string name);*/
     }
 
     public class PostRepository : Repository<Post>, IPostRepository
     {
         public PostRepository() : base() {}
 
-        public IQueryable<Post> FindPostsByCategoryID(int id)
+        /*public IQueryable<Post> FindPostsByCategoryID(int id)
         {
             return _dbSet.Where(p => p.Category.ID == id).Include(p => p.Category);
         }
@@ -36,7 +36,7 @@ namespace Varldsklass.Domain.Repositories
             else
                 _dbSet.Add(post);
             _context.SaveChanges();
-        }
+        }*/
 
         // Filter Methods for ProductRepository
 

@@ -13,11 +13,24 @@ using DotNetOpenAuth.ApplicationBlock.Facebook;
 using System.Net;
 using System.IO;
 using Varldsklass.Web.ViewModels;
+using Varldsklass.Domain.Repositories.Abstract;
 
 namespace Varldsklass.Web.Controllers
 {
     public class HomeController : Controller
     {
+
+        private IRepository<Event> _eventRepo;
+        private IRepository<Post> _postRepo;
+        private IRepository<Category> _categoryRepo;
+
+        public HomeController(IRepository<Post> repo, IRepository<Category> category, IRepository<Event> Event)
+        {
+            _eventRepo = Event;
+            _postRepo = repo;
+            _categoryRepo = category;
+        }
+
         public ActionResult Index()
         {
         // Facebook feed
@@ -59,15 +72,9 @@ namespace Varldsklass.Web.Controllers
             categoryRepo.Delete(category);
 
 
-            PostRepository productRepo = new PostRepository();
-
-            var products = productRepo.FindAll(); // + övriga "grund"-metoder
+            var products = _postRepo.FindAll(); // + övriga "grund"-metoder
 
             // Metoder implementerade i ProductRepository:
-            var productsForCategory = productRepo.FindPostsByCategoryID(0);
-
-            var productsWithEmptyName = productRepo.FindAll(PostRepository
-                                                            .FilterProductsWithEmptyDescription);
             return View();
         }
 

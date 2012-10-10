@@ -1,0 +1,18 @@
+@model IEnumerable<Varldsklass.Domain.Entities.Post>
+       
+
+@{
+    ViewBag.Title = "Admin: Lista kurser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2>Lista Kurser</h2>
+    <h6>(det finns för närvarande: @Model.Count() kurser)</h6>
+
+<ul>
+    @foreach (var kurs in Model)
+    { 
+        <li>@Html.ActionLink(kurs.Title, "CourseInfo", new {id = kurs.ID}, null)</li>
+    }
+</ul>
