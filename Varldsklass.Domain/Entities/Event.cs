@@ -8,9 +8,9 @@ using System.Collections;
 using System.Web.Mvc;
 
 namespace Varldsklass.Domain.Entities
-{
-    public class Event : IEntity
     {
+    public class Event : IEntity
+        {
         [HiddenInput(DisplayValue = false)]
         public int ID { get; set; }
         public string Title { get; set; }
@@ -20,13 +20,13 @@ namespace Varldsklass.Domain.Entities
         public DateTime EndDate;
 
         public int PostID { get; set; }
-        public virtual Post Post  { get; set; }
+        public virtual Post Post { get; set; }
 
         public Event()
-        {
+            {
             Created = DateTime.Now;
             StartDate = DateTime.Now;
             EndDate = DateTime.Now;
-        }      
+            }
+        }
     }
-}
