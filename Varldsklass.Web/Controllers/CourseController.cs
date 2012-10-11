@@ -105,7 +105,7 @@ namespace Varldsklass.Web.Controllers
         public ActionResult AddEvent(int id)
         {
             Event Event = new Event();
-            Event.Post = _postRepo.FindByID(id);
+            Event.PostID = id;
 
             return View("AddEvent", Event);
         }
@@ -115,12 +115,11 @@ namespace Varldsklass.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                Event.PostID = Event.Post.ID;
                 _eventRepo.Save(Event);
                 // add a message to the viewbag
                 TempData["message"] = string.Format("{0} has been saved", Event.Title);
                 // return the user to the list
-                return RedirectToAction("Index");
+                return RedirectToAction("Course", new { id = Event.PostID });
             }
             else
             {

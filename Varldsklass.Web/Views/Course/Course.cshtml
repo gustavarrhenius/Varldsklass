@@ -5,9 +5,24 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Course</h2>
+<h2>@Html.DisplayFor(p => p.Title)</h2>
 
-@Html.DisplayFor(p => p.Title)
-@Model.Events.Count
-@Model.ID.ToString()
+<h3>Kurstillfällen</h3>
+<table>
+    <tr>
+        <td>Lärare</td>
+        <td>StartDatum</td>
+        <td>SlutDatum</td>
+    </tr>
+    @foreach (var Event in Model.Events)
+    {
+        <tr>
+            <td>@Event.Teatcher</td>
+            <td>@Event.StartDate</td>
+            <td>@Event.EndDate</td>
+            <td>@Html.ActionLink("Ändra", "Index", new { id = Event.ID }, new { @class = "tiny success button" })</td>
+            <td>@Html.ActionLink("Ta Bort", "Index", new { id = Event.ID }, new { @class = "tiny alert button" })</td>
+        </tr>
+    }
+</table>
 <p>@Html.ActionLink("Lägg till Kurstillfälle", "AddEvent", new { id = Model.ID }, new { @class = "button" })</p>
