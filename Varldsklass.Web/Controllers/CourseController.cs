@@ -115,10 +115,7 @@ namespace Varldsklass.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var post = _postRepo.FindByID(Event.Post.ID);
-                post.Events.Add(Event);
-                Event.Post = post;
-                Event.PostID = post.ID;
+                Event.PostID = Event.Post.ID;
                 _eventRepo.Save(Event);
                 // add a message to the viewbag
                 TempData["message"] = string.Format("{0} has been saved", Event.Title);
