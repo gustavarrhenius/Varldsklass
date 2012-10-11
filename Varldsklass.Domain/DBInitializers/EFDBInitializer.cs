@@ -36,7 +36,7 @@ namespace Varldsklass.Domain.DBInitializers
             context.SaveChanges();
 
             var posts = new List<Post>
-                
+            {
                 new Post { ID = 2, Title = @"HlrUtblidningar", Body = @"Protective and fashionable", Created = new DateTime(2012, 9, 19), Category = categories, postType = 0, Events = new List<Event>() },
                 new Post { ID = 3, Title = @"Matutblidningar", Body = @"FIFA-approved size and weight", Created = new DateTime(2012, 9, 18), Category = categories, postType = 0, Events = new List<Event>() },
                 new Post { ID = 4, Title = @"Lärareutblidningar", Body = @"Give your playing field that professional touch", Created = new DateTime(2012, 9, 20), Category = categories, postType = 0, Events = new List<Event>() },
