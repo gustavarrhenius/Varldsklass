@@ -6,11 +6,28 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using Varldsklass.Web.ViewModels;
+using Varldsklass.Domain.Repositories;
+using Varldsklass.Web.Infrastructure;
 
 namespace Varldsklass.Web.Controllers
 {
     public class AccountController : Controller
     {
+
+        private IAccountRepository _accountRepository;
+        private CustomMembership membership;
+        public AccountController(IAccountRepository accountRepository)
+        {
+            _accountRepository = accountRepository;
+
+            membership = new CustomMembership();
+            membership.AccountRepository = _accountRepository;
+        }
+
+        private bool IsAdmin(string email)
+        {
+            return (_accountRepository.FindAll(u => u.Email == email && u.Administrator).Count() > 0);
+        }
 
         //
         // GET: /Account/LogOn
@@ -26,11 +43,12 @@ namespace Varldsklass.Web.Controllers
         [HttpPost]
         public ActionResult LogOn(LogOnViewModel model, string returnUrl)
         {
+            
             if (ModelState.IsValid)
             {
-                if (Membership.ValidateUser(model.UserName, model.Password))
+                if (membership.ValidateUser(model.Email, model.Password))
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                    FormsAuthentication.SetAuthCookie(model.Email, model.RememberMe);
                     if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
                         && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
                     {
@@ -38,7 +56,11 @@ namespace Varldsklass.Web.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        if(IsAdmin(model.Email))
+                            return RedirectToAction("Index", "Admin");
+                        else
+                            return RedirectToAction("Index", "Home");
+                        
                     }
                 }
                 else
@@ -75,15 +97,16 @@ namespace Varldsklass.Web.Controllers
         [HttpPost]
         public ActionResult Register(RegisterViewModel model)
         {
+            
             if (ModelState.IsValid)
             {
                 // Attempt to register the user
                 MembershipCreateStatus createStatus;
-                Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
+                membership.CreateUser(model.FirstName, model.LastName, model.Email, model.Password, out createStatus);
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
+                    FormsAuthentication.SetAuthCookie(model.Email, false /* createPersistentCookie */);
                     return RedirectToAction("Index", "Home");
                 }
                 else
