@@ -35,24 +35,5 @@ namespace Varldsklass.Web.Controllers
 
             return View(posts);
         }
-
-       /* public ActionResult ListCourses()
-        {
-            PostIndexViewModel filteredPosts = new PostIndexViewModel
-            {
-                Posts = _postRepo.FindPostsByCategoryName("Course").ToList()
-            };
-            return View(filteredPosts);
-        }
-
-        public ActionResult News()
-        {
-            PostIndexViewModel filteredPosts = new PostIndexViewModel
-            {
-                Posts = _postRepo.FindPostsByCategoryName("News").ToList()
-            };
-            return View(filteredPosts);
-        }*/
-
     }
 }

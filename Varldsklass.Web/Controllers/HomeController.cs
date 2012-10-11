@@ -78,27 +78,6 @@ namespace Varldsklass.Web.Controllers
             return View();
         }
 
-        //public ActionResult FacebookFeed()
-        //    {
-        //    var facebookAccessToken = ConfigurationManager.AppSettings["facebookAccessToken"];
-        //    FacebookGraph.FacebookPageFeed graph = new FacebookGraph.FacebookPageFeed();
-        //    if (null != facebookAccessToken)
-        //        {
-        //        var request = WebRequest.Create(
-        //            string.Format(@"https://graph.facebook.com/varldsklass?fields=feed&access_token={0}",
-        //            Uri.EscapeDataString(facebookAccessToken)));
-        //        using (var response = request.GetResponse())
-        //            {
-        //            using (var responseStream = response.GetResponseStream())
-        //                {
-        //                graph = DotNetOpenAuth.ApplicationBlock.Facebook.FacebookGraph.FacebookPageFeed.Deserialize(responseStream);
-                        
-        //                }
-        //            }
-        //        }
-        //    return View(graph.PageFeed.Posts);
-        //}
-
         public ActionResult Contact()
         {
             return View();
