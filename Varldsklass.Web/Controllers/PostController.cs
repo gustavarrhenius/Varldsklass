@@ -7,6 +7,7 @@ using Varldsklass.Domain.Repositories;
 using Varldsklass.Domain.Repositories.Abstract;
 using Varldsklass.Domain.Entities;
 using Varldsklass.Web.ViewModels;
+using System.Data.Entity;
 
 namespace Varldsklass.Web.Controllers
 {

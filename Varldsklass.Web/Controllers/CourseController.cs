@@ -128,6 +128,7 @@ namespace Varldsklass.Web.Controllers
                 return View(Event);
             }
         }
+
         public ActionResult DeleteEvent(int id)
         {
             _eventRepo.Delete(_eventRepo.FindByID(id));
