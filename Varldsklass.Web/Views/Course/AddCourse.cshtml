@@ -12,10 +12,10 @@
     @Html.HiddenFor(p => p.Post.ID, "ID")
     @Html.LabelFor(p => p.Post.Title, "Titel")
     @Html.TextBoxFor(p => p.Post.Title)
-
+ <div class="editor-field">
     @Html.LabelFor(p => p.Post.Body, "Innehåll")
-    @Html.TextBoxFor(p => p.Post.Body)
-   
+    @Html.TextAreaFor(p => p.Post.Body)
+ </div>
     foreach (var x in Model.Categories)
     {
         @Html.Label(x.Name)

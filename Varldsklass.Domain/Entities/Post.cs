@@ -13,6 +13,8 @@ namespace Varldsklass.Domain.Entities
         [HiddenInput(DisplayValue = false)]  
         public int ID { get; set; }
         public string Title { get; set; }
+        
+        [AllowHtml]
         public string Body { get; set; }
         public DateTime Created;
 
