@@ -229,16 +229,7 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Admin\News.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Admin\NewsLetter.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Admin\Customers.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Admin\NewsSaved.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Post\Index.cshtml" />
