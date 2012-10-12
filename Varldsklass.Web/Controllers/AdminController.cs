@@ -10,8 +10,6 @@ using Varldsklass.Domain.Repositories.Abstract;
 using Varldsklass.Web.ViewModels;
 using Varldsklass.Web.Infrastructure;
 
-
-
 namespace Varldsklass.Web.Controllers
 {
 
@@ -21,17 +19,20 @@ namespace Varldsklass.Web.Controllers
         private PostRepository _postRepo;
         private IRepository<Category> _categoryRepo;
         private IAccountRepository _accountRepo;
+        private IRepository<Location> _locationRepo;
 
-        public AdminController(PostRepository repo, IRepository<Category> category, IAccountRepository account)
+        public AdminController(PostRepository repo, IRepository<Category> category, IRepository<Location> locationRepo, IAccountRepository account)
         {
             _postRepo = repo;
             _categoryRepo = category;
+            _locationRepo = locationRepo;
             _accountRepo = account;
         }
         //
         // GET: /Admin/
 
-        private bool NotAllowedHere() {
+        private bool NotAllowedHere()
+        {
             string email = User.Identity.Name;
             return (_accountRepo.FindAll(u => u.Email == email && u.Administrator).Count() < 1);
         }
@@ -56,11 +57,11 @@ namespace Varldsklass.Web.Controllers
 
             return View();
         }
-        
+
         [Authorize]
         public ActionResult NewsLetter()
-        {  
-			if (NotAllowedHere()) return RedirectAway();
+        {
+            if (NotAllowedHere()) return RedirectAway();
             return View();
         }
 
@@ -68,7 +69,7 @@ namespace Varldsklass.Web.Controllers
         public ActionResult Customers()
         {
             if (NotAllowedHere()) return RedirectAway();
-			return View();
+            return View();
         }
 
         [Authorize]
@@ -81,15 +82,10 @@ namespace Varldsklass.Web.Controllers
         }
 
         [Authorize]
-        public ActionResult ToCreateLocation()
-        {
-            if (NotAllowedHere()) return RedirectAway();
-            return RedirectToAction("CreateLocation");
-        }
-
-		[Authorize]
         public ActionResult CreateLocation()
         {
+            if (NotAllowedHere()) return RedirectAway();
+
             return View(new Location());
         }
 
@@ -110,20 +106,27 @@ namespace Varldsklass.Web.Controllers
         }
 
         [Authorize]
-        public ActionResult ToEditLocation(int? id)
+        [HttpGet]
+        public ActionResult EditLocation(int id)
         {
             if (NotAllowedHere()) return RedirectAway();
-            return RedirectToAction("EditLocation", new { Id = id });
+            var location = _locationRepo.FindByID(id);
+
+            return View(location);
+
         }
 
-		[Authorize]
-        public ActionResult EditLocation(int? id)
+        [Authorize]
+        [HttpPost]
+        public ActionResult EditLocation(Location location)
         {
-            if (NotAllowedHere()) return RedirectAway();            
-            EditLocationsViewModel location = new EditLocationsViewModel()
+            if (NotAllowedHere()) return RedirectAway();
+            if (ModelState.IsValid)
             {
-                Locations = new Repository<Location>().FindAll().Where(l => l.ID == id).ToList()
-            };
+                _locationRepo.Save(location);
+
+                return RedirectToAction("ListLocations");
+            }
 
             return View(location);
 
