@@ -131,5 +131,12 @@ namespace Varldsklass.Web.Controllers
             return View(location);
 
         }
+
+        public ActionResult DeleteLocation(int id)
+        {
+            _locationRepo.Delete(_locationRepo.FindByID(id));
+
+            return RedirectToAction("ListLocations");
+        }
     }
 }

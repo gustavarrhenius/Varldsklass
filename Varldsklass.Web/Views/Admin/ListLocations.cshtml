@@ -20,7 +20,7 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.ID</td>
+            <td>@item.Address</td>
             <td>@item.Zip</td>
             <td>@item.City</td>
             <td>@Html.ActionLink("Redigera", "EditLocation", "Admin", new { Id = item.ID }, null)</td>
