@@ -20,15 +20,7 @@
         <h3>Admin</h3>
         
         <div class="row">
-            <nav class="eight columns">
-                <ul id="menu" class="nav-bar">
-                    <li>@Html.ActionLink("Index", "Index", "Admin") </li>
-                    <li>@Html.ActionLink("Kurser", "Index", "Course") </li>
-                    <li>@Html.ActionLink("Kunder", "Customers", "Admin") </li>
-                    <li>@Html.ActionLink("Kontor", "ListLocations", "Admin") </li>
-                    <li>@Html.ActionLink("Lista Kurser", "CourseList", "Course") </li>          
-                </ul>
-            </nav>
+            @{Html.RenderAction("Menu", "Admin");}
         </div>        
     </header>
         <section id="main" class="row">

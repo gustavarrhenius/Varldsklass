@@ -138,5 +138,10 @@ namespace Varldsklass.Web.Controllers
 
             return RedirectToAction("ListLocations");
         }
+
+        public ActionResult Menu()
+        {
+           return PartialView();
+        }
     }
 }
