@@ -102,5 +102,20 @@ namespace Varldsklass.Web.Controllers
             
             return PartialView(listOfLocations);
         }
+
+        public ActionResult Calendar()
+        {
+            List<Event> events = new List<Event>();
+            List<Post> posts = new List<Post>();
+
+            var calendar =  (from e in events
+                            join p in posts
+                            on e.PostID equals p.ID
+                            where e.EndDate < DateTime.Now
+                            orderby e.StartDate
+                            select new CalendarViewModel { ID = e.ID, Title = p.Title, StartDate = e.StartDate}).Take(5);
+
+            return PartialView(calendar);
+        }
     }
 }

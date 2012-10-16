@@ -47,8 +47,13 @@
                 @RenderBody()
             </section>
             <aside class="four columns">
-                <h4>Facebook</h4>
-                <div class="fb-like-box" data-href="http://www.facebook.com/varldsklass?fref=ts" data-show-faces="true" data-border-color="#fff" data-stream="false" data-header="false"></div>
+                <section>
+                    @Html.Partial("Calendar", "Home");
+                </section>
+                <section> 
+                    <h4>Facebook</h4>
+                    <div class="fb-like-box" data-href="http://www.facebook.com/varldsklass?fref=ts" data-show-faces="true" data-border-color="#fff" data-stream="false" data-header="false"></div>
+                </section>
             </aside>
         </section>
         <footer class="row footer">
