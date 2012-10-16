@@ -100,7 +100,7 @@ namespace Varldsklass.Web.Controllers
             else
             {
                 // there is something wrong with the data values
-                return View("EditCourse", post);
+                return View("AddCourse", post);
             }
         }
 

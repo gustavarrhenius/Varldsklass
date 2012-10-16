@@ -12,7 +12,7 @@
 {
     @Html.HiddenFor(p => p.Post.ID, "ID")
     @Html.LabelFor(p => p.Post.Title, "Titel")
-    @Html.ValidationMessageFor(p => p.Post.Title, null, new { @class = "alert label" })
+    @Html.ValidationMessageFor(p => p.Post.Title)
     @Html.TextBoxFor(p => p.Post.Title)
     @Html.LabelFor(p => p.Post.Body, "Innehåll")
     @Html.TextBoxFor(p => p.Post.Body)
@@ -20,7 +20,7 @@
     foreach (var item in (SelectList)ViewData["events"])
     { 
                  <input type="checkbox" name="Name" value="@item.Value" 
-                 @if (Model.Categories.Count() != 0)
+                 @if (Model.Categories != null)
                  {
                      foreach (var x in Model.Categories)
                      {

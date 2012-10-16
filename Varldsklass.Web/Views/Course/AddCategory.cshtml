@@ -11,7 +11,7 @@
 {
     @Html.HiddenFor(p => p.ID, "ID")
     @Html.LabelFor(p => p.Name, "Titel")
-    @Html.ValidationMessageFor(p => p.Name, null, new { @class = "alert label success" })
+    @Html.ValidationMessageFor(p => p.Name)
     @Html.EditorFor(p => p.Name) 
    
     <input type="submit" value="Save" class="success button" />
