@@ -1,0 +1,9 @@
+﻿@model System.Nullable<System.DateTime>
+@if (Model.HasValue)
+{
+    @Html.TextBox("", Model.Value.ToString("MM/dd/yyyy"), new { @class = "date" })
+}
+else
+{
+    @Html.TextBox("", DateTime.Today.ToString("MM/dd/yyyy"), new { @class = "date" })
+}

@@ -55,6 +55,7 @@ namespace Varldsklass.Domain.Repositories
             
         }
 
+
         /// <summary>
         /// To have any use for this method - _context.SaveChanges needs to be removed from .Save(..) and .Delete(..).
         /// After that change an entity is saved by e.g: "repo.Save(entity);repo.Commit();"

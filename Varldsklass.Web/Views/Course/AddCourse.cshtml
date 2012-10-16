@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Admin: Lägg till kurs";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    string check = "checked='checked'";
 }
 
 <h2>Lägg till kurs</h2>
@@ -11,19 +12,33 @@
 {
     @Html.HiddenFor(p => p.Post.ID, "ID")
     @Html.LabelFor(p => p.Post.Title, "Titel")
+    @Html.ValidationMessageFor(p => p.Post.Title, null, new { @class = "alert label" })
     @Html.TextBoxFor(p => p.Post.Title)
 
     @Html.LabelFor(p => p.Post.Body, "Innehåll")
     @Html.TextBoxFor(p => p.Post.Body)
-   
-    foreach (var x in Model.Categories)
-    {
-        @Html.Label(x.Name)
-        @Html.CheckBox(x.Name)     
+    <h3>Kategorier</h3>
+    foreach (var item in (SelectList)ViewData["events"])
+    { 
+                 <input type="checkbox" name="Name" value="@item.Value" 
+                 @if (Model.Categories.Count() != 0)
+                 {
+                     foreach (var x in Model.Categories)
+                     {
+                         if (x.ID.ToString() == item.Value)
+                         {
+                           @check
+                         }
+                     }
+                 } />
+                  <label for="@item.Value">@item.Text</label>
+                  <br />
+
     }  
+
     <input type="submit" value="Save" class="success button" />
     @Html.ActionLink("Cancel and return to List", "Index")
 }
 
 
- <!--Html.DropDownListFor(x => x.Categories, Model.Categories, "- Kategori -")<a href="#" class="add-category small button">Lägg till Kategori</a>-->
+ 

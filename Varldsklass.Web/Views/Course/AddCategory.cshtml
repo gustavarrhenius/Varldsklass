@@ -11,7 +11,8 @@
 {
     @Html.HiddenFor(p => p.ID, "ID")
     @Html.LabelFor(p => p.Name, "Titel")
-    @Html.TextBoxFor(p => p.Name)
+    @Html.ValidationMessageFor(p => p.Name, null, new { @class = "alert label success" })
+    @Html.EditorFor(p => p.Name) 
    
     <input type="submit" value="Save" class="success button" />
     @Html.ActionLink("Cancel and return to List", "Index")

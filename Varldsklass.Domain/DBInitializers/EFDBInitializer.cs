@@ -25,7 +25,7 @@ namespace Varldsklass.Domain.DBInitializers
 
             var post1 = new Post { ID = 1, Title = @"Liftutblidningar", Body = @"Lorum ipsum", Created = new DateTime(2012, 9, 18), Category = categories, postType = 0 };
 
-            var firstEvent = new Event { ID = 1, Title = @"Semenarie 1", Teatcher = @"Lisa Svensson", Created = new DateTime(2012, 9, 18), StartDate = new DateTime(2012, 9, 22), EndDate = new DateTime(2012, 9, 24), Post = post1 };
+            var firstEvent = new Event { ID = 1, Title = @"Semenarie 1", Teatcher = @"Lisa Svensson", Created = new DateTime(2012, 9, 18), StartDate = new DateTime(2012, 9, 22), EndDate = new DateTime(2012, 9, 24),Body = "Kursen startar kl 14", City = "Göteborg", Post = post1 };
             var events = new List<Event>
             {
                 firstEvent,

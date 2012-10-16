@@ -14,9 +14,15 @@ namespace Varldsklass.Domain.Entities
         [HiddenInput(DisplayValue = false)]
         public int ID { get; set; }
         public string Title { get; set; }
+        [Required]
         public string Teatcher { get; set; }
+        [Required]
+        public string City { get; set; }
+        public string Body { get; set; }
         public DateTime Created;
+        [Required]
         public DateTime StartDate;
+        [Required]
         public DateTime EndDate;
 
         public int PostID { get; set; }
