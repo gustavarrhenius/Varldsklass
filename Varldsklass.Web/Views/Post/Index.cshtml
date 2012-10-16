@@ -8,11 +8,11 @@
 
 @foreach (var p in Model.Posts)
 {
-    <div class="articleHeader">
-        <h2>@p.Title</h2>
-        <div class="article">
+    <article class="post">
+        <header><h2>@p.Title</h2></header>
+        <div class="post-content">
         <p><small>@p.Created</small></p>
-            @p.Body
+            @Html.Raw(p.Body)
         </div>
-    </div>
+    </article>
 }

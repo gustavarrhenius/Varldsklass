@@ -8,7 +8,14 @@
 
 @using (Html.BeginForm("CreateLocation", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    @Html.EditorForModel()
+    @Html.HiddenFor(m => m.ID)
+    @Html.LabelFor(m => m.Address)
+    @Html.TextBoxFor(m => m.Address)
+    @Html.LabelFor(m => m.Zip)
+    @Html.TextBoxFor(m => m.Zip)
+    @Html.LabelFor(m => m.City)
+    @Html.TextBoxFor(m => m.City)
+
     <input type="submit" value="Spara" />
     @Html.ActionLink("Tillbaka till listan", "ListLocations")
 }

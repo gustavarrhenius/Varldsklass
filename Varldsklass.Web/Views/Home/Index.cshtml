@@ -2,10 +2,10 @@
     ViewBag.Title = "Home Page";
 }
 
-<h2>@ViewBag.Message</h2>
+<h2>@ViewBag.Message</h2>    
 
 @model List<DotNetOpenAuth.ApplicationBlock.Facebook.FacebookGraph.FeedPost>
-    <article class="ten columns facebook-feed">
+    <article class="facebook-feed">
         <span class="icons"></span><h4>Nyheter</h4>
         @Html.DisplayFor(m => Model)
     </article>

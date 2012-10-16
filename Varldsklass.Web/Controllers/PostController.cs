@@ -37,12 +37,6 @@ namespace Varldsklass.Web.Controllers
             return View(posts);
         }
 
-        public ActionResult ListCourses()
-        {
-            List<Post> posts = _postRepo.FindAll().Where(p => p.postType == (int)Post.PostType.Course).ToList();
-            return View(posts);
-        }
-
         public ActionResult CourseInfo(int id)
         {
             var posts = _postRepo.FindAll().Where(p => p.ID == id).Include(p => p.Events).FirstOrDefault();

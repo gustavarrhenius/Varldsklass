@@ -14,6 +14,8 @@ namespace Varldsklass.Domain.Entities
         public int ID { get; set; }
         [Required]
         public string Title { get; set; }
+        
+        [AllowHtml]
         public string Body { get; set; }
         public DateTime Created;
 

@@ -8,8 +8,7 @@ using Varldsklass.Domain.Entities;
 using Varldsklass.Domain.Repositories;
 using Varldsklass.Domain.Repositories.Abstract;
 using Varldsklass.Web.ViewModels;
-
-
+using Varldsklass.Web.Infrastructure;
 
 namespace Varldsklass.Web.Controllers
 {
@@ -19,55 +18,83 @@ namespace Varldsklass.Web.Controllers
 
         private PostRepository _postRepo;
         private IRepository<Category> _categoryRepo;
+        private IAccountRepository _accountRepo;
+        private IRepository<Location> _locationRepo;
 
-        public AdminController(PostRepository repo, IRepository<Category> category)
+        public AdminController(PostRepository repo, IRepository<Category> category, IRepository<Location> locationRepo, IAccountRepository account)
         {
             _postRepo = repo;
             _categoryRepo = category;
+            _locationRepo = locationRepo;
+            _accountRepo = account;
         }
         //
         // GET: /Admin/
 
+        private bool NotAllowedHere()
+        {
+            string email = User.Identity.Name;
+            return (_accountRepo.FindAll(u => u.Email == email && u.Administrator).Count() < 1);
+        }
+
+        private ActionResult RedirectAway()
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
+        [Authorize]
         public ActionResult Index()
         {
+            if (NotAllowedHere()) return RedirectAway();
+
             return View();
         }
+
+        [Authorize]
         public ActionResult Courses()
         {
+            if (NotAllowedHere()) return RedirectAway();
+
             return View();
         }
-        
 
+        [Authorize]
         public ActionResult NewsLetter()
         {
+            if (NotAllowedHere()) return RedirectAway();
             return View();
         }
 
+        [Authorize]
         public ActionResult Customers()
         {
+            if (NotAllowedHere()) return RedirectAway();
             return View();
         }
 
+        [Authorize]
         public ActionResult ListLocations()
         {
+            if (NotAllowedHere()) return RedirectAway();
             var listOfLocations = new Repository<Location>().FindAll().ToList();
 
             return View(listOfLocations);
         }
 
-        public ActionResult ToCreateLocation()
-        {
-            return RedirectToAction("CreateLocation");
-        }
-
+        [Authorize]
         public ActionResult CreateLocation()
         {
+            if (NotAllowedHere()) return RedirectAway();
+
             return View(new Location());
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult CreateLocation(Location location)
         {
+            if (NotAllowedHere()) return RedirectAway();
+
             if (ModelState.IsValid)
             {
                 (new Repository<Location>()).Save(location);
@@ -78,21 +105,43 @@ namespace Varldsklass.Web.Controllers
             return View(location);
         }
 
-        public ActionResult ToEditLocation(int? id)
+        [Authorize]
+        [HttpGet]
+        public ActionResult EditLocation(int id)
         {
-            return RedirectToAction("EditLocation", new { Id = id });
-        }
-
-        public ActionResult EditLocation(int? id)
-        {
-            
-            EditLocationsViewModel location = new EditLocationsViewModel()
-            {
-                Locations = new Repository<Location>().FindAll().Where(l => l.ID == id).ToList()
-            };
+            if (NotAllowedHere()) return RedirectAway();
+            var location = _locationRepo.FindByID(id);
 
             return View(location);
 
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult EditLocation(Location location)
+        {
+            if (NotAllowedHere()) return RedirectAway();
+            if (ModelState.IsValid)
+            {
+                _locationRepo.Save(location);
+
+                return RedirectToAction("ListLocations");
+            }
+
+            return View(location);
+
+        }
+
+        public ActionResult DeleteLocation(int id)
+        {
+            _locationRepo.Delete(_locationRepo.FindByID(id));
+
+            return RedirectToAction("ListLocations");
+        }
+
+        public ActionResult Menu()
+        {
+           return PartialView();
         }
     }
 }

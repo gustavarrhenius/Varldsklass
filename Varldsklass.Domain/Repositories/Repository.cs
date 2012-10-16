@@ -52,7 +52,6 @@ namespace Varldsklass.Domain.Repositories
         {
             _context.Entry(entity).State = System.Data.EntityState.Deleted;
             _context.SaveChanges();
-            
         }
 
 

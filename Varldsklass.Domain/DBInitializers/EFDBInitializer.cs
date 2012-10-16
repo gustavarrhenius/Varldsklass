@@ -5,6 +5,7 @@ using System.Web;
 using System.Data.Entity;
 using Varldsklass.Domain.Contexts;
 using Varldsklass.Domain.Entities;
+using System.Security.Cryptography;
 
 namespace Varldsklass.Domain.DBInitializers
 {
@@ -36,7 +37,6 @@ namespace Varldsklass.Domain.DBInitializers
 
             var posts = new List<Post>
             {
-                
                 new Post { ID = 2, Title = @"HlrUtblidningar", Body = @"Protective and fashionable", Created = new DateTime(2012, 9, 19), Category = categories, postType = 0, Events = new List<Event>() },
                 new Post { ID = 3, Title = @"Matutblidningar", Body = @"FIFA-approved size and weight", Created = new DateTime(2012, 9, 18), Category = categories, postType = 0, Events = new List<Event>() },
                 new Post { ID = 4, Title = @"Lärareutblidningar", Body = @"Give your playing field that professional touch", Created = new DateTime(2012, 9, 20), Category = categories, postType = 0, Events = new List<Event>() },
@@ -66,6 +66,16 @@ namespace Varldsklass.Domain.DBInitializers
             context.SaveChanges();
 
 
+
+            var accounts = new List<Account>
+            {
+                // All passwords are "password" without the quotes.
+                new Account { ID = 1, Email = "admin@varldsklass.com", FirstName = "Admin", LastName = "von Världsklass", Password = "$2a$10$0YOweSok2GRqb0r.AqHb9eR8BKcUEJUEdoabynZoj05R3dM0onEYK", Salt = "$2a$10$0YOweSok2GRqb0r.AqHb9e", Administrator = true, CreatedDate = DateTime.Now },
+                new Account { ID = 2, Email = "bokare@varldsklass.com", FirstName = "Bokare", LastName = "von Världsklass", Password = "$2a$10$0YOweSok2GRqb0r.AqHb9eR8BKcUEJUEdoabynZoj05R3dM0onEYK", Salt = "$2a$10$0YOweSok2GRqb0r.AqHb9e", Administrator = false, CreatedDate = DateTime.Now }
+            };
+
+            accounts.ForEach(a => context.Accounts.Add(a));
+            context.SaveChanges();
         }
     }
 }
