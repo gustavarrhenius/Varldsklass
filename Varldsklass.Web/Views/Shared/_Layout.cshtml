@@ -48,7 +48,7 @@
             </section>
             <aside class="four columns">
                 <section>
-                    @Html.Partial("Calendar", "Home");
+                    @{Html.RenderAction("Calendar", "Home");}
                 </section>
                 <section> 
                     <h4>Facebook</h4>
