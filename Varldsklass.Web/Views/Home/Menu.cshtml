@@ -1,10 +1,13 @@
 ﻿
 @model Varldsklass.Web.ViewModels.MenuViewModel
-<nav class="eight columns offset-by-four">
+<nav class="nine columns offset-by-three">
     <ul id="menu" class="nav-bar">
         <li>@Html.ActionLink("Hem", "Index", "Home")</li>
         <li>@Html.ActionLink("Om oss", "About", "Home")</li>
         <li>@Html.ActionLink("Utbildningar/Föreläsningar", "Index", "Post")</li>
+        @foreach (var page in Model.Pages) {
+            <li>@Html.ActionLink(page.Title, "Page", "Post", new { id = page.ID, title = page.Title }, null)</li>
+        }   
         <li class="has-flyout">
             <a href="#">Kontakta oss</a>
             <a href="#" class="flyout-toggle"><span> </span></a>

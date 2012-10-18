@@ -79,10 +79,12 @@ namespace Varldsklass.Web.Controllers
         [HttpPost]
         public ActionResult SaveCourse(Post post, FormCollection postedForm)
         {
-            var listOfCategoryIDs = postedForm["name"];
-            var arrayOfCategoryIDs = listOfCategoryIDs.Split(',');
+            
             if (ModelState.IsValid)
             {
+                var listOfCategoryIDs = postedForm["name"];
+
+                var arrayOfCategoryIDs = listOfCategoryIDs.Split(',');
                  if (arrayOfCategoryIDs.Count() > 0){
                      post.Category = new List<Category>();
                      foreach (var array in arrayOfCategoryIDs) {
@@ -99,8 +101,14 @@ namespace Varldsklass.Web.Controllers
             }
             else
             {
+                AddCourseViewModel vmCategory = new AddCourseViewModel();
+                vmCategory.Post = post;
+                if (post.Category != null) {
+                    vmCategory.Categories = post.Category.ToList();
+                }
+                ViewData["events"] = new SelectList(_categoryRepo.FindAll().ToList(), "ID", "Name");
                 // there is something wrong with the data values
-                return View("AddCourse", post);
+                return View("AddCourse", vmCategory);
             }
         }
 
@@ -144,7 +152,7 @@ namespace Varldsklass.Web.Controllers
             else
             {
                 // there is something wrong with the data values
-                return View(Event);
+                return View("AddEvent", Event);
             }
         }
 

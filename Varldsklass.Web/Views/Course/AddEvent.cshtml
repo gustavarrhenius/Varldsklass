@@ -21,9 +21,10 @@
     @Html.ValidationMessageFor(p => p.City)
     @Html.LabelFor(p => p.City, "Stad")
     @Html.TextBoxFor(p => p.City)
-
-    @Html.LabelFor(p => p.Body, "Information")
-    @Html.TextBoxFor(p => p.Body)
+     <div class="editor-field">
+        @Html.LabelFor(p => p.Body, "Information")
+        @Html.TextAreaFor(p => p.Body)
+    </div>
 
     @Html.LabelFor(p => p.StartDate, "Start Datum")
     @Html.TextBoxFor(m => m.StartDate, new { @class = "datepicker" })
@@ -33,11 +34,11 @@
 
 
     <script type="text/javascript">
-        $(function () {
+        $(document).ready(function () {
             $(".datepicker").datepicker({
                 changeMonth: true,
                 dateFormat: "dd/mm/yy"
-        });
+         });
     });
 
     

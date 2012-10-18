@@ -18,6 +18,8 @@ namespace Varldsklass.Domain.Entities
         public string Teatcher { get; set; }
         [Required]
         public string City { get; set; }
+
+        [AllowHtml]
         public string Body { get; set; }
         public DateTime Created;
         [Required]

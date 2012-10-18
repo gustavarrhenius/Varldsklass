@@ -6,6 +6,10 @@
 }
 
 <h2>@Html.DisplayFor(p => p.Title)</h2>
+<p>Skapad: @Html.DisplayFor(p => p.Created)</p>
+
+<h3>Information</h3>
+@Html.DisplayFor(p => p.Body)
 <h3>Kategorier</h3>
 @foreach (var Category in Model.Category) {
     @Category.Name

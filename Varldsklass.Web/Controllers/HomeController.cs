@@ -95,12 +95,13 @@ namespace Varldsklass.Web.Controllers
 
         public ActionResult Menu()
         {
-            MenuViewModel listOfLocations = new MenuViewModel()
+            MenuViewModel MenuModel = new MenuViewModel()
             {
-                Locations = new Repository<Location>().FindAll().OrderBy(l => l.City).ToList()
+                Locations = new Repository<Location>().FindAll().OrderBy(l => l.City).ToList(),
+                Pages = new Repository<Post>().FindAll().Where(p => p.postType == (int)Post.PostType.Page).ToList()
             };
-            
-            return PartialView(listOfLocations);
+
+            return PartialView(MenuModel);
         }
     }
 }

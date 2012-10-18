@@ -14,8 +14,10 @@
     @Html.LabelFor(p => p.Post.Title, "Titel")
     @Html.ValidationMessageFor(p => p.Post.Title)
     @Html.TextBoxFor(p => p.Post.Title)
-    @Html.LabelFor(p => p.Post.Body, "Innehåll")
-    @Html.TextBoxFor(p => p.Post.Body)
+     <div class="editor-field">
+        @Html.LabelFor(p => p.Post.Body, "Innehåll")
+        @Html.TextAreaFor(p => p.Post.Body)
+    </div>
     <h3>Kategorier</h3>
     foreach (var item in (SelectList)ViewData["events"])
     { 

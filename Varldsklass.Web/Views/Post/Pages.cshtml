@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Varldsklass.Domain.Entities.Post>
+
+@{
+    ViewBag.Title = "Pages";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Sidor</h2>
+@TempData["message"]
+@Html.ActionLink("Lägg till Sida", "AddPage", null, new { @class = "success button" })
+<table>
+@foreach (var page in Model)
+{
+    <tr>
+        <th>Titel</th>
+        <th>Skapad</th>
+    </tr>
+    <tr>
+         <td>@page.Title</td> 
+         <td>@page.Created</td>
+         <td>@Html.ActionLink("Ändra", "AddPage", new { id = page.ID }, new { @class = "tiny success button" })</td>
+         <td>@Html.ActionLink("Ta Bort", "DeletePage", new { id = page.ID }, new { @class = "tiny alert button" })</td>
+    </tr>
+}
+</table>
