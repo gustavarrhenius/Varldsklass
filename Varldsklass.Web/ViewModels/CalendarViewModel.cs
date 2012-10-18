@@ -9,7 +9,13 @@ namespace Varldsklass.Web.ViewModels
     public class CalendarViewModel
     {
         public int ID { get; set; }
-        public String Title { get; set; }
+
         public DateTime StartDate { get; set; }
+
+        public string CourseTitle { get; set; }
+
+        public string EventTitle { get; set; }
+
+        public string City { get; set; }
     }
 }

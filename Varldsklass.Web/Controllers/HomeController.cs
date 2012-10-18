@@ -114,7 +114,7 @@ namespace Varldsklass.Web.Controllers
                             on e.PostID equals p.ID
                             where e.EndDate < DateTime.Now
                             orderby e.StartDate
-                            select new CalendarViewModel { ID = e.ID, Title = p.Title, StartDate = e.StartDate }).Take(5);
+                            select new CalendarViewModel { ID = e.ID, CourseTitle = p.Title, EventTitle = e.Title, City = e.City, StartDate = e.StartDate }).Take(5);
 
             return PartialView(calendar);
         }
