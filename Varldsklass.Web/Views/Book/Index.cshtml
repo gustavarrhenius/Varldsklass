@@ -1,0 +1,34 @@
+﻿@model Varldsklass.Web.ViewModels.BookViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@Model.Event.Title</h2>
+@Model.Event.Post.Body
+
+@using(Html.BeginForm("Index", "Book", FormMethod.Post)){
+    <div id="attendants">
+        <div class="six columns">
+            @Html.LabelFor(model => model.Attendants[0].Name)
+            @Html.EditorFor(model => model.Attendants[0].Name)
+        </div>
+        <div class="six columns">
+            @Html.LabelFor(model => model.Attendants[0].Email)
+            @Html.EditorFor(model => model.Attendants[0].Email)
+        </div>
+    </div>
+    <input class="secondary button" id="more-attendants" type="button" value="Fler" />
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var attendantForm = $('#attendants').html();
+        var fieldNumber = 1;
+        $('#more-attendants').click(function () {
+            var newAttendant = attendantForm.replace(/0/g, fieldNumber);
+            $('#attendants').append(newAttendant);
+            fieldNumber++;
+        });
+    });
+</script>
