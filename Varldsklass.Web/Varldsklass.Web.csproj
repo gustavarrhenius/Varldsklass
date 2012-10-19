@@ -123,6 +123,7 @@
     <Content Include="Content\foundation\images\foundation\orbit\right-arrow.png" />
     <Content Include="Content\foundation\images\foundation\orbit\rotator-black.png" />
     <Content Include="Content\foundation\images\foundation\orbit\timer-black.png" />
+    <Content Include="Content\foundation\images\logo.png" />
     <Content Include="Content\foundation\javascripts\app.js" />
     <Content Include="Content\foundation\javascripts\foundation.min.js" />
     <Content Include="Content\foundation\javascripts\jquery.foundation.accordion.js" />
@@ -350,6 +351,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Calendar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\foundation\stylesheets\app.less" />
+    <None Include="Content\foundation\stylesheets\app-admin.less" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

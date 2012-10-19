@@ -44,13 +44,13 @@ namespace Varldsklass.Domain.DBInitializers
                 new Post { ID = 6, Title = @"HlrUtblidningar", Body = @"Improve your brain efficiency by 75%", Created = new DateTime(2012, 9, 19), Category = categories, postType = 0, Events = new List<Event>() },
                 new Post { ID = 7, Title = @"Matutblidningar", Body = @"Secretly give your opponent a disadvantage", Created = new DateTime(2012, 9, 21), Category = categories, postType = 0, Events = new List<Event>() },
                 new Post { ID = 8, Title = @"Lärareutblidningar", Body = @"A fun game for the whole family", Created = new DateTime(2012, 9, 23), Category = categories, postType = 0, Events = new List<Event>() },
-                new Post { ID = 9, Title = @"Frågor och svar", Body = @"Några frågor", Created = new DateTime(2012, 9, 25), postType = 1, Events = new List<Event>() },
+                new Post { ID = 9, Title = @"Frågor och svar", Body = @"Några frågor", Created = new DateTime(2012, 9, 25), postType = 1, Events = null },
 
             };
             //posts.ForEach(s => context.Posts.Add(s));
             foreach (var post in posts.ToList())
             {
-                post.Events.Add(firstEvent);
+                //post.Events.Add(firstEvent);
                 context.Posts.Add(post);
             }
             context.SaveChanges();

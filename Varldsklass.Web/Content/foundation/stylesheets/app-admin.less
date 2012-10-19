@@ -1,0 +1,87 @@
+﻿/* Artfully masterminded by ZURB  */
+
+/* -------------------------------------------------- 
+   Big Elements
+-----------------------------------------------------*/
+body {background: #0d5c94;}
+body section#main {background: #fff;padding:20px 0;}
+body header {background: #fff;}
+body footer {padding:20px 0;}
+
+
+/* -----------------------------------------
+   Shared Styles
+----------------------------------------- */
+span.icons{}
+
+
+/* -----------------------------------------
+    Header
+----------------------------------------- */
+header {
+    height:140px;
+    #logindisplay {
+        text-align:right;
+    } #logo {
+        margin-top: 10px;
+    }
+
+    /* -----------------------------------------
+       Menu
+    ----------------------------------------- */
+    nav {
+        margin-top: 30px;
+        .nav-bar {
+            background:none;
+            border-right:none;
+            float:right;
+            li {
+                border:none;
+                a {
+                    color:#34333a;
+                    &:hover {
+                        background:#ccc;    
+
+                    }
+                }
+            } li:last-child {
+                border:none;
+            } li.has-flyout:hover {
+                background:#ccc;
+            }
+        }
+    }
+}
+
+
+/* -----------------------------------------
+   Main Slider
+----------------------------------------- */
+section#slider {
+    background:#ccc;
+    height:250px;
+    moz-box-shadow: inset 0 0 10px 0 #888;
+    -webkit-box-shadow: inset 0 0 10px 0 #888;
+    box-shadow: inset 0 0 10px 0 #888;
+    width: 120%;
+    margin-left: -10%;
+ }
+
+/* -----------------------------------------
+   Facebook feed
+----------------------------------------- */
+
+.facebook-feed .facebook-feed-item{margin-bottom:10px; border-bottom:1px solid #CBCBCB; padding-bottom: 10px}
+.facebook-feed .facebook-feed-item:last-child{border:none}
+.facebook-feed .facebook-feed-item img {}
+.facebook-feed .facebook-feed-item .create-date{color:#555;display:block;font-weight:bold; margin-bottom:4px;}
+
+
+/* -----------------------------------------
+   Footer
+----------------------------------------- */
+footer {
+    p {
+        color:#fff;
+    }
+}
