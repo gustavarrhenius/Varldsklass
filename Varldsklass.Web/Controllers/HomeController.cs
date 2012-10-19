@@ -104,5 +104,20 @@ namespace Varldsklass.Web.Controllers
             
             return PartialView(MenuModel);
         }
+
+        public ActionResult Calendar()
+        {
+            var events = _eventRepo.FindAll().ToList();
+            var posts = _postRepo.FindAll().ToList();
+
+            var calendar = (from e in events
+                            join p in posts
+                            on e.PostID equals p.ID
+                            where e.EndDate < DateTime.Now
+                            orderby e.StartDate
+                            select new CalendarViewModel { ID = e.ID, CourseTitle = p.Title, EventTitle = e.Title, City = e.City, StartDate = e.StartDate }).Take(5);
+
+            return PartialView(calendar);
+        }
     }
 }

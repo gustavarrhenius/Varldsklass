@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Varldsklass.Web.ViewModels.CalendarViewModel>
+<h4>Kalender</h4>
+
+    @foreach (var item in Model)
+    {
+        <ul>
+            <li>
+                <span class="calendar-date">@item.StartDate</span>
+            </li>
+            <li>
+                @item.CourseTitle, @item.EventTitle, @item.City
+            </li>
+        </ul>
+    }
