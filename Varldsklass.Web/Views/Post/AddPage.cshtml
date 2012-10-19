@@ -10,6 +10,7 @@
 @using (Html.BeginForm("SavePage", "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.HiddenFor(p => p.ID, "ID")
+    @Html.HiddenFor(p => p.Created)
     @Html.HiddenFor(p => p.postType, "postType")
     @Html.LabelFor(p => p.Title, "Titel")
     @Html.ValidationMessageFor(p => p.Title)

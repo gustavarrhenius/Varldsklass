@@ -62,6 +62,7 @@ namespace Varldsklass.Web.Controllers
             Post post;
             if (id == 0) {
                  post = new Post();
+                 post.Created = DateTime.Now;
                  post.postType = (int)Post.PostType.Page;
             } else {
                  post = _postRepo.FindByID(id);

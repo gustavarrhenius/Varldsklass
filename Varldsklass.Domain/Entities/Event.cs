@@ -21,20 +21,14 @@ namespace Varldsklass.Domain.Entities
 
         [AllowHtml]
         public string Body { get; set; }
-        public DateTime Created;
+        public DateTime Created { get; set; }
         [Required]
-        public DateTime StartDate;
+        public DateTime StartDate { get; set; }
         [Required]
-        public DateTime EndDate;
+        public DateTime EndDate { get; set; }
 
         public int PostID { get; set; }
         public virtual Post Post { get; set; }
 
-        public Event()
-            {
-            Created = DateTime.Now;
-            StartDate = DateTime.Now;
-            EndDate = DateTime.Now;
-            }
         }
     }

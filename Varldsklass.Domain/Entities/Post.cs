@@ -17,8 +17,7 @@ namespace Varldsklass.Domain.Entities
 
         [AllowHtml]
         public string Body { get; set; }
-        public DateTime Created;
-
+        public DateTime Created { get; set; }
         public virtual ICollection<Category> Category { get; set; }
         public virtual ICollection<Event> Events { get; set; }
         public int postType { get; set; }
@@ -27,11 +26,6 @@ namespace Varldsklass.Domain.Entities
         {
             Course = 0,
             Page = 1
-        }
-
-        public Post()
-        {
-            Created = DateTime.Now;
-        }           
+        }        
     }
 }

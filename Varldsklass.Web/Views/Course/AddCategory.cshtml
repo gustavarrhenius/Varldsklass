@@ -10,6 +10,7 @@
 @using (Html.BeginForm("SaveCategory", "Course", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.HiddenFor(p => p.ID, "ID")
+    @Html.HiddenFor(p => p.Created)
     @Html.LabelFor(p => p.Name, "Titel")
     @Html.ValidationMessageFor(p => p.Name)
     @Html.EditorFor(p => p.Name) 

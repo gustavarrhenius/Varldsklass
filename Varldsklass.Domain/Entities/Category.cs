@@ -12,6 +12,7 @@ namespace Varldsklass.Domain.Entities
         public int ID { get; set; }
         [Required(ErrorMessage = "Du måste fylla i ett namn.")]
         public string Name { get; set; }
+        public DateTime Created { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
     }
 }

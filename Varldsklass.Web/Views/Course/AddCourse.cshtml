@@ -10,13 +10,14 @@
 
 @using (Html.BeginForm("SaveCourse", "Course", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
+    @Html.HiddenFor(p => p.Post.Created)
     @Html.HiddenFor(p => p.Post.ID, "ID")
     @Html.LabelFor(p => p.Post.Title, "Titel")
     @Html.ValidationMessageFor(p => p.Post.Title)
     @Html.TextBoxFor(p => p.Post.Title)
      <div class="editor-field">
         @Html.LabelFor(p => p.Post.Body, "Innehåll")
-        @Html.TextAreaFor(p => p.Post.Body)
+        @Html.TextBoxFor(p => p.Post.Body)
     </div>
     <h3>Kategorier</h3>
     foreach (var item in (SelectList)ViewData["events"])

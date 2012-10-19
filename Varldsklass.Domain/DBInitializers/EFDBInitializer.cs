@@ -15,10 +15,10 @@ namespace Varldsklass.Domain.DBInitializers
         {
             var categories = new List<Category>
             {
-            new Category { ID = 1, Name = "HLR" },
-            new Category { ID = 2, Name = "Lift" },
-            new Category { ID = 3, Name = "Mat" },
-            new Category { ID = 4, Name = "Lärare" }
+            new Category { ID = 1, Name = "HLR", Created = DateTime.Now },
+            new Category { ID = 2, Name = "Lift", Created = DateTime.Now },
+            new Category { ID = 3, Name = "Mat", Created = DateTime.Now },
+            new Category { ID = 4, Name = "Lärare", Created = DateTime.Now }
             };
 
             categories.ForEach(s => context.Categories.Add(s));

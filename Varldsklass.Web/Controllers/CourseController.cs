@@ -58,6 +58,7 @@ namespace Varldsklass.Web.Controllers
                 AddCourseViewModel vmCategory = new AddCourseViewModel();
 
                 vmCategory.Post = new Post();
+                vmCategory.Post.Created = DateTime.Now;
                 vmCategory.Post.postType = (int)Post.PostType.Course;
                 ViewData["events"] = new SelectList(_categoryRepo.FindAll().ToList(), "ID", "Name");
                 return View("AddCourse", vmCategory);
@@ -90,7 +91,8 @@ namespace Varldsklass.Web.Controllers
                      foreach (var array in arrayOfCategoryIDs) {
                          int x = Convert.ToInt32(array);
                          var cat = _categoryRepo.FindByID(x);
-                         post.Category.Add(cat);
+                         cat.Posts.Add(post);
+                         _categoryRepo.Save(cat);
                      }
                  }
                 _postRepo.Save(post);
@@ -124,10 +126,12 @@ namespace Varldsklass.Web.Controllers
         * -------------------------------------*/
         public ActionResult AddEvent(int id = 0)
         {
-             
+            ModelState.Clear();
             Event Event = new Event();
             Event.PostID = id;
-
+            Event.Created = DateTime.Now;
+            Event.StartDate = DateTime.Now;
+            Event.EndDate = DateTime.Now;
             return View("AddEvent", Event);
         }
 
@@ -171,7 +175,9 @@ namespace Varldsklass.Web.Controllers
             if (id != 0) {
                 return View("AddCategory", _categoryRepo.FindByID(id));
             } else {
-                return View("AddCategory", new Category());
+                Category category = new Category();
+                category.Created = DateTime.Now;
+                return View("AddCategory", category);
             }
         }
 

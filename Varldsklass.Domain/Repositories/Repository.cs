@@ -43,8 +43,10 @@ namespace Varldsklass.Domain.Repositories
             var existing = _dbSet.Where(e => e.ID == entity.ID).FirstOrDefault();
             if (null != existing)
                 _context.Entry(existing).CurrentValues.SetValues(entity);
-            else
+            else {
                 _dbSet.Add(entity);
+                
+            }
             _context.SaveChanges();
         }
         

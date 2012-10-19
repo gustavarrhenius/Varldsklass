@@ -8,8 +8,9 @@
 <h2>Lägg till Kurstillfälle</h2>
 @using (Html.BeginForm("SaveEvent", "Course", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    @Html.HiddenFor(p => p.PostID)
     @Html.HiddenFor(p => p.ID)
+    @Html.HiddenFor(p => p.PostID)
+    @Html.HiddenFor(p => p.Created)
     @Html.ValidationMessageFor(p => p.Title)
     @Html.LabelFor(p => p.Title, "Titel")
     @Html.TextBoxFor(p => p.Title)

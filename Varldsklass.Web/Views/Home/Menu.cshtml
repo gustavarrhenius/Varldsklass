@@ -6,7 +6,7 @@
         <li>@Html.ActionLink("Om oss", "About", "Home")</li>
         <li>@Html.ActionLink("Utbildningar/Föreläsningar", "Index", "Post")</li>
         @foreach (var page in Model.Pages) {
-            <li>@Html.ActionLink(page.Title, "Page", "Post", new { id = page.ID, title = page.Title }, null)</li>
+            <li>@Html.ActionLink(page.Title, "Page", "Post", new { id = page.ID}, null)</li>
         }   
         <li class="has-flyout">
             <a href="#">Kontakta oss</a>
