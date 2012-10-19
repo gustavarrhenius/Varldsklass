@@ -28,5 +28,19 @@ namespace Varldsklass.Web.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public ActionResult Save(BookViewModel model)
+        {
+            if (!ModelState.IsValid) return View();
+
+            model.Event = _eventRepo.FindByID(model.Event.ID);
+
+            model.Attendants.ForEach(delegate(Attendant attendant)
+            {
+                _attendantRepo.Save(attendant);
+            });
+
+            return RedirectToAction("Index");
+        }
     }
 }

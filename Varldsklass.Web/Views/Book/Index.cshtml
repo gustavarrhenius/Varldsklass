@@ -7,7 +7,8 @@
 <h2>@Model.Event.Title</h2>
 @Model.Event.Post.Body
 
-@using(Html.BeginForm("Index", "Book", FormMethod.Post)){
+@using(Html.BeginForm("Save", "Book", FormMethod.Post)){
+    @Html.HiddenFor(model => model.Event.ID)
     <div id="attendants">
         <div class="six columns">
             @Html.LabelFor(model => model.Attendants[0].Name)
@@ -19,6 +20,7 @@
         </div>
     </div>
     <input class="secondary button" id="more-attendants" type="button" value="Fler" />
+    <input class="button"  type="submit" value="Boka" />
 }
 
 <script type="text/javascript">
