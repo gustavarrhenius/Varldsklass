@@ -1,0 +1,49 @@
+﻿@model Varldsklass.Web.ViewModels.AttendantsViewModel
+
+@{
+    ViewBag.Title = "Book";
+}
+
+<h2>Boka plats på kurstillfälle</h2>
+
+<h3>@Model.Event.Title</h3>
+@Html.Raw(Model.Event.Post.Body)
+
+@using (Html.BeginForm("SaveBooking", "Course", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.Event.ID)
+    <div id="attendants">
+        <div class="row">
+            <div class="six columns">
+                @Html.LabelFor(model => Model.AttendingList.Attendants[0].Name)
+                @Html.EditorFor(model => Model.AttendingList.Attendants[0].Name)
+            </div>
+            <div class="six columns">
+                @Html.LabelFor(model => Model.AttendingList.Attendants[0].Email)
+                @Html.EditorFor(model => Model.AttendingList.Attendants[0].Email)
+            </div>
+        </div>
+    </div>
+
+    <div id="booker-is-attending">
+        @Html.CheckBoxFor(model => model.AttendingList.BookerIsAttending)
+        @Html.LabelFor(model => model.AttendingList.BookerIsAttending, "Jag som bokar anmäler mig också")
+    </div>
+    
+    <div class="controls">
+        <input type="button" class="secondary button" id="more-attendants" value="Fler deltagare" />
+        <input type="submit" class="success button" id="send" value="Boka" />
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var $attendants = $('#attendants');
+        var attendantForm = $attendants.html();
+        var nextField = 1;
+        $('#more-attendants').click(function () {
+            $attendants.html( $attendants.html() + attendantForm.replace(/0/g, nextField) );
+            nextField += 1;
+        });
+    });
+</script>
