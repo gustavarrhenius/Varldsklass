@@ -1,14 +1,15 @@
-﻿@model IEnumerable<Varldsklass.Web.ViewModels.CalendarViewModel>
+﻿@using Varldsklass.Domain.Helpers
+@model IEnumerable<Varldsklass.Domain.Entities.Event>
 <h4>Kalender</h4>
 
     @foreach (var item in Model)
     {
         <ul>
             <li>
-                <span class="calendar-date">@item.StartDate</span>
+                <span class="calendar-date">@Html.DateFormat(item.StartDate)</span>
             </li>
             <li>
-                @item.CourseTitle, @item.EventTitle, @item.City
+                <span class="calendar-course-name">@item.Post.Title:</span> @item.Title, @item.City
             </li>
         </ul>
     }
