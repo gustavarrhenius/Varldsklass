@@ -54,6 +54,35 @@ namespace Varldsklass.Web.Controllers
         return View(graph.PageFeed.Posts);
         }
 
+        public ActionResult Search(string search) 
+        {   
+            List<SearchResult> searchResult = new List<SearchResult>();
+
+            if (!string.IsNullOrEmpty(search))
+            {
+               
+                var posts = _postRepo.FindAll().Where(p => p.Title.Contains(search.ToLower())|| p.Body.Contains(search.ToLower())).ToList();
+                var events = _eventRepo.FindAll().Where(e => e.Title.Contains(search.ToLower())|| e.Body.Contains(search.ToLower()) || e.Teatcher.Contains(search.ToLower()) || e.City.Contains(search.ToLower())).ToList();
+                foreach (var post in posts)
+                    {
+                    SearchResult searchTest = new SearchResult();
+                    searchTest.Title = post.Title;
+                    searchTest.Excerpt = post.Body;
+                    searchResult.Add(searchTest);
+                    }
+                foreach (var Event in events)
+                    {
+                    SearchResult searchTest = new SearchResult();
+                    searchTest.Title = Event.Title;
+                    searchTest.Excerpt = Event.Body;
+                    searchTest.StartDate = Event.StartDate;
+                    searchTest.EndDate = Event.EndDate;
+                    searchResult.Add(searchTest);
+                    }
+            }
+            return View(searchResult);
+        }
+
         public ActionResult About()
         {
             // Generiskt Repository - Här skapas ett repository för Category
