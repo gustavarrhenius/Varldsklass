@@ -19,6 +19,8 @@
             @Html.EditorFor(model => model.Attendants[0].Email)
         </div>
     </div>
+    @Html.CheckBoxFor(model => model.BookerAttends)
+    @Html.LabelFor(model => model.BookerAttends)
     <input class="secondary button" id="more-attendants" type="button" value="Fler" />
     <input class="button"  type="submit" value="Boka" />
 }

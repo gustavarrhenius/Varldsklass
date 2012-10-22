@@ -35,11 +35,20 @@ namespace Varldsklass.Web.Controllers
         public ActionResult Save(BookViewModel model)
         {
             model.Event = _eventRepo.FindByID(model.Event.ID);
+            Account booker = _accountRepo.FindAll(u => u.Email == User.Identity.Name).FirstOrDefault();
 
             for (int i = 0; i < model.Attendants.Count; i++)
             {
-                model.Attendants[i].BookerID = _accountRepo.FindAll(u => u.Email == User.Identity.Name).FirstOrDefault().ID;
+                model.Attendants[i].BookerID = booker.ID;
                 model.Attendants[i].EventID = model.Event.ID;
+            }
+
+            if (model.BookerAttends)
+            {
+                model.Attendants.Add(new Attendant {
+                    //Name = booker.Name,
+                    Email = booker.Email
+                });
             }
 
             //if (!ModelState.IsValid) return View();
