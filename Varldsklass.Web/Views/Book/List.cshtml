@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Varldsklass.Domain.Entities.Attendant>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<ul>
+@foreach(var attendant in Model) {
+    <li><strong>@attendant.Name</strong> (@attendant.Email)</li>
+}
+</ul>
