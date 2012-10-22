@@ -1,5 +1,5 @@
 ﻿@if(Request.IsAuthenticated) {
-    <p>Välkommen, <strong>@User.Identity.Name</strong>!
+    <p><strong>@User.Identity.Name</strong>
      @Html.ActionLink("Logga ut", "LogOff", "Account", null, new { @class = "tiny success button" })</p>
 }
 else

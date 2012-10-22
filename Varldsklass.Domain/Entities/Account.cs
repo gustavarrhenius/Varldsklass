@@ -16,5 +16,13 @@ namespace Varldsklass.Domain.Entities
         public string Salt { get; set; }
         public DateTime CreatedDate { get; set; }
         public bool Administrator { get; set; }
+
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
     }
 }

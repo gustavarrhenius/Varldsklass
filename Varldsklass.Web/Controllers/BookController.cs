@@ -35,7 +35,7 @@ namespace Varldsklass.Web.Controllers
         public ActionResult Save(BookViewModel model)
         {
             model.Event = _eventRepo.FindByID(model.Event.ID);
-            Account booker = _accountRepo.FindAll(u => u.Email == User.Identity.Name).FirstOrDefault();
+            Account booker = _accountRepo.FindAll().Where(u => u.Email == User.Identity.Name).FirstOrDefault();
 
             for (int i = 0; i < model.Attendants.Count; i++)
             {
@@ -46,8 +46,10 @@ namespace Varldsklass.Web.Controllers
             if (model.BookerAttends)
             {
                 model.Attendants.Add(new Attendant {
-                    //Name = booker.Name,
-                    Email = booker.Email
+                    Name = booker.FullName,
+                    Email = booker.Email,
+                    BookerID = booker.ID,
+                    EventID = model.Event.ID
                 });
             }
 
