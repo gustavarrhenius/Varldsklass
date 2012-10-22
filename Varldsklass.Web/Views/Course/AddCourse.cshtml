@@ -15,13 +15,13 @@
     @Html.LabelFor(p => p.Post.Title, "Titel")
     @Html.ValidationMessageFor(p => p.Post.Title)
     @Html.TextBoxFor(p => p.Post.Title)
-     <div class="editor-field">
+    <div class="editor-field">
         @Html.LabelFor(p => p.Post.Body, "Innehåll")
-        @Html.TextBoxFor(p => p.Post.Body)
+        @Html.TextAreaFor(p => p.Post.Body)
     </div>
     <h3>Kategorier</h3>
     foreach (var item in (SelectList)ViewData["events"])
-    { 
+    {DateTime.
                  <input type="checkbox" name="Name" value="@item.Value" 
                  @if (Model.Categories != null)
                  {

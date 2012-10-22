@@ -65,10 +65,10 @@ namespace Varldsklass.Web.Controllers
             }
         }
 
-        public ActionResult CourseList()
+        public ActionResult CourseList(int id)
         {
-            List<Category> categorys = _categoryRepo.FindAll().Include(p => p.Posts).ToList();
-            return View(categorys);
+            Category categories = _categoryRepo.FindAll().Where(c => c.ID == id).Include(p => p.Posts).FirstOrDefault();
+            return View(categories);
         }
 
         public ActionResult CourseInfo(int id)
