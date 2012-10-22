@@ -355,6 +355,8 @@
   <ItemGroup>
     <None Include="Content\foundation\stylesheets\app.less" />
     <None Include="Content\foundation\stylesheets\app-admin.less" />
+    <Content Include="Views\Shared\_SearchPartial.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Varldsklass.Domain.Entities.SearchResult>
+          
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+ @foreach (var searchObject in Model) 
+     {
+     
+     <article>
+        <h3>@searchObject.Title</h3>
+        @if (searchObject.StartDate != DateTime.MinValue && searchObject.EndDate != DateTime.MinValue)
+            {
+            <p>@searchObject.StartDate - @searchObject.EndDate</p>
+            }
+        <p>@searchObject.Excerpt</p>
+     </article>
+     
+     }
