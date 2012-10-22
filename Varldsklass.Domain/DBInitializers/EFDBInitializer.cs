@@ -15,10 +15,10 @@ namespace Varldsklass.Domain.DBInitializers
         {
             var categories = new List<Category>
             {
-            new Category { ID = 1, Name = "HLR" },
-            new Category { ID = 2, Name = "Lift" },
-            new Category { ID = 3, Name = "Mat" },
-            new Category { ID = 4, Name = "Lärare" }
+            new Category { ID = 1, Name = "HLR", Created = DateTime.Now },
+            new Category { ID = 2, Name = "Lift", Created = DateTime.Now },
+            new Category { ID = 3, Name = "Mat", Created = DateTime.Now },
+            new Category { ID = 4, Name = "Lärare", Created = DateTime.Now }
             };
 
             categories.ForEach(s => context.Categories.Add(s));
@@ -26,7 +26,7 @@ namespace Varldsklass.Domain.DBInitializers
 
             var post1 = new Post { ID = 1, Title = @"Liftutblidningar", Body = @"Lorum ipsum", Created = new DateTime(2012, 9, 18), Category = categories, postType = 0 };
 
-            var firstEvent = new Event { ID = 1, Title = @"Semenarie 1", Teatcher = @"Lisa Svensson", Created = new DateTime(2012, 9, 18), StartDate = new DateTime(2012, 9, 22), EndDate = new DateTime(2012, 9, 24), Post = post1 };
+            var firstEvent = new Event { ID = 1, Title = @"Semenarie 1", Teatcher = @"Lisa Svensson", Created = new DateTime(2012, 9, 18), StartDate = new DateTime(2012, 9, 22), EndDate = new DateTime(2012, 9, 24),Body = "Kursen startar kl 14", City = "Göteborg", Post = post1 };
             var events = new List<Event>
             {
                 firstEvent,
@@ -44,13 +44,13 @@ namespace Varldsklass.Domain.DBInitializers
                 new Post { ID = 6, Title = @"HlrUtblidningar", Body = @"Improve your brain efficiency by 75%", Created = new DateTime(2012, 9, 19), Category = categories, postType = 0, Events = new List<Event>() },
                 new Post { ID = 7, Title = @"Matutblidningar", Body = @"Secretly give your opponent a disadvantage", Created = new DateTime(2012, 9, 21), Category = categories, postType = 0, Events = new List<Event>() },
                 new Post { ID = 8, Title = @"Lärareutblidningar", Body = @"A fun game for the whole family", Created = new DateTime(2012, 9, 23), Category = categories, postType = 0, Events = new List<Event>() },
-                new Post { ID = 9, Title = @"Frågor och svar", Body = @"Gold-plated, diamond-studded King", Created = new DateTime(2012, 9, 25), Category = null, Events = new List<Event>() },
+                new Post { ID = 9, Title = @"Frågor och svar", Body = @"Några frågor", Created = new DateTime(2012, 9, 25), postType = 1, Events = null },
 
             };
             //posts.ForEach(s => context.Posts.Add(s));
             foreach (var post in posts.ToList())
             {
-                post.Events.Add(firstEvent);
+                //post.Events.Add(firstEvent);
                 context.Posts.Add(post);
             }
             context.SaveChanges();

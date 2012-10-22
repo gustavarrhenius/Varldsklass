@@ -6,11 +6,21 @@
 }
 
 <h2>@Html.DisplayFor(p => p.Title)</h2>
+<p>Skapad: @Html.DisplayFor(p => p.Created)</p>
 
+<h3>Information</h3>
+@Html.DisplayFor(p => p.Body)
+<h3>Kategorier</h3>
+@foreach (var Category in Model.Category) {
+    @Category.Name
+    <br />
+}
 <h3>Kurstillfällen</h3>
 <table>
     <tr>
         <td>Lärare</td>
+        <td>Stad</td>
+        <td>Information</td>
         <td>StartDatum</td>
         <td>SlutDatum</td>
     </tr>
@@ -18,10 +28,12 @@
     {
         <tr>
             <td>@Event.Teatcher</td>
+            <td>@Event.City</td>
+            <td>@Event.Body</td>
             <td>@Event.StartDate</td>
             <td>@Event.EndDate</td>
-            <td>@Html.ActionLink("Ändra", "Index", new { id = Event.ID }, new { @class = "tiny success button" })</td>
-            <td>@Html.ActionLink("Ta Bort", "Index", new { id = Event.ID }, new { @class = "tiny alert button" })</td>
+            <td>@Html.ActionLink("Ändra", "EditEvent", new { id = Event.ID }, new { @class = "tiny success button" })</td>
+            <td>@Html.ActionLink("Ta Bort", "DeleteEvent", new { id = Event.ID, course = Model.ID}, new { @class = "tiny alert button" })</td>
         </tr>
     }
 </table>

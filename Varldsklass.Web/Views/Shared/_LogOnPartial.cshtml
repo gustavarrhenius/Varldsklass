@@ -1,8 +1,8 @@
 ﻿@if(Request.IsAuthenticated) {
-    <text>Välkommen, <strong>@User.Identity.Name</strong>!
-     @Html.ActionLink("Logga ut", "LogOff", "Account", null,  new { @class = "success button" }) </text>
+    <p>Välkommen, <strong>@User.Identity.Name</strong>!
+     @Html.ActionLink("Logga ut", "LogOff", "Account", null, new { @class = "tiny success button" })</p>
 }
 else
 {
-    @: @Html.ActionLink("Logga in", "LogOn", "Account", null, new { @class = "success button" }) 
+    @: @Html.ActionLink("Logga in", "LogOn", "Account", null, new { @class = "tiny success button" }) 
 }

@@ -43,8 +43,10 @@ namespace Varldsklass.Domain.Repositories
             var existing = _dbSet.Where(e => e.ID == entity.ID).FirstOrDefault();
             if (null != existing)
                 _context.Entry(existing).CurrentValues.SetValues(entity);
-            else
+            else {
                 _dbSet.Add(entity);
+                
+            }
             _context.SaveChanges();
         }
         
@@ -53,6 +55,7 @@ namespace Varldsklass.Domain.Repositories
             _context.Entry(entity).State = System.Data.EntityState.Deleted;
             _context.SaveChanges();
         }
+
 
         /// <summary>
         /// To have any use for this method - _context.SaveChanges needs to be removed from .Save(..) and .Delete(..).

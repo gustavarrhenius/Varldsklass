@@ -10,8 +10,10 @@
 @using (Html.BeginForm("SaveCategory", "Course", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.HiddenFor(p => p.ID, "ID")
+    @Html.HiddenFor(p => p.Created)
     @Html.LabelFor(p => p.Name, "Titel")
-    @Html.TextBoxFor(p => p.Name)
+    @Html.ValidationMessageFor(p => p.Name)
+    @Html.EditorFor(p => p.Name) 
    
     <input type="submit" value="Save" class="success button" />
     @Html.ActionLink("Cancel and return to List", "Index")

@@ -43,5 +43,75 @@ namespace Varldsklass.Web.Controllers
 
             return View(posts);
         }
+
+        public ActionResult Page(int id)
+        {
+            var post = _postRepo.FindByID(id);
+
+            return View(post);
+        }
+        public ActionResult Pages()
+        {
+            var posts = _postRepo.FindAll().Where(p => p.postType == (int)Post.PostType.Page).ToList();
+
+            return View(posts);
+        }
+
+        public ActionResult AddPage(int id = 0)
+        {
+            Post post;
+            if (id == 0) {
+                 post = new Post();
+                 post.Created = DateTime.Now;
+                 post.postType = (int)Post.PostType.Page;
+            } else {
+                 post = _postRepo.FindByID(id);
+            }
+            
+            return View(post);
+        }
+
+        [HttpPost]
+        public ActionResult SavePage(Post Post)
+        {
+            if (ModelState.IsValid)
+            {
+                _postRepo.Save(Post);
+                // add a message to the viewbag
+                TempData["message"] = string.Format("{0} är sparad", Post.Title);
+                // return the user to the list
+                return RedirectToAction("Pages", "Post");
+            }
+            else
+            {
+                // there is something wrong with the data values
+                return View("AddPage", Post);
+            }
+        }
+
+        public ActionResult DeletePage(int id)
+        {
+            var post = _postRepo.FindByID(id);
+            _postRepo.Delete(post);
+            TempData["message"] = string.Format("{0} har tagits bort", post.Title);
+            return RedirectToAction("Pages");
+        }
+ 
+
+        /*-----------------------------------------
+        * Category Controller 
+        * -------------------------------------*/
+        public ActionResult EditCategory(int id = 0)
+        {
+            if (id != 0)
+            {
+                return View("AddCategory", _categoryRepo.FindByID(id));
+            }
+            else
+            {
+                return View("AddCategory", new Category());
+            }
+        }
+
     }
 }

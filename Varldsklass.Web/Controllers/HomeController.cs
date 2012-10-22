@@ -14,6 +14,7 @@ using System.Net;
 using System.IO;
 using Varldsklass.Web.ViewModels;
 using Varldsklass.Domain.Repositories.Abstract;
+using System.Data.Entity;
 
 namespace Varldsklass.Web.Controllers
 {
@@ -95,12 +96,20 @@ namespace Varldsklass.Web.Controllers
 
         public ActionResult Menu()
         {
-            MenuViewModel listOfLocations = new MenuViewModel()
+            MenuViewModel MenuModel = new MenuViewModel()
             {
-                Locations = new Repository<Location>().FindAll().OrderBy(l => l.City).ToList()
+                Locations = new Repository<Location>().FindAll().OrderBy(l => l.City).ToList(),
+                Pages = new Repository<Post>().FindAll().Where(p => p.postType == (int)Post.PostType.Page).ToList()
             };
             
-            return PartialView(listOfLocations);
+            return PartialView(MenuModel);
+        }
+
+        public ActionResult Calendar()
+        {
+            var calendar = _eventRepo.FindAll().Include(p => p.Post).ToList();
+
+            return PartialView(calendar);
         }
     }
 }

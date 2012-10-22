@@ -8,26 +8,41 @@
 <h2>Lägg till Kurstillfälle</h2>
 @using (Html.BeginForm("SaveEvent", "Course", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
+    @Html.HiddenFor(p => p.ID)
     @Html.HiddenFor(p => p.PostID)
+    @Html.HiddenFor(p => p.Created)
+    @Html.ValidationMessageFor(p => p.Title)
     @Html.LabelFor(p => p.Title, "Titel")
     @Html.TextBoxFor(p => p.Title)
 
+    @Html.ValidationMessageFor(p => p.Teatcher)
     @Html.LabelFor(p => p.Teatcher, "Lärare")
     @Html.TextBoxFor(p => p.Teatcher)
 
+    @Html.ValidationMessageFor(p => p.City)
+    @Html.LabelFor(p => p.City, "Stad")
+    @Html.TextBoxFor(p => p.City)
+     <div class="editor-field">
+        @Html.LabelFor(p => p.Body, "Information")
+        @Html.TextAreaFor(p => p.Body)
+    </div>
+
     @Html.LabelFor(p => p.StartDate, "Start Datum")
-    @Html.TextBoxFor(p => p.StartDate, new { @class = "datepicker" })
+    @Html.TextBoxFor(m => m.StartDate, new { @class = "datepicker" })
 
     @Html.LabelFor(p => p.EndDate, "Slut Datum")
-    @Html.TextBoxFor(p => p.EndDate, new { @class = "datepicker" })
+    @Html.TextBoxFor(m => m.EndDate, new { @class = "datepicker" })
 
 
     <script type="text/javascript">
-        $(function () {
+        $(document).ready(function () {
             $(".datepicker").datepicker({
-            changeMonth: true
-            });
-        });
+                changeMonth: true,
+                dateFormat: "dd/mm/yy"
+         });
+    });
+
+    
     </script>
     <input type="submit" value="Save" class="success button" />
     @Html.ActionLink("Cancel and return to List", "Index")

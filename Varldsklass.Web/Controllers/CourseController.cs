@@ -42,29 +42,33 @@ namespace Varldsklass.Web.Controllers
             return View(posts.Where(p => p.ID == id).Include(p => p.Events).FirstOrDefault());
         }
 
+
         public ActionResult EditCourse(int id = 0)
         {
             if (id != 0)
             {
-                AddCourseViewModel vm = new AddCourseViewModel();
-                vm.Post = _postRepo.FindByID(id);
-                vm.Categories = _categoryRepo.FindAll().ToList();
-                return View("AddCourse", vm);
+                AddCourseViewModel vmCategory = new AddCourseViewModel();
+                vmCategory.Post = _postRepo.FindByID(id);
+                vmCategory.Categories = vmCategory.Post.Category.ToList();
+                ViewData["events"] = new SelectList(_categoryRepo.FindAll().ToList(), "ID", "Name");
+                return View("AddCourse", vmCategory);
             }
             else
             {
-                AddCourseViewModel vm = new AddCourseViewModel();
-                vm.Post = new Post();
-                vm.Post.postType = (int)Post.PostType.Course;
-                vm.Categories = _categoryRepo.FindAll().ToList();
-                return View("AddCourse", vm);
+                AddCourseViewModel vmCategory = new AddCourseViewModel();
+
+                vmCategory.Post = new Post();
+                vmCategory.Post.Created = DateTime.Now;
+                vmCategory.Post.postType = (int)Post.PostType.Course;
+                ViewData["events"] = new SelectList(_categoryRepo.FindAll().ToList(), "ID", "Name");
+                return View("AddCourse", vmCategory);
             }
         }
 
         public ActionResult CourseList()
         {
-            List<Post> posts = _postRepo.FindAll().Where(p => p.postType == (int)Post.PostType.Course).ToList();
-            return View(posts);
+            List<Category> categorys = _categoryRepo.FindAll().Include(p => p.Posts).ToList();
+            return View(categorys);
         }
 
         public ActionResult CourseInfo(int id)
@@ -74,11 +78,23 @@ namespace Varldsklass.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult SaveCourse(Post post)
+        public ActionResult SaveCourse(Post post, FormCollection postedForm)
         {
+            
             if (ModelState.IsValid)
             {
-                 
+                var listOfCategoryIDs = postedForm["name"];
+
+                var arrayOfCategoryIDs = listOfCategoryIDs.Split(',');
+                 if (arrayOfCategoryIDs.Count() > 0){
+                     post.Category = new List<Category>();
+                     foreach (var array in arrayOfCategoryIDs) {
+                         int x = Convert.ToInt32(array);
+                         var cat = _categoryRepo.FindByID(x);
+                         cat.Posts.Add(post);
+                         _categoryRepo.Save(cat);
+                     }
+                 }
                 _postRepo.Save(post);
                 // add a message to the viewbag
                 TempData["message"] = string.Format("{0} has been saved", post.Title);
@@ -87,8 +103,14 @@ namespace Varldsklass.Web.Controllers
             }
             else
             {
+                AddCourseViewModel vmCategory = new AddCourseViewModel();
+                vmCategory.Post = post;
+                if (post.Category != null) {
+                    vmCategory.Categories = post.Category.ToList();
+                }
+                ViewData["events"] = new SelectList(_categoryRepo.FindAll().ToList(), "ID", "Name");
                 // there is something wrong with the data values
-                return View(post);
+                return View("AddCourse", vmCategory);
             }
         }
 
@@ -102,11 +124,21 @@ namespace Varldsklass.Web.Controllers
         /*-----------------------------------------
         * Event Controller 
         * -------------------------------------*/
-        public ActionResult AddEvent(int id)
+        public ActionResult AddEvent(int id = 0)
         {
+            ModelState.Clear();
             Event Event = new Event();
             Event.PostID = id;
+            Event.Created = DateTime.Now;
+            Event.StartDate = DateTime.Now;
+            Event.EndDate = DateTime.Now;
+            return View("AddEvent", Event);
+        }
 
+        public ActionResult EditEvent(int id)
+        {
+
+            var Event = _eventRepo.FindByID(id);
             return View("AddEvent", Event);
         }
 
@@ -124,14 +156,14 @@ namespace Varldsklass.Web.Controllers
             else
             {
                 // there is something wrong with the data values
-                return View(Event);
+                return View("AddEvent", Event);
             }
         }
 
-        public ActionResult DeleteEvent(int id)
+        public ActionResult DeleteEvent(int id, int course)
         {
             _eventRepo.Delete(_eventRepo.FindByID(id));
-            return RedirectToAction("Index");
+            return RedirectToAction("Course", new { id = course });
         }
 
 
@@ -143,7 +175,9 @@ namespace Varldsklass.Web.Controllers
             if (id != 0) {
                 return View("AddCategory", _categoryRepo.FindByID(id));
             } else {
-                return View("AddCategory", new Category());
+                Category category = new Category();
+                category.Created = DateTime.Now;
+                return View("AddCategory", category);
             }
         }
 
@@ -161,7 +195,7 @@ namespace Varldsklass.Web.Controllers
             else
             {
                 // there is something wrong with the data values
-                return View(Category);
+                return View("AddCategory", Category);
             }
         }
 
