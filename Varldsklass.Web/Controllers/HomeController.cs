@@ -127,6 +127,7 @@ namespace Varldsklass.Web.Controllers
         {
             MenuViewModel MenuModel = new MenuViewModel()
             {
+                Categories = new Repository<Category>().FindAll().ToList(), 
                 Locations = new Repository<Location>().FindAll().OrderBy(l => l.City).ToList(),
                 Pages = new Repository<Post>().FindAll().Where(p => p.postType == (int)Post.PostType.Page).ToList()
             };

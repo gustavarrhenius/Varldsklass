@@ -4,7 +4,17 @@
     <ul id="menu" class="nav-bar">
         <li>@Html.ActionLink("Hem", "Index", "Home")</li>
         <li>@Html.ActionLink("Om oss", "About", "Home")</li>
-        <li>@Html.ActionLink("Utbildningar/Föreläsningar", "Index", "Post")</li>
+        <li class="has-flyout">
+            @Html.ActionLink("Utbildningar", "CategoryList", "Post")
+            <a href="#" class="flyout-toggle"><span> </span></a>
+            <ul class="flyout">
+                    <li>@Html.ActionLink("Visa Alla", "CategoryList", "Post")</li>
+                    @foreach (var category in Model.Categories)
+                    { 
+                        <li>@Html.ActionLink(category.Name, "CourseList", "Course", new {id = category.ID }, null)</li>
+                    }
+            </ul>     
+        </li>
         @foreach (var page in Model.Pages) {
             <li>@Html.ActionLink(page.Title, "Page", "Post", new { id = page.ID}, null)</li>
         }   

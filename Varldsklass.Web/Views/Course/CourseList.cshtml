@@ -1,25 +1,15 @@
-@model IEnumerable<Varldsklass.Domain.Entities.Category>
-       
-
+@model Varldsklass.Domain.Entities.Category
 @{
-    ViewBag.Title = "Admin: Lista kurser";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Utbildningar";
 }
-
 
 <h2>Lista Kurser</h2>
-<table>
-@foreach (var category in Model) {
-    <tr>
-        <th>@category.Name</th>
-    </tr>
-    <tr>
-        @foreach (var post in category.Posts)
-        {
-           <td>@post.Title</td> 
-        }
-    </tr>
+@Model.Name
+<ul>
+@foreach (var post in Model.Posts)
+{
+    <li>@post.Title</li>
 }
-</table>
+</ul>
 
 

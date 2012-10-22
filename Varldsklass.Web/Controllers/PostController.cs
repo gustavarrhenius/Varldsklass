@@ -37,6 +37,14 @@ namespace Varldsklass.Web.Controllers
             return View(posts);
         }
 
+        public ActionResult CategoryList()
+        {
+
+            List<Category> categories = _categoryRepo.FindAll().ToList();
+
+            return View(categories);
+        }
+
         public ActionResult CourseInfo(int id)
         {
             var posts = _postRepo.FindAll().Where(p => p.ID == id).Include(p => p.Events).FirstOrDefault();

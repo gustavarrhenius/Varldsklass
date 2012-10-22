@@ -9,6 +9,7 @@ namespace Varldsklass.Web.ViewModels
     public class MenuViewModel
     {
         public IEnumerable<Location> Locations { get; set; }
+        public IEnumerable<Category> Categories { get; set; }
         public IEnumerable<Post> Pages { get; set; }
     }
 }
