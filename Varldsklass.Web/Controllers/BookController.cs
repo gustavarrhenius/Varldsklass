@@ -24,6 +24,7 @@ namespace Varldsklass.Web.Controllers
             _accountRepo = accountRepo;
         }
 
+        [Authorize]
         public ActionResult Index(int id = 0)
         {
             BookViewModel model = new BookViewModel();
@@ -31,6 +32,7 @@ namespace Varldsklass.Web.Controllers
             return View(model);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Save(BookViewModel model)
         {
@@ -39,6 +41,12 @@ namespace Varldsklass.Web.Controllers
 
             for (int i = 0; i < model.Attendants.Count; i++)
             {
+                if (model.Attendants[i].Email.Trim() == "" && model.Attendants[i].Name.Trim() == "")
+                {
+                    model.Attendants[i] = null;
+                    continue;
+                }
+
                 model.Attendants[i].BookerID = booker.ID;
                 model.Attendants[i].EventID = model.Event.ID;
             }
@@ -65,6 +73,7 @@ namespace Varldsklass.Web.Controllers
             return RedirectToAction("Success");
         }
 
+        [Authorize]
         public ActionResult List()
         {
             List<Attendant> attendants = _attendantRepo.FindAll().ToList();
