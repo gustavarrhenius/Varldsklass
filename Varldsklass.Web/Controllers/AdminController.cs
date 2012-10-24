@@ -143,5 +143,10 @@ namespace Varldsklass.Web.Controllers
         {
            return PartialView();
         }
+
+        public ActionResult ListAttendants()
+        {
+            return View();
+        }
     }
 }
