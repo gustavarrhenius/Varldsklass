@@ -1,3 +1,75 @@
-﻿.fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
+﻿@font-face {
+    font-family: 'PTSansCaptionBold';
+    src: url('../fonts/PTC75F-webfont.eot');
+    src: url('../fonts/PTC75F-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/PTC75F-webfont.woff') format('woff'),
+         url('../fonts/PTC75F-webfont.ttf') format('truetype'),
+         url('../fonts/PTC75F-webfont.svg#PTSansCaptionBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'museo_slab_500regular';
+    src: url('../fonts/museo_slab_500-webfont.eot');
+    src: url('../fonts/museo_slab_500-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/museo_slab_500-webfont.woff') format('woff'),
+         url('../fonts/museo_slab_500-webfont.ttf') format('truetype'),
+         url('../fonts/museo_slab_500-webfont.svg#museo_slab_500regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}@font-face {
+    font-family: 'PTSansRegular';
+    src: url('../fonts/PTS55F-webfont.eot');
+    src: url('../fonts/PTS55F-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/PTS55F-webfont.woff') format('woff'),
+         url('../fonts/PTS55F-webfont.ttf') format('truetype'),
+         url('../fonts/PTS55F-webfont.svg#PTSansRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+html, body {
+	font-family: PTSansRegular, "helvetica neue", helvetica, arial, sans-serif;
+}
+.fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
   width: 100% !important;
+}
+.capitalize {
+	text-transform: uppercase;
+}
+#menu {
+	font-family: PTSansRegular, "helvetica neue", helvetica, arial, sans-serif;
+	text-transform: uppercase;
+	margin: 47px 0 0 0;
+}
+aside {
+	margin-top: 14px;
+}
+.calendar {
+	margin: 0 0 7px 0;
+	padding: 0 0 7px 0;
+	width: 100%;
+	border-bottom: 1px solid #ccc;
+}
+.calendar li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.calendar-date {
+	font-family: PTSansCaptionBold, "helvetica neue", helvetica, arial, sans-serif;
+	font-weight: bold;
+}
+footer {
+	background: #0e3f64 url('../foundation/images/footer-grad.png') repeat-x left top;
+	border-top: 1px solid #03233b !important;
+	box-shadow: 0px -1px 5px #03233b;
+}
+footer p {
+	font-family: museo_slab_500regular, "helvetica neue", helvetica, arial, sans-serif;
+}
+footer .footer-address p {
+	font-size: 16px;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: PTSansCaptionBold, "helvetica neue", helvetica, arial, sans-serif;
 }

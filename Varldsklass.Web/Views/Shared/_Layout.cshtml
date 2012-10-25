@@ -64,11 +64,11 @@
 
                 @if (ViewBag.Utbildning == null && ViewBag.Kategori == null)
                 {
-                <section class="row">
+                <section class="row collapse">
                     @{Html.RenderAction("Calendar", "Home");}
                 </section>
 
-                <section class="row">
+                <section class="row collapse">
                     <h4>Facebook</h4>
                     <div class="fb-like-box" data-href="http://www.facebook.com/varldsklass?fref=ts" data-show-faces="true" data-border-color="#fff" data-stream="false" data-header="false"></div>
                 </section>
@@ -82,10 +82,19 @@
             </div>
         </section>
         <footer id="footer">
-            <div class="row">
-                <p>Allt material på denna webbsida är skyddat enligt lagen om upphovsrätt.</p>
-                <p>VÄRLDSKLASS.COM - Lövåsgatan 11 - 511 54 Kinna - Tel: 0320 - 109 39 - 073 - 551 50 96 - BG 5400-9907</p>
-            </div>
+            <section class="row">
+                <section class="three columns">
+                    <img src="../../Content/foundation/images/footer-logo.png" alt="Världsklass.com" />
+                </section>
+
+                <section class="four columns footer-address">
+                    <p>VÄRLDSKLASS.COM<br />Lövåsgatan 11<br />511 54 Kinna</p><p>Tel: 0320 - 109 39<br />Boka: 073 - 551 50 96</p><p>BG 5400-9907</p>
+                </section>
+                
+                <section class="five columns">
+                    <p>Allt material på denna webbsida är skyddat enligt lagen om upphovsrätt.</p>
+                </section>
+            </section>
         </footer>
     </div>
 
