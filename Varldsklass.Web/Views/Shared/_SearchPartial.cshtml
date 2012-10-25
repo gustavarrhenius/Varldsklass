@@ -1,5 +1,10 @@
 ﻿@using (Html.BeginForm("Search", "Home", FormMethod.Get))
 {
+<div class="eight mobile-three columns">
     @Html.TextBox("search")
-    <input type="submit" value="Sök" />
+</div>
+    
+<div class="four mobile-one columns">
+    <input type="submit" value="Sök" class="postfix button tiny"/>
+ </div>
 }

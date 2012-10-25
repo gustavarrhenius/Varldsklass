@@ -39,7 +39,6 @@
                     <div class="row">
                         <div id="logindisplay" class="seven columns push-five">
                         @Html.Partial("_LogOnPartial")
-                        @Html.Partial("_SearchPartial")
                         </div>
                     </div>
                    <div class="row">
@@ -59,6 +58,10 @@
                     @RenderBody()
                 </div>
                 <aside class="four columns">
+                <div class="row collapse">
+                    @Html.Partial("_SearchPartial")
+                </div>
+
                 @if (ViewBag.Utbildning == null && ViewBag.Kategori == null)
                 {
                 <section class="row">

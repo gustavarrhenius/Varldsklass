@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Varldsklass.Domain.Entities.SearchResult>
+﻿@using Varldsklass.Domain.Helpers
+@model IEnumerable<Varldsklass.Domain.Entities.SearchResult>
           
 @{
     ViewBag.Title = "Search";
@@ -9,12 +10,11 @@
      {
      
      <article>
-        <h3>@searchObject.Title</h3>
+      <a href="@searchObject.Url"> <h3>@searchObject.Title</h3> </a>
         @if (searchObject.StartDate != DateTime.MinValue && searchObject.EndDate != DateTime.MinValue)
             {
-            <p>@searchObject.StartDate - @searchObject.EndDate</p>
+            <p>@Html.DateFormat(searchObject.StartDate) - @Html.DateFormat(searchObject.EndDate)</p>
             }
         <p>@searchObject.Excerpt</p>
      </article>
-     
      }
