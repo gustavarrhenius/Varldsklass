@@ -37,14 +37,6 @@ namespace Varldsklass.Web.Controllers
             return View(posts);
         }
 
-        public ActionResult CategoryList()
-        {
-
-            List<Category> categories = _categoryRepo.FindAll().ToList();
-
-            return View(categories);
-        }
-
         public ActionResult CourseInfo(int id)
         {
             var posts = _postRepo.FindAll().Where(p => p.ID == id).Include(p => p.Events).FirstOrDefault();
@@ -63,6 +55,24 @@ namespace Varldsklass.Web.Controllers
             var posts = _postRepo.FindAll().Where(p => p.postType == (int)Post.PostType.Page).ToList();
 
             return View(posts);
+        }
+
+        public ActionResult Sidebar(int id, string title)
+        {
+            SideBarViewModel sb = new SideBarViewModel();
+            if (title == "kategori") {
+                if (id == 0)
+                {
+                    sb.Categories = _categoryRepo.FindAll().ToList();
+                }
+                else
+                {
+                    sb.Category = _categoryRepo.FindAll().Where(c => c.ID == id).Include(p => p.Posts).FirstOrDefault();
+                }
+            } else {
+                sb.Post = _postRepo.FindAll().Where(c => c.ID == id).Include(e => e.Events).FirstOrDefault();
+            }
+            return PartialView("_SidebarPartialView", sb);
         }
 
         public ActionResult AddPage(int id = 0)

@@ -65,16 +65,18 @@ namespace Varldsklass.Web.Controllers
             }
         }
 
-        public ActionResult CourseList(int id)
-        {
-            Category categories = _categoryRepo.FindAll().Where(c => c.ID == id).Include(p => p.Posts).FirstOrDefault();
-            return View(categories);
-        }
-
         public ActionResult CourseInfo(int id)
         {
             var info = _postRepo.FindByID(id);
             return View(info);
+        }
+
+        /* ---- Front View ---- */
+        public ActionResult CourseSingle(int id)
+        {
+            var posts = _postRepo.FindAll().Where(p => p.ID == id).Include(p => p.Events).FirstOrDefault();
+
+            return View(posts);
         }
 
         [HttpPost]
@@ -166,6 +168,14 @@ namespace Varldsklass.Web.Controllers
             return RedirectToAction("Course", new { id = course });
         }
 
+        /* ---- Front View ---- */
+        public ActionResult EventSingle(int id)
+        {
+            var Event = _eventRepo.FindAll().Where(p => p.ID == id).Include(p => p.Post).FirstOrDefault();
+
+            return View(Event);
+        }
+
 
         /*-----------------------------------------
         * Category Controller 
@@ -203,6 +213,21 @@ namespace Varldsklass.Web.Controllers
         {
             _categoryRepo.Delete(_categoryRepo.FindByID(id));
             return RedirectToAction("Index");
+        }
+
+        /* ---- Front View ---- */
+        public ActionResult Category(int id)
+        {
+            Category categories = _categoryRepo.FindAll().Where(c => c.ID == id).Include(p => p.Posts).FirstOrDefault();
+            return View(categories);
+        }
+
+        /* ---- Front View ---- */
+        public ActionResult CategoryList()
+        {
+            List<Category> categories = _categoryRepo.FindAll().ToList();
+
+            return View(categories);
         }
 
     }

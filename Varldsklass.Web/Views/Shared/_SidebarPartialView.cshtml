@@ -1,0 +1,31 @@
+﻿@model Varldsklass.Web.ViewModels.SideBarViewModel
+
+    @if (Model.Categories != null) {
+       <h3>Kategorier</h3>
+       <ul>
+            @foreach(var category in Model.Categories) {
+                <li>@Html.ActionLink(category.Name, "Category", "Course", new { id = category.ID }, null)</li>
+            }
+        </ul>
+    } 
+    @if (Model.Category != null)
+    {
+    <h3>Kurser</h3>
+    <ul>
+        @foreach (var post in Model.Category.Posts)
+        {
+        <li>@Html.ActionLink(post.Title, "CourseSingle", "Course", new { id = post.ID }, null)</li>
+        }
+    </ul>
+    } 
+   
+    @if (Model.Post != null)
+    {
+    <h3>Kurstillfällen</h3>
+    <ul>
+        @foreach (var Event in Model.Post.Events)
+        {
+        <li>@Html.ActionLink(Event.Title, "EventSingle", "Course", new { id = Event.ID }, null)</li>
+        }
+    </ul>
+    }

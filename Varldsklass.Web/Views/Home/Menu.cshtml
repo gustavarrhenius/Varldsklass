@@ -5,13 +5,13 @@
         <li>@Html.ActionLink("Hem", "Index", "Home")</li>
         <li>@Html.ActionLink("Om oss", "About", "Home")</li>
         <li class="has-flyout">
-            @Html.ActionLink("Utbildningar", "CategoryList", "Post")
+            @Html.ActionLink("Utbildningar", "CategoryList", "Course")
             <a href="#" class="flyout-toggle"><span> </span></a>
             <ul class="flyout">
-                    <li>@Html.ActionLink("Visa Alla", "CategoryList", "Post")</li>
+                    <li>@Html.ActionLink("Visa Alla", "CategoryList", "Course")</li>
                     @foreach (var category in Model.Categories)
                     { 
-                        <li>@Html.ActionLink(category.Name, "CourseList", "Course", new {id = category.ID }, null)</li>
+                        <li>@Html.ActionLink(category.Name, "Category", "Course", new { id = category.ID }, null)</li>
                     }
             </ul>     
         </li>
