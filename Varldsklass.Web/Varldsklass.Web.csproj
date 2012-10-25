@@ -287,6 +287,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\image-uploads\" />
     <Folder Include="Scripts\tinymce\plugins\" />
   </ItemGroup>
   <ItemGroup>
@@ -366,6 +367,7 @@
     <Content Include="Views\Shared\_SidebarPartialView.cshtml" />
     <Content Include="Views\Course\Category.cshtml" />
     <Content Include="Views\Course\EventSingle.cshtml" />
+    <Content Include="Views\Admin\FileUpload.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
