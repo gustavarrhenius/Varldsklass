@@ -17,6 +17,8 @@ namespace Varldsklass.Domain.Entities
         public DateTime CreatedDate { get; set; }
         public bool Administrator { get; set; }
 
+        public virtual ICollection<Attendant> Attendants { get; set; }
+
         public string FullName
         {
             get

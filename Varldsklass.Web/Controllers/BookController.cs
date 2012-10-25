@@ -47,6 +47,9 @@ namespace Varldsklass.Web.Controllers
                     model.Attendants[i].BookerID = booker.ID;
                     model.Attendants[i].EventID = model.Event.ID;
 
+                    //model.Attendants[i].Event = _eventRepo.FindByID(model.Event.ID);
+                    //model.Attendants[i].Booker = _accountRepo.FindByID(booker.ID);
+
                     ValidAttendants.Add(model.Attendants[i]);
                 }
             }

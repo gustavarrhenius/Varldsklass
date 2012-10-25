@@ -19,8 +19,12 @@ namespace Varldsklass.Domain.Entities
 
         [Required]
         public int EventID { get; set; }
-
         [Required]
         public int BookerID { get; set; }
+
+        [Required]
+        public virtual Event Event { get; set; }
+        [Required]
+        public virtual Account Booker { get; set; }
     }
 }
