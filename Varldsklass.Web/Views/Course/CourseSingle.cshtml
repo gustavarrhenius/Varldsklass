@@ -1,0 +1,9 @@
+@model Varldsklass.Domain.Entities.Post
+@{
+    ViewBag.Title = "Utbildning - " + Model.Title;
+    ViewBag.Utbildning = Model.ID;
+}
+<article>
+<h2>@Model.Title</h2>
+<div class="content">@Model.Body</div>
+</article>

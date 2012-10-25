@@ -58,9 +58,9 @@
                 <div class="eight columns">
                     @RenderBody()
                 </div>
-           
-       
-            <aside class="four columns">
+                <aside class="four columns">
+                @if (ViewBag.Utbildning == null && ViewBag.Kategori == null)
+                {
                 <section class="row">
                     @{Html.RenderAction("Calendar", "Home");}
                 </section>
@@ -69,7 +69,13 @@
                     <h4>Facebook</h4>
                     <div class="fb-like-box" data-href="http://www.facebook.com/varldsklass?fref=ts" data-show-faces="true" data-border-color="#fff" data-stream="false" data-header="false"></div>
                 </section>
-            </aside>
+                }  @if (ViewBag.Kategori != null) {
+                     Html.RenderAction("Sidebar", "Post", new { id = ViewBag.Kategori, title = "kategori" });
+                }  @if (ViewBag.Utbildning != null) {
+                     Html.RenderAction("Sidebar", "Post", new { id = ViewBag.Utbildning, title = "utbildning" });
+                }
+                </aside>
+            
             </div>
         </section>
         <footer id="footer">
