@@ -30,16 +30,22 @@
 html, body {
 	font-family: PTSansRegular, "helvetica neue", helvetica, arial, sans-serif;
 }
+img {
+	border: 0;
+}
 .fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
   width: 100% !important;
 }
 .capitalize {
 	text-transform: uppercase;
 }
+#logindisplay {
+	height: 70px;
+}
 #menu {
 	font-family: PTSansRegular, "helvetica neue", helvetica, arial, sans-serif;
 	text-transform: uppercase;
-	margin: 47px 0 0 0;
+	margin: 0;
 }
 aside {
 	margin-top: 14px;
@@ -58,6 +64,7 @@ aside {
 .calendar-date {
 	font-family: PTSansCaptionBold, "helvetica neue", helvetica, arial, sans-serif;
 	font-weight: bold;
+	text-transform: lowercase;
 }
 footer {
 	background: #0e3f64 url('../foundation/images/footer-grad.png') repeat-x left top;
