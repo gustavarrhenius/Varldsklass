@@ -42,6 +42,9 @@ img {
 #logindisplay {
 	height: 70px;
 }
+header {
+	height: auto;
+}
 #menu {
 	font-family: PTSansRegular, "helvetica neue", helvetica, arial, sans-serif;
 	text-transform: uppercase;
