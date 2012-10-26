@@ -67,6 +67,7 @@ namespace Varldsklass.Web.Controllers
                 }
                 else
                 {
+                    sb.Categories = _categoryRepo.FindAll().ToList();
                     sb.Category = _categoryRepo.FindAll().Where(c => c.ID == id).Include(p => p.Posts).FirstOrDefault();
                 }
             } else {

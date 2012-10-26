@@ -1,21 +1,44 @@
 ﻿@model Varldsklass.Web.ViewModels.SideBarViewModel
+@{
+    string current = "";
+}
+    @if (Model.Categories != null && Model.Category == null)
+    {
 
-    @if (Model.Categories != null) {
        <h3>Kategorier</h3>
        <ul>
-            @foreach(var category in Model.Categories) {
+            @foreach (var category in Model.Categories)
+            {
+                
                 <li>@Html.ActionLink(category.Name, "Category", "Course", new { id = category.ID }, null)</li>
             }
         </ul>
     } 
     @if (Model.Category != null)
     {
-    <h3>Kurser</h3>
+    <h3>Kategorier</h3>
     <ul>
-        @foreach (var post in Model.Category.Posts)
-        {
-        <li>@Html.ActionLink(post.Title, "CourseSingle", "Course", new { id = post.ID }, null)</li>
-        }
+         @foreach (var category in Model.Categories)
+         {
+                if (Model.Category.ID == category.ID)
+                {
+                    current = "current";
+                }
+                <li>@Html.ActionLink(category.Name, "Category", "Course", new { id = category.ID }, new { @class = current })
+                    
+                    @if (Model.Category.ID == category.ID) {
+                        current = "";
+                        <ul> 
+                            @foreach (var post in Model.Category.Posts)
+                            {
+                            <li>@Html.ActionLink(post.Title, "CourseSingle", "Course", new { id = post.ID }, null)</li>
+                            }
+                        </ul>
+                    }
+                </li>
+                
+         }
+        
     </ul>
     } 
    
