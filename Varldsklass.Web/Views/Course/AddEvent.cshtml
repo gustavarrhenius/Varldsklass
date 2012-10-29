@@ -28,17 +28,25 @@
     </div>
 
     @Html.LabelFor(p => p.StartDate, "Start Datum")
-    @Html.TextBoxFor(m => m.StartDate, new { @class = "datepicker" })
+    @Html.TextBoxFor(m => m.StartDate, new { @class = "datepicker startdate" })
 
     @Html.LabelFor(p => p.EndDate, "Slut Datum")
-    @Html.TextBoxFor(m => m.EndDate, new { @class = "datepicker" })
+    @Html.TextBoxFor(m => m.EndDate, new { @class = "datepicker enddate" })
 
 
     <script type="text/javascript">
         $(document).ready(function () {
+            if ($(".startdate").val() != '') {
+                var arrDate = $('.startdate').val().split(" ");
+                $('.startdate').val(arrDate[0]);
+            }
+            if ($(".enddate").val() != '') {
+                var arrDate = $('.enddate').val().split(" ");
+                $('.enddate').val(arrDate[0]);
+            }
             $(".datepicker").datepicker({
                 changeMonth: true,
-                dateFormat: "dd/mm/yy"
+                dateFormat: "dd.m.yy"
          });
     });
 

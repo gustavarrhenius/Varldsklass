@@ -6,6 +6,7 @@ using Varldsklass.Domain.Entities.Abstract;
 using System.ComponentModel.DataAnnotations;
 using System.Collections;
 using System.Web.Mvc;
+using System.ComponentModel;
 
 namespace Varldsklass.Domain.Entities
     {
@@ -22,9 +23,13 @@ namespace Varldsklass.Domain.Entities
         [AllowHtml]
         public string Body { get; set; }
         public DateTime Created { get; set; }
-        [Required]
+
+        [DisplayName("Start Date")]
+        [Required(ErrorMessage = "Śtartdatum är obligatoriskt")]
         public DateTime StartDate { get; set; }
-        [Required]
+
+        [DisplayName("End Date")]
+        [Required(ErrorMessage = "Slutdatum är obligatoriskt")]
         public DateTime EndDate { get; set; }
 
         public int PostID { get; set; }

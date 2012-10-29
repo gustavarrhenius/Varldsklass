@@ -4,15 +4,16 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
  }
 
-<p>@Html.ActionLink("Lägg till Kategori", "EditCategory", null, new { @class = "button" })</p>
-<p>@Html.ActionLink("Lägg till kurs", "EditCourse", null, new { @class = "button" })</p>
+
+
 
 <h3>Kategorier</h3>
+<p>@Html.ActionLink("Lägg till Kategori", "EditCategory", null, new { @class = "button" })</p>
 <table>
     @foreach (var category in Model.Categories)
     {
         <tr>
-            <td>@Html.Label(category.Name)</td>
+            <td>@Html.ActionLink(category.Name, "EditCategory", "Course", new { id = category.ID }, null)</td>
             <td>@Html.ActionLink("Ändra", "EditCategory", new { id = category.ID} , new { @class = "tiny success button" })</td>
             <td>@Html.ActionLink("Ta Bort", "DeleteCategory", new { id = category.ID }, new { @class = "tiny alert button" })</td>
         </tr>
@@ -20,6 +21,7 @@
 </table>
 
 <h3>Kurser</h3>
+<p>@Html.ActionLink("Lägg till kurs", "EditCourse", null, new { @class = "button" })</p>
 <table>
     @foreach (var post in Model.Posts)
     {
