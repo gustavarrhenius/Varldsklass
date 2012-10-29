@@ -1,0 +1,58 @@
+﻿@model Varldsklass.Web.ViewModels.BookViewModel
+
+@{
+    ViewBag.Title = "Boka";
+}
+
+<h2>@Model.Event.Title</h2>
+@Model.Event.Post.Body
+
+@using (Html.BeginForm("Save", "Book", FormMethod.Post, new { id = "book" }))
+{
+    @Html.HiddenFor(model => model.Event.ID)
+    <div id="attendants">
+        <div class="name-email-pair">
+            <div class="six columns">
+                @Html.LabelFor(model => model.Attendants[0].Name)
+                @Html.TextBoxFor(model => model.Attendants[0].Name, new { @class = "name" } )
+            </div>
+            <div class="six columns">
+                @Html.LabelFor(model => model.Attendants[0].Email)
+                @Html.TextBoxFor(model => model.Attendants[0].Email, new { @class = "email" } )
+            </div>
+        </div>
+    </div>
+    <div class="label-checkbox">
+        @Html.CheckBoxFor(model => model.BookerAttends)
+        @Html.LabelFor(model => model.BookerAttends)
+    </div>
+    <input class="secondary button" id="more-attendants" type="button" value="Fler" />
+    <input class="button"  type="submit" value="Boka" />
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var attendantForm = $('#attendants').html();
+        var fieldNumber = 1;
+        $('#more-attendants').click(function () {
+            var newAttendant = attendantForm.replace(/0/g, fieldNumber);
+            $('#attendants').append(newAttendant);
+            fieldNumber++;
+        });
+
+        $('#book').submit(function (e) {
+            $('.name-email-pair').each(function (i, element) {
+                var name = $(this).find('.name').val();
+                var email = $(this).find('.email').val();
+                if ((name != "" && name != undefined) && (email == undefined || email == "")) {
+                    alert("Du måste ange en e-post-adress för " + name);
+                    e.preventDefault();
+                }
+                if ((name == undefined || name == "") && (email != "" && email != undefined)) {
+                    alert("Du måste ange ett namn för " + email);
+                    e.preventDefault();
+                }
+            });
+        });
+    });
+</script>

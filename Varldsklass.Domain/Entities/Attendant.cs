@@ -19,7 +19,6 @@ namespace Varldsklass.Domain.Entities
 
         [Required]
         public int EventID { get; set; }
-
         [Required]
         public int BookerID { get; set; }
     }

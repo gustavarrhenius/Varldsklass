@@ -345,7 +345,7 @@
     <Content Include="Views\Admin\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Book\Index.cshtml" />
+    <Content Include="Views\Book\Event.cshtml" />
     <Content Include="Views\Post\AddPage.cshtml" />
   </ItemGroup>
   <ItemGroup>

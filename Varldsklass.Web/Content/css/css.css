@@ -36,11 +36,19 @@ img {
 .fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
   width: 100% !important;
 }
+
+.label-checkbox label, .label-checkbox input[type=checkbox] {
+    display: inline-block;
+}
+
 .capitalize {
 	text-transform: uppercase;
 }
 #logindisplay {
 	height: 70px;
+}
+header {
+	height: auto;
 }
 #menu {
 	font-family: PTSansRegular, "helvetica neue", helvetica, arial, sans-serif;
