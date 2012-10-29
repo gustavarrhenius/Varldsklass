@@ -75,10 +75,24 @@ namespace Varldsklass.Web.Controllers
         }
 
         [Authorize]
-        public ActionResult List()
+        public ActionResult List(int id = 0)
         {
-            List<Attendant> attendants = _attendantRepo.FindAll().ToList();
-            return View(attendants);
+            Dictionary<string, List<Attendant>> eventAttendants = new Dictionary<string, List<Attendant>>();
+            Event thisEvent = _eventRepo.FindByID(id);
+            foreach( var e in _eventRepo.FindAll() ) {
+                List<Attendant> attendants = new List<Attendant>();
+                var userAccount = _accountRepo.FindAll().Where(a => a.Email == User.Identity.Name).FirstOrDefault();
+                if (userAccount == null)
+                {
+                    continue;
+                }
+                var userId = userAccount.ID;
+                var eventTitle = e.Title;
+                List<Attendant> attendantList = _attendantRepo.FindAll().Where(a => a.BookerID == userId).ToList();
+                eventAttendants.Add(eventTitle, attendantList);
+            }
+
+            return View(eventAttendants);
         }
     }
 }
