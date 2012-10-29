@@ -25,7 +25,7 @@ namespace Varldsklass.Web.Controllers
         }
 
         [Authorize]
-        public ActionResult Index(int id = 0)
+        public ActionResult Event(int id = 0)
         {
             BookViewModel model = new BookViewModel();
             model.Event = _eventRepo.FindByID(id);
