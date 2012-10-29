@@ -13,9 +13,7 @@ namespace Varldsklass.Domain.Helpers
         {
             string formatDate = date.ToString("dddd, dd MMMM, yyyy", CultureInfo.CreateSpecificCulture("sv-SE"));
 
-            string capitalize = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(formatDate);
-
-            return capitalize;
+            return formatDate;
         }
     }
 }

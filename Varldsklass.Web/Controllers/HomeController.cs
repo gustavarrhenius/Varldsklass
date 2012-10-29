@@ -68,6 +68,7 @@ namespace Varldsklass.Web.Controllers
                     SearchResult searchTest = new SearchResult();
                     searchTest.Title = post.Title;
                     searchTest.Excerpt = post.Body;
+                    searchTest.Url = "/Course/CourseSingle/" + post.ID; 
                     searchResult.Add(searchTest);
                     }
                 foreach (var Event in events)
@@ -77,6 +78,7 @@ namespace Varldsklass.Web.Controllers
                     searchTest.Excerpt = Event.Body;
                     searchTest.StartDate = Event.StartDate;
                     searchTest.EndDate = Event.EndDate;
+                    searchTest.Url = "/Course/EventSingle/" + Event.ID; 
                     searchResult.Add(searchTest);
                     }
             }

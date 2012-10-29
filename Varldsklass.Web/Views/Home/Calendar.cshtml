@@ -4,12 +4,39 @@
 
     @foreach (var item in Model)
     {
-        <ul>
+        <ul class="calendar">
             <li>
                 <span class="calendar-date">@Html.DateFormat(item.StartDate)</span>
             </li>
             <li>
-                <span class="calendar-course-name">@item.Post.Title:</span> @item.Title, @item.City
+                <span class="capitalize">@item.Post.Title:</span> @item.Title, @item.City
             </li>
         </ul>
     }
+        <!-- NEDANFÖR SKALL BORT! ENDAST TEST! -->
+        <ul class="calendar">
+            <li>
+                <span class="calendar-date">Måndag, 12 november, 2012</span>
+            </li>
+            <li>
+                <span class="capitalize">Ställningsbyggare:</span> Yrkesbevis, Borås
+            </li>
+        </ul>
+
+        <ul class="calendar">
+            <li>
+                <span class="calendar-date">Onsdag, 14 november, 2012</span>
+            </li>
+            <li>
+                <span class="capitalize">Hjärt och lungräddning:</span> Grundkurs, Stockholm
+            </li>
+        </ul>
+
+        <ul class="calendar">
+            <li>
+                <span class="calendar-date">Tisdag, 24 november, 2012</span>
+            </li>
+            <li>
+                <span class="capitalize">Ledarskapsutbildning:</span> Testkurs, Göteborg
+            </li>
+        </ul>

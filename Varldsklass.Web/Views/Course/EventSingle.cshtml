@@ -1,0 +1,32 @@
+﻿@model Varldsklass.Domain.Entities.Event
+@using Varldsklass.Domain.Helpers
+@{
+    ViewBag.Title = "Kurstillfälle - " + Model.Title;
+    ViewBag.Utbildning = Model.Post.ID;
+}
+
+<article>
+<h2>@Model.Title</h2>
+<div class="description">
+    <table>
+        <tr>
+            <td><span>Startdatum:</span></td><td>@Html.DateFormat(Model.StartDate)</td>
+        </tr>
+        <tr>
+            <td><span>Slutdatum:</span></td><td>@Html.DateFormat(Model.EndDate)</td>
+        </tr>
+        <tr>
+            <td><span>Lärare:</span></td><td>@Model.Teatcher</td>
+        </tr>
+        <tr>
+            <td><span>Stad:</span></td><td>@Model.City</td>
+        </tr>
+    </table>
+</div>
+
+<div class="content">
+    @Model.Body
+</div>
+</article>
+
+
