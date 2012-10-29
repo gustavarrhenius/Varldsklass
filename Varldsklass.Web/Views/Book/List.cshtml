@@ -2,13 +2,25 @@
 @model Dictionary<string, List<Attendant>>
 
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "Deltagare du bokat";
 }
 
-<h2>List</h2>
+<h2>Deltagare du bokat</h2>
 
 <ul>
-@foreach( var pair in Model)
-    <li>@pair.Key</li>
+@foreach( var pair in Model) {
+    if(pair.Value == null)
+    {
+        continue;
+    }
+
+    <li>@pair.Key
+        <ul>
+        @foreach (var attendant in pair.Value)
+        {
+            <li>@attendant.Name (@attendant.Email)</li>
+        }
+        </ul>
+    </li>
 }
 </ul>
