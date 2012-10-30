@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -49,8 +50,14 @@
             
         </header>
         <section id="slider">
-            <div class="row">
-            </div>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                if ($('#address').val() != null) {
+                    $('#slider').append('<div id="map_canvas" class="six columns" style="height:100%; width: 100%;"></div>');
+                }
+            });
+            </script>
+                    
         </section>
         <section id="main">
             <div id="content" class="row">
@@ -72,11 +79,13 @@
                     <h4>Facebook</h4>
                     <div class="fb-like-box" data-href="http://www.facebook.com/varldsklass?fref=ts" data-show-faces="true" data-border-color="#fff" data-stream="false" data-header="false"></div>
                 </section>
-                }  @if (ViewBag.Kategori != null) {
-                     Html.RenderAction("Sidebar", "Post", new { id = ViewBag.Kategori, title = "kategori" });
-                }  @if (ViewBag.Utbildning != null) {
-                     Html.RenderAction("Sidebar", "Post", new { id = ViewBag.Utbildning, title = "utbildning" });
-                }
+                }  @if (ViewBag.Kategori != null)
+                   {
+                       Html.RenderAction("Sidebar", "Post", new { id = ViewBag.Kategori, title = "kategori" });
+                   }  @if (ViewBag.Utbildning != null)
+                      {
+                          Html.RenderAction("Sidebar", "Post", new { id = ViewBag.Utbildning, title = "utbildning" });
+                      }
                 </aside>
             
             </div>
