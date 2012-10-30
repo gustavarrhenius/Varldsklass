@@ -75,10 +75,18 @@ namespace Varldsklass.Web.Controllers
         }
 
         [Authorize]
-        public ActionResult List()
+        public ActionResult List(int id = 0)
         {
-            List<Event> stuff = _eventRepo.FindAll().Where(e => e.Attendants.Count > 0).ToList();
-            return View(stuff);
+            if (id == 0)
+            {
+                List<Event> eventList = _eventRepo.FindAll().Where(e => e.Attendants.Count > 0).ToList();
+                return View("EventList", eventList);
+            }
+            else
+            {
+                Event singleEvent = _eventRepo.FindByID(id);
+                return View("SingleEvent", singleEvent);
+            }
         }
     }
 }
