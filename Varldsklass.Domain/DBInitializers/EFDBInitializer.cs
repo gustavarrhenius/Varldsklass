@@ -24,12 +24,12 @@ namespace Varldsklass.Domain.DBInitializers
             categories.ForEach(s => context.Categories.Add(s));
             context.SaveChanges();
 
-            var post1 = new Post { ID = 1, Title = @"Liftutblidningar", Body = @"Lorum ipsum", Created = new DateTime(2012, 9, 18), Category = categories, postType = 0 };
+            var post1 = new Post { ID = 1, Title = @"Liftutbildningar", Body = @"Lorum ipsum", Created = new DateTime(2012, 9, 18), Category = categories, postType = 0 };
 
-            var firstEvent = new Event { ID = 1, Title = @"Semenarie 1", Teatcher = @"Lisa Svensson", Created = new DateTime(2012, 9, 18), StartDate = new DateTime(2012, 9, 22), EndDate = new DateTime(2012, 9, 24),Body = "Kursen startar kl 14", City = "Göteborg", Post = post1 };
-            var events = new List<Event>
-            {
-                firstEvent,
+            List<Event> events = new List<Event> {
+                new Event { ID = 1, Title = @"Seminarie 1", Teatcher = @"Lisa Svensson", Created = new DateTime(2012, 9, 18), StartDate = new DateTime(2012, 9, 22), EndDate = new DateTime(2012, 9, 24),Body = "Kursen startar kl 14", City = "Göteborg", Post = post1 },
+                new Event { ID = 1, Title = @"Olivmagi med Oliver", Teatcher = @"Pay Cartea", Created = new DateTime(2012, 10, 3), StartDate = new DateTime(2012, 10, 4), EndDate = new DateTime(2012, 10, 7),Body = "Kursen startar när alla är på plats", City = "Hisingen", Post = post1 },
+                new Event { ID = 1, Title = @"How to be bad", Teatcher = @"Glass Joe", Created = new DateTime(2012, 9, 18), StartDate = new DateTime(2012, 9, 22), EndDate = new DateTime(2012, 9, 24),Body = "Kursen startar kl 13.50", City = "Bronx", Post = post1 }
             };
 
             events.ForEach(s => context.Events.Add(s));
@@ -75,6 +75,16 @@ namespace Varldsklass.Domain.DBInitializers
             };
 
             accounts.ForEach(a => context.Accounts.Add(a));
+            context.SaveChanges();
+
+
+            var attendants = new List<Attendant>
+            {
+                new Attendant { ID = 1, Name="Oliver Cartea", Email="paycartea@gmail.com", EventID=1, BookerID=2},
+                new Attendant { ID = 2, Name="Barbra Streisand", Email="ouououooo@barbrastreisand.com", EventID=1, BookerID=2}
+            };
+
+            attendants.ForEach(a => context.Attendants.Add(a));
             context.SaveChanges();
         }
     }
