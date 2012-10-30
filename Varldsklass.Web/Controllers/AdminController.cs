@@ -21,13 +21,15 @@ namespace Varldsklass.Web.Controllers
         private IRepository<Category> _categoryRepo;
         private IAccountRepository _accountRepo;
         private IRepository<Location> _locationRepo;
+        private IRepository<Event> _eventRepo;
 
-        public AdminController(PostRepository repo, IRepository<Category> category, IRepository<Location> locationRepo, IAccountRepository account)
+        public AdminController(PostRepository repo, IRepository<Category> category, IRepository<Location> locationRepo, IAccountRepository account, IRepository<Event> eventRepo)
         {
             _postRepo = repo;
             _categoryRepo = category;
             _locationRepo = locationRepo;
             _accountRepo = account;
+            _eventRepo = eventRepo;
         }
         //
         // GET: /Admin/
@@ -147,7 +149,8 @@ namespace Varldsklass.Web.Controllers
 
         public ActionResult ListAttendants()
         {
-            return View();
+            List<Event> attendantList = _eventRepo.FindAll().ToList();
+            return View( attendantList );
         }
 
         public ActionResult FileUpload()

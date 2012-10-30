@@ -42,6 +42,12 @@ namespace Varldsklass.Web.Controllers
             return View(posts.Where(p => p.ID == id).Include(p => p.Events).FirstOrDefault());
         }
 
+        public ActionResult EventAttendants(int id)
+        {
+            Event anEvent = _eventRepo.FindByID(id);
+            return View(anEvent);
+        }
+
 
         public ActionResult EditCourse(int id = 0)
         {

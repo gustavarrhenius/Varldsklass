@@ -368,6 +368,7 @@
     <Content Include="Views\Course\Category.cshtml" />
     <Content Include="Views\Course\EventSingle.cshtml" />
     <Content Include="Views\Admin\FileUpload.cshtml" />
+    <Content Include="Views\Course\EventAttendants.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

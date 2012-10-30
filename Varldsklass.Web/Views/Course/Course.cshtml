@@ -36,6 +36,7 @@
             <td>@Event.EndDate.ToShortDateString()</td>
             <td>@Html.ActionLink("Ändra", "EditEvent", new { id = Event.ID }, new { @class = "tiny success button" })</td>
             <td>@Html.ActionLink("Ta Bort", "DeleteEvent", new { id = Event.ID, course = Model.ID }, new { @class = "tiny alert button" })</td>
+            <td>@Html.ActionLink("Deltagare", "EventAttendants", new { id = Event.ID }, new { @class = "tiny button" })</td>
         </tr>
     }
 </table>
