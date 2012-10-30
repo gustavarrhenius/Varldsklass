@@ -8,9 +8,9 @@ using System.Collections;
 using System.Web.Mvc;
 
 namespace Varldsklass.Domain.Entities
-    {
+{
     public class Event : IEntity
-        {
+    {
         [HiddenInput(DisplayValue = false)]
         public int ID { get; set; }
         public string Title { get; set; }
@@ -32,5 +32,5 @@ namespace Varldsklass.Domain.Entities
 
         public virtual ICollection<Attendant> Attendants { get; set; }
 
-        }
     }
+}

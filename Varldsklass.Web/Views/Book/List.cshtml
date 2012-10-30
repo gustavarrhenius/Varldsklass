@@ -1,5 +1,4 @@
-﻿@using Varldsklass.Domain.Entities
-@model Dictionary<string, List<Attendant>>
+﻿@model List<Varldsklass.Domain.Entities.Event>
 
 @{
     ViewBag.Title = "Deltagare du bokat";
@@ -8,17 +7,13 @@
 <h2>Deltagare du bokat</h2>
 
 <ul>
-@foreach( var pair in Model) {
-    if(pair.Value == null)
-    {
-        continue;
-    }
-
-    <li>@pair.Key
+@foreach (var e in Model)
+{
+    <li>@e.Title
         <ul>
-        @foreach (var attendant in pair.Value)
+        @foreach(var a in e.Attendants)
         {
-            <li>@attendant.Name (@attendant.Email)</li>
+            <li><strong>@a.Name</strong> (@a.Email)</li>
         }
         </ul>
     </li>
