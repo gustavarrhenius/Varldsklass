@@ -65,6 +65,7 @@
     <Compile Include="Entities\Location.cs" />
     <Compile Include="Entities\Post.cs" />
     <Compile Include="Entities\Account.cs" />
+    <Compile Include="Entities\Question.cs" />
     <Compile Include="Entities\SearchResult.cs" />
     <Compile Include="Facebook\FacebookClient.cs" />
     <Compile Include="Facebook\FacebookGraph.cs" />

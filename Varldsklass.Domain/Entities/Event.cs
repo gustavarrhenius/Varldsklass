@@ -30,5 +30,6 @@ namespace Varldsklass.Domain.Entities
         public int PostID { get; set; }
         public virtual Post Post { get; set; }
 
+        public virtual ICollection<Question> Questions { get; set; }
         }
     }

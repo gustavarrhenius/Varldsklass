@@ -76,6 +76,11 @@ namespace Varldsklass.Domain.DBInitializers
 
             accounts.ForEach(a => context.Accounts.Add(a));
             context.SaveChanges();
+
+            var question = new List<Question>();
+            question.ForEach(q => context.Questions.Add(q));
+            context.SaveChanges();
+             
         }
     }
 }
