@@ -25,7 +25,7 @@ namespace Varldsklass.Web.Controllers
         }
 
         [Authorize]
-        public ActionResult Index(int id = 0)
+        public ActionResult Event(int id = 0)
         {
             BookViewModel model = new BookViewModel();
             model.Event = _eventRepo.FindByID(id);
@@ -39,21 +39,24 @@ namespace Varldsklass.Web.Controllers
             model.Event = _eventRepo.FindByID(model.Event.ID);
             Account booker = _accountRepo.FindAll().Where(u => u.Email == User.Identity.Name).FirstOrDefault();
 
+            List<Attendant> ValidAttendants = new List<Attendant>();
             for (int i = 0; i < model.Attendants.Count; i++)
             {
-                if (model.Attendants[i].Email.Trim() == "" && model.Attendants[i].Name.Trim() == "")
+                if (model.Attendants[i].Email != null && model.Attendants[i].Name != null)
                 {
-                    model.Attendants[i] = null;
-                    continue;
-                }
+                    model.Attendants[i].BookerID = booker.ID;
+                    model.Attendants[i].EventID = model.Event.ID;
 
-                model.Attendants[i].BookerID = booker.ID;
-                model.Attendants[i].EventID = model.Event.ID;
+                    //model.Attendants[i].Event = _eventRepo.FindByID(model.Event.ID);
+                    //model.Attendants[i].Booker = _accountRepo.FindByID(booker.ID);
+
+                    ValidAttendants.Add(model.Attendants[i]);
+                }
             }
 
             if (model.BookerAttends)
             {
-                model.Attendants.Add(new Attendant {
+                ValidAttendants.Add(new Attendant {
                     Name = booker.FullName,
                     Email = booker.Email,
                     BookerID = booker.ID,
@@ -63,21 +66,27 @@ namespace Varldsklass.Web.Controllers
 
             //if (!ModelState.IsValid) return View();
 
-            //model.Event = _eventRepo.FindByID(model.Event.ID);
-
-            model.Attendants.ForEach(delegate(Attendant attendant)
+            ValidAttendants.ForEach(delegate(Attendant attendant)
             {
                 _attendantRepo.Save(attendant);
             });
 
-            return RedirectToAction("Success");
+            return RedirectToAction("List");
         }
 
         [Authorize]
-        public ActionResult List()
+        public ActionResult List(int id = 0)
         {
-            List<Attendant> attendants = _attendantRepo.FindAll().ToList();
-            return View(attendants);
+            if (id == 0)
+            {
+                List<Event> eventList = _eventRepo.FindAll().Where(e => e.Attendants.Count > 0).ToList();
+                return View("EventList", eventList);
+            }
+            else
+            {
+                Event singleEvent = _eventRepo.FindByID(id);
+                return View("SingleEvent", singleEvent);
+            }
         }
     }
 }

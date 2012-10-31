@@ -1,0 +1,26 @@
+﻿@model List<Varldsklass.Domain.Entities.Event>
+
+@{
+    ViewBag.Title = "Kurstillfällen du bokat deltagare till";
+}
+
+<h2>@ViewBag.Title</h2>
+<table>
+    <tr>
+        <th>Namn</th>
+        <th>Kurstyp</th>
+        <th>Lärare</th>
+        <th>Startdatum</th>
+        <th>Slutdatum</th>
+    </tr>
+    @foreach (var e in Model)
+    {
+    <tr>
+        <td>@Html.ActionLink(@e.Title, "List", new { id = @e.ID})</td>
+        <td>@e.Post.Title</td>
+        <td>@e.Teatcher</td>
+        <td>@e.StartDate</td>
+        <td>@e.EndDate</td>
+    </tr>
+    }
+</table>

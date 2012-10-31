@@ -1,0 +1,20 @@
+﻿@model Varldsklass.Domain.Entities.Event
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<h2>Deltagare du bokat till @Model.Title</h2>
+<table>
+    <tr>
+        <th>Namn</th>
+        <th>E-post</th>
+    </tr>
+    @foreach(var attendant in Model.Attendants)
+    {
+        <tr>
+            <td>@attendant.Name</td>
+            <td>@attendant.Email</td>
+        </tr>
+    }
+</table>

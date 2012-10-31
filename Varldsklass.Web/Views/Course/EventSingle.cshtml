@@ -7,26 +7,36 @@
 
 <article>
 <h2>@Model.Title</h2>
-<div class="description">
-    <table>
-        <tr>
-            <td><span>Startdatum:</span></td><td>@Html.DateFormat(Model.StartDate)</td>
-        </tr>
-        <tr>
-            <td><span>Slutdatum:</span></td><td>@Html.DateFormat(Model.EndDate)</td>
-        </tr>
-        <tr>
-            <td><span>Lärare:</span></td><td>@Model.Teatcher</td>
-        </tr>
-        <tr>
-            <td><span>Stad:</span></td><td>@Model.City</td>
-        </tr>
-    </table>
-</div>
+<div class="row">
+    <div class="nine columns description">
+        <table>
+            <tr>
+                <td><span>Startdatum:</span></td><td>@Html.DateFormat(Model.StartDate)</td>
+            </tr>
+            <tr>
+                <td><span>Slutdatum:</span></td><td>@Html.DateFormat(Model.EndDate)</td>
+            </tr>
+            <tr>
+                <td><span>Lärare:</span></td><td>@Model.Teatcher</td>
+            </tr>
+            <tr>
+                <td><span>Stad:</span></td><td>@Model.City</td>
+            </tr>
+        </table>
+    </div>
 
+    <div class="three columns">
+    @if (DateTime.Now < Model.StartDate)
+    {
+        @Html.ActionLink("Boka", "Event", "Book", new { id = Model.ID }, new { @class = "large success button" })
+    }
+    else
+    {
+        <div class="alert-box alert">Det här kurstillfället har redan ägt rum.</div>
+    }
+    </div>
+</div>
 <div class="content">
-    @Model.Body
+    @Html.Raw(Model.Body)
 </div>
 </article>
-
-
