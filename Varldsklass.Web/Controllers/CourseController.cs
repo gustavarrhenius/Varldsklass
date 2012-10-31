@@ -181,8 +181,6 @@ namespace Varldsklass.Web.Controllers
 
             return View(Event);
         }
-
-
         /*-----------------------------------------
         * Category Controller 
         * -------------------------------------*/

@@ -77,6 +77,8 @@ namespace Varldsklass.Domain.DBInitializers
             accounts.ForEach(a => context.Accounts.Add(a));
             context.SaveChanges();
 
+            var question = new List<Question>();
+            question.ForEach(q => context.Questions.Add(q));
 
             var attendants = new List<Attendant>
             {
@@ -86,6 +88,7 @@ namespace Varldsklass.Domain.DBInitializers
 
             attendants.ForEach(a => context.Attendants.Add(a));
             context.SaveChanges();
+             
         }
     }
 }

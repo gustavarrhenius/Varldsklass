@@ -96,6 +96,7 @@
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\EvaluationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -107,6 +108,7 @@
     <Compile Include="ViewModels\BookViewModel.cs" />
     <Compile Include="ViewModels\CalendarViewModel.cs" />
     <Compile Include="ViewModels\EditLocationsViewModel.cs" />
+    <Compile Include="ViewModels\EvaluationViewModel.cs" />
     <Compile Include="ViewModels\FeedViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\PostIndexViewModel.cs" />
@@ -367,6 +369,7 @@
     <Content Include="Views\Course\Category.cshtml" />
     <Content Include="Views\Course\EventSingle.cshtml" />
     <Content Include="Views\Admin\FileUpload.cshtml" />
+    <Content Include="Views\Evaluation\Evaluation.cshtml" />
     <Content Include="Views\Course\EventAttendants.cshtml" />
     <Content Include="Views\Shared\MailTemplate\MailTemplate.cshtml" />
     <Content Include="Views\Book\EventList.cshtml" />

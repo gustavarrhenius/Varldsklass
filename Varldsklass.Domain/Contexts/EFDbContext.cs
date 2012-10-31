@@ -15,5 +15,6 @@ namespace Varldsklass.Domain.Contexts
         public DbSet<Event> Events { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Attendant> Attendants { get; set; }
+        public DbSet<Question> Questions { get; set; }
     }
 }

@@ -1,0 +1,64 @@
+﻿@model Varldsklass.Domain.Entities.Question
+
+@{
+    ViewBag.Title = "Utvärdering";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Utvärdering</h2>
+
+<div class="error-message">
+@ViewData["Error"]
+</div>
+
+@using (Html.BeginForm("Save", "Evaluation", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    @Html.HiddenFor(model => Model.EventID)
+   <div class="questions">
+        <div class="eight columns">
+            <p>Vad tycker du om lärarens insats i kursen? </p>
+            <p> @Html.RadioButtonFor(t => t.Teacher, "0") Ej tillgänglig </p>
+            <p> @Html.RadioButtonFor(t => t.Teacher, "1") Mycket missnöjd </p>
+            <p> @Html.RadioButtonFor(t => t.Teacher, "2") Missnöjd </p>
+            <p> @Html.RadioButtonFor(t => t.Teacher, "3") Neutral </p>
+            <p> @Html.RadioButtonFor(t => t.Teacher, "4") Nöjd</p>
+            <p> @Html.RadioButtonFor(t => t.Teacher, "5") Mycket nöjd</p>
+        </div>
+         <div class="eight columns">
+         <p>Vad tycker du om lokalen? </p>
+            <p> @Html.RadioButtonFor(l => l.Location, "0") Ej tillgänglig </p>
+            <p> @Html.RadioButtonFor(l => l.Location, "1") Mycket missnöjd</p>
+            <p> @Html.RadioButtonFor(l => l.Location, "2") Missnöjd </p>
+            <p> @Html.RadioButtonFor(l => l.Location, "3") Neutral </p>
+            <p> @Html.RadioButtonFor(l => l.Location, "4") Nöjd</p>
+            <p> @Html.RadioButtonFor(l => l.Location, "5") Mycket nöjd</p>
+        </div>
+         <div class="eight columns">
+         <p>Vad tycker du om maten? </p>
+            <p> @Html.RadioButtonFor(f => f.Food, "0") Ej tillgänglig </p>
+            <p> @Html.RadioButtonFor(f => f.Food, "1") Mycket missnöjd</p>
+            <p> @Html.RadioButtonFor(f => f.Food, "2") Missnöjd </p>
+            <p> @Html.RadioButtonFor(f => f.Food, "3") Neutral </p>
+            <p> @Html.RadioButtonFor(f => f.Food, "4") Nöjd</p>
+            <p> @Html.RadioButtonFor(f => f.Food, "5") Mycket nöjd</p>
+        </div>
+         <div class="eight columns">
+         <p>Vad är ditt övergripande intryck av kursen? </p>
+            <p> @Html.RadioButtonFor(o => o.Overall, "0") Ej tillgänglig </p>
+            <p> @Html.RadioButtonFor(o => o.Overall, "1") Mycket missnöjd</p>
+            <p> @Html.RadioButtonFor(o => o.Overall, "2") Missnöjd</p>
+            <p> @Html.RadioButtonFor(o => o.Overall, "3") Neutral</p>
+            <p> @Html.RadioButtonFor(o => o.Overall, "4") Nöjd</p>
+            <p> @Html.RadioButtonFor(o => o.Overall, "5") Mycket nöjd</p>
+        </div>
+
+        <div class="eight columns">
+        <p> Övriga synpunkter </p>
+        @Html.TextBoxFor(op => op.Opinion, "6")
+        </div>
+
+        <div class="eight columns">
+            <input class="button" type="submit" value="Skicka" />
+        </div>
+    </div>
+    }
