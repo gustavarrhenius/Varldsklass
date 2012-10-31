@@ -27,9 +27,9 @@ namespace Varldsklass.Domain.DBInitializers
             var post1 = new Post { ID = 1, Title = @"Liftutbildningar", Body = @"Lorum ipsum", Created = new DateTime(2012, 9, 18), Category = categories, postType = 0 };
 
             List<Event> events = new List<Event> {
-                new Event { ID = 1, Title = @"Seminarie 1", Teatcher = @"Lisa Svensson", Created = new DateTime(2012, 9, 18), StartDate = new DateTime(2012, 9, 22), EndDate = new DateTime(2012, 9, 24),Body = "Kursen startar kl 14", City = "Göteborg", Post = post1 },
-                new Event { ID = 1, Title = @"Olivmagi med Oliver", Teatcher = @"Pay Cartea", Created = new DateTime(2012, 10, 3), StartDate = new DateTime(2012, 10, 4), EndDate = new DateTime(2012, 10, 7),Body = "Kursen startar när alla är på plats", City = "Hisingen", Post = post1 },
-                new Event { ID = 1, Title = @"How to be bad", Teatcher = @"Glass Joe", Created = new DateTime(2012, 9, 18), StartDate = new DateTime(2012, 9, 22), EndDate = new DateTime(2012, 9, 24),Body = "Kursen startar kl 13.50", City = "Bronx", Post = post1 }
+                new Event { ID = 1, Title = @"Seminarie 1", Teatcher = @"Lisa Svensson", Created = new DateTime(2012, 9, 18), StartDate = new DateTime(2012, 8, 22), EndDate = new DateTime(2012, 8, 25),Body = "Kursen startar kl 14", City = "Göteborg", Post = post1 },
+                new Event { ID = 2, Title = @"Olivmagi med Oliver", Teatcher = @"Pay Cartea", Created = new DateTime(2012, 10, 3), StartDate = new DateTime(2012, 10, 25), EndDate = new DateTime(2012, 11, 7),Body = "Kursen startar när alla är på plats", City = "Hisingen", Post = post1 },
+                new Event { ID = 3, Title = @"How to be bad", Teatcher = @"Glass Joe", Created = new DateTime(2012, 9, 18), StartDate = new DateTime(2013, 2, 12), EndDate = new DateTime(2013, 2, 16),Body = "Kursen startar kl 13.50", City = "Bronx", Post = post1 }
             };
 
             events.ForEach(s => context.Events.Add(s));

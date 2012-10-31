@@ -26,7 +26,14 @@
     </div>
 
     <div class="three columns">
+    @if (DateTime.Now < Model.StartDate)
+    {
         @Html.ActionLink("Boka", "Event", "Book", new { id = Model.ID }, new { @class = "large success button" })
+    }
+    else
+    {
+        <div class="alert-box alert">Det här kurstillfället har redan ägt rum.</div>
+    }
     </div>
 </div>
 <div class="content">
