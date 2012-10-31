@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Varldsklass.Domain.Entities.Abstract;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace Varldsklass.Domain.Entities
 {
@@ -11,10 +12,16 @@ namespace Varldsklass.Domain.Entities
     {
         public int ID { get; set; }
 
-        [Required]
-        public string Name { get; set; }
+        [DisplayName("Förnamn")]
+        [Required(ErrorMessage = "Du måste ange förnamn")]
+        public string FirstName { get; set; }
 
-        [Required]
+        [DisplayName("Efternamn")]
+        [Required(ErrorMessage = "Du måste ange efternamn")]
+        public string LastName { get; set; }
+
+        [DisplayName("E-post")]
+        [Required(ErrorMessage = "Du måste ange en e-post-adress")]
         public string Email { get; set; }
 
         [Required]
@@ -24,5 +31,13 @@ namespace Varldsklass.Domain.Entities
 
         public virtual Event Event { get; set; }
         public virtual Account Account { get; set; }
+
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
     }
 }

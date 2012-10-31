@@ -80,8 +80,8 @@ namespace Varldsklass.Domain.DBInitializers
 
             var attendants = new List<Attendant>
             {
-                new Attendant { ID = 1, Name="Oliver Cartea", Email="paycartea@gmail.com", EventID=1, BookerID=2},
-                new Attendant { ID = 2, Name="Barbra Streisand", Email="ouououooo@barbrastreisand.com", EventID=1, BookerID=2}
+                new Attendant { ID = 1, FirstName="Oliver", LastName="Cartea", Email="paycartea@gmail.com", EventID=1, BookerID=2},
+                new Attendant { ID = 2, FirstName="Barbra", LastName="Streisand", Email="ouououooo@barbrastreisand.com", EventID=1, BookerID=2}
             };
 
             attendants.ForEach(a => context.Attendants.Add(a));

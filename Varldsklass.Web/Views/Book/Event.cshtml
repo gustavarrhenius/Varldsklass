@@ -11,14 +11,21 @@
 {
     @Html.HiddenFor(model => model.Event.ID)
     <div id="attendants">
-        <div class="name-email-pair">
-            <div class="six columns">
-                @Html.LabelFor(model => model.Attendants[0].Name)
-                @Html.TextBoxFor(model => model.Attendants[0].Name, new { @class = "name" } )
+        <div class="name-email-pair row">
+            <div class="three columns">
+                @Html.LabelFor(model => model.Attendants[0].FirstName)
+                @Html.TextBoxFor(model => model.Attendants[0].FirstName, new { @class = "first-name" } )
             </div>
-            <div class="six columns">
+            <div class="three columns">
+                @Html.LabelFor(model => model.Attendants[0].LastName)
+                @Html.TextBoxFor(model => model.Attendants[0].LastName, new { @class = "first-name" } )
+            </div>
+            <div class="five columns">
                 @Html.LabelFor(model => model.Attendants[0].Email)
                 @Html.TextBoxFor(model => model.Attendants[0].Email, new { @class = "email" } )
+            </div>
+            <div class="one columns">
+                <a style="margin-top: 22px;" class="tiny round alert button remove-attendant">x</a>
             </div>
         </div>
     </div>
@@ -32,26 +39,49 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        // Clone that form-part
         var attendantForm = $('#attendants').html();
         var fieldNumber = 1;
+
+        // Do not allow the user to delete the first entry, it messes up the database and stuff
+        $('.name-email-pair').find('.remove-attendant').remove();
+
         $('#more-attendants').click(function () {
             var newAttendant = attendantForm.replace(/0/g, fieldNumber);
             $('#attendants').append(newAttendant);
             fieldNumber++;
         });
 
+        $(document).on('click', '.remove-attendant', function(){
+            $(this).closest('.name-email-pair').remove();
+        });
+
+        function entryIsIncomplete(element) {
+            var atLeastOneEnteredField = false;
+            var atLeastOneEmptyField = false;
+            $(element).find('input').each(function (i, input) {
+                var value = $(input).val().trim();
+                if (value == "") {
+                    atLeastOneEmptyField = true;
+                } else {
+                    atLeastOneEnteredField = true;
+                }
+            });
+            return (atLeastOneEmptyField && atLeastOneEnteredField);
+        }
+
         $('#book').submit(function (e) {
+
             $('.name-email-pair').each(function (i, element) {
-                var name = $(this).find('.name').val();
-                var email = $(this).find('.email').val();
-                if ((name != "" && name != undefined) && (email == undefined || email == "")) {
-                    alert("Du måste ange en e-post-adress för " + name);
+                // If any field is empty, but not all.
+
+                if (entryIsIncomplete(element)) {
+                    $(element).find('input').addClass('error');
                     e.preventDefault();
+                } else {
+                    $(element).find('input').removeClass('error');
                 }
-                if ((name == undefined || name == "") && (email != "" && email != undefined)) {
-                    alert("Du måste ange ett namn för " + email);
-                    e.preventDefault();
-                }
+
             });
         });
     });

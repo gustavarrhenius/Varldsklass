@@ -40,31 +40,37 @@ namespace Varldsklass.Web.Controllers
             Account booker = _accountRepo.FindAll().Where(u => u.Email == User.Identity.Name).FirstOrDefault();
 
             List<Attendant> ValidAttendants = new List<Attendant>();
-            for (int i = 0; i < model.Attendants.Count; i++)
+            /*for (int i = 0; i < model.Attendants.Count; i++)
             {
-                if (model.Attendants[i].Email != null && model.Attendants[i].Name != null)
+                if (model.Attendants[i].Email != null && model.Attendants[i].FirstName != null && model.Attendants[i].LastName != null)
                 {
                     model.Attendants[i].BookerID = booker.ID;
                     model.Attendants[i].EventID = model.Event.ID;
 
-                    //model.Attendants[i].Event = _eventRepo.FindByID(model.Event.ID);
-                    //model.Attendants[i].Booker = _accountRepo.FindByID(booker.ID);
-
                     ValidAttendants.Add(model.Attendants[i]);
                 }
-            }
+            }*/
+            model.Attendants.ForEach(delegate(Attendant attendant)
+            {
+                if (attendant.Email != null && attendant.FirstName != null && attendant.LastName != null)
+                {
+                    attendant.BookerID = booker.ID;
+                    attendant.EventID = model.Event.ID;
+
+                    ValidAttendants.Add(attendant);
+                }
+            });
 
             if (model.BookerAttends)
             {
                 ValidAttendants.Add(new Attendant {
-                    Name = booker.FullName,
+                    FirstName = booker.FirstName,
+                    LastName = booker.LastName,
                     Email = booker.Email,
                     BookerID = booker.ID,
                     EventID = model.Event.ID
                 });
             }
-
-            //if (!ModelState.IsValid) return View();
 
             ValidAttendants.ForEach(delegate(Attendant attendant)
             {
