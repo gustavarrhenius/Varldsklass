@@ -3,24 +3,19 @@
 @{
     ViewBag.Title = "Contact";
 }
+<section class="twelve columns">
 
-<h2>Kontakta oss</h2>
+    <h2>Kontakta oss</h2>
 
-
-<section class="six columns">
     @foreach (var location in Model)
     {
         <input type="hidden" id="address" value="@location.Address, @location.Zip @location.City" />
         
         <h4>@location.City</h4>
-        <ul>
-            <li>@location.Address</li>
-            <li>@location.Zip @location.City</li>
-        </ul>
+        <p>@location.Address<br />
+        @location.Zip @location.City</p>
     }
-        <ul>
-            <li>Telefon: 0320 - 109 39</li>
-            <li>Bokning & offert: 073 - 551 50 96</li>
-            <li>E-post: <a href="mailto:info@varldsklass.com">info@varldsklass.com</a></li>
-        </ul>
+        <p>Telefon: 0320 - 109 39<br />
+        Bokning & offert: 073 - 551 50 96<br />
+        E-post: <a href="mailto:info@varldsklass.com">info@varldsklass.com</a></p>
 </section>

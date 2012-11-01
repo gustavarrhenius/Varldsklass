@@ -139,7 +139,7 @@ namespace Varldsklass.Web.Controllers
 
         public ActionResult Calendar()
         {
-            var calendar = _eventRepo.FindAll().Include(p => p.Post).ToList();
+            var calendar = _eventRepo.FindAll().Where(d => d.StartDate > DateTime.Now).Include(p => p.Post).Take(5).ToList();
 
             return PartialView(calendar);
         }
