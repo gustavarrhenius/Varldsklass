@@ -1,4 +1,57 @@
 ﻿/* Artfully masterminded by ZURB  */
+@font-face {
+    font-family: 'PTSansBold';
+    src: url('../../fonts/PTS75F-webfont.eot');
+    src: url('../../fonts/PTS75F-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/PTS75F-webfont.woff') format('woff'),
+         url('../../fonts/PTS75F-webfont.ttf') format('truetype'),
+         url('../../fonts/PTS75F-webfont.svg#PTSansBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'museo_slab_500regular';
+    src: url('../../fonts/museo_slab_500-webfont.eot');
+    src: url('../../fonts/museo_slab_500-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/museo_slab_500-webfont.woff') format('woff'),
+         url('../../fonts/museo_slab_500-webfont.ttf') format('truetype'),
+         url('../../fonts/museo_slab_500-webfont.svg#museo_slab_500regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}@font-face {
+    font-family: 'PTSansRegular';
+    src: url('../../fonts/PTS55F-webfont.eot');
+    src: url('../../fonts/PTS55F-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/PTS55F-webfont.woff') format('woff'),
+         url('../../fonts/PTS55F-webfont.ttf') format('truetype'),
+         url('../../fonts/PTS55F-webfont.svg#PTSansRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'EntypoRegular';
+    src: url('../../fonts/Entypo-webfont.eot');
+    src: url('../../fonts/Entypo-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/Entypo-webfont.woff') format('woff'),
+         url('../../fonts/Entypo-webfont.ttf') format('truetype'),
+         url('../../fonts/Entypo-webfont.svg#EntypoRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+i {
+    font-family: 'EntypoRegular';
+    font-size:25px;
+    font-weight: normal;
+    font-style: normal;
+    margin:0;
+    padding:0;
+    
+} h1 i, h2 i, h3 i , h4 i, h5 i 
+{
+    line-height: 0;
+    font-size:40px;
+}
 
 /* -------------------------------------------------- 
    Big Elements
@@ -8,13 +61,29 @@ body section#main {background: #fff;padding:20px 0;}
 body header {background: #fff;}
 body footer {padding:20px 0;}
 
+html, body {
+	font-family: "helvetica neue", helvetica, arial, sans-serif;
+}
+
 
 /* -----------------------------------------
-   Shared Styles
+   Shared Styles - Variables
 ----------------------------------------- */
 span.icons{}
+h1, h2, h3, h4, h5, h6 {
+	font-family: PTSansBold, "helvetica neue", helvetica, arial, sans-serif;
+}
 
+img {
+	border: 0;
+}
+.fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
+  width: 100% !important;
+}
 
+.label-checkbox label, .label-checkbox input[type=checkbox] {
+    display: inline-block;
+}
 /* -----------------------------------------
     Header
 ----------------------------------------- */
@@ -22,37 +91,68 @@ header {
     height: auto;
     #logindisplay {
         text-align:right;
-    } #logo {
+    }
+    #logo {
         margin-top: 10px;
     }
-
-    /* -----------------------------------------
-       Menu
+    
+    
+     /* -----------------------------------------
+       Login
     ----------------------------------------- */
-    nav {
-        margin-top: 30px;
-        .nav-bar {
-            background:none;
-            border-right:none;
-            float:right;
-            li {
-                border:none;
-                a {
-                    color:#34333a;
-                    &:hover {
-                        background:#ccc;    
-
-                    }
+    
+    #logindisplay 
+    {
+        a.button 
+        {
+            padding:10px 35px 10px 10px;
+            line-height: 1;
+            i 
+            {
+                position: absolute;
+                top: 18px;
+                right: 10px;
+                font-size: 40px;
+                line-height: 0;
+                &.log-off 
+                {
+                    top:18px;
                 }
-            } li:last-child {
-                border:none;
-            } li.has-flyout:hover {
-                background:#ccc;
+            } 
+        }
+    }
+
+/* -----------------------------------------
+   Menu
+----------------------------------------- */
+nav {
+    margin-top: 30px;
+    .nav-bar {
+        background:none;
+        border-right:none;
+        float:right;
+        li {
+            border:none;
+            a {
+                color:#34333a;
+                &:hover {
+                    background:#ccc;    
+
+                }
             }
+        } li:last-child {
+            border:none;
+        } li.has-flyout:hover {
+            background:#ccc;
         }
     }
 }
-
+}
+#menu {
+	font-family: PTSansRegular, "helvetica neue", helvetica, arial, sans-serif;
+	text-transform: uppercase;
+	margin: 0;
+	}
 
 /* -----------------------------------------
    Main Slider
@@ -80,12 +180,86 @@ section#slider
 .facebook-feed .facebook-feed-item .create-date{color:#555;display:block;font-weight:bold; margin-bottom:4px;}
 
 
+aside {
+	margin-top: 14px;
+}
+
+/* -----------------------------------------
+   Calendar
+----------------------------------------- */
+#calendar 
+{
+    -moz-box-shadow: 1px 1px 5px #888;
+    -webkit-box-shadow: 1px 1px 5px #888;
+    box-shadow: 1px 1px 5px #888;
+    h4  
+    {
+       margin: 0;
+        background: #D70000;
+        color: white;
+        padding: 5px;
+        i {
+        float: right;
+        position: relative;
+        top: 12px;
+        color: #860000;
+        font-size: 50px;
+        }
+    }
+    .calendar 
+    {
+        background: #EEE;
+        li 
+        {
+            list-style: none;
+ 	        margin: 0;
+            cursor:pointer;
+            border-top:1px solid #fff;
+            border-bottom:1px solid #ddd;
+            color: #333;
+            padding: 5px;
+            i {
+	            font-size: 30px;
+                position: relative;
+                top: 4px;
+                line-height: 0;
+                color: #D70000;
+                padding-right:15px;
+            } i.clock {
+                padding-right:8px;
+            }
+            h5  
+            {
+            padding: 0px;
+            margin: 0px;
+            color: #888;
+            }
+            a  
+            {
+                color:#333;
+            }
+        }li:first-child 
+        {
+            border-top:none;
+           }
+    }
+}
+
+
+
 /* -----------------------------------------
    Footer
 ----------------------------------------- */
 footer#footer {
-    border-top: 4px solid #0D3F63;
-    p {
-        color:#fff;
-    }
+	background: #0e3f64 url('../images/footer-grad.png') repeat-x left top;
+	border-top: 1px solid #03233b !important;
+	box-shadow: 0px -1px 5px #03233b;
+	color: #fff;
+	padding: 35px 0;
+}
+footer p {
+	font-family: museo_slab_500regular, "helvetica neue", helvetica, arial, sans-serif;
+}
+footer .footer-address p {
+	font-size: 16px;
 }
