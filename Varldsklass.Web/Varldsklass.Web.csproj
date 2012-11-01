@@ -146,6 +146,14 @@
     <Content Include="Content\foundation\javascripts\jquery.placeholder.js" />
     <Content Include="Content\foundation\javascripts\modernizr.foundation.js" />
     <Content Include="Content\foundation\robots.txt" />
+    <Content Include="Content\foundation\star-rating\delete.gif" />
+    <Content Include="Content\foundation\star-rating\jquery.form.js" />
+    <Content Include="Content\foundation\star-rating\jquery.js" />
+    <Content Include="Content\foundation\star-rating\jquery.MetaData.js" />
+    <Content Include="Content\foundation\star-rating\jquery.rating.css" />
+    <Content Include="Content\foundation\star-rating\jquery.rating.js" />
+    <Content Include="Content\foundation\star-rating\jquery.rating.pack.js" />
+    <Content Include="Content\foundation\star-rating\star.gif" />
     <Content Include="Content\foundation\stylesheets\app.css" />
     <Content Include="Content\foundation\stylesheets\foundation.css" />
     <Content Include="Content\foundation\stylesheets\foundation.min.css" />
