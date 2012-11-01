@@ -103,6 +103,7 @@
     <Compile Include="Infrastructure\CustomMembership.cs" />
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
     <Compile Include="Models\AddCourseViewModel.cs" />
+    <Compile Include="Utils\MailClient.cs" />
     <Compile Include="ViewModels\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\BookViewModel.cs" />

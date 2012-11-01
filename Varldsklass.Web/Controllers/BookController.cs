@@ -7,6 +7,10 @@ using Varldsklass.Domain.Repositories.Abstract;
 using Varldsklass.Domain.Entities;
 using Varldsklass.Web.ViewModels;
 using Varldsklass.Domain.Repositories;
+using Varldsklass.Web.Utils;
+using System.Net.Mail;
+using System.Net;
+using System.Configuration;
 
 namespace Varldsklass.Web.Controllers
 {
@@ -27,8 +31,17 @@ namespace Varldsklass.Web.Controllers
         [Authorize]
         public ActionResult Event(int id = 0)
         {
+            BookViewModel model = new BookViewModel();           
+            model.Event = _eventRepo.FindByID(id);           
+            return View(model);
+        }
+
+        public ActionResult sendBookingEmail() 
+        {
             BookViewModel model = new BookViewModel();
-            model.Event = _eventRepo.FindByID(id);
+            string bookedEvent = model.Event.ToString();
+            string bookedAttendants = model.Attendants.ToString();
+            MailClient.SendBooking(ConfigurationManager.AppSettings["adminEmail"], bookedEvent, bookedAttendants);
             return View(model);
         }
 
