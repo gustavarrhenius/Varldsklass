@@ -1,5 +1,4 @@
 ﻿/* Artfully masterminded by ZURB  */
-
 @font-face {
     font-family: 'PTSansBold';
     src: url('../../fonts/PTS75F-webfont.eot');
@@ -44,7 +43,7 @@ html, body {
 
 
 /* -----------------------------------------
-   Shared Styles
+   Shared Styles - Variables
 ----------------------------------------- */
 span.icons{}
 h1, h2, h3, h4, h5, h6 {
@@ -68,13 +67,36 @@ header {
     height: auto;
     #logindisplay {
         text-align:right;
-        height: 70px;
     }
     #logo {
         margin-top: 10px;
     }
-}
-
+    
+    
+     /* -----------------------------------------
+       Login
+    ----------------------------------------- */
+    
+    #logindisplay 
+    {
+        a.button 
+        {
+            padding:10px 35px 10px 10px;
+            line-height: 1;
+            i 
+            {
+                position: absolute;
+                top: 18px;
+                right: 10px;
+                font-size: 40px;
+                line-height: 0;
+                &.log-off 
+                {
+                    top:18px;
+                }
+            } 
+        }
+    }
 
 /* -----------------------------------------
    Menu
@@ -135,7 +157,7 @@ section#slider
 
 /* -----------------------------------------
    Aside
------------------------------------------ */
+   Calendar
 aside {
 	margin-top: 14px;
 }
@@ -144,24 +166,6 @@ aside {
 	padding: 0 0 7px 0;
 	width: 100%;
 	border-bottom: 1px solid #ccc;
-}
-.calendar li {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-.calendar-date {
-	font-family: "helvetica neue", helvetica, arial, sans-serif;
-	font-weight: bold;
-	text-transform: lowercase;
-	color: #666;
-	font-size: 12px;
-}
-.calendar-course {
-	font-weight: bold;
-	font-size: 13px;
-}
-
 /* -----------------------------------------
    Footer
 ----------------------------------------- */

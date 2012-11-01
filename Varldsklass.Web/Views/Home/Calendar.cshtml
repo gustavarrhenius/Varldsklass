@@ -1,15 +1,18 @@
 ﻿@using Varldsklass.Domain.Helpers
 @model IEnumerable<Varldsklass.Domain.Entities.Event>
-<h4>Kalender</h4>
-
+<div id="calendar">
+<h4>Kalender<i>P</i></h4>
+<ul class="calendar">
+    
     @foreach (var item in Model)
     {
-        <ul class="calendar">
+        
             <li>
-                <span class="calendar-date">@Html.DateFormat(item.StartDate)</span>
+                <h5><span class="capitalize">@Html.ActionLink(@item.Post.Title, "EventSingle", "Course", new { id = item.ID}, null)</span></h5>
+                <i class="clock">N</i><span class="calendar-date">@Html.DateFormat(item.StartDate)</span><br />
+                <i>_</i>@Html.ActionLink(@item.Title, "EventSingle", "Course", new { id = item.ID }, null)<br />
+                <i>0</i>@item.City
             </li>
-            <li>
-                <span class="calendar-course">@item.Post.Title:</span> @item.Title, @item.City
-            </li>
-        </ul>
     }
+  </ul>   
+</div>

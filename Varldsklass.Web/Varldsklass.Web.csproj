@@ -117,6 +117,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\css.css" />
+    <Content Include="Content\fonts\Entypo.svg" />
+    <Content Include="Content\fonts\museo_slab_500-webfont.svg" />
+    <Content Include="Content\fonts\PTS55F-webfont.svg" />
+    <Content Include="Content\fonts\PTS75F-webfont.svg" />
     <Content Include="Content\foundation\humans.txt" />
     <Content Include="Content\foundation\images\foundation\orbit\bullets.jpg" />
     <Content Include="Content\foundation\images\foundation\orbit\left-arrow-small.png" />
@@ -360,6 +364,18 @@
     <Content Include="Views\Home\Calendar.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\fonts\Entypo.eot" />
+    <None Include="Content\fonts\Entypo.ttf" />
+    <None Include="Content\fonts\Entypo.woff" />
+    <None Include="Content\fonts\museo_slab_500-webfont.eot" />
+    <None Include="Content\fonts\museo_slab_500-webfont.ttf" />
+    <None Include="Content\fonts\museo_slab_500-webfont.woff" />
+    <None Include="Content\fonts\PTS55F-webfont.eot" />
+    <None Include="Content\fonts\PTS55F-webfont.ttf" />
+    <None Include="Content\fonts\PTS55F-webfont.woff" />
+    <None Include="Content\fonts\PTS75F-webfont.eot" />
+    <None Include="Content\fonts\PTS75F-webfont.ttf" />
+    <None Include="Content\fonts\PTS75F-webfont.woff" />
     <None Include="Content\foundation\stylesheets\app.less" />
     <None Include="Content\foundation\stylesheets\app-admin.less" />
     <Content Include="Views\Shared\_SearchPartial.cshtml" />
