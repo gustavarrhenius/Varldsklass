@@ -28,6 +28,30 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'EntypoRegular';
+    src: url('../../fonts/Entypo-webfont.eot');
+    src: url('../../fonts/Entypo-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/Entypo-webfont.woff') format('woff'),
+         url('../../fonts/Entypo-webfont.ttf') format('truetype'),
+         url('../../fonts/Entypo-webfont.svg#EntypoRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+i {
+    font-family: 'EntypoRegular';
+    font-size:25px;
+    font-weight: normal;
+    font-style: normal;
+    margin:0;
+    padding:0;
+    
+} h1 i, h2 i, h3 i , h4 i, h5 i 
+{
+    line-height: 0;
+    font-size:40px;
+}
 
 /* -------------------------------------------------- 
    Big Elements
@@ -123,7 +147,7 @@ nav {
         }
     }
 }
-
+}
 #menu {
 	font-family: PTSansRegular, "helvetica neue", helvetica, arial, sans-serif;
 	text-transform: uppercase;
@@ -155,17 +179,74 @@ section#slider
 .facebook-feed .facebook-feed-item img {}
 .facebook-feed .facebook-feed-item .create-date{color:#555;display:block;font-weight:bold; margin-bottom:4px;}
 
-/* -----------------------------------------
-   Aside
-   Calendar
+
 aside {
 	margin-top: 14px;
 }
-.calendar {
-	margin: 0 0 7px 0;
-	padding: 0 0 7px 0;
-	width: 100%;
-	border-bottom: 1px solid #ccc;
+
+/* -----------------------------------------
+   Calendar
+----------------------------------------- */
+#calendar 
+{
+    -moz-box-shadow: 1px 1px 5px #888;
+    -webkit-box-shadow: 1px 1px 5px #888;
+    box-shadow: 1px 1px 5px #888;
+    h4  
+    {
+       margin: 0;
+        background: #D70000;
+        color: white;
+        padding: 5px;
+        i {
+        float: right;
+        position: relative;
+        top: 12px;
+        color: #860000;
+        font-size: 50px;
+        }
+    }
+    .calendar 
+    {
+        background: #EEE;
+        li 
+        {
+            list-style: none;
+ 	        margin: 0;
+            cursor:pointer;
+            border-top:1px solid #fff;
+            border-bottom:1px solid #ddd;
+            color: #333;
+            padding: 5px;
+            i {
+	            font-size: 30px;
+                position: relative;
+                top: 4px;
+                line-height: 0;
+                color: #D70000;
+                padding-right:15px;
+            } i.clock {
+                padding-right:8px;
+            }
+            h5  
+            {
+            padding: 0px;
+            margin: 0px;
+            color: #888;
+            }
+            a  
+            {
+                color:#333;
+            }
+        }li:first-child 
+        {
+            border-top:none;
+           }
+    }
+}
+
+
+
 /* -----------------------------------------
    Footer
 ----------------------------------------- */
