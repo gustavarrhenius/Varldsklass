@@ -9,13 +9,15 @@
 
 <table>
     <tr>
-        <th>Namn</th>
+        <th>Förnamn</th>
+        <th>Efternamn</th>
         <th>E-post</th>
     </tr>
     @foreach (var attendant in Model.Attendants)
     {
         <tr>
-            <td>@attendant.Name</td>
+            <td>@attendant.FirstName</td>
+            <td>@attendant.LastName</td>
             <td>@attendant.Email</td>
         </tr>
     }
