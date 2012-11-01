@@ -33,7 +33,7 @@ namespace Varldsklass.Web.Utils
             ConfigurationManager.AppSettings["SmtpPass"]);
         }
 
-        private static bool SendMessage(string subject, string bookedEvent, string bookedAttendants) 
+        private static bool SendMessage(string subject, string bookedEvent, List<Attendant> bookedAttendants) 
         {
            
             MailMessage mm = null;
@@ -55,7 +55,7 @@ namespace Varldsklass.Web.Utils
             return isSent;
         }
 
-        public static bool SendBooking(string email, string bookedEvent, string bookedAttendants)
+        public static bool SendBooking(string email, string bookedEvent, List<Attendant> bookedAttendants)
         {
             email = ConfigurationManager.AppSettings["adminEmail"];
             //Body is where we add Booking ID, Attendants Name, Event Title

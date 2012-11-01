@@ -36,11 +36,11 @@ namespace Varldsklass.Web.Controllers
             return View(model);
         }
 
-        public ActionResult sendBookingEmail() 
+        public ActionResult sendBookingEmail(int id) 
         {
             BookViewModel model = new BookViewModel();
-            string bookedEvent = model.Event.ToString();
-            string bookedAttendants = model.Attendants.ToString();
+            List<Attendant> bookedAttendants = _eventRepo.FindByID(id).Attendants;
+            string bookedEvent = _eventRepo.FindByID(id).Body;
             MailClient.SendBooking(ConfigurationManager.AppSettings["adminEmail"], bookedEvent, bookedAttendants);
             return View(model);
         }
