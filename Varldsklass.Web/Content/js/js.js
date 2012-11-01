@@ -20,8 +20,14 @@ function codeAddress() {
             var marker = new google.maps.Marker({
                 map: map,
                 position: results[0].geometry.location,
-                clickable: true,
             });
+        console.log();
+        var infowindow = new google.maps.InfoWindow({
+           content: $('#address').val(),
+        });
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.open(map,marker);
+        });
         } else {
             alert("Geocode was not successful for the following reason: " + status);
         }

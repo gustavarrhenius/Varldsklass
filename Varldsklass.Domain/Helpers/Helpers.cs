@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using System.Globalization;
+using System.Web.Mvc.Ajax;
 
 namespace Varldsklass.Domain.Helpers
 {

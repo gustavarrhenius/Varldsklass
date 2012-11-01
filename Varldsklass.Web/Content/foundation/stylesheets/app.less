@@ -1,5 +1,4 @@
 ﻿/* Artfully masterminded by ZURB  */
-
 /* -------------------------------------------------- 
    Big Elements
 -----------------------------------------------------*/
@@ -10,7 +9,7 @@ body footer {padding:20px 0;}
 
 
 /* -----------------------------------------
-   Shared Styles
+   Shared Styles - Variables
 ----------------------------------------- */
 span.icons{}
 
@@ -25,7 +24,32 @@ header {
     } #logo {
         margin-top: 10px;
     }
-
+    
+    
+     /* -----------------------------------------
+       Login
+    ----------------------------------------- */
+    
+    #logindisplay 
+    {
+        a.button 
+        {
+            padding:10px 35px 10px 10px;
+            line-height: 1;
+            i 
+            {
+                position: absolute;
+                top: 18px;
+                right: 10px;
+                font-size: 40px;
+                line-height: 0;
+                &.log-off 
+                {
+                    top:18px;
+                }
+            } 
+        }
+    }
     /* -----------------------------------------
        Menu
     ----------------------------------------- */
@@ -79,7 +103,54 @@ section#slider
 .facebook-feed .facebook-feed-item img {}
 .facebook-feed .facebook-feed-item .create-date{color:#555;display:block;font-weight:bold; margin-bottom:4px;}
 
-
+/* -----------------------------------------
+   Calendar
+----------------------------------------- */
+#calendar 
+{
+    -moz-box-shadow: 1px 1px 5px #888;
+    -webkit-box-shadow: 1px 1px 5px #888;
+    box-shadow: 1px 1px 5px #888;
+    h4  
+    {
+       margin: 0;
+        background: #D70000;
+        color: white;
+        padding: 5px;
+        i {
+        float: right;
+        position: relative;
+        top: 12px;
+        color: #860000;
+        font-size: 50px;
+        }
+    }
+    .calendar 
+    {
+        background: #EEE;
+        li 
+        {
+            cursor:pointer;
+            border-top:1px solid #fff;
+            border-bottom:1px solid #ddd;
+            color: #333;
+            padding: 5px;
+            h5  
+            {
+            padding: 0px;
+            margin: 0px;
+            color: #888;
+            }
+            a  
+            {
+                color:#333;
+            }
+        }li:first-child 
+        {
+            border-top:none;
+           }
+    }
+}
 /* -----------------------------------------
    Footer
 ----------------------------------------- */
