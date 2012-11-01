@@ -33,14 +33,14 @@ namespace Varldsklass.Web.Utils
             ConfigurationManager.AppSettings["SmtpPass"]);
         }
 
-        private static bool SendMessage(string subject, string bookedEvent, List<Attendant> bookedAttendants) 
+        private static bool SendMessage(string subject, Event bookedEvent, string bookedAttendants) 
         {
-           
+            
             MailMessage mm = null;
             bool isSent = false;
             try
             {
-                mm = new MailMessage(subject, bookedEvent);
+                mm = new MailMessage(subject, bookedAttendants);
                 mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
 
                 Client.Send(mm);
@@ -55,7 +55,7 @@ namespace Varldsklass.Web.Utils
             return isSent;
         }
 
-        public static bool SendBooking(string email, string bookedEvent, List<Attendant> bookedAttendants)
+        public static bool SendBooking(string email, Event bookedEvent, string bookedAttendants)
         {
             email = ConfigurationManager.AppSettings["adminEmail"];
             //Body is where we add Booking ID, Attendants Name, Event Title
