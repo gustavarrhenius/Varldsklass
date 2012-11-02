@@ -10,6 +10,7 @@ namespace Varldsklass.Web.ViewModels
     public class BookViewModel
     {
         public Event Event { get; set; }
+        public Account Booker { get; set; }
         public List<Attendant> Attendants { get; set; }
 
         [Display(Name="Jag som bokar önskar också att deltaga")]

@@ -39,6 +39,7 @@ namespace Varldsklass.Web.Controllers
         {
             model.Event = _eventRepo.FindByID(model.Event.ID);
             Account booker = _accountRepo.FindAll().Where(u => u.Email == User.Identity.Name).FirstOrDefault();
+            model.Booker = booker;
             List<Attendant> ValidAttendants = new List<Attendant>();
 
             model.Attendants.ForEach(delegate(Attendant attendant)
@@ -68,11 +69,27 @@ namespace Varldsklass.Web.Controllers
                 _attendantRepo.Save(attendant);
             });
 
+            model.Attendants = ValidAttendants; // Update model for mail-rendering
+
             // Send mail to booker
-            SendMail sendMail = new SendMail();
-            sendMail.send("noreply@varldsklass.com", "olivmagi@gmail.com", "Testbokning! :D", "Kropp.");
+            try
+            {
+                MailSender("bookingEmailTemplate", model, "olivmagi@gmail.com", "Bokning");
+                MailSender("johanBookingEmailTemplate", model, "noreply@varldsklass.com", "Bokning");
+            }
+            catch (Exception exception)
+            {
+                return View("Fail");
+            }
 
             return RedirectToAction("List");
+        }
+
+        private void MailSender(string templateName, dynamic model, string to, string subject) {
+            // Send mail to booker
+            SendMail sendMail = new SendMail();
+            string body = sendMail.render(templateName, model);
+            sendMail.send(to, subject, body);
         }
 
         [Authorize]
