@@ -7,6 +7,7 @@ using Varldsklass.Domain.Repositories.Abstract;
 using Varldsklass.Domain.Entities;
 using Varldsklass.Web.ViewModels;
 using Varldsklass.Domain.Repositories;
+using Varldsklass.Web.Infrastructure;
 
 namespace Varldsklass.Web.Controllers
 {
@@ -38,18 +39,8 @@ namespace Varldsklass.Web.Controllers
         {
             model.Event = _eventRepo.FindByID(model.Event.ID);
             Account booker = _accountRepo.FindAll().Where(u => u.Email == User.Identity.Name).FirstOrDefault();
-
             List<Attendant> ValidAttendants = new List<Attendant>();
-            /*for (int i = 0; i < model.Attendants.Count; i++)
-            {
-                if (model.Attendants[i].Email != null && model.Attendants[i].FirstName != null && model.Attendants[i].LastName != null)
-                {
-                    model.Attendants[i].BookerID = booker.ID;
-                    model.Attendants[i].EventID = model.Event.ID;
 
-                    ValidAttendants.Add(model.Attendants[i]);
-                }
-            }*/
             model.Attendants.ForEach(delegate(Attendant attendant)
             {
                 if (attendant.Email != null && attendant.FirstName != null && attendant.LastName != null)
@@ -76,6 +67,10 @@ namespace Varldsklass.Web.Controllers
             {
                 _attendantRepo.Save(attendant);
             });
+
+            // Send mail to booker
+            SendMail sendMail = new SendMail();
+            sendMail.send("noreply@varldsklass.com", "olivmagi@gmail.com", "Testbokning! :D", "Kropp.");
 
             return RedirectToAction("List");
         }
