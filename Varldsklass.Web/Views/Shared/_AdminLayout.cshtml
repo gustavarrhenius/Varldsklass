@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title</title>
+    <title>ADMIN - @ViewBag.Title</title>
     <link href="@Url.Content("~/Content/foundation/stylesheets/app-admin.less")" rel="stylesheet/less" type="text/css" />
     <link href="@Url.Content("~/Content/foundation/stylesheets/foundation.min.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/foundation/star-rating/jquery.rating.css")" rel="stylesheet" type="text/css" />
@@ -22,7 +22,7 @@
     <header>
         <div class="row">
             <div id="logo" class="three columns">
-                   <a href="@Url.Action("index", "Home")"><img src="@Url.Content("~/Content/foundation/images/logo.png")", alt="Världsklass - Utbildningar"  title="Världsklass - Utbildningar"/></a>
+                   <a href="@Url.Action("index", "Home")"><img src="@Url.Content("~/Content/foundation/images/logo-color.png")", alt="Världsklass - Utbildningar"  title="Världsklass - Utbildningar"/></a>
              </div>
             @{Html.RenderAction("Menu", "Admin");}
         </div>        

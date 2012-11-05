@@ -19,6 +19,10 @@
             <td>@attendant.FirstName</td>
             <td>@attendant.LastName</td>
             <td>@attendant.Email</td>
+            <td>@Html.ActionLink("Redigera", "EditAttendant", new { id = attendant.ID }, new { @class="tiny button" })</td>
+            <td>@Html.ActionLink("Ta bort", "DeleteAttendant", new { id = attendant.ID }, new { @class="tiny alert button" })</td>
         </tr>
     }
 </table>
+
+@Html.ActionLink("Boka in fler deltagare", "Event", "Book", new { id = Model.ID }, new { @class="success button" })
