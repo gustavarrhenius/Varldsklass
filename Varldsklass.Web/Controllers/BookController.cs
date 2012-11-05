@@ -79,10 +79,16 @@ namespace Varldsklass.Web.Controllers
             }
             catch (Exception exception)
             {
-                return View("Fail");
+                TempData["Event"] = model.Event.ID;
+                return RedirectToAction("Fail");
             }
 
             return RedirectToAction("List");
+        }
+
+        public ActionResult Fail()
+        {
+            return View(TempData["Event"]);
         }
 
         private void MailSender(string templateName, dynamic model, string to, string subject) {

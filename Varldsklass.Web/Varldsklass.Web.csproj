@@ -406,6 +406,7 @@
     <Content Include="Views\Shared\MailTemplate\BookingEmailTemplate.cshtml" />
     <Content Include="Views\Shared\MailTemplate\JohanBookingEmailTemplate.cshtml" />
     <Content Include="Views\Course\EditAttendant.cshtml" />
+    <Content Include="Views\Book\Fail.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
