@@ -126,6 +126,7 @@
     <Compile Include="ViewModels\PostIndexViewModel.cs" />
     <Compile Include="ViewModels\AdminModels.cs" />
     <Compile Include="ViewModels\SideBarViewModel.cs" />
+    <Compile Include="ViewModels\StatisticsViewModel.cs" />
     <Compile Include="ViewModels\UploadedFile.cs" />
   </ItemGroup>
   <ItemGroup>
