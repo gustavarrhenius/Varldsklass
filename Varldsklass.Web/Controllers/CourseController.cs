@@ -147,7 +147,20 @@ namespace Varldsklass.Web.Controllers
 
             if (ModelState.IsValid)
             {
+                var theOldPost = _postRepo.FindByID(post.ID);
                 var listOfImagesPaths = postedForm["image"];
+                var arrayOfImagesPaths = listOfImagesPaths.Split(',');
+
+                if (arrayOfImagesPaths.Count() > 0)
+                {
+                    post.Images = _imgRepo.FindAll(c => arrayOfImagesPaths.Any(cat => cat == c.ImagePath.ToString())).ToList();
+
+                    foreach (var cat in theOldPost.Images.Where(c => !arrayOfImagesPaths.Any(cat2 => cat2 == c.ImagePath.ToString())))
+                    {
+                        cat.Posts.Remove(theOldPost);
+                    }
+                }
+                /*var listOfImagesPaths = postedForm["image"];
                 if (listOfImagesPaths != null)
                 {
                     var arrayOfImagesPaths = listOfImagesPaths.Split(',');
@@ -158,17 +171,17 @@ namespace Varldsklass.Web.Controllers
                         img.Posts.Add(post);
                         _imgRepo.Save(img);
                     }
-                }
+                }*/
 
+         
                 var listOfCategoryIDs = postedForm["name"];
                 var arrayOfCategoryIDs = listOfCategoryIDs.Split(',');
+
                  if (arrayOfCategoryIDs.Count() > 0){
-                     post.Category = new List<Category>();
-                     foreach (var array in arrayOfCategoryIDs) {
-                         int x = Convert.ToInt32(array);
-                         var cat = _categoryRepo.FindByID(x);
-                         cat.Posts.Add(post);
-                         _categoryRepo.Save(cat);
+                     post.Category = _categoryRepo.FindAll(c => arrayOfCategoryIDs.Any(cat => cat == c.ID.ToString())).ToList();
+                     
+                     foreach (var cat in theOldPost.Category.Where(c => !arrayOfCategoryIDs.Any(cat2 => cat2 == c.ID.ToString()))) {
+                         cat.Posts.Remove(theOldPost);                         
                      }
                  }
                 _postRepo.Save(post);

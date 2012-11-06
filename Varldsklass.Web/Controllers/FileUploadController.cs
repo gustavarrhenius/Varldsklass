@@ -35,7 +35,7 @@ namespace Varldsklass.Web.Controllers
             Event Event = new Event();
 
             if (postID != -1) {
-                post = _postRepo.FindAll().Where(p => p.ID == postID).FirstOrDefault();
+                post = _postRepo.FindAll().Where(p => p.ID == postID).Include(i => i.Images).FirstOrDefault();
                 fuVM.post = post;
             } if (categoryID != -1)
             {
