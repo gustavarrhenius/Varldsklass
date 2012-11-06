@@ -68,13 +68,10 @@ namespace Varldsklass.Web.Controllers
 
             ValidAttendants.ForEach(delegate(Attendant attendant)
             {
-                try
-                {
+                bool alreadyExists = (_attendantRepo.FindAll().Where( a => a.EventID == attendant.EventID && a.Email == attendant.Email).Count() > 0);
+
+                if( ! alreadyExists ) {
                     _attendantRepo.Save(attendant);
-                }
-                catch (DbUpdateException e)
-                {
-                    // What.
                 }
             });
 

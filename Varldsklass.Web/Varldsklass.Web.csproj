@@ -127,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\css.css" />
+    <Content Include="Content\fonts\entypo.svg" />
     <Content Include="Content\fonts\museo_slab_500-webfont.svg" />
     <Content Include="Content\fonts\PTS55F-webfont.svg" />
     <Content Include="Content\fonts\PTS75F-webfont.svg" />
@@ -383,6 +384,9 @@
     <Content Include="Views\Home\Calendar.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\fonts\entypo.eot" />
+    <None Include="Content\fonts\entypo.ttf" />
+    <None Include="Content\fonts\entypo.woff" />
     <None Include="Content\fonts\museo_slab_500-webfont.eot" />
     <None Include="Content\fonts\museo_slab_500-webfont.ttf" />
     <None Include="Content\fonts\museo_slab_500-webfont.woff" />
