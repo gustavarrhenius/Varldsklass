@@ -15,10 +15,10 @@ namespace Varldsklass.Domain.DBInitializers
         {
             var categories = new List<Category>
             {
-            new Category { ID = 1, Name = "HLR", Created = DateTime.Now },
-            new Category { ID = 2, Name = "Lift", Created = DateTime.Now },
-            new Category { ID = 3, Name = "Mat", Created = DateTime.Now },
-            new Category { ID = 4, Name = "Lärare", Created = DateTime.Now }
+            new Category { ID = 1, Name = "HLR", Created = new DateTime(2012, 9, 18) },
+            new Category { ID = 2, Name = "Lift", Created = new DateTime(2012, 9, 18) },
+            new Category { ID = 3, Name = "Mat", Created = new DateTime(2012, 9, 18) },
+            new Category { ID = 4, Name = "Lärare", Created = new DateTime(2012, 9, 18) }
             };
 
             categories.ForEach(s => context.Categories.Add(s));
@@ -44,7 +44,9 @@ namespace Varldsklass.Domain.DBInitializers
                 new Post { ID = 6, Title = @"HlrUtblidningar", Body = @"Improve your brain efficiency by 75%", Created = new DateTime(2012, 9, 19), Category = categories, postType = 0, Events = new List<Event>() },
                 new Post { ID = 7, Title = @"Matutblidningar", Body = @"Secretly give your opponent a disadvantage", Created = new DateTime(2012, 9, 21), Category = categories, postType = 0, Events = new List<Event>() },
                 new Post { ID = 8, Title = @"Lärareutblidningar", Body = @"A fun game for the whole family", Created = new DateTime(2012, 9, 23), Category = categories, postType = 0, Events = new List<Event>() },
-                new Post { ID = 9, Title = @"Frågor och svar", Body = @"Några frågor", Created = new DateTime(2012, 9, 25), postType = 1, Events = null },
+                new Post { ID = 9, Title = @"Om Oss", Body = @"<h4>Om världsklass</h4><p>Oavsett om du vill gå en utbildning som privatperson, egenföretagare eller anställd så har vi lösningen som passar just dig och dina behov.</p><p>Våra kursdeltagare är glada kursdeltagare!</p><p>Vi gör alltid allt vi kan för att du som kursdeltagare ska bli så nöjd som möjligt, när andra utbildare gör en  'bra' utbildning så vill vi dra det ännu längre, ja ända upp till världsklass helt enkelt!</p>
+                <p>På de flesta av våra utbildningar så finns möjligheten att gå med på en 'Öppen utbildning' om det inte finns någon datum som passar så skicka in en förfråga om kommande utbildningstillfällen, eller om ni vill ha en egen utbildning som är skräddarsydd efter er verksamhet så fixar vi det!</p> <p>Har du funderingar så hör gärna av dig till oss, dina åsikter är viktiga för oss! </p><p>VÄRLDSKLASS.COM</p><p>Telefon: 0320 - 109 39</p>", Created = new DateTime(2012, 9, 25), postType = 1, Events = null },
+                new Post { ID = 10, Title = @"Frågor och svar", Body = @"Några frågor", Created = new DateTime(2012, 9, 25), postType = 1, Events = null },
 
             };
             //posts.ForEach(s => context.Posts.Add(s));
@@ -64,8 +66,6 @@ namespace Varldsklass.Domain.DBInitializers
             };
             locations.ForEach(s => context.Locations.Add(s));
             context.SaveChanges();
-
-
 
             var accounts = new List<Account>
             {

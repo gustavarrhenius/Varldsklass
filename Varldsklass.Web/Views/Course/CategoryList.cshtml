@@ -4,9 +4,13 @@
     ViewBag.Title = "Kategorier";
     ViewBag.Kategori = 0;
 }
-
-
-<article>
-<h2>Kategorier</h2>
-<div class="content"></div>
-</article>
+<div id="content" class="row">
+    <div class="eight columns">
+        <article>
+        <h2>Kategorier</h2>
+        <div class="content"></div>
+        </article>
+    </div>
+    @Html.Partial("_SideBar") 
+            
+</div>

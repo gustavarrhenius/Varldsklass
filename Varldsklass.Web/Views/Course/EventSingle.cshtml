@@ -4,7 +4,8 @@
     ViewBag.Title = "Kurstillfälle - " + Model.Title;
     ViewBag.Utbildning = Model.Post.ID;
 }
-
+<div id="content" class="row">
+    <div class="eight columns">
 <article>
 <h2>@Model.Title</h2>
 <div class="row">
@@ -40,3 +41,6 @@
     @Html.Raw(Model.Body)
 </div>
 </article>
+ </div>
+    @Html.Partial("_SideBar")      
+</div>

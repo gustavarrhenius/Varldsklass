@@ -1,5 +1,4 @@
 ﻿@model Varldsklass.Domain.Entities.Post
-
 @{
     ViewBag.Title = "AddPage";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -7,20 +6,28 @@
 
 <h2>Lägg till / Ändra sida</h2>
 
+
 @using (Html.BeginForm("SavePage", "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
+    
     @Html.HiddenFor(p => p.ID, "ID")
     @Html.HiddenFor(p => p.Created)
     @Html.HiddenFor(p => p.postType, "postType")
     @Html.LabelFor(p => p.Title, "Titel")
     @Html.ValidationMessageFor(p => p.Title)
     @Html.EditorFor(p => p.Title) 
-    
-     <div class="editor-field">
+    @Html.EditorFor(p => p.Body)
+     <!--<div class="editor-field">
         @Html.LabelFor(p => p.Body, "Innehåll")
         @Html.TextAreaFor(p => p.Body)
+    </div>-->
+   <a href="#" id="revealModal" class="button" data-reveal-id="myModal">Bilder</a>
+    <div id="myModal" class="reveal-modal [expand, xlarge, large, medium, small]">
+      @{
+        Html.RenderAction("_FileUploadPartial", "FileUpload", new { postID = Model.ID });
+        }
+      <a class="close-reveal-modal">&#215;</a>
     </div>
-   
     <input type="submit" value="Save" class="success button" />
     @Html.ActionLink("Cancel and return to List", "Pages", "Post")
 }

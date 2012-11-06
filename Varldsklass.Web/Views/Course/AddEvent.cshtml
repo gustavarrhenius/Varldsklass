@@ -52,6 +52,13 @@
 
     
     </script>
+    <a href="#" id="revealModal" class="button" data-reveal-id="myModal">Bilder</a>
+    <div id="myModal" class="reveal-modal [expand, xlarge, large, medium, small]">
+      @{
+        Html.RenderAction("_FileUploadPartial", "FileUpload", new { eventID = Model.ID });
+        }
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
     <input type="submit" value="Save" class="success button" />
     @Html.ActionLink("Cancel and return to List", "Index")
 }

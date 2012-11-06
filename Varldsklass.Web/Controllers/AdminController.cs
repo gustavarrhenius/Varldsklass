@@ -152,46 +152,5 @@ namespace Varldsklass.Web.Controllers
             List<Event> attendantList = _eventRepo.FindAll().ToList();
             return View( attendantList );
         }
-
-        public ActionResult FileUpload()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult FileUpload(HttpPostedFileBase file)
-        {
-            // Verify that the user selected a file
-            if (file != null && file.ContentLength > 0)
-            {
-                var fullFileName = Path.GetFileName(file.FileName);
-                var fileName = Path.GetFileNameWithoutExtension(fullFileName);
-                var folder = "~/Content/image-uploads";
-                FileInfo fileInfo = new FileInfo(fullFileName);
-                if (fileInfo.Extension.ToLower() == ".jpg" || fileInfo.Extension.ToLower() == ".jpeg" ||
-                    fileInfo.Extension.ToLower() == ".png" || fileInfo.Extension.ToLower() == ".gif")
-                {
-                    var path = Path.Combine(Server.MapPath(folder), fullFileName);
-
-                    var num = 2;
-                    while (System.IO.File.Exists(path))
-                    {
-                        fullFileName = fileName + "(" + num + ")" + fileInfo.Extension;
-                        path = Path.Combine(Server.MapPath(folder), fullFileName);
-                        num++;
-                    }
-
-                    if (!System.IO.File.Exists(path))
-                    {
-                        file.SaveAs(path);
-
-                        ViewData["message"] = "Bilden har blivit uppladdad";
-                        return View();
-                    }
-                }
-            }
-            ViewData["message"] = "Det gick inte att ladda upp bilden";
-            return View();
-        }
     }
 }

@@ -1,0 +1,46 @@
+﻿@model Varldsklass.Web.ViewModels.FileUploadViewModel
+  @{
+      var partModel = Model;
+      int count = 0;
+    }        
+<div class="file-upload">
+<h2>Välj bild</h2>
+    
+    @if (partModel.UploadedFiles != null)
+    {
+        foreach (var image in partModel.UploadedFiles)
+        {
+
+            if (image.Checked == true)
+            {
+                    <img src="@image.PathUrl" class="active" title="@image.PathUrl" data-number="@count" alt="@image.PathUrl" runat="server" width="100px"/>   <br />
+                    <input type="checkbox" name="image" id="image-@count" value="@image.PathUrl" checked="checked" />
+                {
+                    count++;
+                }
+            }
+            else
+            {
+               <img src="@image.PathUrl" title="@image.PathUrl" data-number="@count" alt="@image.PathUrl" runat="server" width="100px"/>   <br />
+               <input type="checkbox" name="image" id="image-@count" value="@image.PathUrl" /> 
+                {
+                    count++;
+                }
+            }
+        }
+    }  
+</div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.file-upload img').click(function () {
+                var checked = $('input#image-' + $(this).attr("data-number"))
+                if (checked.attr('checked')) {
+                    checked.removeAttr('checked');
+                    $(this).removeClass('active');
+                } else {
+                    checked.attr('checked', 'checked');
+                    $(this).addClass('active');
+                }
+            });
+        });
+    </script>

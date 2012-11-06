@@ -20,6 +20,7 @@ namespace Varldsklass.Domain.Entities
         public DateTime Created { get; set; }
         public virtual ICollection<Category> Category { get; set; }
         public virtual ICollection<Event> Events { get; set; }
+        public virtual ICollection<Image> Images { get; set; }
         public int postType { get; set; }
 
         public enum PostType 

@@ -16,12 +16,14 @@ namespace Varldsklass.Web.Controllers
         private IRepository<Event> _eventRepo;
         private IRepository<Post> _postRepo;
         private IRepository<Category> _categoryRepo;
+        private IRepository<Image> _imgRepo;
 
-        public PostController(IRepository<Post> repo, IRepository<Category> category, IRepository<Event> Event)
+        public PostController(IRepository<Post> repo, IRepository<Category> category, IRepository<Event> Event, IRepository<Image> img)
         {
             _eventRepo = Event;
             _postRepo = repo;
             _categoryRepo = category;
+            _imgRepo = img;
         }
 
         //
@@ -84,17 +86,29 @@ namespace Varldsklass.Web.Controllers
                  post.Created = DateTime.Now;
                  post.postType = (int)Post.PostType.Page;
             } else {
-                 post = _postRepo.FindByID(id);
+                post = _postRepo.FindAll().Where(p => p.ID == id).Include(i => i.Images).FirstOrDefault();
             }
             
             return View(post);
         }
 
         [HttpPost]
-        public ActionResult SavePage(Post Post)
+        [ValidateInput(false)]
+        public ActionResult SavePage(Post Post, FormCollection form)
         {
             if (ModelState.IsValid)
             {
+                var listOfImagesPaths = form["image"];
+                if (listOfImagesPaths != null ) {
+                    var arrayOfImagesPaths = listOfImagesPaths.Split(',');
+                    foreach (var path in arrayOfImagesPaths)
+                    {
+                        var img = _imgRepo.FindAll().Where(p => p.ImagePath == path).FirstOrDefault();
+                        img.Posts = new List<Post>();
+                        img.Posts.Add(Post);
+                        _imgRepo.Save(img);
+                    }
+                }
                 _postRepo.Save(Post);
                 // add a message to the viewbag
                 TempData["message"] = string.Format("{0} är sparad", Post.Title);
