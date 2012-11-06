@@ -51,46 +51,8 @@
             </div>
             
         </header>
-        <section id="slider">
-            <script type="text/javascript">
-                $(document).ready(function () {
-                if ($('#address').val() != null) {
-                    $('#slider').append('<div id="map_canvas" class="six columns" style="height:100%; width: 100%;"></div>');
-                }
-            });
-            </script>
-                    
-        </section>
         <section id="main">
-            <div id="content" class="row">
-                <div class="eight columns">
-                    @RenderBody()
-                </div>
-                <aside class="four columns">
-                <div class="row collapse">
-                    @Html.Partial("_SearchPartial")
-                </div>
-
-                @if (ViewBag.Utbildning == null && ViewBag.Kategori == null)
-                {
-                <section class="row collapse">
-                    @{Html.RenderAction("Calendar", "Home");}
-                </section>
-
-                <section class="row collapse">
-                    <h4>Facebook</h4>
-                    <div class="fb-like-box" data-href="http://www.facebook.com/varldsklass?fref=ts" data-show-faces="true" data-border-color="#fff" data-stream="false" data-header="false"></div>
-                </section>
-                }  @if (ViewBag.Kategori != null)
-                   {
-                       Html.RenderAction("Sidebar", "Post", new { id = ViewBag.Kategori, title = "kategori" });
-                   }  @if (ViewBag.Utbildning != null)
-                      {
-                          Html.RenderAction("Sidebar", "Post", new { id = ViewBag.Utbildning, title = "utbildning" });
-                      }
-                </aside>
-            
-            </div>
+         @RenderBody()
         </section>
         <footer id="footer">
             <section class="row">

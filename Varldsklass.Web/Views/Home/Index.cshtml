@@ -1,7 +1,8 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+<div id="content" class="row">
+    <div class="eight columns">
 <h2>@ViewBag.Message</h2>    
 
 @model List<DotNetOpenAuth.ApplicationBlock.Facebook.FacebookGraph.FeedPost>
@@ -9,3 +10,7 @@
         <h4>Nyheter<i class="open-book"> &#128214; </i></h4>
         @Html.DisplayFor(m => Model)
     </article>
+</div>
+    @Html.Partial("_SideBar")      
+</div>
+
