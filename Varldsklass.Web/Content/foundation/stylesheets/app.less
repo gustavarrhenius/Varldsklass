@@ -30,11 +30,11 @@
 }
 @font-face {
     font-family: 'EntypoRegular';
-    src: url('../../fonts/Entypo-webfont.eot');
-    src: url('../../fonts/Entypo-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../fonts/Entypo-webfont.woff') format('woff'),
-         url('../../fonts/Entypo-webfont.ttf') format('truetype'),
-         url('../../fonts/Entypo-webfont.svg#EntypoRegular') format('svg');
+    src: url('../../fonts/entypo.eot');
+    src: url('../../fonts/entypo.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/entypo.woff') format('woff'),
+         url('../../fonts/entypo.ttf') format('truetype'),
+         url('../../fonts/entypo.svg#EntypoRegular') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -107,16 +107,17 @@ header {
         {
             padding:10px 35px 10px 10px;
             line-height: 1;
+			margin-left:10px;
             i 
             {
                 position: absolute;
-                top: 18px;
+                top: 7px;
                 right: 10px;
                 font-size: 40px;
                 line-height: 0;
                 &.log-off 
                 {
-                    top:18px;
+                    top:7px;
                 }
             } 
         }
@@ -173,12 +174,43 @@ section#slider
 /* -----------------------------------------
    Facebook feed
 ----------------------------------------- */
-
-.facebook-feed .facebook-feed-item{margin-bottom:10px; border-bottom:1px solid #CBCBCB; padding-bottom: 10px}
-.facebook-feed .facebook-feed-item:last-child{border:none}
-.facebook-feed .facebook-feed-item img {}
-.facebook-feed .facebook-feed-item .create-date{color:#555;display:block;font-weight:bold; margin-bottom:4px;}
-
+.facebook-feed {
+	h4 {
+		margin: 0;
+        background: #0d5c94;
+        color: white;
+        padding: 5px;
+		moz-box-shadow: 1px 1px 5px #888;
+		-webkit-box-shadow: 1px 1px 5px #888;
+		box-shadow: 1px 1px 5px #888;
+		margin-bottom:10px; 
+        i {
+        float: right;
+        position: relative;
+        color: #062e4a;
+        font-size: 50px;
+		}
+	}
+	.facebook-feed-item {
+		moz-box-shadow: 1px 1px 5px #888;
+		-webkit-box-shadow: 1px 1px 5px #888;
+		box-shadow: 1px 1px 5px #888;
+		margin-bottom:10px; 
+		padding: 5px 5px 10px 5px;
+		.create-date {
+			color:#555;
+			display:block;
+			font-weight:bold; 
+			margin-bottom:4px;
+		}
+		img {
+		
+		}
+	}
+	.facebook-feed-item:last-child {
+		border:none
+	}
+}
 
 aside {
 	margin-top: 14px;
@@ -201,7 +233,6 @@ aside {
         i {
         float: right;
         position: relative;
-        top: 12px;
         color: #860000;
         font-size: 50px;
         }

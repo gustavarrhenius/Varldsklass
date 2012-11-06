@@ -1,7 +1,7 @@
 ﻿@using Varldsklass.Domain.Helpers
 @model IEnumerable<Varldsklass.Domain.Entities.Event>
 <div id="calendar">
-<h4>Kalender<i>P</i></h4>
+<h4>Kalender<i>&#128197;</i></h4>
 <ul class="calendar">
     
     @foreach (var item in Model)
@@ -9,9 +9,9 @@
         
             <li>
                 <h5><span class="capitalize">@Html.ActionLink(@item.Post.Title, "EventSingle", "Course", new { id = item.ID}, null)</span></h5>
-                <i class="clock">N</i><span class="calendar-date">@Html.DateFormat(item.StartDate)</span><br />
-                <i>_</i>@Html.ActionLink(@item.Title, "EventSingle", "Course", new { id = item.ID }, null)<br />
-                <i>0</i>@item.City
+                <i class="clock">&#128340;</i><span class="calendar-date">@Html.DateFormat(item.StartDate)</span><br />
+                <i>&#8505;</i>@Html.ActionLink(@item.Title, "EventSingle", "Course", new { id = item.ID }, null)<br />
+                <i>&#59172;</i>@item.City
             </li>
     }
   </ul>   
