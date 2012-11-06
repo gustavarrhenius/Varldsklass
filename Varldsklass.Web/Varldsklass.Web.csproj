@@ -127,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\css.css" />
+    <Content Include="Content\fonts\entypo.svg" />
     <Content Include="Content\fonts\museo_slab_500-webfont.svg" />
     <Content Include="Content\fonts\PTS55F-webfont.svg" />
     <Content Include="Content\fonts\PTS75F-webfont.svg" />
@@ -383,6 +384,9 @@
     <Content Include="Views\Home\Calendar.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\fonts\entypo.eot" />
+    <None Include="Content\fonts\entypo.ttf" />
+    <None Include="Content\fonts\entypo.woff" />
     <None Include="Content\fonts\museo_slab_500-webfont.eot" />
     <None Include="Content\fonts\museo_slab_500-webfont.ttf" />
     <None Include="Content\fonts\museo_slab_500-webfont.woff" />
@@ -404,12 +408,11 @@
     <Content Include="Views\Course\EventAttendants.cshtml" />
     <Content Include="Views\Shared\MailTemplate\BookingEmailTemplate.cshtml" />
     <Content Include="Views\Shared\MailTemplate\JohanBookingEmailTemplate.cshtml" />
-    <Content Include="Views\Course\EditAttendant.cshtml" />
-    <Content Include="Views\Book\Fail.cshtml" />
     <Content Include="Views\Evaluation\Evaluation.cshtml" />
     <Content Include="Views\Book\EventList.cshtml" />
     <Content Include="Views\Book\SingleEvent.cshtml" />
     <Content Include="Views\Shared\_BookerPartial.cshtml" />
+    <Content Include="Views\Evaluation\Statistics.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
