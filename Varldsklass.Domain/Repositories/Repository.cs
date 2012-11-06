@@ -7,6 +7,7 @@ using Varldsklass.Domain.Entities.Abstract;
 using Varldsklass.Domain.Contexts;
 using System.Data.Objects;
 using System.Data.Entity;
+using System.Data.SqlClient;
 
 namespace Varldsklass.Domain.Repositories
 {
@@ -47,6 +48,7 @@ namespace Varldsklass.Domain.Repositories
                 _dbSet.Add(entity);
                 
             }
+
             _context.SaveChanges();
         }
         

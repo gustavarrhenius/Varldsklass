@@ -8,6 +8,8 @@ using Varldsklass.Domain.Entities;
 using Varldsklass.Web.ViewModels;
 using Varldsklass.Domain.Repositories;
 using Varldsklass.Web.Infrastructure;
+using System.Data.SqlClient;
+using System.Data.Entity.Infrastructure;
 
 namespace Varldsklass.Web.Controllers
 {
@@ -66,7 +68,14 @@ namespace Varldsklass.Web.Controllers
 
             ValidAttendants.ForEach(delegate(Attendant attendant)
             {
-                _attendantRepo.Save(attendant);
+                try
+                {
+                    _attendantRepo.Save(attendant);
+                }
+                catch (DbUpdateException e)
+                {
+                    // What.
+                }
             });
 
             model.Attendants = ValidAttendants; // Update model for mail-rendering
