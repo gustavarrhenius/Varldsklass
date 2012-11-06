@@ -62,6 +62,7 @@
     <Compile Include="Entities\Attendant.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Event.cs" />
+    <Compile Include="Entities\Image.cs" />
     <Compile Include="Entities\Location.cs" />
     <Compile Include="Entities\Post.cs" />
     <Compile Include="Entities\Account.cs" />

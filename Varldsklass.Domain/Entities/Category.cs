@@ -17,5 +17,6 @@ namespace Varldsklass.Domain.Entities
         [AllowHtml]
         public string Body { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<Image> Images { get; set; }
     }
 }

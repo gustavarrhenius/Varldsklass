@@ -19,6 +19,13 @@
         @Html.LabelFor(p => p.Post.Body, "Innehåll")
         @Html.TextAreaFor(p => p.Post.Body)
     </div>
+    <a href="#" id="revealModal" class="button" data-reveal-id="myModal">Bilder</a>
+    <div id="myModal" class="reveal-modal [expand, xlarge, large, medium, small]">
+      @{
+        Html.RenderAction("_FileUploadPartial", "FileUpload", new { postID = Model.Post.ID });
+        }
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
     <h3>Kategorier</h3>
     foreach (var item in (SelectList)ViewData["events"])
     {

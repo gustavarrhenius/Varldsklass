@@ -16,5 +16,6 @@ namespace Varldsklass.Domain.Helpers
 
             return formatDate;
         }
+
     }
 }

@@ -16,12 +16,14 @@ namespace Varldsklass.Web.Controllers
         private IRepository<Event> _eventRepo;
         private IRepository<Post> _postRepo;
         private IRepository<Category> _categoryRepo;
+        private IRepository<Image> _imgRepo;
 
-        public CourseController(IRepository<Post> repo, IRepository<Category> category, IRepository<Event> Event)
+        public CourseController(IRepository<Post> repo, IRepository<Category> category, IRepository<Event> Event, IRepository<Image> image)
         {
             _eventRepo = Event;
             _postRepo = repo;
             _categoryRepo = category;
+            _imgRepo = image;
         }
 
 
@@ -91,8 +93,20 @@ namespace Varldsklass.Web.Controllers
             
             if (ModelState.IsValid)
             {
-                var listOfCategoryIDs = postedForm["name"];
+                var listOfImagesPaths = postedForm["image"];
+                if (listOfImagesPaths != null)
+                {
+                    var arrayOfImagesPaths = listOfImagesPaths.Split(',');
+                    foreach (var path in arrayOfImagesPaths)
+                    {
+                        var img = _imgRepo.FindAll().Where(p => p.ImagePath == path).FirstOrDefault();
+                        img.Posts = new List<Post>();
+                        img.Posts.Add(post);
+                        _imgRepo.Save(img);
+                    }
+                }
 
+                var listOfCategoryIDs = postedForm["name"];
                 var arrayOfCategoryIDs = listOfCategoryIDs.Split(',');
                  if (arrayOfCategoryIDs.Count() > 0){
                      post.Category = new List<Category>();
@@ -151,10 +165,22 @@ namespace Varldsklass.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult SaveEvent(Event Event)
+        public ActionResult SaveEvent(Event Event, FormCollection form)
         {
             if (ModelState.IsValid)
             {
+                var listOfImagesPaths = form["image"];
+                if (listOfImagesPaths != null)
+                {
+                    var arrayOfImagesPaths = listOfImagesPaths.Split(',');
+                    foreach (var path in arrayOfImagesPaths)
+                    {
+                        var img = _imgRepo.FindAll().Where(p => p.ImagePath == path).FirstOrDefault();
+                        img.Events = new List<Event>();
+                        img.Events.Add(Event);
+                        _imgRepo.Save(img);
+                    }
+                }
                 _eventRepo.Save(Event);
                 // add a message to the viewbag
                 TempData["message"] = string.Format("{0} has been saved", Event.Title);
@@ -187,7 +213,7 @@ namespace Varldsklass.Web.Controllers
         public ActionResult EditCategory(int id = 0)
         {
             if (id != 0) {
-                return View("AddCategory", _categoryRepo.FindByID(id));
+                return View("AddCategory", _categoryRepo.FindAll().Where(c => c.ID == id).Include(i => i.Images).FirstOrDefault());
             } else {
                 Category category = new Category();
                 category.Created = DateTime.Now;
@@ -196,10 +222,22 @@ namespace Varldsklass.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult SaveCategory(Category Category)
+        public ActionResult SaveCategory(Category Category, FormCollection form)
         {
             if (ModelState.IsValid)
             {
+                var listOfImagesPaths = form["image"];
+                if (listOfImagesPaths != null)
+                {
+                    var arrayOfImagesPaths = listOfImagesPaths.Split(',');
+                    foreach (var path in arrayOfImagesPaths)
+                    {
+                        var img = _imgRepo.FindAll().Where(p => p.ImagePath == path).FirstOrDefault();
+                        img.Category = new List<Category>();
+                        img.Category.Add(Category);
+                        _imgRepo.Save(img);
+                    }
+                }
                 _categoryRepo.Save(Category);
                 // add a message to the viewbag
                 TempData["message"] = string.Format("{0} has been saved", Category.Name);

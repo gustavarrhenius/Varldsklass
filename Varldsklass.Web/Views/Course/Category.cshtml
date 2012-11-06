@@ -4,10 +4,24 @@
     ViewBag.Kategori = Model.ID;
 }
 
-<article>
-<h2>@Model.Name</h2>
-<div class="content">@Html.Raw(Model.Body)</div>
-</article>
+@if(Model.Images.Count() > 0) {
+<section id="slider">
+    <div id="featured">
+        @foreach(var img in Model.Images) {
+            <img src="@img.ImagePath" title="@ViewBag.Title" alt="@ViewBag.Title"/>
+        }
+    </div>
+</section>
+}
+<div id="content" class="row">
+    <div class="eight columns">
+    <article>
+    <h2>@Model.Name</h2>
+    <div class="content">@Html.Raw(Model.Body)</div>
+    </article>
+    </div>
+    @Html.Partial("_SideBar")      
+</div>
 
 
 
