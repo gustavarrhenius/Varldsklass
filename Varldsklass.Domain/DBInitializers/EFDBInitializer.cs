@@ -88,7 +88,10 @@ namespace Varldsklass.Domain.DBInitializers
 
             attendants.ForEach(a => context.Attendants.Add(a));
             context.SaveChanges();
-             
+
+
+            // Make attendant email-addresses unique
+            context.Database.ExecuteSqlCommand("ALTER TABLE dbo.Attendants ADD CONSTRAINT EventEmail UNIQUE NONCLUSTERED ( EventID, Email )");
         }
     }
 }
