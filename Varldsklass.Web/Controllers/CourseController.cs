@@ -19,14 +19,16 @@ namespace Varldsklass.Web.Controllers
         private IRepository<Category> _categoryRepo;
         private IRepository<Attendant> _attendantRepo;
         private IAccountRepository _accountRepo;
+        private IRepository<Image> _imgRepo;
 
-        public CourseController(IRepository<Post> repo, IRepository<Category> category, IRepository<Event> Event, IRepository<Attendant> attendantRepo, IAccountRepository accountRepo)
+        public CourseController(IRepository<Post> repo, IRepository<Category> category, IRepository<Event> Event, IRepository<Image> image, IRepository<Attendant> attendantRepo, IAccountRepository accountRepo)
         {
             _eventRepo = Event;
             _postRepo = repo;
             _categoryRepo = category;
             _attendantRepo = attendantRepo;
             _accountRepo = accountRepo;
+			_imgRepo = image;
         }
 
         private bool NotAllowedHere()
@@ -131,7 +133,7 @@ namespace Varldsklass.Web.Controllers
         /* ---- Front View ---- */
         public ActionResult CourseSingle(int id)
         {
-            if (NotAllowedHere()) return RedirectAway();
+            //if (NotAllowedHere()) return RedirectAway();
 
             var posts = _postRepo.FindAll().Where(p => p.ID == id).Include(p => p.Events).FirstOrDefault();
 
@@ -139,22 +141,47 @@ namespace Varldsklass.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult SaveCourse(Post post, FormCollection postedForm)
         {
             if (NotAllowedHere()) return RedirectAway();
 
             if (ModelState.IsValid)
             {
-                var listOfCategoryIDs = postedForm["name"];
+                var theOldPost = _postRepo.FindByID(post.ID);
+                var listOfImagesPaths = postedForm["image"];
+                if (listOfImagesPaths != null)
+                {
+                    var arrayOfImagesPaths = listOfImagesPaths.Split(',');
+                    post.Images = _imgRepo.FindAll(c => arrayOfImagesPaths.Any(cat => cat == c.ImagePath.ToString())).ToList();
 
-                var arrayOfCategoryIDs = listOfCategoryIDs.Split(',');
-                 if (arrayOfCategoryIDs.Count() > 0){
-                     post.Category = new List<Category>();
-                     foreach (var array in arrayOfCategoryIDs) {
-                         int x = Convert.ToInt32(array);
-                         var cat = _categoryRepo.FindByID(x);
-                         cat.Posts.Add(post);
-                         _categoryRepo.Save(cat);
+                    foreach (var cat in theOldPost.Images.Where(c => !arrayOfImagesPaths.Any(cat2 => cat2 == c.ImagePath.ToString())))
+                    {
+                        cat.Posts.Remove(theOldPost);
+                    }
+                }
+                /*var listOfImagesPaths = postedForm["image"];
+                if (listOfImagesPaths != null)
+                {
+                    var arrayOfImagesPaths = listOfImagesPaths.Split(',');
+                    foreach (var path in arrayOfImagesPaths)
+                    {
+                        var img = _imgRepo.FindAll().Where(p => p.ImagePath == path).FirstOrDefault();
+                        img.Posts = new List<Post>();
+                        img.Posts.Add(post);
+                        _imgRepo.Save(img);
+                    }
+                }*/
+
+         
+                var listOfCategoryIDs = postedForm["name"];
+                if (listOfCategoryIDs != null)
+                {
+                     var arrayOfCategoryIDs = listOfCategoryIDs.Split(',');
+                     post.Category = _categoryRepo.FindAll(c => arrayOfCategoryIDs.Any(cat => cat == c.ID.ToString())).ToList();
+                     
+                     foreach (var cat in theOldPost.Category.Where(c => !arrayOfCategoryIDs.Any(cat2 => cat2 == c.ID.ToString()))) {
+                         cat.Posts.Remove(theOldPost);                         
                      }
                  }
                 _postRepo.Save(post);
@@ -210,12 +237,24 @@ namespace Varldsklass.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult SaveEvent(Event Event)
+        public ActionResult SaveEvent(Event Event, FormCollection form)
         {
             if (NotAllowedHere()) return RedirectAway();
 
             if (ModelState.IsValid)
             {
+                var listOfImagesPaths = form["image"];
+                if (listOfImagesPaths != null)
+                {
+                    var arrayOfImagesPaths = listOfImagesPaths.Split(',');
+                    foreach (var path in arrayOfImagesPaths)
+                    {
+                        var img = _imgRepo.FindAll().Where(p => p.ImagePath == path).FirstOrDefault();
+                        img.Events = new List<Event>();
+                        img.Events.Add(Event);
+                        _imgRepo.Save(img);
+                    }
+                }
                 _eventRepo.Save(Event);
                 // add a message to the viewbag
                 TempData["message"] = string.Format("{0} has been saved", Event.Title);
@@ -240,7 +279,7 @@ namespace Varldsklass.Web.Controllers
         /* ---- Front View ---- */
         public ActionResult EventSingle(int id)
         {
-            if (NotAllowedHere()) return RedirectAway();
+            //if (NotAllowedHere()) return RedirectAway();
 
             var Event = _eventRepo.FindAll().Where(p => p.ID == id).Include(p => p.Post).FirstOrDefault();
 
@@ -254,7 +293,7 @@ namespace Varldsklass.Web.Controllers
             if (NotAllowedHere()) return RedirectAway();
 
             if (id != 0) {
-                return View("AddCategory", _categoryRepo.FindByID(id));
+                return View("AddCategory", _categoryRepo.FindAll().Where(c => c.ID == id).Include(i => i.Images).FirstOrDefault());
             } else {
                 Category category = new Category();
                 category.Created = DateTime.Now;
@@ -263,12 +302,25 @@ namespace Varldsklass.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult SaveCategory(Category Category)
+        [ValidateInput(false)]
+        public ActionResult SaveCategory(Category Category, FormCollection form)
         {
             if (NotAllowedHere()) return RedirectAway();
 
             if (ModelState.IsValid)
             {
+                var listOfImagesPaths = form["image"];
+                if (listOfImagesPaths != null)
+                {
+                    var arrayOfImagesPaths = listOfImagesPaths.Split(',');
+                    foreach (var path in arrayOfImagesPaths)
+                    {
+                        var img = _imgRepo.FindAll().Where(p => p.ImagePath == path).FirstOrDefault();
+                        img.Category = new List<Category>();
+                        img.Category.Add(Category);
+                        _imgRepo.Save(img);
+                    }
+                }
                 _categoryRepo.Save(Category);
                 // add a message to the viewbag
                 TempData["message"] = string.Format("{0} has been saved", Category.Name);
@@ -293,7 +345,7 @@ namespace Varldsklass.Web.Controllers
         /* ---- Front View ---- */
         public ActionResult Category(int id)
         {
-            if (NotAllowedHere()) return RedirectAway();
+            //if (NotAllowedHere()) return RedirectAway();
 
             Category categories = _categoryRepo.FindAll().Where(c => c.ID == id).Include(p => p.Posts).FirstOrDefault();
             return View(categories);
@@ -302,7 +354,7 @@ namespace Varldsklass.Web.Controllers
         /* ---- Front View ---- */
         public ActionResult CategoryList()
         {
-            if (NotAllowedHere()) return RedirectAway();
+            //if (NotAllowedHere()) return RedirectAway();
 
             List<Category> categories = _categoryRepo.FindAll().ToList();
 

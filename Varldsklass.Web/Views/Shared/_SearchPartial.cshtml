@@ -1,10 +1,6 @@
-﻿@using (Html.BeginForm("Search", "Home", FormMethod.Get))
+﻿<div id="search-bar">
+@using (Html.BeginForm("Search", "Home", FormMethod.Get))
 {
-<div class="eight mobile-three columns">
-    @Html.TextBox("search")
-</div>
-    
-<div class="four mobile-one columns">
-    <input type="submit" value="Sök" class="postfix button tiny" placeholder="Sök på Utbildningar, kategorier, lärare..."/>
- </div>
+        <div>@Html.TextBox("search")<input type="submit" value="Sök" class="postfix button tiny" placeholder="Sök på Utbildningar, kategorier, lärare..."/></div>
 }
+</div>

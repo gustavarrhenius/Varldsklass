@@ -1,0 +1,18 @@
+﻿ <aside class="four columns">
+        @if (ViewBag.Utbildning == null && ViewBag.Kategori == null)
+        {
+            <section class="row collapse">
+                @{Html.RenderAction("Calendar", "Home");}
+            </section>
+            <section class="facebook-side row collapse">
+                <h4>Facebook <i>&#128077;</i></h4>
+                <div class="fb-like-box" data-href="http://www.facebook.com/varldsklass?fref=ts" data-show-faces="true" data-border-color="#fff" data-stream="false" data-header="false"></div>
+            </section>
+        }  @if (ViewBag.Kategori != null)
+        {
+            Html.RenderAction("Sidebar", "Post", new { id = ViewBag.Kategori, title = "kategori" });
+        }  @if (ViewBag.Utbildning != null)
+        {
+            Html.RenderAction("Sidebar", "Post", new { id = ViewBag.Utbildning, title = "utbildning" });
+        }
+  </aside>

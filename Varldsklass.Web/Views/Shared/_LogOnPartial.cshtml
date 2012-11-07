@@ -1,9 +1,9 @@
 ﻿
 @if(Request.IsAuthenticated) {
-    <p><strong>@User.Identity.Name</strong> <a href="@Url.Action("LogOff", "Account")" class="success button">Logga ut <i class="log-off">+</i></a></p>
-}
+    <div><strong>@User.Identity.Name</strong> <a href="@Url.Action("LogOff", "Account")" class="success button book">Logga ut <i class="log-off">&#128275;</i></a></div>
+    }
 else
-{
-     @Html.ActionLink("Registrera dig", "Register", "Account")   <a href="@Url.Action("LogOn", "Account")" class="success button">Logga in <i>V</i></a>
-    
-}
+    {
+     <div>@Html.ActionLink("Registrera dig", "Register", "Account")   <a href="@Url.Action("LogOn", "Account")" class="success button">Logga in <i>&#128274;</i></a></div>
+   
+    }

@@ -3,7 +3,8 @@
 @{
     ViewBag.Title = "Boka";
 }
-
+<div id="content" class="row">
+    <div class="eight columns">
 <h2>@Model.Event.Title</h2>
 @Model.Event.Post.Body
 
@@ -36,7 +37,9 @@
     <input class="secondary button" id="more-attendants" type="button" value="Fler" />
     <input class="button"  type="submit" value="Boka" />
 }
-
+    </div>
+    @Html.Partial("_SideBar")      
+</div>
 <script type="text/javascript">
     $(document).ready(function () {
         // Clone that form-part

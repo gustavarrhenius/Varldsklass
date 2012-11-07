@@ -3,7 +3,6 @@
 <nav class="twelve columns">
     <ul id="menu" class="nav-bar">
         <li>@Html.ActionLink("Hem", "Index", "Home")</li>
-        <li>@Html.ActionLink("Om oss", "About", "Home")</li>
         <li class="has-flyout">
             @Html.ActionLink("Utbildningar", "CategoryList", "Course")
             <a href="#" class="flyout-toggle"><span> </span></a>
@@ -30,5 +29,6 @@
                 
             </ul>
         </li>
+        <li><a href="#" class="search-button">Sök <i>&#128269;</i></a></li>
     </ul>
 </nav>

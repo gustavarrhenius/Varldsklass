@@ -1,12 +1,24 @@
 ﻿@model Varldsklass.Domain.Entities.Post
 
 @{
-    ViewBag.Title = "Page";
+    ViewBag.Title = Model.Title;
 }
-
-<h2>@Model.Title</h2>
-
-<article>
-@Html.Raw(Model.Body)
-</article>
+@if(Model.Images.Count() > 0) {
+<section id="slider">
+    <div id="featured">
+        @foreach(var img in Model.Images) {
+            <img src="@img.ImagePath" title="@ViewBag.Title" alt="@ViewBag.Title"/>
+        }
+    </div>
+</section>
+}
+<div id="content" class="row">
+    <div class="eight columns">
+        <h2>@Model.Title</h2>
+        <article>
+            @Html.Raw(Model.Body)
+        </article>
+    </div>
+    @Html.Partial("_SideBar")      
+</div>
 

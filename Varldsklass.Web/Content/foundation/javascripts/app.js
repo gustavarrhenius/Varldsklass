@@ -24,11 +24,16 @@
   
     
     $.fn.foundationTabs             ? $doc.foundationTabs() : null;
-    
-  
   
     $("#featured").orbit();
+
+    $(".search-button").click(function() {
+        $("#search-bar").toggle();
+    });
   
+    $("#revealModal").click(function() {
+      $("#myModal").reveal();
+    });
 
   // UNCOMMENT THE LINE YOU WANT BELOW IF YOU WANT IE8 SUPPORT AND ARE USING .block-grids
   // $('.block-grid.two-up>li:nth-child(2n+1)').css({clear: 'both'});

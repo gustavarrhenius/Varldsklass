@@ -57,6 +57,11 @@ namespace Varldsklass.Web.Controllers
                 return View("Evaluation", question);
                 }
             }
+
+        public ActionResult Statistics() {
+
+        return View();
+            }
         }
     }
 
