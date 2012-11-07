@@ -24,7 +24,7 @@ namespace Varldsklass.Web.Controllers
             _eventRepo = eventRepo;
             _questionRepo = questionRepo;
             _attRepo = attendant;
-            }
+        }
 
         public ActionResult SendEvaluation(int id)
         {
@@ -39,23 +39,16 @@ namespace Varldsklass.Web.Controllers
                 {
                     MailSender("attendantEmailTemplate", model, attendant.Email, title);
                 }
-                //MailSender("attendantEmailTemplate", model, "olivmagi@gmail.com" , "Utvärdering av);
-
             }
             catch (Exception exception)
             {
                 TempData["Event"] = model.Event.ID;
                 return RedirectToAction("Fail");
-
-                //qst.AttendantID = Attendant.ID;
-                return View("Evaluation", "Evaluation", new { id = Event.ID });
             }
+
+            return View("Evaluation", "Evaluation", new { id = Event.ID });
         }
 
-        //public ActionResult Index()
-        //    {
-        //    return View();
-        //    }
         private void MailSender(string templateName, dynamic model, string to, string subject)
         {
             // Send mail to booker
@@ -73,7 +66,6 @@ namespace Varldsklass.Web.Controllers
             Question qst = new Question();
             qst.EventID = Event.ID;
 
-            //qst.AttendantID = Attendant.ID;
             return View(qst);
         }
         public ActionResult Evaluation(int id)
@@ -101,6 +93,7 @@ namespace Varldsklass.Web.Controllers
                 return View("Evaluation", question);
             }
         }
+
         [HttpPost]
         public ActionResult SaveAttendant(Question question)
         {
