@@ -49,17 +49,49 @@ namespace Varldsklass.Web.Controllers
             }
         }
 
-        public ActionResult Statistics(int id)
+        public ActionResult Statistics(int id = 0)
         {
             StatisticsViewModel viewModel = new StatisticsViewModel();
-            List<Question> questions = _questionRepo.FindAll().Where(q => q.Event.PostID == id).ToList();
+            List<Question> questions;
 
-            viewModel.Teacher = (double)questions.Average(q => q.Teacher);
-            viewModel.Food = (double)questions.Average(q => q.Food);
-            viewModel.Location = (double)questions.Average(q => q.Location);
-            viewModel.Overall = (double)questions.Average(q => q.Overall);
+            if (id > 0)
+            {
+                questions = _questionRepo.FindAll().Where(q => q.EventID == id).ToList();
+            }
+            else
+            {
+                questions = _questionRepo.FindAll().ToList();
+            }
 
-            return View();
+            viewModel.Event = _eventRepo.FindByID(id);
+
+            questions.ForEach(delegate(Question question)
+            {
+                if( IsAvailable(question.Teacher))
+                    viewModel.Teacher.Add(question.Teacher.Value);
+
+                if( IsAvailable(question.Location))
+                    viewModel.Location.Add(question.Location.Value);
+
+                if( IsAvailable(question.Food))
+                    viewModel.Food.Add(question.Food.Value);
+
+                if( IsAvailable(question.Overall))
+                    viewModel.Overall.Add(question.Overall.Value);
+
+                viewModel.Opinions.Add( question.Opinion );
+
+            });
+
+            return View(viewModel);
+        }
+
+        private bool IsAvailable(int? value)
+        {
+            if (!value.HasValue) return false;
+            if (value.Value < 1) return false;
+
+            return true;
         }
     }
 }

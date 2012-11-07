@@ -15,10 +15,10 @@ namespace Varldsklass.Domain.DBInitializers
         {
             var categories = new List<Category>
             {
-            new Category { ID = 1, Name = "HLR", Created = new DateTime(2012, 9, 18) },
-            new Category { ID = 2, Name = "Lift", Created = new DateTime(2012, 9, 18) },
-            new Category { ID = 3, Name = "Mat", Created = new DateTime(2012, 9, 18) },
-            new Category { ID = 4, Name = "Lärare", Created = new DateTime(2012, 9, 18) }
+                new Category { ID = 1, Name = "HLR", Created = new DateTime(2012, 9, 18) },
+                new Category { ID = 2, Name = "Lift", Created = new DateTime(2012, 9, 18) },
+                new Category { ID = 3, Name = "Mat", Created = new DateTime(2012, 9, 18) },
+                new Category { ID = 4, Name = "Lärare", Created = new DateTime(2012, 9, 18) }
             };
 
             categories.ForEach(s => context.Categories.Add(s));
@@ -87,6 +87,20 @@ namespace Varldsklass.Domain.DBInitializers
             };
 
             attendants.ForEach(a => context.Attendants.Add(a));
+            context.SaveChanges();
+
+            var evaluations = new List<Question>
+            {
+                new Question { ID = 1, EventID = 1, Food = 5, Teacher = 5, Location = 5, Overall = 5, Opinion = "Johan är bäst i världen! Världsklass!" },
+                new Question { ID = 2, EventID = 1, Food = 4, Teacher = 3, Location = 4, Overall = 0, Opinion = "ja har inga synpnukter............." },
+                new Question { ID = 3, EventID = 1, Food = 0, Teacher = 1, Location = 1, Overall = 1, Opinion = "Jag ville verkligen bara gå." },
+                new Question { ID = 4, EventID = 1, Food = 4, Teacher = 4, Location = 4, Overall = 2, Opinion = "" },
+                new Question { ID = 5, EventID = 2, Food = 5, Teacher = 0, Location = 0, Overall = 0, Opinion = "Hängde inte riktigt med på undervisningen, men maten var mycket bra." },
+                new Question { ID = 6, EventID = 2, Food = 2, Teacher = 5, Location = 5, Overall = 5, Opinion = "" },
+                new Question { ID = 7, EventID = 2, Food = 2, Teacher = 5, Location = 5, Overall = 5, Opinion = "" },
+            };
+
+            evaluations.ForEach(e => context.Questions.Add(e));
             context.SaveChanges();
 
 

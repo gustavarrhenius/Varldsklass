@@ -133,8 +133,6 @@ namespace Varldsklass.Web.Controllers
         /* ---- Front View ---- */
         public ActionResult CourseSingle(int id)
         {
-            //if (NotAllowedHere()) return RedirectAway();
-
             var posts = _postRepo.FindAll().Where(p => p.ID == id).Include(p => p.Events).FirstOrDefault();
 
             return View(posts);
@@ -279,8 +277,6 @@ namespace Varldsklass.Web.Controllers
         /* ---- Front View ---- */
         public ActionResult EventSingle(int id)
         {
-            //if (NotAllowedHere()) return RedirectAway();
-
             var Event = _eventRepo.FindAll().Where(p => p.ID == id).Include(p => p.Post).FirstOrDefault();
 
             return View(Event);
@@ -345,8 +341,6 @@ namespace Varldsklass.Web.Controllers
         /* ---- Front View ---- */
         public ActionResult Category(int id)
         {
-            //if (NotAllowedHere()) return RedirectAway();
-
             Category categories = _categoryRepo.FindAll().Where(c => c.ID == id).Include(p => p.Posts).FirstOrDefault();
             return View(categories);
         }
@@ -354,8 +348,6 @@ namespace Varldsklass.Web.Controllers
         /* ---- Front View ---- */
         public ActionResult CategoryList()
         {
-            //if (NotAllowedHere()) return RedirectAway();
-
             List<Category> categories = _categoryRepo.FindAll().ToList();
 
             return View(categories);

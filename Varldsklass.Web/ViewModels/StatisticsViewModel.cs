@@ -10,11 +10,21 @@ namespace Varldsklass.Web.ViewModels
     {
         public Event Event { get; set; }
 
-        public double Teacher { get; set; }
-        public double Location { get; set; }
-        public double Food { get; set; }
-        public double Overall { get; set; }
+        public List<int> Teacher { get; set; }
+        public List<int> Location { get; set; }
+        public List<int> Food { get; set; }
+        public List<int> Overall { get; set; }
 
         public List<string> Opinions { get; set; }
+
+        public StatisticsViewModel()
+        {
+            Teacher = new List<int>();
+            Location = new List<int>();
+            Food = new List<int>();
+            Overall = new List<int>();
+
+            Opinions = new List<string>();
+        }
     }
 }
