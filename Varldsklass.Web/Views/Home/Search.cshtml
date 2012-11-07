@@ -21,7 +21,7 @@
             {
                 <p>@Html.DateFormat(searchObject.StartDate) - @Html.DateFormat(searchObject.EndDate)</p>
             }
-            <p>@Html.Raw(searchObject.Excerpt)</p>
+            <p>@Html.StripTags(searchObject.Excerpt)</p>
             </article>
         }
     </div>

@@ -53,5 +53,11 @@ namespace Varldsklass.Domain.Helpers
 
             return html;
             }
+
+        public static string StripTags(this HtmlHelper htmlHelper, string htmlText)
+        {
+            var reg = new Regex("<(.|\n)*?>", RegexOptions.IgnoreCase);
+            return reg.Replace(htmlText, "");
+        }
     }
 }
