@@ -141,6 +141,7 @@ namespace Varldsklass.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult SaveCourse(Post post, FormCollection postedForm)
         {
             if (NotAllowedHere()) return RedirectAway();
@@ -149,10 +150,9 @@ namespace Varldsklass.Web.Controllers
             {
                 var theOldPost = _postRepo.FindByID(post.ID);
                 var listOfImagesPaths = postedForm["image"];
-                var arrayOfImagesPaths = listOfImagesPaths.Split(',');
-
-                if (arrayOfImagesPaths.Count() > 0)
+                if (listOfImagesPaths != null)
                 {
+                    var arrayOfImagesPaths = listOfImagesPaths.Split(',');
                     post.Images = _imgRepo.FindAll(c => arrayOfImagesPaths.Any(cat => cat == c.ImagePath.ToString())).ToList();
 
                     foreach (var cat in theOldPost.Images.Where(c => !arrayOfImagesPaths.Any(cat2 => cat2 == c.ImagePath.ToString())))
@@ -175,9 +175,9 @@ namespace Varldsklass.Web.Controllers
 
          
                 var listOfCategoryIDs = postedForm["name"];
-                var arrayOfCategoryIDs = listOfCategoryIDs.Split(',');
-
-                 if (arrayOfCategoryIDs.Count() > 0){
+                if (listOfCategoryIDs != null)
+                {
+                     var arrayOfCategoryIDs = listOfCategoryIDs.Split(',');
                      post.Category = _categoryRepo.FindAll(c => arrayOfCategoryIDs.Any(cat => cat == c.ID.ToString())).ToList();
                      
                      foreach (var cat in theOldPost.Category.Where(c => !arrayOfCategoryIDs.Any(cat2 => cat2 == c.ID.ToString()))) {
@@ -302,6 +302,7 @@ namespace Varldsklass.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult SaveCategory(Category Category, FormCollection form)
         {
             if (NotAllowedHere()) return RedirectAway();

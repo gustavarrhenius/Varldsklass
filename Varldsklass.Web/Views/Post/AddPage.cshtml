@@ -16,11 +16,10 @@
     @Html.LabelFor(p => p.Title, "Titel")
     @Html.ValidationMessageFor(p => p.Title)
     @Html.EditorFor(p => p.Title) 
-    @Html.EditorFor(p => p.Body)
-     <!--<div class="editor-field">
+    <div class="editor-field">
         @Html.LabelFor(p => p.Body, "Innehåll")
         @Html.TextAreaFor(p => p.Body)
-    </div>-->
+    </div>
    <a href="#" id="revealModal" class="button" data-reveal-id="myModal">Bilder</a>
     <div id="myModal" class="reveal-modal [expand, xlarge, large, medium, small]">
       @{

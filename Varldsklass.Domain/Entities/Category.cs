@@ -11,7 +11,7 @@ namespace Varldsklass.Domain.Entities
     public class Category : IEntity
     {
         public int ID { get; set; }
-        [Required(ErrorMessage = "Du måste fylla i ett namn.")]
+        //[Required(ErrorMessage = "Du måste fylla i ett namn.")]
         public string Name { get; set; }
         public DateTime Created { get; set; }
         [AllowHtml]

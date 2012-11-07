@@ -4,8 +4,8 @@
     ViewBag.Title = "Logga in";
 }
 
-<div class="row">
-    <div class="twelve columns">
+<div id="content" class="row">
+    <div class="eight columns">
         <h2>Logga in</h2>
         <p>
             Skriv in din e-postadress och ditt lösenord. @Html.ActionLink("Registera", "Register") dig om du inte har något konto.
@@ -48,6 +48,6 @@
                 </fieldset>
             </div>
         }
-
-    </div>
+</div>
+    @Html.Partial("_SideBar")      
 </div>

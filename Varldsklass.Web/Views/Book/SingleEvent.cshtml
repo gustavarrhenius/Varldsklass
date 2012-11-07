@@ -3,7 +3,8 @@
 @{
     ViewBag.Title = Model.Title;
 }
-
+<div id="content" class="row">
+    <div class="eight columns">
 <h2>Deltagare du bokat till @Model.Title</h2>
 <table>
     <tr>
@@ -18,3 +19,7 @@
         </tr>
     }
 </table>
+
+ </div>
+    @Html.Partial("_SideBar")      
+</div>
