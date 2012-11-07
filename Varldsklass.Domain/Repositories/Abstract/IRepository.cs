@@ -9,7 +9,7 @@ namespace Varldsklass.Domain.Repositories.Abstract
 {
     public interface IRepository<T> where T : class, IEntity
     {
-        DbContext Model { get; }
+        DbContext Model { get; set; }
 
         IQueryable<T> FindAll(Func<T, bool> filter = null);
         T FindByID(int id);

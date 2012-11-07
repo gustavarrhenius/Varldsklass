@@ -23,7 +23,8 @@ namespace Varldsklass.Domain.Repositories
 
         public DbContext Model
         {
-            get { return _context;  }
+            get { return _context; }
+            set { _context = value; _dbSet = _context.Set<T>(); }
         }
 
         public virtual IQueryable<T> FindAll(Func<T, bool> filter = null)

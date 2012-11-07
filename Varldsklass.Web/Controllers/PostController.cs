@@ -18,12 +18,13 @@ namespace Varldsklass.Web.Controllers
         private IRepository<Category> _categoryRepo;
         private IRepository<Image> _imgRepo;
 
-        public PostController(IRepository<Post> repo, IRepository<Category> category, IRepository<Event> Event, IRepository<Image> img)
+        public PostController(IRepository<Post> repo, IRepository<Category>
+        category, IRepository<Event> Event, IRepository<Image> image)
         {
             _eventRepo = Event;
-            _postRepo = repo;
-            _categoryRepo = category;
-            _imgRepo = img;
+            _postRepo = repo; _postRepo.Model = _eventRepo.Model;
+            _categoryRepo = category; _categoryRepo.Model = _eventRepo.Model;
+            _imgRepo = image; _imgRepo.Model = _eventRepo.Model;
         }
 
         //
@@ -98,17 +99,27 @@ namespace Varldsklass.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                var theOldPost = _postRepo.FindByID(Post.ID);
+                if (theOldPost.Images == null)
+                    theOldPost.Images = new List<Image>();
+                var oldImages = theOldPost.Images.ToList();
                 var listOfImagesPaths = form["image"];
-                if (listOfImagesPaths != null ) {
-                    var arrayOfImagesPaths = listOfImagesPaths.Split(',');
-                    foreach (var path in arrayOfImagesPaths)
-                    {
-                        var img = _imgRepo.FindAll().Where(p => p.ImagePath == path).FirstOrDefault();
-                        img.Posts = new List<Post>();
-                        img.Posts.Add(Post);
-                        _imgRepo.Save(img);
-                    }
+                string[] arrayOfImagesPaths = null;
+                if (listOfImagesPaths != null)
+                    arrayOfImagesPaths = listOfImagesPaths.Split(',');
+
+                oldImages = theOldPost.Images.ToList();
+                if (arrayOfImagesPaths != null && arrayOfImagesPaths.Count() > 0)
+                {
+                    foreach (var addedimg in _imgRepo.FindAll(c =>
+                arrayOfImagesPaths.Any(cat => cat == c.ImagePath.ToString()) &&
+                !c.Posts.Any(p => p.ID == theOldPost.ID)).ToList())
+                        theOldPost.Images.Add(addedimg);
                 }
+                foreach (var removedimg in oldImages.Where(c => arrayOfImagesPaths
+                == null || !arrayOfImagesPaths.Any(cat2 => cat2 == c.ImagePath.ToString())))
+                    theOldPost.Images.Remove(removedimg); 
+
                 _postRepo.Save(Post);
                 // add a message to the viewbag
                 TempData["message"] = string.Format("{0} är sparad", Post.Title);
