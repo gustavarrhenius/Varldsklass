@@ -421,6 +421,9 @@
     <Content Include="Views\Shared\MailTemplate\MailTemplate.cshtml" />
     <Content Include="Views\Shared\_FileUploadPartialView.cshtml" />
     <Content Include="Views\Shared\_Sidebar.cshtml" />
+    <Content Include="Views\Evaluation\EvaluationAttendant.cshtml" />
+    <Content Include="Views\Shared\MailTemplate\attendantEmailTemplate.cshtml" />
+    <Content Include="Views\Evaluation\Succes.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

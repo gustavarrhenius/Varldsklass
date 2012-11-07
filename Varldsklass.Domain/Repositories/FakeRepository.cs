@@ -17,7 +17,7 @@ namespace Varldsklass.Domain.Repositories
             context = entities.ToList();
         }
 
-        public DbContext Model { get { return null; } }
+        public DbContext Model { get { return null; } set { return; } }
 
         public virtual IQueryable<T> FindAll(Func<T,bool> filter = null)
         {

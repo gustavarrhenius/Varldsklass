@@ -24,5 +24,6 @@
         </tr>
     }
 </table>
-
+@Html.ActionLink("Utvärdering", "Evaluation", "Evaluation", new { id = Model.ID }, new { @class = "button" })
+@Html.ActionLink("Skicka Utvärdering", "SendEvaluation", "Evaluation", new { id = Model.ID }, new { @class = "button" })
 @Html.ActionLink("Boka in fler deltagare", "Event", "Book", new { id = Model.ID }, new { @class="success button" })
