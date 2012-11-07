@@ -353,7 +353,7 @@ namespace Varldsklass.Web.Controllers
         /* ---- Front View ---- */
         public ActionResult CategoryList()
         {
-            if (NotAllowedHere()) return RedirectAway();
+            //if (NotAllowedHere()) return RedirectAway();
 
             List<Category> categories = _categoryRepo.FindAll().ToList();
 

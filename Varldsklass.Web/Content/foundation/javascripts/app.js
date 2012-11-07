@@ -26,6 +26,10 @@
     $.fn.foundationTabs             ? $doc.foundationTabs() : null;
   
     $("#featured").orbit();
+
+    $(".search-button").click(function() {
+        $("#search-bar").toggle();
+    });
   
     $("#revealModal").click(function() {
       $("#myModal").reveal();
