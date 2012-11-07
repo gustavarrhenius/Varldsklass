@@ -25,7 +25,10 @@
         <td>Information</td>
         <td>StartDatum</td>
         <td>SlutDatum</td>
-        <td>Utvärderingar</td>
+        <td>Ändra</td>
+        <td>Ta Bort</td>
+        <td>Antal Utvärderingar</td>
+        <td>Deltagare</td>
     </tr>
     @foreach (var Event in Model.Events)
     {
@@ -38,7 +41,6 @@
             <td>@Html.ActionLink("Ändra", "EditEvent", new { id = Event.ID }, new { @class = "tiny success button" })</td>
             <td>@Html.ActionLink("Ta Bort", "DeleteEvent", new { id = Event.ID, course = Model.ID}, new { @class = "tiny alert button" })</td>
             <td>@Event.Questions.Count()</td>
-            <td>@Html.ActionLink("Utvärdering", "Evaluation", "Evaluation", new { id = Event.ID }, new { @class = "tiny button" }) </td>
             <td>@Html.ActionLink("Deltagare", "EventAttendants", new { id = Event.ID }, new { @class = "tiny button" })</td>
         </tr>
     }

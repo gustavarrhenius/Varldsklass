@@ -1,0 +1,87 @@
+﻿@model Varldsklass.Domain.Entities.Question
+
+@{
+    ViewBag.Title = "Utvärdering";
+}
+<div id="content" class="row">
+    <div class="eight columns">
+<h2>Utvärdering</h2>
+<div class="error-message">
+    @ViewData["Error"]
+</div>
+<div class="succes-message">
+    @ViewData["Succes"]
+</div>
+@if (ViewData["Succes"] != "") {
+    using (Html.BeginForm("SaveAttendant", "Evaluation", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    @Html.HiddenFor(model => Model.EventID)
+    <div class="eight columns questions">
+        
+        <div class="question-box">
+            <span>Vad tycker du om lärarens insats i kursen?</span>
+            <span class="tiny-helper"> (din uppfattning om föreläsaren/läraren/utbildningsledaren) </span>
+            <div id="form-teacher">
+                @Html.RadioButtonFor(t => t.Teacher, "1", new { @class = "star" }) 
+                @Html.RadioButtonFor(t => t.Teacher, "2", new { @class = "star" })
+                @Html.RadioButtonFor(t => t.Teacher, "3", new { @class = "star" })
+                @Html.RadioButtonFor(t => t.Teacher, "4", new { @class = "star" })
+                @Html.RadioButtonFor(t => t.Teacher, "5", new { @class = "star" })
+            </div>
+            <div class="radio-no">@Html.RadioButtonFor(t => t.Teacher, "0") Ej tillgänglig</div>
+        </div>
+       
+       <div class="question-box"> 
+            <span>Vad tycker du om lokalen/lokalerna? </span>
+            <span class="tiny-helper"> (din uppfattning om lokalerna, t ex luftkonditionering, bekvämlighet ) </span>
+             <div id="form-location">
+                @Html.RadioButtonFor(l => l.Location, "1", new { @class = "star" })
+                @Html.RadioButtonFor(l => l.Location, "2", new { @class = "star" })
+                @Html.RadioButtonFor(l => l.Location, "3", new { @class = "star" })
+                @Html.RadioButtonFor(l => l.Location, "4", new { @class = "star" })
+                @Html.RadioButtonFor(l => l.Location, "5", new { @class = "star" })
+            </div>
+            <div class="radio-no">@Html.RadioButtonFor(l => l.Location, "0") Ej tillgänglig</div>
+        </div>
+
+        <div class="question-box"> 
+            <span> Vad tycker du om maten under kursen? </span>
+            <span class="tiny-helper"> (din samlade uppfattning om den frukost, lunch och fika som serverades under kursen) </span>
+             <div id="form-food">
+                @Html.RadioButtonFor(f => f.Food, "1", new { @class = "star" })
+                @Html.RadioButtonFor(f => f.Food, "2", new { @class = "star" })
+                @Html.RadioButtonFor(f => f.Food, "3", new { @class = "star" })
+                @Html.RadioButtonFor(f => f.Food, "4", new { @class = "star" })
+                @Html.RadioButtonFor(f => f.Food, "5", new { @class = "star" })
+            </div>
+            <div class="radio-no">@Html.RadioButtonFor(f => f.Food, "0") Ej tillgänglig </div>
+        </div>
+
+        <div class="question-box">
+            <span>Vad är ditt övergripande intryck av kursen? </span>
+            <span class="tiny-helper"> (din samlade uppfattning av utbildningen) </span>
+            <div id="form-overall">                
+                @Html.RadioButtonFor(o => o.Overall, "1", new { @class = "star" }) 
+                @Html.RadioButtonFor(o => o.Overall, "2", new { @class = "star" }) 
+                @Html.RadioButtonFor(o => o.Overall, "3", new { @class = "star" }) 
+                @Html.RadioButtonFor(o => o.Overall, "4", new { @class = "star" })
+                @Html.RadioButtonFor(o => o.Overall, "5", new { @class = "star" })
+            </div>
+            <div class="radio-no">@Html.RadioButtonFor(o => o.Overall, "0") Ej tillgänglig</div>
+        </div>
+
+        <div class="question-box">
+            <span> Övriga synpunkter </span>
+            <span class="tiny-helper"> (max 500 tecken) </span>
+                @Html.TextAreaFor(op => op.Opinion, new { @class = "mceNoEditor" })
+        </div>
+
+        <div class="">
+            <input class="button" type="submit" value="Skicka" />
+        </div>
+    </div>
+    }
+     }
+	</div>
+    @Html.Partial("_SideBar")      
+</div>
