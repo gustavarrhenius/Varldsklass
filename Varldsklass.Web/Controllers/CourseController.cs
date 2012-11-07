@@ -20,8 +20,9 @@ namespace Varldsklass.Web.Controllers
         private IRepository<Attendant> _attendantRepo;
         private IAccountRepository _accountRepo;
         private IRepository<Image> _imgRepo;
+        private IRepository<PopularCourse> _popularCourseRepo;
 
-        public CourseController(IRepository<Post> repo, IRepository<Category> category, IRepository<Event> Event, IRepository<Image> image, IRepository<Attendant> attendantRepo, IAccountRepository accountRepo)
+        public CourseController(IRepository<Post> repo, IRepository<Category> category, IRepository<Event> Event, IRepository<Image> image, IRepository<Attendant> attendantRepo, IAccountRepository accountRepo, IRepository<PopularCourse> popularCourseRepo)
         {
             _eventRepo = Event;
             _postRepo = repo;
@@ -29,6 +30,7 @@ namespace Varldsklass.Web.Controllers
             _attendantRepo = attendantRepo;
             _accountRepo = accountRepo;
 			_imgRepo = image;
+            _popularCourseRepo = popularCourseRepo;
         }
 
         private bool NotAllowedHere()
@@ -360,6 +362,34 @@ namespace Varldsklass.Web.Controllers
 
             return View(categories);
         }
+
+        [Authorize]
+        public ActionResult PopularCourses()
+        {
+            if (NotAllowedHere()) return RedirectAway();
+
+            var vm = new PopularCoursesViewModel();
+            
+            var pc = new PopularCourse();
+            pc = _popularCourseRepo.FindAll().FirstOrDefault();
+
+            vm.Posts = _postRepo.FindAll().Where(p => p.postType == 0).ToList();
+            vm.ID = pc.ID;
+            vm.CourseOne = pc.CourseOne;
+            vm.CourseTwo = pc.CourseTwo;
+            vm.CourseThree = pc.CourseThree;
+            vm.CourseFour = pc.CourseFour;
+
+            return View(vm);
+        }
+
+        public ActionResult SavePopularCourses(PopularCourse pc)
+        {
+            _popularCourseRepo.Save(pc);
+
+            return RedirectToAction("PopularCourses");
+        }
+        
 
     }
 }

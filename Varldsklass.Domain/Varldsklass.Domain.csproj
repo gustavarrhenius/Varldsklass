@@ -74,6 +74,7 @@
     <Compile Include="Entities\Event.cs" />
     <Compile Include="Entities\Image.cs" />
     <Compile Include="Entities\Location.cs" />
+    <Compile Include="Entities\PopularCourse.cs" />
     <Compile Include="Entities\Post.cs" />
     <Compile Include="Entities\Account.cs" />
     <Compile Include="Entities\Question.cs" />

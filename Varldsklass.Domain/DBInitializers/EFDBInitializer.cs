@@ -88,7 +88,13 @@ namespace Varldsklass.Domain.DBInitializers
 
             attendants.ForEach(a => context.Attendants.Add(a));
             context.SaveChanges();
-             
+
+            var popularCourses = new List<PopularCourse> {
+                new PopularCourse { ID = 1, CourseOne = 1, CourseTwo = 2, CourseThree = 3, CourseFour = 4 }
+            };
+
+            popularCourses.ForEach(p => context.PopularCourses.Add(p));
+            context.SaveChanges();
         }
     }
 }

@@ -123,6 +123,7 @@
     <Compile Include="ViewModels\FeedViewModel.cs" />
     <Compile Include="ViewModels\FileUploadViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
+    <Compile Include="ViewModels\PopularCoursesViewModel.cs" />
     <Compile Include="ViewModels\PostIndexViewModel.cs" />
     <Compile Include="ViewModels\AdminModels.cs" />
     <Compile Include="ViewModels\SideBarViewModel.cs" />
@@ -419,6 +420,7 @@
     <Content Include="Views\Shared\MailTemplate\MailTemplate.cshtml" />
     <Content Include="Views\Shared\_FileUploadPartialView.cshtml" />
     <Content Include="Views\Shared\_Sidebar.cshtml" />
+    <Content Include="Views\Course\PopularCourses.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
