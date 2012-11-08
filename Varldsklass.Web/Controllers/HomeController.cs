@@ -148,9 +148,23 @@ namespace Varldsklass.Web.Controllers
 
         public ActionResult Popular()
         {
-            //var pc = _popularCoursesRepo.FindAll().Include(p=>p.Posts.ToList());
-            
-            return PartialView(true);
+            PopularCoursesViewModel pVM = new PopularCoursesViewModel();
+            pVM.Posts = new List<Post>();
+            var pc = _popularCoursesRepo.FindAll().FirstOrDefault();
+            if (pc.CourseOne != null) {
+                var post = _postRepo.FindAll().Where(p => p.ID == pc.CourseOne).Include(i => i.Images).FirstOrDefault();
+                pVM.Posts.Add(post);
+            } if (pc.CourseTwo != null)
+            {
+                pVM.Posts.Add(_postRepo.FindAll().Where(p => p.ID == pc.CourseTwo).Include(i => i.Images).FirstOrDefault());
+            } if (pc.CourseThree != null)
+            {
+                pVM.Posts.Add(_postRepo.FindAll().Where(p => p.ID == pc.CourseThree).Include(i => i.Images).FirstOrDefault());
+            } if (pc.CourseFour != null)
+            {
+                pVM.Posts.Add(_postRepo.FindAll().Where(p => p.ID == pc.CourseFour).Include(i => i.Images).FirstOrDefault());
+            }
+            return PartialView(pVM);
         }
     }
 }
