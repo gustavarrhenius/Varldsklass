@@ -4,8 +4,8 @@
 }
     @if (Model.Categories != null && Model.Category == null)
     {
-
-       <h3>Kategorier</h3>
+    <section class="categories">
+       <h4>Kategorier <i>&#128213;</i></h4>
        <ul>
             @foreach (var category in Model.Categories)
             {
@@ -13,10 +13,12 @@
                 <li>@Html.ActionLink(category.Name, "Category", "Course", new { id = category.ID }, null)</li>
             }
         </ul>
+    </section>
     } 
     @if (Model.Category != null)
     {
-    <h3>Kategorier</h3>
+    <section class="categories">
+    <h4>Kategorier <i>&#128213;</i></h4>
     <ul>
          @foreach (var category in Model.Categories)
          {
@@ -39,16 +41,20 @@
                 
          }
         
-    </ul>
+        </ul>
+      </section>
     } 
+
    
     @if (Model.Post != null)
     {
-    <h3>@Model.Post.Title</h3>
-    <ul>
-        @foreach (var Event in Model.Post.Events)
-        {
-        <li>@Html.ActionLink(Event.Title, "EventSingle", "Course", new { id = Event.ID }, null)</li>
-        }
-    </ul>
+    <section class="categories">    
+        <h4>@Model.Post.Title <i>&#128278;</i></h4>
+        <ul>
+            @foreach (var Event in Model.Post.Events)
+            {
+            <li><i>&#59172;</i>@Html.ActionLink(Event.Title, "EventSingle", "Course", new { id = Event.ID }, null)</li>
+            }
+        </ul>
+    </section>
     }

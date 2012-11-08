@@ -3,14 +3,12 @@
 }
 <div id="content" class="row">
     <div class="eight columns">
-<h2>@ViewBag.Message</h2>    
-
-@model List<DotNetOpenAuth.ApplicationBlock.Facebook.FacebookGraph.FeedPost>
-    <article class="facebook-feed">
-        <h4>Nyheter<i class="open-book">&#128214;</i></h4>
-        @Html.DisplayFor(m => Model)
-    </article>
-</div>
+     @model List<DotNetOpenAuth.ApplicationBlock.Facebook.FacebookGraph.FeedPost>
+        <article class="facebook-feed">
+            <h2>Nyheter</h2>
+            @Html.DisplayFor(m => Model)
+        </article>
+    </div>
     @Html.Partial("_SideBar")      
 </div>
 
