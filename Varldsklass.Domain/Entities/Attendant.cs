@@ -22,6 +22,7 @@ namespace Varldsklass.Domain.Entities
 
         [DisplayName("E-post")]
         [Required(ErrorMessage = "Du måste ange en e-post-adress")]
+        [MaxLength(254)]
         public string Email { get; set; }
 
         [Required]

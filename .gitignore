@@ -15,6 +15,7 @@
 *.testsettings
 *.trx
 *.vsmdi
+*.swp
 
 #Ignore private folder
 /Private/
@@ -23,3 +24,7 @@
 #NuGet
 packages/
 !NuGet.exe
+
+#App_Data can go fuck itself
+/Varldsklass.Web/App_Data
+

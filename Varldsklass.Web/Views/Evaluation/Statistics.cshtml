@@ -1,30 +1,80 @@
-﻿@model IEnumerable<Varldsklass.Domain.Entities.Question>
+﻿@using Varldsklass.Web.ExtensionMethods
+@using Varldsklass.Domain.Helpers
+@model Varldsklass.Web.ViewModels.StatisticsViewModel
               
 @{
-    ViewBag.Title = "Statistics";
+    ViewBag.Title = "Statistik";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Statistics</h2>
-<table>
-    <thead>
-        <td>Overall</td>
-        <td>Ej tillgänglig</td>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-        <td>5</td>
-    </thead>
-@foreach(var stat in Model){
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    }
+<div class="row">
+    <div class="twelve columns">
+        @if (Model.Event != null)
+        {
+            <h2>Statistik över @Model.Event.Title</h2>
+            <p>Lärare: @Model.Event.Teatcher</p>
+            <p>Ägde rum mellan <strong>@Html.DateFormat(Model.Event.StartDate)</strong> och <strong>@Html.DateFormat(Model.Event.EndDate)</strong>.</p>
+        }
+        else
+        {
+            <h2>Samlad statistik över alla kurstillfällen</h2>
+        }
+    </div>
+</div>
 
-</table>
+<div class="row">
+    <div class="six columns">
+        <table id="statistics">
+            <tr>
+                <th></th>
+                <th>Medelvärde</th>
+                <th>Median</th>
+                <th>Röster</th>
+            </tr>
+            <tr>
+                <th>Lärare</th>
+                <td>@Model.Teacher.Average().ToString("0.00")</td>
+                <td>@Model.Teacher.Median()</td>
+                <td>@Model.Teacher.Count</td>
+            </tr>
+            <tr>
+                <th>Lokaler</th>
+                <td>@Model.Location.Average().ToString("0.00")</td>
+                <td>@Model.Location.Median()</td>
+                <td>@Model.Location.Count</td>
+            </tr>
+            </tr>
+            <tr>
+                <th>Mat</th>
+                <td>@Model.Food.Average().ToString("0.00")</td>
+                <td>@Model.Food.Median()</td>
+                <td>@Model.Food.Count</td>
+            </tr>
+            </tr>
+            <tr>
+                <th>Övergripande</th>
+                <td>@Model.Overall.Average().ToString("0.00")</td>
+                <td>@Model.Overall.Median()</td>
+                <td>@Model.Overall.Count</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="six columns">
+        @if (Model.Event != null)
+        {
+            <h3>Övriga synpunkter</h3>
+            <ul>
+            @foreach (string opinion in Model.Opinions)
+            {
+                if (opinion == "")
+                {
+                    continue;
+                }
+
+                <li>@opinion</li>
+            }
+            </ul>
+        }
+    </div>
+</div>

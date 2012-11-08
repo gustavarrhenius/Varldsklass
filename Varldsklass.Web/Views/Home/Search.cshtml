@@ -2,23 +2,28 @@
 @model IEnumerable<Varldsklass.Domain.Entities.SearchResult>
           
 @{
-    ViewBag.Title = "Search";
+    ViewBag.Title = "Sökresultat";
 }
 <div id="content" class="row">
     <div class="eight columns">
-    <h2>Search</h2>
-     @foreach (var searchObject in Model) 
-         {
-     
-     <article>
-      <a href="@searchObject.Url"> <h3>@searchObject.Title</h3> </a>
-        @if (searchObject.StartDate != DateTime.MinValue && searchObject.EndDate != DateTime.MinValue)
+    <h2>@ViewBag.Title</h2>
+        @if(Model.Count() < 1)
+        {
+            <text><p>Din sökning gav inga resultat.<p>
+            <p>Kontrollera stavning och prova att använda färre sökord.</p></text>
+        }
+
+        @foreach (var searchObject in Model) 
+        {
+            <article>
+            <a href="@searchObject.Url"> <h3>@searchObject.Title</h3> </a>
+            @if (searchObject.StartDate != DateTime.MinValue && searchObject.EndDate != DateTime.MinValue)
             {
-            <p>@Html.DateFormat(searchObject.StartDate) - @Html.DateFormat(searchObject.EndDate)</p>
+                <p>@Html.DateFormat(searchObject.StartDate) - @Html.DateFormat(searchObject.EndDate)</p>
             }
-        <p>@searchObject.Excerpt</p>
-     </article>
-     }
+            <p>@Html.StripTags(searchObject.Excerpt)</p>
+            </article>
+        }
     </div>
     @Html.Partial("_SideBar")      
 </div>

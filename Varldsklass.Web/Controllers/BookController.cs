@@ -8,6 +8,8 @@ using Varldsklass.Domain.Entities;
 using Varldsklass.Web.ViewModels;
 using Varldsklass.Domain.Repositories;
 using Varldsklass.Web.Infrastructure;
+using System.Data.SqlClient;
+using System.Data.Entity.Infrastructure;
 
 namespace Varldsklass.Web.Controllers
 {
@@ -66,7 +68,11 @@ namespace Varldsklass.Web.Controllers
 
             ValidAttendants.ForEach(delegate(Attendant attendant)
             {
-                _attendantRepo.Save(attendant);
+                bool alreadyExists = (_attendantRepo.FindAll().Where( a => a.EventID == attendant.EventID && a.Email == attendant.Email).Count() > 0);
+
+                if( ! alreadyExists ) {
+                    _attendantRepo.Save(attendant);
+                }
             });
 
             model.Attendants = ValidAttendants; // Update model for mail-rendering
