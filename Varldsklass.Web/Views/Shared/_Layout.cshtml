@@ -55,6 +55,11 @@
         <section id="main">
          @RenderBody()
         </section>
+
+        <section class="popular">
+            @{Html.RenderAction("Popular", "Home");}
+        </section>
+
         <footer id="footer">
             <section class="row">
                 <section class="three columns">
