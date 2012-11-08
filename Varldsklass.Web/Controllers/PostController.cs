@@ -100,6 +100,8 @@ namespace Varldsklass.Web.Controllers
             if (ModelState.IsValid)
             {
                 var theOldPost = _postRepo.FindByID(Post.ID);
+                if (theOldPost == null)
+                    theOldPost = Post;
                 if (theOldPost.Images == null)
                     theOldPost.Images = new List<Image>();
                 var oldImages = theOldPost.Images.ToList();

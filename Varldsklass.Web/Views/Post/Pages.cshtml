@@ -7,17 +7,17 @@
 
 <h2>Sidor</h2>
 @TempData["message"]
-@Html.ActionLink("Lägg till Sida", "AddPage", null, new { @class = "success button" })
+@Html.ActionLink("Lägg till Sida", "AddPage", null, new { @class = "button" })
 <table>
+    <tr>
+        <th>Titel</th>
+        <th>Ändra</th>
+        <th>Ta Bort</th>
+    </tr>
 @foreach (var page in Model)
 {
     <tr>
-        <th>Titel</th>
-        <th>Skapad</th>
-    </tr>
-    <tr>
          <td>@page.Title</td> 
-         <td>@page.Created</td>
          <td>@Html.ActionLink("Ändra", "AddPage", new { id = page.ID }, new { @class = "tiny success button" })</td>
          <td>@Html.ActionLink("Ta Bort", "DeletePage", new { id = page.ID }, new { @class = "tiny alert button" })</td>
     </tr>

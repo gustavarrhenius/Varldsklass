@@ -16,17 +16,18 @@
     @Html.LabelFor(p => p.Title, "Titel")
     @Html.ValidationMessageFor(p => p.Title)
     @Html.EditorFor(p => p.Title) 
+    <a href="#" id="revealModal" class="button" data-reveal-id="myModal">Bilder</a>
+    <div id="myModal" class="reveal-modal [expand, xlarge, large, medium, small]">
+      @{
+    Html.RenderAction("_FileUploadPartial", "FileUpload", new { postID = Model.ID });
+        }
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
     <div class="editor-field">
         @Html.LabelFor(p => p.Body, "Innehåll")
         @Html.TextAreaFor(p => p.Body)
     </div>
-   <a href="#" id="revealModal" class="button" data-reveal-id="myModal">Bilder</a>
-    <div id="myModal" class="reveal-modal [expand, xlarge, large, medium, small]">
-      @{
-        Html.RenderAction("_FileUploadPartial", "FileUpload", new { postID = Model.ID });
-        }
-      <a class="close-reveal-modal">&#215;</a>
-    </div>
+   
     <input type="submit" value="Save" class="success button" />
     @Html.ActionLink("Cancel and return to List", "Pages", "Post")
 }

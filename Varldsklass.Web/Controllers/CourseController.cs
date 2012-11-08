@@ -149,6 +149,8 @@ namespace Varldsklass.Web.Controllers
             if (ModelState.IsValid)
             {
                 var theOldPost = _postRepo.FindByID(post.ID);
+                if (theOldPost == null)
+                    theOldPost = post;
                 if (theOldPost.Images == null)
                     theOldPost.Images = new List<Image>();
                 var oldImages = theOldPost.Images.ToList();
@@ -250,6 +252,8 @@ namespace Varldsklass.Web.Controllers
             if (ModelState.IsValid)
             {
                 var theOldPost = _eventRepo.FindByID(Event.ID);
+                if (theOldPost == null)
+                    theOldPost = Event;
                 if (theOldPost.Images == null)
                     theOldPost.Images = new List<Image>();
                 var oldImages = theOldPost.Images.ToList();
@@ -322,6 +326,8 @@ namespace Varldsklass.Web.Controllers
             if (ModelState.IsValid)
             {
                 var theOldPost = _categoryRepo.FindByID(Category.ID);
+                if (theOldPost == null)
+                    theOldPost = Category;
                 if (theOldPost.Images == null)
                     theOldPost.Images = new List<Image>();
                 var oldImages = theOldPost.Images.ToList();

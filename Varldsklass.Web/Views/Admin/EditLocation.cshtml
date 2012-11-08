@@ -10,14 +10,14 @@
 @using (Html.BeginForm("EditLocation", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
         @Html.HiddenFor(m => m.ID)
-        @Html.LabelFor(m => m.Address)
+        @Html.LabelFor(m => m.Address, "Adress")
         @Html.TextBoxFor(m => m.Address)
-        @Html.LabelFor(m => m.Zip)
+        @Html.LabelFor(m => m.Zip, "Zip")
         @Html.TextBoxFor(m => m.Zip)
-        @Html.LabelFor(m => m.City)
+        @Html.LabelFor(m => m.City, "Stad")
         @Html.TextBoxFor(m => m.City)
 
-        <input type="submit" value="Spara" />
+        <input type="submit" value="Spara" class="success button" />
     
         @Html.ActionLink("Tillbaka till listan", "ListLocations")
 }

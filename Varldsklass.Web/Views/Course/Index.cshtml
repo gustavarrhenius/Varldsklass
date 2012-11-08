@@ -5,8 +5,8 @@
  }
 
 
-
-
+<div class="row">
+<div class="six columns">
 <h3>Kategorier</h3>
 <p>@Html.ActionLink("Lägg till Kategori", "EditCategory", null, new { @class = "button" })</p>
 <table>
@@ -19,7 +19,8 @@
         </tr>
     }
 </table>
-
+</div>
+<div class="six columns">
 <h3>Kurser</h3>
 <p>@Html.ActionLink("Lägg till kurs", "EditCourse", null, new { @class = "button" })</p>
 <table>
@@ -34,3 +35,5 @@
 </table>
 
 <p>@Html.ActionLink("Samlad statistik över alla kurstillfällen", "Statistics", "Evaluation", null, new { @class = "button" })</p>
+</div>
+</div>
