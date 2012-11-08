@@ -14,7 +14,7 @@
                         break;
                  }
             }
-             <p>@pop.Title</p>
+             @Html.ActionLink(pop.Title, "CourseSingle", "Course", new { id = pop.ID }, null)
             </section>
         }
     }
