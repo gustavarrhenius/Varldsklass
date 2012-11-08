@@ -25,7 +25,10 @@
     
     $.fn.foundationTabs             ? $doc.foundationTabs() : null;
   
-    $("#featured").orbit();
+    $("#featured").orbit({
+        animation: 'fade', 
+        advanceSpeed: 10000,
+    })
 
     $(".search-button").click(function() {
         $("#search-bar").toggle();

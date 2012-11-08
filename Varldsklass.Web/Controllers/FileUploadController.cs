@@ -52,11 +52,20 @@ namespace Varldsklass.Web.Controllers
 
             foreach (var file in files)
             {
-                var fileInfo = new FileInfo(file);
+
+              
 
                 var uploadedFile = new UploadedFile() { Title = Path.GetFileName(file) };
 
                 uploadedFile.PathUrl = ("/Content/image-uploads/") + Path.GetFileName(file);
+                if (_imgRepo.FindAll().Where(i => i.ImagePath == uploadedFile.PathUrl).FirstOrDefault() == null)
+                {
+                    Image imageObj = new Image();
+                    imageObj.ImagePath = uploadedFile.PathUrl;
+                    _imgRepo.Save(imageObj);
+                }
+                
+                var fileInfo = new FileInfo(file);
                 if (postID >= 1) {
                         foreach (var postimage in post.Images)
                         {
@@ -228,7 +237,10 @@ namespace Varldsklass.Web.Controllers
         {
         
         System.IO.File.Delete(Server.MapPath(path));
-    
+
+        var imageObj = _imgRepo.FindAll().Where(i => i.ImagePath == path).FirstOrDefault();
+        _imgRepo.Delete(imageObj);
+
         var fuVM = new FileUploadViewModel();
 
         var uploadedFiles = new List<UploadedFile>();
