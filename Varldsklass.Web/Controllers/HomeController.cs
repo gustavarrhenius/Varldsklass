@@ -148,9 +148,9 @@ namespace Varldsklass.Web.Controllers
 
         public ActionResult Popular()
         {
-            var pc = _popularCoursesRepo.FindAll().Include(p=>p.Posts.ToList();
+            //var pc = _popularCoursesRepo.FindAll().Include(p=>p.Posts.ToList());
             
-            return PartialView(pc);
+            return PartialView(true);
         }
     }
 }
