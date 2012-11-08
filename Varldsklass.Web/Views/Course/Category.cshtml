@@ -15,10 +15,12 @@
 }
 <div id="content" class="row">
     <div class="eight columns">
-    <article>
-    <h2>@Model.Name</h2>
-    <div class="content">@Html.Raw(Model.Body)</div>
-    </article>
+        <div class="content-wrap">
+            <article>
+            <h2>@Model.Name</h2>
+            <div class="content">@Html.Raw(Model.Body)</div>
+            </article>
+        </div>
     </div>
     @Html.Partial("_SideBar")      
 </div>

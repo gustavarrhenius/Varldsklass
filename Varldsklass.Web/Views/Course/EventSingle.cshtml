@@ -6,7 +6,6 @@
 }
 <div id="content" class="row">
     <div class="eight columns">
-<article>
 <h2>@Model.Title</h2>
 <div class="row">
     <div class="nine columns description">
@@ -27,20 +26,20 @@
     </div>
 
     <div class="three columns">
-    @if (DateTime.Now < Model.StartDate)
-    {
-        @Html.ActionLink("Boka", "Event", "Book", new { id = Model.ID }, new { @class = "large success button" })
-    }
-    else
-    {
-        <div class="alert-box alert">Det här kurstillfället har redan ägt rum.</div>
-    }
+        @if (DateTime.Now < Model.StartDate)
+        {
+            @Html.ActionLink("Boka", "Event", "Book", new { id = Model.ID }, new { @class = "large success button" })
+        }
+        else
+        {
+            <div class="alert-box alert">Det här kurstillfället har redan ägt rum.</div>
+        }
+    </div>
+
+    <div class="content">
+        @Html.Raw(Model.Body)
     </div>
 </div>
-<div class="content">
-    @Html.Raw(Model.Body)
-</div>
-</article>
- </div>
-    @Html.Partial("_SideBar")      
-</div>
+     </div>
+        @Html.Partial("_SideBar")      
+    </div>
