@@ -4,7 +4,12 @@
     ViewBag.Title = "E-postutskick misslyckades";
 }
 
-<h2>E-postutskick misslyckades</h2>
-<p>Din bokning är sparad, men vi lyckades inte skicka ut ett bekräftelsebrev till din e-postadress.</p>
+<div id="content" class="row">
+    <div class="eight columns">
+        <h2>E-postutskick misslyckades</h2>
+        <p>Din bokning är sparad, men vi lyckades inte skicka ut ett bekräftelsebrev till din e-postadress.</p>
 
-<p>@Html.ActionLink("Se bokade deltagare", "List", "Book", new { id = Model }, new { @class = "button" })</p>
+        <p>@Html.ActionLink("Se bokade deltagare", "List", "Book", new { id = Model }, new { @class = "button" })</p>
+    </div>
+    @Html.Partial("_SideBar")      
+</div>
