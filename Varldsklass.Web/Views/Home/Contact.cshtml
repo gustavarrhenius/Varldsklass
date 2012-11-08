@@ -13,18 +13,18 @@
     </script>
   </section>
 <div id="content" class="row">
-    <div class="eight columns">
-    <h2>Kontakta oss</h2>
-    @foreach (var location in Model)
-    {
-        <input type="hidden" id="address" value="@location.Address, @location.Zip @location.City" />
-        <h4>@location.City</h4>
-        <p>@location.Address<br />
-        @location.Zip @location.City</p>
-    }
-        <p>Telefon: 0320 - 109 39<br />
-        Bokning & offert: 073 - 551 50 96<br />
-        E-post: <a href="mailto:info@varldsklass.com">info@varldsklass.com</a></p>
-    </div>
+     <div class="eight columns">
+        <h2>Kontakta oss</h2>
+        @foreach (var location in Model)
+        {
+            <input type="hidden" id="address" value="@location.Address, @location.Zip @location.City" />
+            <h4>@location.City</h4>
+            <p>@location.Address<br />
+            @location.Zip @location.City</p>
+        }
+            <p>Telefon: 0320 - 109 39<br />
+            Bokning & offert: 073 - 551 50 96<br />
+            E-post: <a href="mailto:info@varldsklass.com">info@varldsklass.com</a></p>
+        </div>
     @Html.Partial("_SideBar")      
 </div>
