@@ -1,0 +1,23 @@
+﻿@model Varldsklass.Web.ViewModels.PopularCoursesViewModel
+@{
+    ViewBag.Title = "PopulareCourses";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Populära kurser</h2>
+
+
+@using (Html.BeginForm("SavePopularCourses", "Course", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+   @Html.HiddenFor(i=>i.ID, "ID");
+   <label>Kurs #1</label>
+   @Html.DropDownListFor(p => p.CourseOne, new SelectList(Model.Posts, "ID", "Title"))
+   <label>Kurs #2</label>
+   @Html.DropDownListFor(p => p.CourseTwo, new SelectList(Model.Posts, "ID", "Title"))
+   <label>Kurs #3</label>
+   @Html.DropDownListFor(p => p.CourseThree, new SelectList(Model.Posts, "ID", "Title"))
+   <label>Kurs #4</label>
+   @Html.DropDownListFor(p => p.CourseFour, new SelectList(Model.Posts, "ID", "Title"))
+    
+   <input type="submit" value="Spara" class="success button" />
+}

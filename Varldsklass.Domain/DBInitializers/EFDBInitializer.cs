@@ -106,6 +106,13 @@ namespace Varldsklass.Domain.DBInitializers
 
             // Make attendant email-addresses unique
             context.Database.ExecuteSqlCommand("ALTER TABLE dbo.Attendants ADD CONSTRAINT EventEmail UNIQUE NONCLUSTERED ( EventID, Email )");
+
+            var popularCourses = new List<PopularCourse> {
+                new PopularCourse { ID = 1, CourseOne = 1, CourseTwo = 2, CourseThree = 3, CourseFour = 4 }
+            };
+
+            popularCourses.ForEach(p => context.PopularCourses.Add(p));
+            context.SaveChanges();
         }
     }
 }

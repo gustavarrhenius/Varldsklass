@@ -24,12 +24,14 @@ namespace Varldsklass.Web.Controllers
         private IRepository<Event> _eventRepo;
         private IRepository<Post> _postRepo;
         private IRepository<Category> _categoryRepo;
+        private IRepository<PopularCourse> _popularCoursesRepo;
 
-        public HomeController(IRepository<Post> repo, IRepository<Category> category, IRepository<Event> Event)
+        public HomeController(IRepository<Post> repo, IRepository<Category> category, IRepository<Event> Event, IRepository<PopularCourse> popularCourses)
         {
             _eventRepo = Event;
             _postRepo = repo;
             _categoryRepo = category;
+            _popularCoursesRepo = popularCourses;
         }
 
         public ActionResult Index()
@@ -142,6 +144,13 @@ namespace Varldsklass.Web.Controllers
             var calendar = _eventRepo.FindAll().Where(d => d.StartDate > DateTime.Now).Include(p => p.Post).Take(5).ToList();
 
             return PartialView(calendar);
+        }
+
+        public ActionResult Popular()
+        {
+            var pc = _popularCoursesRepo.FindAll().Include(p=>p.Posts.ToList();
+            
+            return PartialView(pc);
         }
     }
 }
