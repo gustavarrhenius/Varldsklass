@@ -63,6 +63,10 @@ namespace Varldsklass.Web.ViewModels
         public string Company { get; set; }
 
         [Required]
+        [Display(Name = "Organisationsnummer")]
+        public string RegistrationNumber { get; set; }
+
+        [Required]
         [Display(Name = "Adress")]
         public string Address { get; set; }
 
@@ -95,6 +99,10 @@ namespace Varldsklass.Web.ViewModels
         [Required]
         [Display(Name = "Företag")]
         public string Company { get; set; }
+
+        [Required]
+        [Display(Name = "Organisationsnummer")]
+        public string RegistrationNumber { get; set; }
 
         [Required]
         [Display(Name = "Adress")]
