@@ -34,6 +34,8 @@
             } (document, 'script', 'facebook-jssdk'));
         </script>
 
+    @Html.Partial("_BookerPartial")
+
     <div class="page">
         <header>
             <div class="row">
@@ -42,9 +44,6 @@
                 </div>
                 <div class="nine columns">
                     <div class="row">
-                        <div id="bookdisplay" class="three columns push-three">
-                        @Html.Partial("_BookerPartial")
-                        </div>
                         <div id="logindisplay" class="six columns">
                         @Html.Partial("_LogOnPartial")
                         </div>

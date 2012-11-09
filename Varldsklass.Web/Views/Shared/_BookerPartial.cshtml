@@ -1,4 +1,13 @@
 ﻿@if (Request.IsAuthenticated)
-    {
-        <a href="@Url.Action("List", "Book")" class="button book">Bokningar</a>  
-    }
+{
+    <nav class="top-bar">
+        <ul class="left">
+            <li><a href="@Url.Action("View", "Account")" class="book"><i>&#59170;</i> Användaruppgifter</a></li>
+            <li><a href="@Url.Action("List", "Book")" class="book"><i>&#128196;</i> Bokningar</a></li>
+        </ul>
+        <ul class="right">
+            <li class="booker-email">@User.Identity.Name</li>
+            <li><a href="@Url.Action("LogOff", "Account")" class="book">Logga ut <i class="log-off">&#128275;</i></a></li>
+        </ul>
+    </nav>
+}
