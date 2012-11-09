@@ -136,6 +136,7 @@ header {
             padding:10px 35px 10px 10px;
             line-height: 1;
 			margin-left:10px;
+			float:right;
             i 
             {
                 position: absolute;
@@ -154,9 +155,14 @@ header {
 /* -----------------------------------------
    Menu
 ----------------------------------------- */
-nav {
+#toggle-menu {
+    display:none;
+}
+nav 
+{
     margin-top: 65px;
-    .nav-bar {
+    .nav-bar 
+    {
         background:none;
         border-right:none;
         height:38px;
@@ -185,6 +191,17 @@ nav {
         }
     }
 }
+
+a.search-button {
+    float:right;
+    color:#34333a;
+    i {
+        line-height:0;
+        font-size: 40px;
+        top: 5px;
+        position: relative;
+     }
+}   
 }
 .flyout 
 {
@@ -579,3 +596,73 @@ footer .footer-address p {
 		background: #f9f9f9;
 	}
 }
+
+@media only screen and (max-width: 767px) {
+  header 
+  {
+      .row.top {
+            background:#f2f2f2;
+            margin-top:15px;
+       }
+      nav  {
+        margin-top:0px;
+      } 
+        #toggle-menu {
+            display:block;
+        } nav #menu.nav-bar {
+            display:none;
+            width:100%;
+            background: white;
+            height: auto;
+            position:absolute;
+            li {
+                a {
+                    border-bottom:1px solid #ddd;
+                } a.flyout-toggle {
+                    border-bottom:none;
+              } .flyout {
+                    top:0;
+                }
+            }  
+        } #logo {
+            text-align:center;
+        } #logindisplay {
+            width:70% !important;
+            text-align: left;
+            a {
+                float:left;
+                margin-top: 10px;
+            }
+            a.button {
+                margin-top: 0px;
+            } strong {
+                position: absolute;
+                top: -15px;
+                left: 15px;
+            } a.book  {
+                margin-left: 0px;
+                float: left;
+            }
+        } #toggle-menu 
+        {
+            position: absolute;
+            top: -12px;
+            right: 10px;
+            
+            i {
+                font-size: 60px;
+                color:#34333a;
+            }
+        } a.search-button 
+        {
+            position: absolute;
+            top: -37px;
+            right: 50px;
+            span {
+                display:none;
+            } i  {
+                font-size: 60px;
+                }
+        }
+   } 
+}    
