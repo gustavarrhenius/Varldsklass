@@ -1,0 +1,33 @@
+﻿@model Varldsklass.Domain.Entities.Account
+
+@{
+    ViewBag.Title = "View";
+}
+
+<div id="content" class="row">
+    <div class="eight columns">
+
+        <h2>@Model.FullName</h2>
+        <table>
+            <tr>
+                <td>E-post</td>
+                <td>@Model.Email</td>
+            </tr>
+            <tr>
+                <td>Företag</td>
+                <td>@Model.Company</td>
+            </tr>
+            <tr>
+                <td>Adress</td>
+                <td>@Model.Address</td>
+            </tr>
+            <tr>
+                <td>Telefonnummer</td>
+                <td>@Model.Phone</td>
+            </tr>
+        </table>
+
+        @Html.ActionLink("Redigera uppgifter", "Edit", null, new { @class = "button" })
+
+    </div>
+</div>

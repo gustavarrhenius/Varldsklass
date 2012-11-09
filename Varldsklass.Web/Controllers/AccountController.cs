@@ -8,6 +8,7 @@ using System.Web.Security;
 using Varldsklass.Web.ViewModels;
 using Varldsklass.Domain.Repositories;
 using Varldsklass.Web.Infrastructure;
+using Varldsklass.Domain.Entities;
 
 namespace Varldsklass.Web.Controllers
 {
@@ -119,17 +120,50 @@ namespace Varldsklass.Web.Controllers
             return View(model);
         }
 
-        //
-        // GET: /Account/ChangePassword
+        [Authorize]
+        public ActionResult Edit()
+        {
+            EditAccountViewModel viewModel = new EditAccountViewModel();
+            Account account = _accountRepository.FindAll().Where(a => a.Email == User.Identity.Name).FirstOrDefault();
+
+            viewModel.FirstName = account.FirstName;
+            viewModel.LastName = account.LastName;
+            viewModel.Company = account.Company;
+            viewModel.Address = account.Address;
+            viewModel.Phone = account.Phone;
+
+            return View(viewModel);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Edit(EditAccountViewModel viewModel)
+        {
+            Account account = _accountRepository.FindAll(a => a.Email == User.Identity.Name).FirstOrDefault();
+
+            account.FirstName = viewModel.FirstName;
+            account.LastName = viewModel.LastName;
+            account.Company = viewModel.Company;
+            account.Address = viewModel.Address;
+            account.Phone = viewModel.Phone;
+
+            _accountRepository.Save(account);
+
+            return RedirectToAction("View");
+        }
+
+        [Authorize]
+        public ActionResult View()
+        {
+            Account account = _accountRepository.FindAll(a => a.Email == User.Identity.Name).FirstOrDefault();
+            return View(account);
+        }
 
         [Authorize]
         public ActionResult ChangePassword()
         {
             return View();
         }
-
-        //
-        // POST: /Account/ChangePassword
 
         [Authorize]
         [HttpPost]

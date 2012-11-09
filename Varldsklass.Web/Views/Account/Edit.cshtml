@@ -1,0 +1,63 @@
+﻿@model Varldsklass.Web.ViewModels.EditAccountViewModel
+
+@{
+    ViewBag.Title = "Redigera användare";
+}
+
+<div id="content" class="row">
+    <div class="eight columns">
+        <h2>Redigera användare</h2>
+        @using (Html.BeginForm()) {
+            @Html.ValidationSummary(true, "Uppdateringen misslyckades.")
+            <div>
+                <fieldset>
+                    <legend>Kontoinformation</legend>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(m => m.FirstName)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.FirstName)
+                        @Html.ValidationMessageFor(m => m.FirstName)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(m => m.LastName)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.LastName)
+                        @Html.ValidationMessageFor(m => m.LastName)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(m => m.Company)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.Company)
+                        @Html.ValidationMessageFor(m => m.Company)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(m => m.Address)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.Address)
+                        @Html.ValidationMessageFor(m => m.Address)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(m => m.Phone)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.Phone)
+                        @Html.ValidationMessageFor(m => m.Phone)
+                    </div>
+
+                    <p>
+                        <input type="submit" value="Verkställ ändringar" />
+                    </p>
+                </fieldset>
+            </div>
+        }
+    </div>
+</div>
