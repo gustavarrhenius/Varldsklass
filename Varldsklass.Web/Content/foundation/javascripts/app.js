@@ -32,6 +32,13 @@
 
     $(".search-button").click(function() {
         $("#search-bar").toggle();
+        if ($("#toggle-menu").css('display', 'block')) {
+             $("nav #menu.nav-bar").hide();
+        }
+    });
+    $("#toggle-menu").click(function() {
+        $("nav #menu.nav-bar").toggle();
+        $("#search-bar").hide();
     });
   
     $("#revealModal").click(function() {

@@ -41,11 +41,9 @@
                     <a href="@Url.Action("index", "Home")"><img src="@Url.Content("~/Content/foundation/images/logo-color.png")", alt="Världsklass - Utbildningar"  title="Världsklass - Utbildningar"/></a>
                 </div>
                 <div class="nine columns">
-                    <div class="row">
-                        <div id="bookdisplay" class="three columns push-three">
+                    <div class="row top">
+                        <div id="logindisplay"">
                         @Html.Partial("_BookerPartial")
-                        </div>
-                        <div id="logindisplay" class="six columns">
                         @Html.Partial("_LogOnPartial")
                         </div>
                     </div>
