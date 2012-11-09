@@ -27,7 +27,7 @@ namespace Varldsklass.Web.Infrastructure
             providerSettings = membershipSection.Providers[membershipSection.DefaultProvider];
         }
 
-        public void CreateUser(string firstName, string lastName, string email, string password, out MembershipCreateStatus createStatus)
+        public void CreateUser(string firstName, string lastName, string email, string password, string company, string address, string phone, out MembershipCreateStatus createStatus)
         {
             Account account = new Account();
             account.Email = email;
@@ -36,6 +36,9 @@ namespace Varldsklass.Web.Infrastructure
             account.CreatedDate = DateTime.Now;
             account.FirstName = firstName;
             account.LastName = lastName;
+            account.Company = company;
+            account.Address = address;
+            account.Phone = phone;
             account.Administrator = false;
             AccountRepository.Save(account);
 
