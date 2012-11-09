@@ -13,7 +13,7 @@ namespace Varldsklass.Domain.Helpers
     {
         public static string DateFormat(this HtmlHelper html, DateTime date)
         {
-            string formatDate = date.ToString("dddd, dd MMMM, yyyy", CultureInfo.CreateSpecificCulture("sv-SE"));
+            string formatDate = date.ToString("dd MMMM, yyyy", CultureInfo.CreateSpecificCulture("sv-SE"));
 
             return formatDate;
         }
