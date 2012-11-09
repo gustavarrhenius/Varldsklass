@@ -59,6 +59,18 @@ namespace Varldsklass.Web.ViewModels
         public string Email { get; set; }
 
         [Required]
+        [Display(Name = "Företag")]
+        public string Company { get; set; }
+
+        [Required]
+        [Display(Name = "Adress")]
+        public string Address { get; set; }
+
+        [Required]
+        [Display(Name = "Telefonnummer")]
+        public string Phone { get; set; }
+
+        [Required]
         [StringLength(100, ErrorMessage = "Lösenordet måste vara minst {2} tecken långt.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Lösenord")]
