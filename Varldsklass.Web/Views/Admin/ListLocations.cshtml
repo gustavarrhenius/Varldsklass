@@ -6,11 +6,10 @@
 }
 
 <h2>Kontaktinformation</h2>
-@Html.ActionLink("Skapa ny", "CreateLocation", "Admin")
+@Html.ActionLink("Skapa ny", "CreateLocation", "Admin", null, new { @class = "button" })
 
 <table>
     <tr>
-        
         <th> Adress </th>
         <th> Postnummer</th>
         <th> Stad </th>
@@ -23,8 +22,8 @@
             <td>@item.Address</td>
             <td>@item.Zip</td>
             <td>@item.City</td>
-            <td>@Html.ActionLink("Redigera", "EditLocation", "Admin", new { Id = item.ID }, null)</td>
-            <td>@Html.ActionLink("Ta bort", "DeleteLocation", "Admin", new { Id = item.ID }, null)</td>
+            <td>@Html.ActionLink("Redigera", "EditLocation", "Admin", new { Id = item.ID }, new { @class = "tiny success button" })</td>
+            <td>@Html.ActionLink("Ta bort", "DeleteLocation", "Admin", new { Id = item.ID }, new { @class = "tiny alert button" })</td>
         </tr>
     }
 </table>

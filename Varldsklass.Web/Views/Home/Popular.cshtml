@@ -1,7 +1,7 @@
 ﻿@model Varldsklass.Web.ViewModels.PopularCoursesViewModel
 <section class="row colapse">
     <section class="twelve columns">
-        <h4>Populära kurser</h4>
+        <h4><i>&#128640;</i> Populära kurser</h4>
     </section>
 </section>
 <section class="row">
@@ -14,7 +14,7 @@
                         break;
                  }
             }
-             <p>@pop.Title</p>
+             @Html.ActionLink(pop.Title, "CourseSingle", "Course", new { id = pop.ID }, null)
             </section>
         }
     }

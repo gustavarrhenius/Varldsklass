@@ -5,7 +5,7 @@
     }        
 <div class="file-upload">
 <h2>Välj bild</h2>
-    
+<ul>
     @if (partModel.UploadedFiles != null)
     {
         foreach (var image in partModel.UploadedFiles)
@@ -13,22 +13,23 @@
 
             if (image.Checked == true)
             {
-                    <img src="@image.PathUrl" class="active" title="@image.PathUrl" data-number="@count" alt="@image.PathUrl" runat="server" width="100px"/>   <br />
-                    <input type="checkbox" name="image" id="image-@count" value="@image.PathUrl" checked="checked" />
+                    <li><img src="@image.PathUrl" class="active" title="@image.PathUrl" data-number="@count" alt="@image.PathUrl" runat="server" width="100px"/>   <br />
+                    <input type="checkbox" name="image" id="image-@count" value="@image.PathUrl" checked="checked" /></li>
                 {
                     count++;
                 }
             }
             else
             {
-               <img src="@image.PathUrl" title="@image.PathUrl" data-number="@count" alt="@image.PathUrl" runat="server" width="100px"/>   <br />
-               <input type="checkbox" name="image" id="image-@count" value="@image.PathUrl" /> 
+               <li><img src="@image.PathUrl" title="@image.PathUrl" data-number="@count" alt="@image.PathUrl" runat="server" width="100px"/>   <br />
+               <input type="checkbox" name="image" id="image-@count" value="@image.PathUrl" /></li>
                 {
                     count++;
                 }
             }
         }
     }  
+    </ul>
 </div>
     <script type="text/javascript">
         $(document).ready(function () {
