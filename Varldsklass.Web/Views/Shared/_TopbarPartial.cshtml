@@ -2,6 +2,7 @@
 @if (Request.IsAuthenticated)
 {
     <ul class="left">
+        @Html.Action("Topbar", "Admin")
         <li><a href="@Url.Action("View", "Account")" class="book"><i>&#59170;</i> Användaruppgifter</a></li>
         <li><a href="@Url.Action("List", "Book")" class="book"><i>&#128196;</i> Bokningar</a></li>
     </ul>

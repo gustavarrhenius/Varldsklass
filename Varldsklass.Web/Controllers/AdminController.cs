@@ -49,6 +49,19 @@ namespace Varldsklass.Web.Controllers
         }
 
         [Authorize]
+        public ActionResult Topbar()
+        {
+            if (NotAllowedHere())
+            {
+                return new EmptyResult();
+            }
+            else
+            {
+                return PartialView("_AdminTopbar");
+            }
+        }
+
+        [Authorize]
         public ActionResult Index()
         {
             if (NotAllowedHere()) return RedirectAway();
