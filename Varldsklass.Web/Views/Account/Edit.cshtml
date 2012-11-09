@@ -38,6 +38,14 @@
                     </div>
 
                     <div class="editor-label">
+                        @Html.LabelFor(m => m.RegistrationNumber)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.RegistrationNumber)
+                        @Html.ValidationMessageFor(m => m.RegistrationNumber)
+                    </div>
+
+                    <div class="editor-label">
                         @Html.LabelFor(m => m.Address)
                     </div>
                     <div class="editor-field">

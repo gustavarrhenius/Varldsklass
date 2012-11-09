@@ -129,6 +129,7 @@ namespace Varldsklass.Web.Controllers
             viewModel.FirstName = account.FirstName;
             viewModel.LastName = account.LastName;
             viewModel.Company = account.Company;
+            viewModel.RegistrationNumber = account.RegistrationNumber;
             viewModel.Address = account.Address;
             viewModel.Phone = account.Phone;
 
@@ -144,6 +145,7 @@ namespace Varldsklass.Web.Controllers
             account.FirstName = viewModel.FirstName;
             account.LastName = viewModel.LastName;
             account.Company = viewModel.Company;
+            account.RegistrationNumber = viewModel.RegistrationNumber;
             account.Address = viewModel.Address;
             account.Phone = viewModel.Phone;
 
