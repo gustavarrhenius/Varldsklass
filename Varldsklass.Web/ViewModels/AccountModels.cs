@@ -81,4 +81,27 @@ namespace Varldsklass.Web.ViewModels
         [Compare("Password", ErrorMessage = "Lösenorden är inte likadana.")]
         public string ConfirmPassword { get; set; }
     }
+
+    public class EditAccountViewModel
+    {
+        [Required]
+        [Display(Name = "Förnamn")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Efternamn")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Företag")]
+        public string Company { get; set; }
+
+        [Required]
+        [Display(Name = "Adress")]
+        public string Address { get; set; }
+
+        [Required]
+        [Display(Name = "Telefonnummer")]
+        public string Phone { get; set; }
+    }
 }
