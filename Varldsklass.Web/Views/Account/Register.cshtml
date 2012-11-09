@@ -49,6 +49,30 @@
                     </div>
 
                     <div class="editor-label">
+                        @Html.LabelFor(m => m.Company)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.Company)
+                        @Html.ValidationMessageFor(m => m.Company)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(m => m.Address)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.Address)
+                        @Html.ValidationMessageFor(m => m.Address)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(m => m.Phone)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.Phone)
+                        @Html.ValidationMessageFor(m => m.Phone)
+                    </div>
+
+                    <div class="editor-label">
                         @Html.LabelFor(m => m.Password)
                     </div>
                     <div class="editor-field">
