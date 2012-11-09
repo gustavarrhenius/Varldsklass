@@ -425,7 +425,7 @@
     <Content Include="Views\Course\PopularCourses.cshtml" />
     <Content Include="Views\Home\Popular.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
-    <Content Include="Views\Account\View.cshtml" />
+    <Content Include="Views\Account\Show.cshtml" />
     <Content Include="Views\Shared\_AdminTopbar.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
