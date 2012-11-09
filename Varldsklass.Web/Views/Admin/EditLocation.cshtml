@@ -16,7 +16,13 @@
         @Html.TextBoxFor(m => m.Zip)
         @Html.LabelFor(m => m.City, "Stad")
         @Html.TextBoxFor(m => m.City)
-
+        <a href="#" id="revealModal" class="button" data-reveal-id="myModal">Bilder</a>
+        <div id="myModal" class="reveal-modal [expand, xlarge, large, medium, small]">
+          @{
+            Html.RenderAction("_FileUploadPartial", "FileUpload", new { locationID = Model.ID });
+            }
+          <a class="close-reveal-modal">&#215;</a>
+        </div>
         <input type="submit" value="Spara" class="success button" />
     
         @Html.ActionLink("Tillbaka till listan", "ListLocations")
