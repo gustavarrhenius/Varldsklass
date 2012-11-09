@@ -102,7 +102,7 @@ namespace Varldsklass.Web.Controllers
             {
                 // Attempt to register the user
                 MembershipCreateStatus createStatus;
-                membership.CreateUser(model.FirstName, model.LastName, model.Email, model.Password, out createStatus);
+                membership.CreateUser(model.FirstName, model.LastName, model.Email, model.Password, model.Company, model.Address, model.Phone, out createStatus);
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
