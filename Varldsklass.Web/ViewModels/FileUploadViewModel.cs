@@ -11,6 +11,7 @@ namespace Varldsklass.Web.ViewModels
         public Post post { get; set; }
         public Category Category { get; set; }
         public Event Event { get; set; }
+        public Location Location { get; set; }
         public List<UploadedFile> UploadedFiles { get; set; }
     }
 }

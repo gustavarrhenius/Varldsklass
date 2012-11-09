@@ -13,6 +13,7 @@ namespace Varldsklass.Domain.Entities
         public string ImagePath { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
         public virtual ICollection<Category> Category { get; set; }
-        public virtual ICollection<Event> Events { get; set; }
+        public virtual ICollection<Location> Locations { get; set; }
+
     }
 }
