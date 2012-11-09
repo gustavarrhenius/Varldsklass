@@ -22,14 +22,17 @@ namespace Varldsklass.Web.Controllers
         private IAccountRepository _accountRepo;
         private IRepository<Location> _locationRepo;
         private IRepository<Event> _eventRepo;
+        private IRepository<Image> _imgRepo;
 
-        public AdminController(PostRepository repo, IRepository<Category> category, IRepository<Location> locationRepo, IAccountRepository account, IRepository<Event> eventRepo)
+
+        public AdminController(PostRepository repo, IRepository<Category> category, IRepository<Image> image, IRepository<Location> locationRepo, IAccountRepository account, IRepository<Event> eventRepo)
         {
-            _postRepo = repo;
-            _categoryRepo = category;
-            _locationRepo = locationRepo;
-            _accountRepo = account;
             _eventRepo = eventRepo;
+            _postRepo = repo; _postRepo.Model = _eventRepo.Model;
+            _categoryRepo = category; _categoryRepo.Model = _eventRepo.Model;
+            _accountRepo = account; _accountRepo.Model = _eventRepo.Model;
+            _imgRepo = image; _imgRepo.Model = _eventRepo.Model;
+            _locationRepo = locationRepo; _locationRepo.Model = _eventRepo.Model;
         }
         //
         // GET: /Admin/
@@ -94,13 +97,35 @@ namespace Varldsklass.Web.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult CreateLocation(Location location)
+        public ActionResult CreateLocation(Location location, FormCollection form)
         {
             if (NotAllowedHere()) return RedirectAway();
 
             if (ModelState.IsValid)
             {
-                (new Repository<Location>()).Save(location);
+                var theOldPost = _locationRepo.FindByID(location.ID);
+                if (theOldPost == null)
+                    theOldPost = location;
+                if (theOldPost.Images == null)
+                    theOldPost.Images = new List<Image>();
+                var oldImages = theOldPost.Images.ToList();
+                var listOfImagesPaths = form["image"];
+                string[] arrayOfImagesPaths = null;
+                if (listOfImagesPaths != null)
+                    arrayOfImagesPaths = listOfImagesPaths.Split(',');
+
+                oldImages = theOldPost.Images.ToList();
+                if (arrayOfImagesPaths != null && arrayOfImagesPaths.Count() > 0)
+                {
+                    foreach (var addedimg in _imgRepo.FindAll(c =>
+                arrayOfImagesPaths.Any(cat => cat == c.ImagePath.ToString()) &&
+                !c.Posts.Any(p => p.ID == theOldPost.ID)).ToList())
+                        theOldPost.Images.Add(addedimg);
+                }
+                foreach (var removedimg in oldImages.Where(c => arrayOfImagesPaths
+                == null || !arrayOfImagesPaths.Any(cat2 => cat2 == c.ImagePath.ToString())))
+                    theOldPost.Images.Remove(removedimg);
+                _locationRepo.Save(location);
 
                 return RedirectToAction("ListLocations");
             }
@@ -121,11 +146,33 @@ namespace Varldsklass.Web.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult EditLocation(Location location)
+        public ActionResult EditLocation(Location location, FormCollection form)
         {
             if (NotAllowedHere()) return RedirectAway();
             if (ModelState.IsValid)
             {
+                var theOldPost = _locationRepo.FindByID(location.ID);
+                if (theOldPost == null)
+                    theOldPost = location;
+                if (theOldPost.Images == null)
+                    theOldPost.Images = new List<Image>();
+                var oldImages = theOldPost.Images.ToList();
+                var listOfImagesPaths = form["image"];
+                string[] arrayOfImagesPaths = null;
+                if (listOfImagesPaths != null)
+                    arrayOfImagesPaths = listOfImagesPaths.Split(',');
+
+                oldImages = theOldPost.Images.ToList();
+                if (arrayOfImagesPaths != null && arrayOfImagesPaths.Count() > 0)
+                {
+                    foreach (var addedimg in _imgRepo.FindAll(c =>
+                arrayOfImagesPaths.Any(cat => cat == c.ImagePath.ToString()) &&
+                !c.Posts.Any(p => p.ID == theOldPost.ID)).ToList())
+                        theOldPost.Images.Add(addedimg);
+                }
+                foreach (var removedimg in oldImages.Where(c => arrayOfImagesPaths
+                == null || !arrayOfImagesPaths.Any(cat2 => cat2 == c.ImagePath.ToString())))
+                    theOldPost.Images.Remove(removedimg); 
                 _locationRepo.Save(location);
 
                 return RedirectToAction("ListLocations");

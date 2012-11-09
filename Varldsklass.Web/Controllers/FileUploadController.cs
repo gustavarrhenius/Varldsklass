@@ -17,22 +17,25 @@ namespace Varldsklass.Web.Controllers
         private IRepository<Category> _categoryRepo;
         private IRepository<Image> _imgRepo;
         private IRepository<Event> _eventRepo;
+        private IRepository<Location> _locationRepo;
 
-        public FileUploadController(IRepository<Post> repo, IRepository<Category> category, IRepository<Image> Image, IRepository<Event> Event)
+        public FileUploadController(IRepository<Post> repo, IRepository<Category> category, IRepository<Image> Image, IRepository<Event> Event, IRepository<Location> Location)
         {
             _imgRepo = Image;
             _postRepo = repo;
             _categoryRepo = category;
             _eventRepo = Event;
+            _locationRepo = Location;
         }
 
-        public ActionResult _FileUploadPartial(int postID = -1,  int categoryID = -1, int eventID = -1)
+        public ActionResult _FileUploadPartial(int postID = -1,  int categoryID = -1, int eventID = -1, int locationID = -1)
         {
             var fuVM = new FileUploadViewModel();
 
             Post post = new Post();
             Category category = new Category();
             Event Event = new Event();
+            Location Location = new Location();
 
             if (postID != -1) {
                 post = _postRepo.FindAll().Where(p => p.ID == postID).Include(i => i.Images).FirstOrDefault();
@@ -45,6 +48,10 @@ namespace Varldsklass.Web.Controllers
             {
                 Event = _eventRepo.FindByID(eventID);
                 fuVM.Event = Event;
+            } if (locationID != -1)
+            {
+                Location = _locationRepo.FindByID(locationID);
+                fuVM.Location = Location;
             }
             var uploadedFiles = new List<UploadedFile>();
 
@@ -52,8 +59,6 @@ namespace Varldsklass.Web.Controllers
 
             foreach (var file in files)
             {
-
-              
 
                 var uploadedFile = new UploadedFile() { Title = Path.GetFileName(file) };
 
@@ -88,6 +93,16 @@ namespace Varldsklass.Web.Controllers
                     foreach (var eventimage in Event.Images)
                     {
                         if (eventimage.ImagePath == uploadedFile.PathUrl)
+                        {
+                            uploadedFile.Checked = true;
+                        }
+                    }
+                } if (locationID >= 1)
+                {
+
+                    foreach (var locationimage in Location.Images)
+                    {
+                        if (locationimage.ImagePath == uploadedFile.PathUrl)
                         {
                             uploadedFile.Checked = true;
                         }

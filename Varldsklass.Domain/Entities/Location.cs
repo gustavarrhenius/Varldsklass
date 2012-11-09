@@ -16,5 +16,7 @@ namespace Varldsklass.Domain.Entities
         public string City { get; set; }
         public string Address { get; set; }
         public string Zip { get; set; }
+
+        public virtual ICollection<Image> Images { get; set; }
     }
 }

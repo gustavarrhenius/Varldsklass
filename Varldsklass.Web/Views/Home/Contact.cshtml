@@ -15,8 +15,16 @@
 <div id="content" class="row">
      <div class="eight columns">
         <h2>Kontakta oss</h2>
+        
         @foreach (var location in Model)
         {
+            if (location.Images.Count() > 0) {
+                <div id="featured">
+                     @foreach (var image in location.Images) {
+                         <img src="@image.ImagePath" alt="@location.City" title="@location.City" />
+                     }
+                </div>
+            }
             <input type="hidden" id="address" value="@location.Address, @location.Zip @location.City" />
             <h4>@location.City</h4>
             <p>@location.Address<br />
