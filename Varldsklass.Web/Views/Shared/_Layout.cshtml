@@ -34,7 +34,7 @@
             } (document, 'script', 'facebook-jssdk'));
         </script>
 
-    @Html.Partial("_BookerPartial")
+    @Html.Partial("_TopbarPartial")
 
     <div class="page">
         <header>
@@ -43,11 +43,6 @@
                     <a href="@Url.Action("index", "Home")"><img src="@Url.Content("~/Content/foundation/images/logo-color.png")", alt="Världsklass - Utbildningar"  title="Världsklass - Utbildningar"/></a>
                 </div>
                 <div class="nine columns">
-                    <div class="row">
-                        <div id="logindisplay" class="six columns">
-                        @Html.Partial("_LogOnPartial")
-                        </div>
-                    </div>
                    <div class="row">
                         @{Html.RenderAction("Menu", "Home");}
                         @Html.Partial("_SearchPartial")
