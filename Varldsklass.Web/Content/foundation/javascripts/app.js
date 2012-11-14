@@ -30,20 +30,25 @@
         advanceSpeed: 10000,
     })
 
+   $(".booker-email").click(function() {
+        if ($(this).css('cursor') == 'pointer') {
+             $(".top-bar ul.left").toggle();
+        }
+    });
+
+
     $(".search-button").click(function() {
         $("#search-bar").toggle();
-        if ($("#toggle-menu").css('display', 'block')) {
-             $("nav #menu.nav-bar").hide();
-        }
     });
     $("#toggle-menu").click(function() {
         $("nav #menu.nav-bar").toggle();
-        $("#search-bar").hide();
+        $("#search-bar").toggle();
     });
   
     $("#revealModal").click(function() {
       $("#myModal").reveal();
     });
+
 
   // UNCOMMENT THE LINE YOU WANT BELOW IF YOU WANT IE8 SUPPORT AND ARE USING .block-grids
   // $('.block-grid.two-up>li:nth-child(2n+1)').css({clear: 'both'});
