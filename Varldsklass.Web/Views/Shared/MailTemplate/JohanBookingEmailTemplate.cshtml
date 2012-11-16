@@ -15,10 +15,18 @@
 </table>
 <div style="padding: 30px 15px; font-family: 'helvetica neue', helvetica, Arial, sans-serif">
 
-<h1>@Model.Event.Title</h1>
-Bokad av @Model.Booker.FullName
-@Model.Booker.Email
-@*Model.Booker.Phone*@
+<h2>@Model.Event.Title</h2>
+
+Har bokats av: <br>
+<strong>Namn: </strong>@Model.Booker.FullName <br>
+<strong>E-mail: </strong>@Model.Booker.Email<br>
+<strong>Telefon: </strong>@Model.Booker.Phone<br>
+<strong>Adress: </strong> @Model.Booker.Address<br>
+<strong>Företag:</strong> @Model.Booker.Company<br>
+<strong>Organisationsnummer:</strong> @Model.Booker.RegistrationNumber
+
+
+<p>Följande personer har bokats till kursen: </p>
 <ul>
 @foreach (var a in Model.Attendants)
 {
