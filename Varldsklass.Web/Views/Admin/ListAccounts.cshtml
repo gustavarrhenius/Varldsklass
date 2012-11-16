@@ -1,16 +1,26 @@
 ﻿@model List<Varldsklass.Domain.Entities.Account>
 
 @{
-    ViewBag.Title = "ListAccounts";
+    ViewBag.Title = "Registrerade bokare";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div id="content" class="row">
     <h2>Registrerade bokare</h2>
     <table>
+        <tr>
+            <th>Namn</th>
+            <th>E-post</th>
+            <th>Företag</th>
+            <th>Registrerad</th>
+            <th></th>
+        </tr>
         @foreach (var account in Model)
         {
         <tr>
             <td>@account.FullName</td>
+            <td>@account.Email</td>
+            <td>@account.Company</td>
             <td>@account.CreatedDate</td>
             <td> @Html.ActionLink("Redigera", "Edit", "Account", new { id = @account.ID }, null) </td>
         </tr>
