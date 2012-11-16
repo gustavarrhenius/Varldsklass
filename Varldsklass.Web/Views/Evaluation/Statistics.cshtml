@@ -35,30 +35,42 @@
                 <th>Median</th>
                 <th>Röster</th>
             </tr>
+            @if (Model.Teacher.Count > 0)
+            {
             <tr>
                 <th>Lärare</th>
                 <td>@Model.Teacher.Average().ToString("0.00")</td>
                 <td>@Model.Teacher.Median()</td>
                 <td>@Model.Teacher.Count</td>
             </tr>
+            }
+            @if (Model.Location.Count > 0)
+            {
             <tr>
                 <th>Lokaler</th>
                 <td>@Model.Location.Average().ToString("0.00")</td>
                 <td>@Model.Location.Median()</td>
                 <td>@Model.Location.Count</td>
             </tr>
+            }
+            @if (Model.Food.Count > 0)
+            {
             <tr>
                 <th>Mat</th>
                 <td>@Model.Food.Average().ToString("0.00")</td>
                 <td>@Model.Food.Median()</td>
                 <td>@Model.Food.Count</td>
             </tr>
+            }
+            @if (Model.Overall.Count > 0)
+            {
             <tr>
                 <th>Övergripande</th>
                 <td>@Model.Overall.Average().ToString("0.00")</td>
                 <td>@Model.Overall.Median()</td>
                 <td>@Model.Overall.Count</td>
             </tr>
+            }
         </table>
         } else {
             <p>Det finns ingen statistik för det här kurstillfället än.</p>
@@ -66,7 +78,7 @@
     </div>
 
     <div class="six columns">
-        @if (Model.Event != null && Model.Opinions.Count > 0)
+        @if (Model.Event != null && string.Join("", Model.Opinions.ToArray()).Length > 0 )
         {
             <h3>Övriga synpunkter</h3>
             <ul>
