@@ -30,16 +30,10 @@ namespace Varldsklass.Web.Controllers
             return (_accountRepository.FindAll(u => u.Email == email && u.Administrator).Count() > 0);
         }
 
-        //
-        // GET: /Account/LogOn
-
         public ActionResult LogOn()
         {
             return View();
         }
-
-        //
-        // POST: /Account/LogOn
 
         [HttpPost]
         public ActionResult LogOn(LogOnViewModel model, string returnUrl)
@@ -92,9 +86,6 @@ namespace Varldsklass.Web.Controllers
             return View();
         }
 
-        //
-        // POST: /Account/Register
-
         [HttpPost]
         public ActionResult Register(RegisterViewModel model)
         {
@@ -121,10 +112,30 @@ namespace Varldsklass.Web.Controllers
         }
 
         [Authorize]
-        public ActionResult Edit()
+        public ActionResult Edit(int id = 0)
         {
+            if (id == 0)
+            {
+                int accountId = _accountRepository.FindAll(a => a.Email == User.Identity.Name).FirstOrDefault().ID;
+                return RedirectToAction("Edit", "Account", new { id = accountId });
+            }
+
+            int targetAccount;
+            if (IsAdmin(User.Identity.Name))
+            {
+                targetAccount = id;
+            }
+            else
+            {
+                targetAccount = _accountRepository.FindAll(a => a.Email == User.Identity.Name).FirstOrDefault().ID;
+            }
+
             EditAccountViewModel viewModel = new EditAccountViewModel();
-            Account account = _accountRepository.FindAll().Where(a => a.Email == User.Identity.Name).FirstOrDefault();
+            Account account = _accountRepository.FindAll().Where(a => a.ID == targetAccount).FirstOrDefault();
+            if (account == null)
+            {
+                return RedirectToAction("Index", "Home", null);
+            }
 
             viewModel.FirstName = account.FirstName;
             viewModel.LastName = account.LastName;
@@ -141,6 +152,10 @@ namespace Varldsklass.Web.Controllers
         public ActionResult Edit(EditAccountViewModel viewModel)
         {
             Account account = _accountRepository.FindAll(a => a.Email == User.Identity.Name).FirstOrDefault();
+            if (account == null)
+            {
+                return RedirectToAction("Index", "Home", null);
+            }
 
             account.FirstName = viewModel.FirstName;
             account.LastName = viewModel.LastName;
@@ -155,9 +170,27 @@ namespace Varldsklass.Web.Controllers
         }
 
         [Authorize]
-        public ActionResult View()
+        public ActionResult Show(int id = 0)
         {
-            Account account = _accountRepository.FindAll(a => a.Email == User.Identity.Name).FirstOrDefault();
+            if (id == 0)
+            {
+                Account targetAccount = _accountRepository.FindAll(a => a.Email == User.Identity.Name).FirstOrDefault();
+                if (targetAccount == null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    id = targetAccount.ID;
+                }
+            }
+
+            Account account = _accountRepository.FindAll(a => a.ID == id).FirstOrDefault();
+            if (account == null)
+            {
+                return RedirectToAction("Index", "Home", null);
+            }
+
             return View(account);
         }
 

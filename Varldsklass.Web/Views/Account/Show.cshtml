@@ -31,7 +31,7 @@
             </tr>
         </table>
 
-        @Html.ActionLink("Redigera uppgifter", "Edit", null, new { @class = "button" })
+        @Html.ActionLink("Redigera uppgifter", "Edit", new { id = Model.ID }, new { @class = "button" })
 
     </div>
 </div>
