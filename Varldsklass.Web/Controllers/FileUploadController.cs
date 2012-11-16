@@ -28,7 +28,7 @@ namespace Varldsklass.Web.Controllers
             _locationRepo = Location;
         }
 
-        public ActionResult _FileUploadPartial(int postID = -1,  int categoryID = -1, int eventID = -1, int locationID = -1)
+        public ActionResult _FileUploadPartial(int postID = -1,  int categoryID = -1, int eventID = -1, int locationID = -1, bool badges = false)
         {
             var fuVM = new FileUploadViewModel();
 
@@ -36,9 +36,12 @@ namespace Varldsklass.Web.Controllers
             Category category = new Category();
             Event Event = new Event();
             Location Location = new Location();
+            if (badges == true) {
+                fuVM.Badges = true;
+            }
 
             if (postID != -1) {
-                post = _postRepo.FindAll().Where(p => p.ID == postID).Include(i => i.Images).FirstOrDefault();
+                post = _postRepo.FindAll().Where(p => p.ID == postID).Include(i => i.Images).Include(b => b.Badges).FirstOrDefault();
                 fuVM.post = post;
             } if (categoryID != -1)
             {
@@ -71,7 +74,7 @@ namespace Varldsklass.Web.Controllers
                 }
                 
                 var fileInfo = new FileInfo(file);
-                if (postID >= 1) {
+                if (postID >= 1 && (badges == false)) {
                         foreach (var postimage in post.Images)
                         {
                             if (postimage.ImagePath == uploadedFile.PathUrl)
@@ -79,6 +82,15 @@ namespace Varldsklass.Web.Controllers
                                 uploadedFile.Checked = true;
                             }
                         }
+                } if (postID >= 1 && (badges == true))
+                {
+                    foreach (var badgeImage in post.Badges)
+                    {
+                        if (badgeImage.ImagePath == uploadedFile.PathUrl)
+                        {
+                            uploadedFile.Checked = true;
+                        }
+                    }
                 } if (categoryID >= 1)
                 { 
                         foreach (var categoryimage in category.Images)

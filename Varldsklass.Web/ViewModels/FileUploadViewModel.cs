@@ -13,5 +13,6 @@ namespace Varldsklass.Web.ViewModels
         public Event Event { get; set; }
         public Location Location { get; set; }
         public List<UploadedFile> UploadedFiles { get; set; }
+        public bool Badges { get; set; }
     }
 }
