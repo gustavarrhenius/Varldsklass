@@ -604,16 +604,28 @@ footer .footer-address p {
 }
 
 @media only screen and (max-width: 940px) {
-  .top-bar ul.left, .top-bar ul.right {     
-        width:50%;
+  .top-bar ul.left {     
+        width:60%;
         float:left;
         li  
         {
-            width:50%;
+            width:33%;
             float:left;
+             a {
+               font-size:11px; 
+               text-align:center;
+            }
         }
-    } 
-
+    } .top-bar ul.right {
+       width:40%;
+       float:left;
+        li 
+        {
+            float:left;
+            width:50%;
+           
+        }
+     }
  }
 @media only screen and (max-width: 767px) {
     .top-bar  
@@ -662,7 +674,7 @@ footer .footer-address p {
         li a {
             background:#fff;
             border-left:1px solid #999;
-            
+            font-size:13px;
         } li.first-child a {
             border:none;
             
