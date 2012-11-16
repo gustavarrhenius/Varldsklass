@@ -3,14 +3,13 @@
      
     @if (Model.From.ID == "293248490693532" && (!string.IsNullOrEmpty(Model.PictureURL)) || (!string.IsNullOrEmpty(Model.Message))){
         <div class="facebook-feed-item">
-            <span class="create-date">@Html.DateFormat(Model.CreatedTime.AsDateTime())</span>
-            
-            <p>@Html.Raw(Html.FormatHtml(Model.Message))</p>
-      
+            <span class="create-date">@Html.DateFormat(Model.CreatedTime.AsDateTime())</span>            
 
             @if (!string.IsNullOrEmpty(Model.PictureURL))
                 {
                 <img alt="" src="@Model.PictureURL.Replace("_s.", "_n.")" />
                 }
+                
+            <p>@Html.Raw(Html.FormatHtml(Model.Message))</p>       
         </div>  
         }

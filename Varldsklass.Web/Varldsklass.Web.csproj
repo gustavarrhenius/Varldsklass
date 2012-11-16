@@ -176,6 +176,14 @@
     <Content Include="Content\foundation\stylesheets\app.css" />
     <Content Include="Content\foundation\stylesheets\foundation.css" />
     <Content Include="Content\foundation\stylesheets\foundation.min.css" />
+    <Content Include="Content\image-uploads\front1.jpg" />
+    <Content Include="Content\image-uploads\front2.jpg" />
+    <Content Include="Content\image-uploads\front3.jpg" />
+    <Content Include="Content\image-uploads\hlr1.jpg" />
+    <Content Include="Content\image-uploads\lift1.jpg" />
+    <Content Include="Content\image-uploads\lift2.jpg" />
+    <Content Include="Content\image-uploads\lift3.jpg" />
+    <Content Include="Content\image-uploads\lift4.jpg" />
     <Content Include="Content\js\js.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -316,7 +324,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\image-uploads\" />
     <Folder Include="Scripts\tinymce\plugins\" />
   </ItemGroup>
   <ItemGroup>
