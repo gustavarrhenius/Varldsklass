@@ -98,6 +98,7 @@ namespace Varldsklass.Domain.DBInitializers
                 new Question { ID = 5, EventID = 2, Food = 5, Teacher = 0, Location = 0, Overall = 0, Opinion = "Hängde inte riktigt med på undervisningen, men maten var mycket bra." },
                 new Question { ID = 6, EventID = 2, Food = 2, Teacher = 5, Location = 5, Overall = 5, Opinion = "" },
                 new Question { ID = 7, EventID = 2, Food = 2, Teacher = 5, Location = 5, Overall = 5, Opinion = "" },
+                new Question { ID = 8, EventID = 3, Food = 0, Teacher = 0, Location = 0, Overall = 5, Opinion = "" },
             };
 
             evaluations.ForEach(e => context.Questions.Add(e));
