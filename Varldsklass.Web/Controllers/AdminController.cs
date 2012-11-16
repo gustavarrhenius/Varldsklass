@@ -212,5 +212,11 @@ namespace Varldsklass.Web.Controllers
             List<Event> attendantList = _eventRepo.FindAll().ToList();
             return View( attendantList );
         }
+
+        public ActionResult ListAccounts()
+        {
+            List<Account> accountList = _accountRepo.FindAll().ToList();
+            return View(accountList);
+        }
     }
 }

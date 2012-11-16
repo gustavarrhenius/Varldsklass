@@ -1,0 +1,19 @@
+﻿@model List<Varldsklass.Domain.Entities.Account>
+
+@{
+    ViewBag.Title = "ListAccounts";
+}
+
+<div id="content" class="row">
+    <h2>Registrerade bokare</h2>
+    <table>
+        @foreach (var account in Model)
+        {
+        <tr>
+            <td>@account.FullName</td>
+            <td>@account.CreatedDate</td>
+            <td> @Html.ActionLink("Redigera", "Edit", "Account", new { id = @account.ID }, null) </td>
+        </tr>
+        }
+    </table>
+</div>
