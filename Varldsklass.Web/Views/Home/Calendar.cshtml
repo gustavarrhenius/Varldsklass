@@ -8,9 +8,8 @@
     {
         
             <li>
-                <h5><span class="capitalize">@Html.ActionLink(@item.Post.Title, "EventSingle", "Course", new { id = item.ID}, null)</span></h5>
-                <i class="clock">&#128340;</i><span class="calendar-date">@Html.DateFormat(item.StartDate)</span><br />
-                <i>&#8505;</i>@Html.ActionLink(@item.Title, "EventSingle", "Course", new { id = item.ID }, null)<br />
+                <h5>@Html.ActionLink(@item.Post.Title, "EventSingle", "Course", new { id = item.ID}, null)</h5>
+                <i class="clock">&#128340;</i><span class="calendar-date">@Html.DateFormat(item.StartDate) - @Html.DateFormat(item.EndDate)</span><br />
                 <i>&#59172;</i>@item.City
             </li>
     }
