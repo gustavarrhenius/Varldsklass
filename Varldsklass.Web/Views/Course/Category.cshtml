@@ -19,6 +19,12 @@
             <article>
             <h2>@Model.Name</h2>
             <div class="content">@Html.Raw(Model.Body)</div>
+            <ul>
+                @foreach (var category in Model.Posts)
+                {
+                    <li>@Html.ActionLink(category.Title, "CourseSingle", "Course", new { id = category.ID }, null ) </li>
+                }
+            </ul>
             </article>
         </div>
     </div>
