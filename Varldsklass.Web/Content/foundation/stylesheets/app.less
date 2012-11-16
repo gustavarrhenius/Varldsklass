@@ -575,7 +575,8 @@ footer .footer-address p {
 }
 
 .top-bar {
-	background-color: #f9f9f9;
+	background-color: #eee;
+	border-bottom:1px solid #999;
 	margin: 0;
 	padding-bottom: 5px; 
 
@@ -584,87 +585,160 @@ footer .footer-address p {
 
 		i {
 			line-height: 0;
-		}
+		} 
 	}
-
+    .booker-email i {
+	    display:none;
+	}
 	ul li:hover a {
-		background-color: #eee;
+		background-color: #ccc;
+		border-bottom:1px solid #999;
 	}
 
 	ul li:hover {
-		background: #f9f9f9;
+		background: none;
 	}
 }
 #toggle-menu {
     display:none;
 }
 
-@media only screen and (max-width: 767px) {
-  header 
-  {
-      .row.top {
-            background:#f2f2f2;
-            margin-top:15px;
-       }
-      nav  {
-        margin-top:0px;
-      } 
-        #toggle-menu {
-            display:block;
-        } nav #menu.nav-bar {
-            display:none;
-            width:100%;
-            background: white;
-            height: auto;
-            position:absolute;
-            li {
-                a {
-                    border-bottom:1px solid #ddd;
-                } a.flyout-toggle {
-                    border-bottom:none;
-              } .flyout {
-                    top:0;
-                }
-            }  
-        } #logo {
-            text-align:center;
-        } #logindisplay {
-            width:70% !important;
-            text-align: left;
-            a {
-                float:left;
-                margin-top: 10px;
-            }
-            a.button {
-                margin-top: 0px;
-            } strong {
-                position: absolute;
-                top: -15px;
-                left: 15px;
-            } a.book  {
-                margin-left: 0px;
-                float: left;
-            }
-        } #toggle-menu 
+@media only screen and (max-width: 940px) {
+  .top-bar ul.left, .top-bar ul.right {     
+        width:50%;
+        float:left;
+        li  
         {
-            position: absolute;
-            top: -12px;
-            right: 10px;
-            
-            i {
-                font-size: 60px;
-                color:#34333a;
-            }
-        } a.search-button 
-        {
-            position: absolute;
-            top: -37px;
-            right: 50px;
-            span {
-                display:none;
-            } i  {
-                font-size: 60px;
-                }
+            width:50%;
+            float:left;
         }
-   } 
-}    
+    } 
+
+ }
+@media only screen and (max-width: 767px) {
+    .top-bar  
+    {
+        height:auto;
+        padding-bottom:0px;
+        ul.left  {
+            display:none;
+        }
+    } .top-bar ul.right 
+    {
+        width:100%;
+        li {
+            width:40%;
+            text-align:center;
+            a {
+                border-bottom:1px solid transparent; 
+            }
+        } li#toggle-menu {
+            display:block;
+            width:20%;
+            a {
+                line-height:36px;
+                font-size:50px;
+                i {
+                    font-size:50px;
+                }
+            }
+        } li:first-child {
+            cursor:pointer;
+        } li.booker-email {
+            i {
+	        display: inline-block;
+            line-height: 0;
+            color:#999;
+	         font-size:50px;
+	         position: relative;
+               top: -17px; 
+	        }
+	     } li.booker-email:hover {
+            background-color: #ccc;
+        }
+    } .top-bar ul.left {
+        width:100%;
+        border-bottom:1px solid #999;
+        li a {
+            background:#fff;
+            border-left:1px solid #999;
+            
+        } li.first-child a {
+            border:none;
+            
+        } li a:hover {
+            background:#ccc;  
+            border-bottom:1px solid transparent; 
+        }
+    }    
+    
+    header {
+        #logo {
+          text-align:center;  
+        }
+        
+        nav.columns {
+            margin-top:0;
+            position: absolute !important;
+            top: -75px;
+            left: 0;
+            width: 100% !important;
+            ul#menu 
+            {
+                display:none;
+                height:auto;
+                float:none;
+                border-bottom:1px solid #999;
+                border-left:1px solid #999;
+                border-right:1px solid #999;
+                li 
+                {
+                    background-color: white;
+                    text-align: center;
+                    border-top: 1px solid #CCC;
+                } li:first-child {
+                      border-top: none;
+                } .flyout {
+                    top:0px;
+                    left:0;
+                    li {
+                        a 
+                        {
+                            border:none;
+                            border-top: 1px solid #CCC;
+                            -webkit-box-shadow: none;
+                            -moz-box-shadow: none;
+                            box-shadow:none;
+                        }
+                    }
+                }
+            }
+        } .search-button {
+            display:none;
+        } #search-bar 
+        {
+            display:none;
+            padding: 10px 15px;
+            position: absolute !important;
+            top: -128px;
+            left: 0; 
+            width: 100%;
+            border-bottom:1px solid #999;
+            moz-box-shadow: none;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            -webkit-border-bottom-right-radius: 0;
+            -webkit-border-bottom-left-radius: 0;
+            -moz-border-radius-bottomright: 0;
+            -moz-border-radius-bottomleft: 0;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+            input[type="text"] {
+                width:80%;
+            } input[type="submit"] {
+                width:20%;
+            }
+        }
+     }  
+}  
+  

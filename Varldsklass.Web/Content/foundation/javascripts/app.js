@@ -1,4 +1,4 @@
-;(function ($, window, undefined) {
+﻿;(function ($, window, undefined) {
   'use strict';
 
   var $doc = $(document),
@@ -30,12 +30,19 @@
         advanceSpeed: 10000,
     })
 
-   $(".booker-email").click(function() {
+    $(".booker-email").click(function() {
         if ($(this).css('cursor') == 'pointer') {
              $(".top-bar ul.left").toggle();
+             
+             var i = $(".top-bar li.booker-email i");
+             if (!(i.hasClass('down'))) {
+                i.html('&#9662;').addClass('down');
+
+             } else {
+                i.html('&#9652;').removeClass('down');
+             }
         }
     });
-
 
     $(".search-button").click(function() {
         $("#search-bar").toggle();
