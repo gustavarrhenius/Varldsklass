@@ -5,10 +5,12 @@
         @Html.Action("Topbar", "Admin")
         <li><a href="@Url.Action("Show", "Account")" class="book"><i>&#59170;</i> Användaruppgifter</a></li>
         <li><a href="@Url.Action("List", "Book")" class="book"><i>&#128196;</i> Bokningar</a></li>
+        
     </ul>
     <ul class="right">
-        <li class="booker-email">@User.Identity.Name</li>
+        <li class="booker-email">@User.Identity.Name<i>&#9652;</i></li>
         <li><a href="@Url.Action("LogOff", "Account")" class="book">Logga ut <i class="log-off">&#128275;</i></a></li>
+        <li id="toggle-menu"><a href="#"><i>☰</i></a></li>
     </ul>
 }
 else
@@ -16,6 +18,7 @@ else
     <ul class="right">
         <li><a href="@Url.Action("Register", "Account")" class="book">Registrera dig <i class="log-off">&#59136;</i></a></li>
         <li><a href="@Url.Action("LogOn", "Account")" class="book">Logga in <i class="log-off">&#128274;</i></a></li>
+        <li id="toggle-menu"><a href="#"><i>☰</i></a></li>
     </ul>
 }
 </nav>

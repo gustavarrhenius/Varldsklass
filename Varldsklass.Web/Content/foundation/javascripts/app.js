@@ -1,4 +1,4 @@
-;(function ($, window, undefined) {
+﻿;(function ($, window, undefined) {
   'use strict';
 
   var $doc = $(document),
@@ -30,13 +30,32 @@
         advanceSpeed: 10000,
     })
 
+    $(".booker-email").click(function() {
+        if ($(this).css('cursor') == 'pointer') {
+             $(".top-bar ul.left").toggle();
+             
+             var i = $(".top-bar li.booker-email i");
+             if (!(i.hasClass('down'))) {
+                i.html('&#9662;').addClass('down');
+
+             } else {
+                i.html('&#9652;').removeClass('down');
+             }
+        }
+    });
+
     $(".search-button").click(function() {
+        $("#search-bar").toggle();
+    });
+    $("#toggle-menu").click(function() {
+        $("nav #menu.nav-bar").toggle();
         $("#search-bar").toggle();
     });
   
     $("#revealModal").click(function() {
       $("#myModal").reveal();
     });
+
 
   // UNCOMMENT THE LINE YOU WANT BELOW IF YOU WANT IE8 SUPPORT AND ARE USING .block-grids
   // $('.block-grid.two-up>li:nth-child(2n+1)').css({clear: 'both'});
