@@ -189,7 +189,28 @@ namespace Varldsklass.Web.Controllers
                 }
                 foreach (var removedCat in oldCategories.Where(c => arrayOfCategoryIDs
                 == null || !arrayOfCategoryIDs.Any(cat2 => cat2 == c.ID.ToString())))
-                    theOldPost.Category.Remove(removedCat); 
+                    theOldPost.Category.Remove(removedCat);
+
+
+                if (theOldPost.Badges == null)
+                    theOldPost.Badges = new List<Image>();
+                var oldBadges = theOldPost.Badges.ToList();
+                var listOfBadges = postedForm["badge"];
+                string[] arrayOfBadges = null;
+                if (listOfBadges != null)
+                    arrayOfBadges = listOfBadges.Split(',');
+
+                oldBadges = theOldPost.Badges.ToList();
+                if (arrayOfBadges != null && arrayOfBadges.Count() > 0)
+                {
+                    foreach (var addedbadge in _imgRepo.FindAll(c =>
+                 arrayOfBadges.Any(cat => cat == c.ImagePath.ToString()) &&
+                 !c.Posts.Any(p => p.ID == theOldPost.ID)).ToList())
+                        theOldPost.Badges.Add(addedbadge);
+                }
+                foreach (var removedimg in oldBadges.Where(c => arrayOfBadges
+                == null || !arrayOfBadges.Any(cat2 => cat2 == c.ImagePath.ToString())))
+                    theOldPost.Badges.Remove(removedimg); 
 
                 _postRepo.Save(post);
                 // add a message to the viewbag
