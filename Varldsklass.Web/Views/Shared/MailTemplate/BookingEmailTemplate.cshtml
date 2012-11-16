@@ -17,12 +17,17 @@
 
 <h1>@Model.Event.Title</h1>
 
+<p>Tack för din bokning!</p>
+<p>Du har bokat följande personer till kursen @Model.Event.Title, @Model.Event.StartDate</p>
 <ul>
 @foreach (var a in Model.Attendants)
 {
     <li>@a.FullName: @a.Email</li>
 }
 </ul>
+
+<p>Observera att detta endast är en sammanställning av de personer som bokats till kurstillfället. En bokningsbekräftelse kommer att skickas till dig inom kort.</p> 
+<p>Kontakta oss om du skulle vilja göra ändringar i din bokning eller om fel har uppstått.</p>
 
 </div>
 <table style="width: 100%; padding: 0; border: 0; background-color: #0c3e62; background-image: url(../../Content/foundation/images/footer-grad.png); border-top: 1px solid #222; color: #fff; font-family: 'helvetica neue', helvetica, Arial, sans-serif">

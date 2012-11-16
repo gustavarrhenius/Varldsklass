@@ -24,6 +24,10 @@
 
 <div class="row">
     <div class="six columns">
+        @{if( Model.Teacher.Count > 0 ||
+              Model.Location.Count > 0 ||
+              Model.Food.Count > 0 ||
+              Model.Overall.Count > 0) {
         <table id="statistics">
             <tr>
                 <th></th>
@@ -43,13 +47,11 @@
                 <td>@Model.Location.Median()</td>
                 <td>@Model.Location.Count</td>
             </tr>
-            </tr>
             <tr>
                 <th>Mat</th>
                 <td>@Model.Food.Average().ToString("0.00")</td>
                 <td>@Model.Food.Median()</td>
                 <td>@Model.Food.Count</td>
-            </tr>
             </tr>
             <tr>
                 <th>Övergripande</th>
@@ -58,10 +60,13 @@
                 <td>@Model.Overall.Count</td>
             </tr>
         </table>
+        } else {
+            <p>Det finns ingen statistik för det här kurstillfället än.</p>
+        }}
     </div>
 
     <div class="six columns">
-        @if (Model.Event != null)
+        @if (Model.Event != null && Model.Opinions.Count > 0)
         {
             <h3>Övriga synpunkter</h3>
             <ul>

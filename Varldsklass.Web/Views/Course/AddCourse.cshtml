@@ -26,9 +26,17 @@
         }
       <a class="close-reveal-modal">&#215;</a>
     </div>
+    
+    <a href="#" id="revealModalBadges" class="button" data-reveal-id="myModalBadges">Badges</a>
+    <div id="myModalBadges" class="reveal-modal [expand, xlarge, large, medium, small]">
+      @{
+        Html.RenderAction("_FileUploadPartial", "FileUpload", new { postID = Model.Post.ID, badges = true });
+        }
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
     <h3>Kategorier</h3>
-    foreach (var item in (SelectList)ViewData["events"])
-    {
+        foreach (var item in (SelectList)ViewData["events"])
+        {
                  <input type="checkbox" name="Name" value="@item.Value" 
                  @if (Model.Categories != null)
                  {
@@ -43,7 +51,7 @@
                   <label for="@item.Value">@item.Text</label>
                   <br />
 
-    }  
+        }  
 
     <input type="submit" value="Save" class="success button" />
     @Html.ActionLink("Cancel and return to List", "Index")

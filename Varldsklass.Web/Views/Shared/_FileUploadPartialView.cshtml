@@ -2,39 +2,90 @@
   @{
       var partModel = Model;
       int count = 0;
-    }        
+    } 
+           
+ @if (!Model.Badges) {
+     
 <div class="file-upload">
 <h2>Välj bild</h2>
 <ul>
     @if (partModel.UploadedFiles != null)
     {
-        foreach (var image in partModel.UploadedFiles)
         {
+            foreach (var image in partModel.UploadedFiles)
+            {
 
-            if (image.Checked == true)
-            {
-                    <li><img src="@image.PathUrl" class="active" title="@image.PathUrl" data-number="@count" alt="@image.PathUrl" runat="server" width="100px"/>   <br />
-                    <input type="checkbox" name="image" id="image-@count" value="@image.PathUrl" checked="checked" /></li>
+                if (image.Checked == true)
                 {
-                    count++;
+                        <li><img src="@image.PathUrl" class="active" title="@image.PathUrl" data-number="@count" alt="@image.PathUrl" runat="server" width="100px"/>   <br />
+                        <input type="checkbox" name="image" id="image-@count" value="@image.PathUrl" checked="checked" /></li>
+                    {
+                        count++;
+                    }
                 }
-            }
-            else
-            {
-               <li><img src="@image.PathUrl" title="@image.PathUrl" data-number="@count" alt="@image.PathUrl" runat="server" width="100px"/>   <br />
-               <input type="checkbox" name="image" id="image-@count" value="@image.PathUrl" /></li>
+                else
                 {
-                    count++;
+                   <li><img src="@image.PathUrl" title="@image.PathUrl" data-number="@count" alt="@image.PathUrl" runat="server" width="100px"/>   <br />
+                   <input type="checkbox" name="image" id="image-@count" value="@image.PathUrl" /></li>
+                    {
+                        count++;
+                    }
                 }
             }
         }
     }  
-    </ul>
+
+</ul>
 </div>
+     <script type="text/javascript">
+         $(document).ready(function () {
+             $('.file-upload img').click(function () {
+                 var checked = $('input#image-' + $(this).attr("data-number"))
+                 if (checked.attr('checked')) {
+                     checked.removeAttr('checked');
+                     $(this).removeClass('active');
+                 } else {
+                     checked.attr('checked', 'checked');
+                     $(this).addClass('active');
+                 }
+             });
+         });
+    </script>
+ } 
+
+@if (Model.Badges)
+{
+    
+    <div class="badge-upload">
+    <h2>Välj Badge</h2>
+    <ul>
+            @foreach (var image in partModel.UploadedFiles)
+            {
+
+                if (image.Checked == true)
+                {
+                        <li><img src="@image.PathUrl" class="active" title="@image.PathUrl" data-number="@count" alt="@image.PathUrl" runat="server" width="100px"/>   <br />
+                        <input type="checkbox" name="badge" id="badge-@count" value="@image.PathUrl" checked="checked" /></li>
+                    {
+                        count++;
+                    }
+                }
+                else
+                {
+                   <li><img src="@image.PathUrl" title="@image.PathUrl" data-number="@count" alt="@image.PathUrl" runat="server" width="100px"/>   <br />
+                   <input type="checkbox" name="badge" id="badge-@count" value="@image.PathUrl" /></li>
+                    {
+                        count++;
+                    }
+                }
+            }
+         </ul>
+        </div>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('.file-upload img').click(function () {
-                var checked = $('input#image-' + $(this).attr("data-number"))
+           
+            $('.badge-upload img').click(function () {
+                var checked = $('input#badge-' + $(this).attr("data-number"))
                 if (checked.attr('checked')) {
                     checked.removeAttr('checked');
                     $(this).removeClass('active');
@@ -45,3 +96,7 @@
             });
         });
     </script>
+}
+
+   
+    
