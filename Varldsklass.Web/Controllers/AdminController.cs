@@ -197,6 +197,8 @@ namespace Varldsklass.Web.Controllers
 
         public ActionResult DeleteLocation(int id)
         {
+            if (NotAllowedHere()) return RedirectAway();
+
             _locationRepo.Delete(_locationRepo.FindByID(id));
 
             return RedirectToAction("ListLocations");
@@ -209,12 +211,16 @@ namespace Varldsklass.Web.Controllers
 
         public ActionResult ListAttendants()
         {
+            if (NotAllowedHere()) return RedirectAway();
+
             List<Event> attendantList = _eventRepo.FindAll().ToList();
             return View( attendantList );
         }
 
         public ActionResult ListAccounts()
         {
+            if (NotAllowedHere()) return RedirectAway();
+
             List<Account> accountList = _accountRepo.FindAll().ToList();
             return View(accountList);
         }
