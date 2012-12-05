@@ -22,5 +22,13 @@
             </article>
          </div>
     </div>
-    @Html.Partial("_SideBar")      
+    @Html.Partial("_SideBar") 
+    
+    @if(Model.Badges.Count() > 0) {
+        <div class="badges">
+            @foreach(var badge in Model.Badges) {
+                <img src="@badge.ImagePath" title="@ViewBag.Title" alt="@ViewBag.Title"/>
+            }
+        </div>
+    }    
 </div>
