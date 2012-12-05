@@ -6,8 +6,14 @@
 }
 <div id="content" class="row">
      <div class="eight columns">
-            <h2>Kategorier</h2>
-                <div class="content"></div>
+        <h2>Kategorier</h2>
+        <div class="content">
+            <ul id="categories-list">
+            @foreach(var category in Model){
+                <li><i>&#9654;</i> @Html.ActionLink(category.Name, "Category", new { id = category.ID })</li>
+            }
+            </ul>
+        </div>
     </div>
     @Html.Partial("_SideBar") 
             
