@@ -71,7 +71,8 @@ namespace Varldsklass.Domain.DBInitializers
             {
                 // All passwords are "password" without the quotes.
                 new Account { ID = 1, Email = "admin@varldsklass.com", FirstName = "Admin", LastName = "von Världsklass", Password = "$2a$10$0YOweSok2GRqb0r.AqHb9eR8BKcUEJUEdoabynZoj05R3dM0onEYK", Salt = "$2a$10$0YOweSok2GRqb0r.AqHb9e", Administrator = true, CreatedDate = DateTime.Now },
-                new Account { ID = 2, Email = "bokare@varldsklass.com", FirstName = "Bokare", LastName = "von Världsklass", Password = "$2a$10$0YOweSok2GRqb0r.AqHb9eR8BKcUEJUEdoabynZoj05R3dM0onEYK", Salt = "$2a$10$0YOweSok2GRqb0r.AqHb9e", Administrator = false, CreatedDate = DateTime.Now }
+                new Account { ID = 2, Email = "bokare@varldsklass.com", FirstName = "Bokare", LastName = "von Världsklass", Password = "$2a$10$0YOweSok2GRqb0r.AqHb9eR8BKcUEJUEdoabynZoj05R3dM0onEYK", Salt = "$2a$10$0YOweSok2GRqb0r.AqHb9e", Administrator = false, CreatedDate = DateTime.Now },
+                new Account { ID = 3, Email = "johan@varldsklass.com", FirstName = "Johan", LastName = "Axéll", Password = "$2a$10$.tMzg8Rnef.IllIleQN82uBYgRjtilGPigPAToVr9dRf31orUKnoS", Salt = "$2a$10$.tMzg8Rnef.IllIleQN82u", Administrator = true, CreatedDate = DateTime.Now }
             };
 
             accounts.ForEach(a => context.Accounts.Add(a));
