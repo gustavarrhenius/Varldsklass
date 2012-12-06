@@ -4,32 +4,37 @@
     ViewBag.Title = "Kurstillfällen du bokat deltagare till";
 }
 
-
 <div id="content" class="row">
     <div class="eight columns">
 <h1>@ViewBag.Title</h1>
 
-<p>För att visa en lista över bokade deltagare klicka på kursens namn. </p>
-
-<table>
-    <tr>
-        <th>Namn</th>
-        <th>Kurstyp</th>
-        <th>Lärare</th>
-        <th>Startdatum</th>
-        <th>Slutdatum</th>
-    </tr>
-    @foreach (var e in Model)
-    {
-    <tr>
-        <td>@Html.ActionLink(@e.Title, "List", new { id = @e.ID})</td>
-        <td>@e.Post.Title</td>
-        <td>@e.Teatcher</td>
-        <td>@e.StartDate</td>
-        <td>@e.EndDate</td>
-    </tr>
-    }
-</table>
-  </div>
+        @if (Model.Count < 1)
+        {
+            <p>Du har inte bokat in några deltagare på några kurser.</p>
+        }
+        else
+        {
+            <p>För att visa en lista över bokade deltagare, klicka på kursens namn. </p>
+            <table>
+                <tr>
+                    <th>Namn</th>
+                    <th>Kurstyp</th>
+                    <th>Lärare</th>
+                    <th>Startdatum</th>
+                    <th>Slutdatum</th>
+                </tr>
+                @foreach (var e in Model)
+                {
+                <tr>
+                    <td>@Html.ActionLink(@e.Title, "List", new { id = @e.ID})</td>
+                    <td>@e.Post.Title</td>
+                    <td>@e.Teatcher</td>
+                    <td>@e.StartDate</td>
+                    <td>@e.EndDate</td>
+                </tr>
+                }
+            </table>
+        }
+    </div>
     @Html.Partial("_SideBar")      
 </div>

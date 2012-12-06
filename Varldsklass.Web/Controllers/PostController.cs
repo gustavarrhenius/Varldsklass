@@ -13,13 +13,13 @@ namespace Varldsklass.Web.Controllers
 {
     public class PostController : Controller
     {
-        private IRepository<Event> _eventRepo;
+        private IEventRepository _eventRepo;
         private IRepository<Post> _postRepo;
         private IRepository<Category> _categoryRepo;
         private IRepository<Image> _imgRepo;
 
         public PostController(IRepository<Post> repo, IRepository<Category>
-        category, IRepository<Event> Event, IRepository<Image> image)
+        category, IEventRepository Event, IRepository<Image> image)
         {
             _eventRepo = Event;
             _postRepo = repo; _postRepo.Model = _eventRepo.Model;

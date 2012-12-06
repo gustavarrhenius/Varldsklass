@@ -15,12 +15,11 @@ namespace Varldsklass.Web.Controllers
 {
     public class BookController : Controller
     {
-
         private IRepository<Attendant> _attendantRepo;
-        private IRepository<Event> _eventRepo;
+        private IEventRepository _eventRepo;
         private IAccountRepository _accountRepo;
 
-        public BookController(IRepository<Attendant> attendantRepo, IRepository<Event> eventRepo, IAccountRepository accountRepo)
+        public BookController(IRepository<Attendant> attendantRepo, IEventRepository eventRepo, IAccountRepository accountRepo)
         {
             _attendantRepo = attendantRepo;
             _eventRepo = eventRepo;
@@ -107,9 +106,11 @@ namespace Varldsklass.Web.Controllers
         [Authorize]
         public ActionResult List(int id = 0)
         {
+            int currentUserId = _accountRepo.FindAll().Where(a => a.Email == User.Identity.Name).FirstOrDefault().ID;
+
             if (id == 0)
             {
-                List<Event> eventList = _eventRepo.FindAll().Where(e => e.Attendants.Count > 0).ToList();
+                List<Event> eventList = _eventRepo.FindByBooker(currentUserId);
                 return View("EventList", eventList);
             }
             else
