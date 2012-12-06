@@ -30,6 +30,7 @@ namespace Varldsklass.Web.Infrastructure
         {
             ninjectKernel.Bind<IAccountRepository>().To<AccountRepository>();
             ninjectKernel.Bind<IPostRepository>().To<PostRepository>();
+            ninjectKernel.Bind<IEventRepository>().To<EventRepository>();
             ninjectKernel.Bind(typeof(IRepository<>)).To(typeof(Repository<>));
         }
     }

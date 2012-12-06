@@ -14,12 +14,12 @@ namespace Varldsklass.Web.Controllers
 {
     public class EvaluationController : Controller
     {
-        private IRepository<Event> _eventRepo;
+        private IEventRepository _eventRepo;
         private IRepository<Question> _questionRepo;
         private IRepository<Attendant> _attRepo;
         //
         // GET: /Questionnaire/
-        public EvaluationController(IRepository<Event> eventRepo, IRepository<Question> questionRepo, IRepository<Attendant> attendant)
+        public EvaluationController(IEventRepository eventRepo, IRepository<Question> questionRepo, IRepository<Attendant> attendant)
         {
             _eventRepo = eventRepo;
             _questionRepo = questionRepo;

@@ -21,12 +21,12 @@ namespace Varldsklass.Web.Controllers
     public class HomeController : Controller
     {
 
-        private IRepository<Event> _eventRepo;
+        private IEventRepository _eventRepo;
         private IRepository<Post> _postRepo;
         private IRepository<Category> _categoryRepo;
         private IRepository<PopularCourse> _popularCoursesRepo;
 
-        public HomeController(IRepository<Post> repo, IRepository<Category> category, IRepository<Event> Event, IRepository<PopularCourse> popularCourses)
+        public HomeController(IRepository<Post> repo, IRepository<Category> category, IEventRepository Event, IRepository<PopularCourse> popularCourses)
         {
             _eventRepo = Event;
             _postRepo = repo;

@@ -21,11 +21,11 @@ namespace Varldsklass.Web.Controllers
         private IRepository<Category> _categoryRepo;
         private IAccountRepository _accountRepo;
         private IRepository<Location> _locationRepo;
-        private IRepository<Event> _eventRepo;
+        private IEventRepository _eventRepo;
         private IRepository<Image> _imgRepo;
 
 
-        public AdminController(PostRepository repo, IRepository<Category> category, IRepository<Image> image, IRepository<Location> locationRepo, IAccountRepository account, IRepository<Event> eventRepo)
+        public AdminController(PostRepository repo, IRepository<Category> category, IRepository<Image> image, IRepository<Location> locationRepo, IAccountRepository account, IEventRepository eventRepo)
         {
             _eventRepo = eventRepo;
             _postRepo = repo; _postRepo.Model = _eventRepo.Model;

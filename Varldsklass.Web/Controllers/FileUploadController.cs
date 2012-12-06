@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.IO;
 using Varldsklass.Web.ViewModels;
 using Varldsklass.Domain.Repositories.Abstract;
+using Varldsklass.Domain.Repositories;
 using Varldsklass.Domain.Entities;
 using System.Data.Entity;
 
@@ -16,10 +17,10 @@ namespace Varldsklass.Web.Controllers
         private IRepository<Post> _postRepo;
         private IRepository<Category> _categoryRepo;
         private IRepository<Image> _imgRepo;
-        private IRepository<Event> _eventRepo;
+        private IEventRepository _eventRepo;
         private IRepository<Location> _locationRepo;
 
-        public FileUploadController(IRepository<Post> repo, IRepository<Category> category, IRepository<Image> Image, IRepository<Event> Event, IRepository<Location> Location)
+        public FileUploadController(IRepository<Post> repo, IRepository<Category> category, IRepository<Image> Image, IEventRepository Event, IRepository<Location> Location)
         {
             _imgRepo = Image;
             _postRepo = repo;

@@ -14,7 +14,7 @@ namespace Varldsklass.Web.Controllers
 {
     public class CourseController : Controller
     {
-        private IRepository<Event> _eventRepo;
+        private IEventRepository _eventRepo;
         private IRepository<Post> _postRepo;
         private IRepository<Category> _categoryRepo;
         private IRepository<Attendant> _attendantRepo;
@@ -22,7 +22,7 @@ namespace Varldsklass.Web.Controllers
         private IRepository<Image> _imgRepo;
         private IRepository<PopularCourse> _popularCourseRepo;
 
-        public CourseController(IRepository<Post> repo, IRepository<Category> category, IRepository<Event> Event, IRepository<Image> image, IRepository<Attendant> attendantRepo, IAccountRepository accountRepo, IRepository<PopularCourse> popularCourseRepo)
+        public CourseController(IRepository<Post> repo, IRepository<Category> category, IEventRepository Event, IRepository<Image> image, IRepository<Attendant> attendantRepo, IAccountRepository accountRepo, IRepository<PopularCourse> popularCourseRepo)
         {
             _eventRepo = Event;
             _postRepo = repo; _postRepo.Model = _eventRepo.Model;
