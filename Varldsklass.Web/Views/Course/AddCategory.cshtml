@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Lägg till Kategori</h2>
+<h1>Lägg till Kategori</h1>
 @using (Html.BeginForm("SaveCategory", "Course", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.HiddenFor(p => p.ID, "ID")

@@ -75,4 +75,20 @@
     });
   }
 
+    tinyMCE.init({
+    mode: "textareas",
+    theme: "advanced",
+    theme_advanced_buttons1: "formatselect,bold,italic,|,bullist,numlist,|,link,unlink,|,undo,redo",
+    width: "100%",
+    height: "400px",
+    editor_deselector: "mceNoEditor"
+});
+
+$(function () {
+    $('#form-teacher :radio.star').rating();
+    $('#form-location :radio.star').rating();
+    $('#form-food :radio.star').rating();
+    $('#form-overall :radio.star').rating();
+});
+
 })(jQuery, this);

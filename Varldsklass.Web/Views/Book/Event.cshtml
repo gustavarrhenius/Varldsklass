@@ -5,7 +5,7 @@
 }
 <div id="content" class="row">
     <div class="eight columns">
-<h2>@Model.Event.Title</h2>
+<h1>@Model.Event.Title</h1>
 @Model.Event.Post.Body
 
 @using (Html.BeginForm("Save", "Book", FormMethod.Post, new { id = "book" }))

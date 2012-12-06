@@ -428,7 +428,7 @@
     <Content Include="Views\Shared\_Sidebar.cshtml" />
     <Content Include="Views\Evaluation\EvaluationAttendant.cshtml" />
     <Content Include="Views\Shared\MailTemplate\attendantEmailTemplate.cshtml" />
-    <Content Include="Views\Evaluation\Succes.cshtml" />
+    <Content Include="Views\Evaluation\Success.cshtml" />
     <Content Include="Views\Course\PopularCourses.cshtml" />
     <Content Include="Views\Home\Popular.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />

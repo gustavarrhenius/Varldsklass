@@ -101,8 +101,8 @@ namespace Varldsklass.Web.Controllers
             {
                 var Event = _eventRepo.FindByID(question.EventID);
                 _questionRepo.Save(question);
-                ViewData["Succes"] = "Tack så mycket för din åsikt!";
-                return View("Succes");
+                ViewData["Success"] = "Tack så mycket för din åsikter!";
+                return View("Success");
             }
             else
             {

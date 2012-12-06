@@ -28,3 +28,7 @@ packages/
 #App_Data can go fuck itself
 /Varldsklass.Web/App_Data
 
+*.BACKUP.*
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
