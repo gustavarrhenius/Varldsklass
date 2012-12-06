@@ -9,6 +9,7 @@ namespace Varldsklass.Web.ViewModels
     public class SideBarViewModel
     {
         public IEnumerable<Category> Categories { get; set; }
+        public IEnumerable<Event> Events { get; set; }
         public Category Category { get; set; }
         public Post Post { get; set; }
     }

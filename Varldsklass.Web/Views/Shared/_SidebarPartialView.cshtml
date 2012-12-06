@@ -46,12 +46,12 @@
     } 
 
    
-    @if (Model.Post != null)
+    @if (Model.Events != null)
     {
     <section class="categories">    
         <h4>@Model.Post.Title <i>&#128278;</i></h4>
         <ul>
-            @foreach (var Event in Model.Post.Events)
+            @foreach (var Event in Model.Events)
             {
             <li><i>&#59172;</i>@Html.ActionLink(Event.Title, "EventSingle", "Course", new { id = Event.ID }, null)</li>
             }

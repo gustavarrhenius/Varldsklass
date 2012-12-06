@@ -74,7 +74,8 @@ namespace Varldsklass.Web.Controllers
                     sb.Category = _categoryRepo.FindAll().Where(c => c.ID == id).Include(p => p.Posts).FirstOrDefault();
                 }
             } else {
-                sb.Post = _postRepo.FindAll().Where(c => c.ID == id).Include(e => e.Events.Where(d=>d.StartDate < DateTime.Now)).FirstOrDefault();
+            sb.Post = _postRepo.FindAll().Where(c => c.ID == id).Include(e => e.Events).FirstOrDefault();
+            sb.Events = _eventRepo.FindAll().Where(e => e.StartDate > DateTime.Now && e.ID == sb.Post.ID).ToList();
             }
             return PartialView("_SidebarPartialView", sb);
         }
