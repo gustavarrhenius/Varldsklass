@@ -5,14 +5,14 @@
 }
 <div id="content" class="row">
     <div class="eight columns">
-<h2>Utvärdering</h2>
+<h1>Utvärdering</h1>
 <div class="error-message">
     @ViewData["Error"]
 </div>
 <div class="succes-message">
-    @ViewData["Succes"]
+    @ViewData["Success"]
 </div>
-@if (ViewData["Succes"] != "") {
+@if (ViewData["Success"] != "") {
     using (Html.BeginForm("SaveAttendant", "Evaluation", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
     @Html.HiddenFor(model => Model.EventID)
