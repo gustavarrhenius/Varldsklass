@@ -266,7 +266,9 @@ namespace Varldsklass.Web.Controllers
         System.IO.File.Delete(Server.MapPath(path));
 
         var imageObj = _imgRepo.FindAll().Where(i => i.ImagePath == path).FirstOrDefault();
-        _imgRepo.Delete(imageObj);
+            if (imageObj != null) {
+                _imgRepo.Delete(imageObj);
+            }
 
         var fuVM = new FileUploadViewModel();
 

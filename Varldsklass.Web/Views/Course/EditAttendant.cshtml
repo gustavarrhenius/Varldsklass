@@ -3,35 +3,39 @@
 @{
     ViewBag.Title = "Redigera deltagare";
 }
+<div id="content" class="row">
+    <div class="eight columns">
+        <h2>Redigera deltagare</h2>
+        <p> Registrerad som: @Model.FullName, @Model.Email </p>
+        <p> Kurstillfälle: @Model.Event.Title (@Model.Event.StartDate - @Model.Event.EndDate) </p>
 
-<h2>Redigera deltagare</h2>
-<p> Registrerad som: @Model.FullName, @Model.Email </p>
-<p> Kurstillfälle: @Model.Event.Title (@Model.Event.StartDate - @Model.Event.EndDate) </p>
-
-@using (Html.BeginForm("EditAttendant", "Course", FormMethod.Post))
-{
-    @Html.HiddenFor(a => a.ID)
-    @Html.HiddenFor(a => a.EventID)
-    @Html.HiddenFor(a => a.BookerID)
+        @using (Html.BeginForm("EditAttendant", "Course", FormMethod.Post))
+        {
+            @Html.HiddenFor(a => a.ID)
+            @Html.HiddenFor(a => a.EventID)
+            @Html.HiddenFor(a => a.BookerID)
     
-    <div class="row">
-        <div class="six columns">
-        @Html.LabelFor(a => a.FirstName)
-        @Html.TextBoxFor(a => a.FirstName)
-        </div>
+            <div class="row">
+                <div class="six columns">
+                @Html.LabelFor(a => a.FirstName)
+                @Html.TextBoxFor(a => a.FirstName)
+                </div>
 
-        <div class="six columns">
-        @Html.LabelFor(a => a.LastName)
-        @Html.TextBoxFor(a => a.LastName)
-        </div>
+                <div class="six columns">
+                @Html.LabelFor(a => a.LastName)
+                @Html.TextBoxFor(a => a.LastName)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="twelve columns">
+                @Html.LabelFor(a => a.Email)
+                @Html.TextBoxFor(a => a.Email)
+                </div>
+            </div>
+
+            <input type="submit" value="Ändra" class="success button" />
+        }
     </div>
-
-    <div class="row">
-        <div class="twelve columns">
-        @Html.LabelFor(a => a.Email)
-        @Html.TextBoxFor(a => a.Email)
-        </div>
-    </div>
-
-    <input type="submit" value="Ändra" class="success button" />
-}
+    @Html.Partial("_SideBar") 
+</div>

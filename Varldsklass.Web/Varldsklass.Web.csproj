@@ -435,6 +435,9 @@
     <Content Include="Views\Account\Show.cshtml" />
     <Content Include="Views\Shared\_AdminTopbar.cshtml" />
     <Content Include="Views\Admin\ListAccounts.cshtml" />
+    <Content Include="Views\Course\EditAttendant.cshtml" />
+    <Content Include="Views\Course\Book.cshtml" />
+    <Content Include="Views\Course\ViewBookings.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
